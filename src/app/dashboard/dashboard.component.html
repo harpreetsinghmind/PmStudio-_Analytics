@@ -1,0 +1,153 @@
+<div class="jumbotron">
+
+      <div class="row" style="margin:20px 0 0;">
+        <div class="col-md-2 no-padding">
+          <h4 class="title-new" style="font-size: 22px; margin-left: 15px;">Dashboard </h4>
+        </div>
+
+        <div class="col-md-2 datefilter">
+            <select #productvalue (change)="changedropdown(productvalue.value,'productname')" class="form-control">
+                <option value="">Select Product</option>
+                <option *ngFor="let item of obu" [value]="item">{{item}} </option>
+            </select>
+          </div>
+
+          <div class="col-md-2 datefilter">
+            <select #picvalue (change)="changedropdown(picvalue.value,'pic')" class="form-control">
+                <option value="">Select PIC</option>
+                <option *ngFor="let item of producsts" [value]="item">{{item}} </option>
+            </select>
+          </div>
+
+          <div class="col-md-2 datefilter">
+            <select #portvalue  (change)="changedropdown(portvalue.value,'port')" class="form-control">
+                <option value="" >Select Port</option>
+                <option *ngFor="let item of portarray" [value]="item">{{item}} </option>
+
+            </select>
+          </div>
+
+
+
+        <div class="col-md-2 datefilter">
+          <label>From Date</label>
+          <input  #dateFrom value="2022-W09"  (change)="fromdatechange($event)" type="week" class="form-control">
+        </div>
+        <div class="col-md-2 datefilter">
+          <label>To Date</label>
+          <input #todate value="2022-W14" (change)='todatechange($event)' type="week" class="form-control">
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+
+
+    <div class="homedashboard">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box">
+                    <div class="head">
+                        <img src="../../assets/img/icon1.png">
+                        <!-- <a href="/#/Visibilty"> -->
+                        <h3  (click)="visibilityclick()">Visibility <span>(Container Booking)</span></h3>
+                        <!-- </a> -->
+                    </div>
+
+                    <fusioncharts
+  [width]="width"
+  [height]="height"
+  [type]="type"
+  [dataFormat]="dataFormat"
+  [dataSource]="dataSource"
+  (initialized)="getdata($event)"
+>
+</fusioncharts>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="box">
+                    <div class="head">
+                        <img src="../../assets/img/icon2.png">
+                        <a href="/#/PremiumContainer">
+                        <h3 (click)="premiumratioclick()">Premium Ratio</h3>
+                        </a>
+                    </div>
+
+                    <fusioncharts
+                    [width]="width"
+                    [height]="height"
+                    [type]="type"
+                    [dataFormat]="dataFormat"
+                    [dataSource]="dataSource3"
+                    (initialized)="getdata3($event)"
+                  >
+                  </fusioncharts>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="box">
+                    <div class="head">
+                        <img src="../../assets/img/icon3.png">
+                        <!-- <a href="/#/L1-L2RatioReport"> -->
+                        <h3 (click)="l1l2click()">L1/L2 Ratio</h3>
+                        <!-- </a> -->
+                    </div>
+
+                    <fusioncharts
+                    [width]="width"
+                    [height]="height"
+                    [type]="type"
+                    [dataFormat]="dataFormat"
+                    [dataSource]="dataSource2"
+                    (initialized)="getdata2($event)"
+                  >
+                  </fusioncharts>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="box" style="background-color: #eeeff0;">
+                    <div class="head">
+                        <img src="../../assets/img/icon4.png">
+                        <!-- <a href="/#/RatioReport"> -->
+                        <h3 style="cursor:pointer" (click)="twentyfourtyratioclick()"
+                        style="color: #000;">20/40 Ratio</h3>
+                      <!-- </a> -->
+                    </div>
+
+                    <fusioncharts
+  [width]="width1"
+  [height]="height1"
+  [type]="type1"
+  [dataFormat]="dataFormat1"
+  [dataSource]="dataSource4"
+  (initialized)="getdata4($event)"
+
+>
+</fusioncharts>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="preloader" class="loader2">
+  <img src="../../assets/img/Spinner.gif" style="width: 120px;">
+</div>

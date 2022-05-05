@@ -1,0 +1,169 @@
+.login-page {
+  
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    
+  } 
+  .numcode ejs-dropdownlist span.e-input-group{width: 100%;
+    border: none;
+    position: relative;
+    top: 4px;
+    padding: 0 4px;}
+  .login-box,
+  .register-box {
+    width: 400px !important;
+    background: #ffffff;
+ 
+    margin: auto;
+    display: flex;
+      border-radius: 20px;
+  }
+  @media (max-width: 768px) {
+    .login-box,
+    .register-box {
+      width: 90% !important;
+    }
+  }
+  .loginbtb {
+    padding: 9px;
+    background-color: #005880;
+    border-color: #005880;
+    width: 100%;
+    
+    margin: 20px auto auto;
+    border-radius: 5px;
+    font-size: 17px;
+    display: inline-block;
+  }
+  
+  .loginbtb:hover {
+    background-color: #044e70;
+    border-color: #044e70;
+  }
+  .signIn {
+    color: #333 !important;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0 0 10px;
+    text-align: center;
+
+    
+  }
+
+  form#login-form label{ font-size: 13px;}
+  #login-form svg{position: absolute;
+    top: 36px;
+    left: 10px;}
+  .login-box-body,
+  .register-box-body {
+    background-color: transparent !important;
+    
+    padding: 35px 25px;
+      border-top: 0;
+      color: #666;
+     
+  }
+  .login-page,
+  .register-page {
+  
+    background-size: cover;
+      height: 100vh;
+  }
+  .remainder {
+    color: #91899f !important;
+    font-size: 16px;
+  }
+  .form-control {
+    background-color: #fff !important;
+      border: 1px solid #dee2e6;
+      padding: 18px 32px;
+     
+      border-radius: 5px;
+  }
+  
+  .login-logo img {
+    border-radius: 50%;
+    border: 5px solid #fff;
+    padding: 0px;
+    margin-top: 15px;
+  }
+  .login-logo {
+    background: #f5771e;
+    padding: 60px 0 100px;
+    margin-bottom: 0;
+  }
+  .login-logo h3 {
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+  }
+  .forgot a {
+    color: #555;
+  }
+  .login-page{background-image:url(../../assets/img/wall.jpg);}
+  .forgot {
+    text-align: right;
+  }
+  
+  .glyphicon {
+    right: auto;
+    left: 0;
+  }
+  
+  .login-clip{ width: 850px;
+    padding: 50px;
+    margin-left: 120px;}
+  
+    .form-control{ height: 34px; margin-bottom: 16px;} 
+    .rempass{ display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 0 20px;}
+
+        .rempass p{ margin-bottom: 0;}
+  
+  @media screen and (max-width: 1400px) {
+    .login-box-body,
+  .register-box-body {min-height: 450px; }
+  .login-box, .register-box{    margin: 10% auto;  width: 390px !important; }
+  .login-clip{ margin-top: 95px; margin-left: 20px; }
+  
+  }  
+  
+  @media screen and (max-width: 1400px) {
+     
+  .login-clip{ width: 100%;padding: 20px; margin-top: 0px;}
+  .login-box-body, .register-box-body {padding: 20px 30px 15px; } 
+  .loginglogo{    width: 200px !important; margin-bottom: 30px !important;}
+  img.sign-in-using {
+    width: 210px !important;
+  } 
+  img.purs{margin-top: 48px !important;} 
+  
+  }
+  
+  @media screen and (max-width: 767px) {
+    .login-box,
+  .register-box { position: inherit; }
+  .login-box-body,
+  .register-box-body {min-height: auto; width: 100%;}
+  .login-page,
+  .register-page { background-image: none; background-color: #fff;}
+  img.sign-in-using{ width: 180px !important;}
+  .login-box, .register-box{   width: 100% !important;
+    margin: 50px 0 !important;
+    right: 0;}
+  .login-clip{display: none;}
+  img.purs{ margin-top: 46px !important; height: 9px !important;}
+  } 
+  .maincontent{
+    display: inline-block !important
+    
+    
+  }
+
+  .modal-body {
+    padding: 0px 20px;
+  }
+  

@@ -1,0 +1,13 @@
+.datefilter{ display: flex; align-items: center;}
+.datefilter label{ width: 110px;}
+.datefilter input[type="date"] { line-height: inherit !important;}
+
+.form-control{ border-radius: 0; border: 1px solid #ddd; padding: 5px; border-radius: 5px;}
+
+.head{ display: flex; align-items: center; margin-bottom: 15px;}
+.head img{ width: 25px;}
+.head h3{ font-size: 20px; color: #000; margin: 0 0 0 10px;}
+.head span{ font-weight: 400;}
+h3:hover {
+    color: #e00050 !important;
+  }

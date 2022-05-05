@@ -1,0 +1,3499 @@
+<div class="jumbotron expensereport">
+    <div class="reports-pages">
+      <div class="row report-row">
+        <div class="col-md-4 no-padding" style="border-bottom: 1px solid #ddd;">
+          <h4 class="title-new title-new-100">PBI Report</h4>
+        </div>
+  
+        <div class="col-md-3">
+          <select class="form-control">
+            <option>Select Customer</option>
+          </select>
+        </div>
+  
+        <div class="col-md-3">
+          <select class="form-control">
+            <option>Select Project</option>
+          </select>
+        </div>
+  
+        <div _ngcontent-c12="" class="col-md-2 offset-md-6 text-right btnset btnset2" style="padding-top: 50px; display: inline-flex; padding-right: 0;">
+          <div class="customs no-padding">
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-primary btn-brand"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+              <i class="fa fa-calendar" aria-hidden="true" style="font-size: 18px;"></i>
+  
+              </button>
+            </div>
+          </div>
+  
+  
+        <!-- <a (click)="printList('tableData')">
+          <button type="button" class="btn btn-default text-center border-right">
+            <img src="../assets/img/Logo/37.png">
+          </button>
+        </a> -->
+  
+          <div class="btn-group btn" style="margin-right: 0 !important; padding: 0; background: transparent;">
+            <button
+              type="button"
+              class="btn btn-primary btn-brand"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false" title="Export"
+            >
+            <img src="../assets/img/Logo/22.png">
+  
+            </button>
+            <!-- <ul class="dropdown-menu">
+              <li>
+                <a (click)="export()">Excel</a>
+              </li>
+              <li>
+                <a (click)="printList('tableData')">Print</a>
+              </li>
+              <li>
+                <a (click)="exportTableToCSV()">CSV</a>
+              </li>
+            </ul> -->
+          </div>
+          <!-- <div class="btn-group col-md-1 no-padding pull-right">
+              <button
+                data-toggle="dropdown"
+                class="btn btn-default dropdown-toggle expense-lit"
+              >
+                <svg
+                  class=" vtbottom icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                >
+                  <path d="M0 6h32v4H0V6zm0 8h32v4H0v-4zm0 8h32v4H0v-4z"></path>
+                </svg>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="fltheader">Sort by</li>
+                <li id="ember2046" class="desc sortable ember-view">
+                  <a data-ember-action="" data-ember-action-2047="2047">
+                    Created Time
+                    </a
+                  >
+                </li>
+                <li id="ember2048" class="desc sortable ember-view">
+                  <a data-ember-action="" data-ember-action-2049="2049">
+                    Date
+                    </a
+                  >
+                </li>
+                <li id="ember2050" class="desc sortable ember-view">
+                  <a data-ember-action="" data-ember-action-2051="2051">
+                    Category
+                    </a
+                  >
+                </li>
+                <li id="ember2052" class="desc sortable ember-view">
+                  <a data-ember-action="" data-ember-action-2053="2053">
+                    Merchant
+                    </a
+                  >
+                </li>
+                <li id="ember2054" class="desc sortable ember-view">
+                  <a data-ember-action="" data-ember-action-2055="2055">
+                    Report
+                    </a
+                  >
+                </li>
+                <li id="ember2056" class="desc sortable ember-view">
+                  <a data-ember-action="" data-ember-action-2057="2057">
+                    Status
+                    </a
+                  >
+                </li>
+                <li id="ember2058" class="desc sortable ember-view">
+                  <a data-ember-action="" data-ember-action-2059="2059">
+                    Amount
+                    </a
+                  >
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a data-ember-action="" data-ember-action-2060="2060"
+                    ><svg
+                      class="icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                    >
+                      <path
+                        d="M26.054 31.773l-.024-.002a.793.793 0 0 1-.735-.859l.001-.015.395-3.08a15.568 15.568 0 0 1-12.042 3.693 15.448 15.448 0 0 1-10.378-5.832C.786 22.517-.343 18.501.091 14.37l.028-.246a1.13 1.13 0 0 1 2.014-.566c.183.233.267.523.236.818l-.002.019a12.15 12.15 0 0 0-.023.209c-.372 3.543.589 6.979 2.708 9.674a13.206 13.206 0 0 0 8.868 4.983 13.295 13.295 0 0 0 10.613-3.446l-3.811-.094a1.051 1.051 0 0 1-.714-.332.62.62 0 0 1-.155-.463l.001-.013.015-.337.003-.025a.873.873 0 0 1 .143-.372.892.892 0 0 1 .764-.387l6.447.185c.227.01.425.107.57.278a.784.784 0 0 1 .191.603l-.038.397-.006.024-.73 5.873a.803.803 0 0 1-.13.367c-.14.206-.375.322-.662.325l-.059.001-.308-.072zm4.71-13.211a1.137 1.137 0 0 1-1.126-1.251l.002-.018.022-.193a13.219 13.219 0 0 0-2.768-9.598 13.202 13.202 0 0 0-8.867-4.983c-.555-.066-1.114-.1-1.663-.1-1.295 0-2.575.186-3.804.553a12.805 12.805 0 0 0-4.793 2.641c-.309.269-.609.556-.895.857l3.867.095c.267.021.521.144.681.329a.657.657 0 0 1 .168.487l-.001.017.004.313-.006.04a.877.877 0 0 1-.14.356.893.893 0 0 1-.728.389l-.037-.001-6.045-.165-.402-.02a.778.778 0 0 1-.57-.278.783.783 0 0 1-.191-.605l.038-.395.006-.026.73-5.872a.885.885 0 0 1 .837-.776l.065-.003.314.073.024.002a.67.67 0 0 1 .457.241c.155.18.239.45.219.706l-.002.019-.38 2.965A15.04 15.04 0 0 1 11.894.808a15.562 15.562 0 0 1 4.467-.653c.639 0 1.291.039 1.936.117a15.453 15.453 0 0 1 10.378 5.831 15.464 15.464 0 0 1 3.24 11.229l-.026.233a1.13 1.13 0 0 1-1.123.998z"
+                      ></path></svg><span>Refresh List</span></a
+                  >
+                </li>
+  
+  
+                <li class="divider"></li>
+                <li>
+                  <a data-ember-action="" data-ember-action-2061="2061"
+                    ><svg
+                      class="icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        d="M448.6 336.8V433c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16v-96.2c0-8.7-7.1-15.8-15.8-15.8h-.3c-8.8 0-15.8 7.1-15.8 15.9l.4 112.7c.1 17.6 14.4 31.9 32 31.9H449c17.7 0 32.1-14.4 32-32.1l-.4-112.6c0-8.7-7.1-15.8-15.8-15.8h-.4c-8.7 0-15.8 7.1-15.8 15.8z"
+                      ></path>
+                      <path
+                        d="M319.2 257.5c-3.8-.6-7.8.7-10.5 3.4l-18 18c-7.6 7.5-20.7 2.2-20.7-8.5V47.7c0-8.7-7.1-15.8-15.8-15.8h-.3c-8.7 0-15.8 7.1-15.8 15.8v222.6c0 10.7-12.7 16.1-20.4 8.5l-16.1-16.2c-6.6-6.6-17.7-6.2-23.8 1.4-5.1 6.4-4.3 15.8 1.5 21.6l63.7 63.7c3.1 3.1 7.2 4.7 11.3 4.7s8.2-1.6 11.3-4.7l64-64c8.7-8.7 5.2-25-10.4-27.8z"
+                      ></path></svg><span>Import Expenses</span></a
+                  >
+                </li>
+                <li>
+                  <a data-ember-action="" data-ember-action-2062="2062"
+                    ><svg
+                      class="icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                    >
+                      <path
+                        d="M28 22v6H4v-6H0v10h32V22zM24.484 8.485l-2.828 2.828L18 7.657v14.342h-4V7.656l-3.657 3.657-2.828-2.828L16 0z"
+                      ></path></svg><span>Export Expenses</span></a
+                  >
+                </li>
+              </ul>
+            </div>  -->
+        </div>
+      </div>
+
+   
+
+
+
+
+
+  
+  <div class="row pbicantain">
+  
+    <!-- <div class="inner-support">
+  
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item active">
+          <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab">Overall</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab2" role="tab">Project Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab3" role="tab">Project Details</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab4" role="tab">Resource Allocation</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab9" role="tab">Load Allocation</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab5" role="tab">Check In/Out Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab6" role="tab">Week Timesheet</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab7" role="tab">Employee Work Discription</a>
+        </li>
+  
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab8" role="tab">Exception Import</a>
+        </li>
+  
+      </ul>
+  
+  
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1" role="tabpanel">
+          <div class="card-body">
+            <div class="col-md-12 no-padding">
+              <div class="col-md-4 no-padding">
+                <div class="heading">Users</div>
+  
+                  <div class="box">
+                    <fusioncharts
+            width="400"
+            height="300"
+            type="doughnut2d"
+            dataFormat="json"
+            [dataSource]="data12"
+          >
+          </fusioncharts>
+                  </div>
+              </div>
+  
+              <div class="col-md-8 mobilespace">
+                <div class="box">
+                <div class="col-md-12 no-padding cardbox">
+                  <div class="col-md-3 card card1">
+                    <div class="icon icon1"><i class="fa fa-users" aria-hidden="true"></i></div>
+                    <div class="numberinfo">Employee Strength <b>228</b></div>
+                  </div>
+  
+                  <div class="col-md-3 card card2">
+                    <div class="icon icon2"><i class="fa fa-handshake-o" aria-hidden="true"></i></div>
+                    <div class="numberinfo">SMGA <b>228</b></div>
+                  </div>
+  
+                  <div class="col-md-3 card card3">
+                    <div class="icon icon3"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                    <div class="numberinfo">Billable HC <b>228</b></div>
+                  </div>
+  
+                  <div class="col-md-3 card card4">
+                    <div class="icon icon4"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+                    <div class="numberinfo">Vendors <b>228</b></div>
+                  </div>
+  
+                </div>
+  
+                <div class="col-md-12 no-padding cardbox2" style="margin: 10px 0;">
+                  <div class="col-md-8 cardbox2item no-padding">
+                    <div class="box3 table-responsive" style="min-height: 158px;">
+                   <table class="table table-responsive periodTable">
+                     <tr>
+                       <th>Period</th>
+                       <th>Total Hours</th>
+                       <th>Billed Hours</th>
+                       <th>Billable Hours</th>
+                       <th>Unutilized Hours</th>
+                     </tr>
+                     <tr>
+                       <td>YTD</td>
+                       <td>180,127.01</td>
+                       <td>68,752.71</td>
+                       <td>110,157.62</td>
+                       <td>41,404.91</td>
+                     </tr>
+                     <tr>
+                      <td>QTD</td>
+                      <td>180,127.01</td>
+                      <td>68,752.71</td>
+                      <td>110,157.62</td>
+                      <td>41,404.91</td>
+                    </tr>
+                    <tr>
+                      <td>MTD</td>
+                      <td>180,127.01</td>
+                      <td>68,752.71</td>
+                      <td>110,157.62</td>
+                      <td>41,404.91</td>
+                    </tr>
+                   </table>
+                  </div>
+                  </div>
+  
+                  <div class="col-md-4 cardbox2item mobilespace" style="padding-right: 0;">
+                   <div class="box3">
+          <div class="budgetrow">
+            <h4>Budget</h4>
+            <span>17</span>
+          </div>
+  
+          <div class="budgetrow">
+            <h4>Timeline</h4>
+            <span>17</span>
+          </div>
+  
+          <div class="budgetrow">
+            <h4>Expenses</h4>
+            <span>17</span>
+          </div>
+  
+                   </div>
+                  </div>
+                </div>
+  
+                <div class="col-md-12 no-padding bottomcard">
+                  <div class="box3">
+                    <div class="col-md-3">
+                      <p>Avg. Length of Project (In Months)</p>
+                      <h5>4.60</h5>
+                    </div>
+  
+                    <div class="col-md-3">
+                      <p>Avg. Hours on Project (in a day)</p>
+                      <h5>4.60</h5>
+                    </div>
+  
+                    <div class="col-md-3">
+                      <p>Avg. days of missing time sheet (In Months)</p>
+                      <h5>4.60</h5>
+                    </div>
+  
+                    <div class="col-md-3">
+                      <p>Avg. days of time sheet not approved (In Months)</p>
+                      <h5>4.60</h5>
+                    </div>
+  
+                  </div>
+                </div>
+  
+  
+              </div>
+              </div>
+            </div>
+  
+            <div class="col-md-12 no-padding ytdRow">
+              <div class="col-md-4 no-padding">
+                <div class="box table-responsive" style="min-height: 334px;">
+                  <div class="heading">Head Count</div>
+                  <table class="table table-responsive">
+                    <tr>
+                      <th></th>
+                      <th>Starter</th>
+                      <th>Leaver</th>
+                    </tr>
+                    <tr>
+                      <td>YTD</td>
+                      <td>100</td>
+                      <td>100</td>
+                    </tr>
+                    <tr>
+                      <td>QTD</td>
+                      <td>100</td>
+                      <td>100</td>
+                    </tr>
+                    <tr>
+                      <td>MTD</td>
+                      <td>100</td>
+                      <td>100</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+  
+              <div class="col-md-4 mobilespace">
+                <div class="box">
+                  <div class="heading">Avg. Hours & Revenue</div>
+                  <fusioncharts
+                  width="400"
+                  height="300"
+                  type="doughnut2d"
+                  dataFormat="json"
+                  [dataSource]="data13"
+                >
+                </fusioncharts>
+                </div>
+              </div>
+  
+              <div class="col-md-4 mobilespace" style="padding-left: 0;">
+                <div class="box">
+                  <div class="heading">Expenses by Category</div>
+                  <fusioncharts
+    width="100%"
+    height="300"
+    type="heatmap"
+    dataFormat="json"
+    [dataSource]="dataExcat"
+  >
+  </fusioncharts>
+                </div>
+              </div>
+  
+  
+            </div>
+          </div>
+        </div>
+  
+        <div class="tab-pane" id="tab2" role="tabpanel">
+          <div class="card-body">
+            <div class="col-md-12 no-padding">
+              <div class="progresscard">
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
+                  <div class="proinfo"><h5>Projects</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-refresh" aria-hidden="true"></i> </div>
+                  <div class="proinfo"><h5>In Progress</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-check-square-o" aria-hidden="true"></i></div>
+                  <div class="proinfo"><h5>Completed</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-usd" aria-hidden="true"></i></div>
+                  <div class="proinfo"><h5>Over Budget</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                  <div class="proinfo"><h5>Time Overshoot</h5><p>100</p></div>
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="col-md-12 no-padding">
+              <div class="progresscard">
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+                  <div class="proinfo"><h5>Revenue</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-calculator" aria-hidden="true"></i> </div>
+                  <div class="proinfo"><h5>Direct Expenses</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+                  <div class="proinfo"><h5>Indirect Expenses</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-bandcamp" aria-hidden="true"></i> </div>
+                  <div class="proinfo"><h5>Total Expenses</h5><p>100</p></div>
+                </div>
+  
+                <div class="procard">
+                  <div class="proicon"><i class="fa fa-bolt" aria-hidden="true"></i></div>
+                  <div class="proinfo"><h5>Efficiency</h5><p>100</p></div>
+                </div>
+  
+              </div>
+            </div>
+  
+  
+  
+            <div class="col-md-12 no-padding">
+              <div class="col-md-4 no-padding">
+                <div class="heading">Projects by Progress</div>
+                  <div class="box">
+                    <fusioncharts
+                    width="100%"
+                    height="300"
+                    type="bar2d"
+                    dataFormat="json"
+                    [dataSource]="dataProject"
+                  >
+                  </fusioncharts>
+                  </div>
+              </div>
+  
+              <div class="col-md-4 mobilespace">
+                <div class="heading">Projects by expense </div>
+                  <div class="box">
+                    <fusioncharts
+                    width="100%"
+                    height="300"
+                    type="bar2d"
+                    dataFormat="json"
+                    [dataSource]="dataExpense"
+                  >
+                  </fusioncharts>
+                  </div>
+              </div>
+  
+              <div class="col-md-4 no-padding">
+                <div class="heading">Budget by month</div>
+                  <div class="box">
+                    <fusioncharts
+                    width="100%"
+                    height="300"
+                    type="bubble"
+                    dataFormat="json"
+                    [dataSource]="dataBudget"
+                  >
+                  </fusioncharts>
+                  </div>
+              </div>
+  
+  
+            </div>
+  
+            <div class="col-md-12 no-padding ytdRow">
+              <div class="col-md-4 no-padding">
+                <div class="box" style="min-height: 350px;">
+                  <div class="heading" style="margin-bottom: 30px;">Time Status</div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Timesheet Recorded</div>
+                    <div class="col-md-6 valueTime">180,153.01</div>
+                  </div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Time Approved</div>
+                    <div class="col-md-6 valueTime">180,153.01</div>
+                  </div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Time Rejected</div>
+                    <div class="col-md-6 valueTime">180,153.01</div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-3 mobilespace">
+                <div class="box" style="min-height: 350px;">
+                  <div class="heading">Roadblocks</div>
+                  <fusioncharts
+                  width="100%"
+                  height="300"
+                  type="doughnut2d"
+                  dataFormat="json"
+                  [dataSource]="dataRoadblock"
+                >
+                </fusioncharts>
+                </div>
+              </div>
+  
+              <div class="col-md-3 mobilespace" style="padding-left: 0;">
+                <div class="box" style="min-height: 350px;">
+                  <div class="heading">Meetings</div>
+                  <fusioncharts
+                  width="100%"
+                  height="300"
+                  type="doughnut2d"
+                  dataFormat="json"
+                  [dataSource]="dataMeeting"
+                >
+                </fusioncharts>
+                </div>
+              </div>
+  
+              <div class="col-md-2 no-padding">
+                <div class="box" style="background-image: linear-gradient(180deg, #00587f, #0289ba);min-height: 350px;">
+  
+  
+                </div>
+              </div>
+  
+  
+            </div>
+          </div>
+        </div>
+  
+        <div class="tab-pane" id="tab3" role="tabpanel">
+          <div class="card-body">
+  
+            <div class="col-md-12 no-padding ytdRow">
+              <div class="col-md-12 no-padding">
+                <div class="box table-responsive" style="min-height: 210px;">
+                  <div class="heading">Project Status</div>
+                  <table class="table table-responsive detailTable">
+                    <tr>
+                      <th>Status</th>
+                      <th>Phase</th>
+                      <th>Sub Phase</th>
+                      <th>Task</th>
+                      <th>Sub Task</th>
+                      <th>Milestone</th>
+                    </tr>
+                    <tr>
+                      <td>Completed</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                    </tr>
+                    <tr>
+                      <td>In-Progress</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                    </tr>
+                    <tr>
+                      <td>Total</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+  
+  
+  
+            </div>
+  
+  
+            <div class="col-md-12 no-padding ytdRow">
+  
+              <div class="col-md-6 mobilespace" style="padding-left: 0;">
+                <div class="box" style="min-height: 350px;">
+                  <div class="heading">Project Phase</div>
+                  <fusioncharts
+                  width="100%"
+                  height="300"
+                  type="doughnut2d"
+                  dataFormat="json"
+                  [dataSource]="dataRoadblock"
+                >
+                </fusioncharts>
+                </div>
+              </div>
+  
+  
+              <div class="col-md-6 no-padding">
+                <div class="box" style="min-height: 350px;">
+                  <div class="heading" style="margin-bottom: 10px;">Abbreviation</div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Time Sheet</div>
+                    <div class="col-md-6 valueTime">180,153.01</div>
+                  </div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Expenses</div>
+                    <div class="col-md-6 valueTime">180,153.01</div>
+                  </div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Meetings</div>
+                    <div class="col-md-6 valueTime">180,153.01</div>
+                  </div>
+  
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Roadblocks</div>
+                    <div class="col-md-6 valueTime">180,153.01</div>
+                  </div>
+  
+                </div>
+              </div>
+  
+  
+  
+  
+  
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="tab-pane" id="tab4" role="tabpanel">
+          <div class="card-body">
+  
+            <div class="col-md-12 no-padding">
+              <div class="col-md-12 no-padding">
+                <div class="box table-responsive">
+                  <table class="table table-responsive detailTable2">
+                    <tr>
+                      <th>Customer Name</th>
+                      <th>Project Name</th>
+                      <th>Manager Name</th>
+                      <th>Project Admin</th>
+                      <th>Resource Name</th>
+                      <th>Assign Date</th>
+                      <th>UnAssign Date</th>
+                      <th>Status</th>
+                    </tr>
+                    <tr>
+                      <td>247 ai</td>
+                      <td>247.ai Tableau Implementation</td>
+                      <td>Sweety Patya</td>
+                      <td>Sweety Patya</td>
+                      <td>Anurag Narula</td>
+                      <td>9/1/2021</td>
+                      <td>0</td>
+                      <td>Active</td>
+                    </tr>
+  
+                    <tr>
+                      <td>247 ai</td>
+                      <td>247.ai Tableau Implementation</td>
+                      <td>Sweety Patya</td>
+                      <td>Sweety Patya</td>
+                      <td>Anurag Narula</td>
+                      <td>9/1/2021</td>
+                      <td>0</td>
+                      <td>Active</td>
+                    </tr>
+  
+                    <tr>
+                      <td>247 ai</td>
+                      <td>247.ai Tableau Implementation</td>
+                      <td>Sweety Patya</td>
+                      <td>Sweety Patya</td>
+                      <td>Anurag Narula</td>
+                      <td>9/1/2021</td>
+                      <td>0</td>
+                      <td>Active</td>
+                    </tr>
+  
+                  </table>
+                </div>
+              </div>
+  
+  
+  
+            </div>
+  
+  
+            <div class="col-md-12 no-padding ytdRow">
+  
+              <div class="col-md-6 mobilespace" style="padding-left: 0;">
+                <div class="box table-responsive" style="min-height: 350px;">
+                  <div class="heading">Summary</div>
+                  <table class="table table-responsive detailTable detailTable3">
+                    <tr>
+                      <th>Project Name</th>
+                      <th>Total Resources</th>
+                      <th>Active</th>
+  
+                    </tr>
+                    <tr>
+                      <td>247.ai Tableau Implementation</td>
+                      <td>100</td>
+                      <td>100</td>
+  
+                    </tr>
+                    <tr>
+                      <td>247.ai Tableau Implementation</td>
+                      <td>100</td>
+                      <td>100</td>
+  
+                    </tr>
+                  </table>
+                </div>
+              </div>
+  
+  
+              <div class="col-md-6 no-padding">
+                <div class="box" style="min-height: 350px;">
+                  <div class="heading">Resources on Project</div>
+                  <fusioncharts
+                  width="100%"
+                  height="300"
+                  type="doughnut2d"
+                  dataFormat="json"
+                  [dataSource]="dataResource"
+                >
+                </fusioncharts>
+  
+  
+                </div>
+              </div>
+  
+  
+  
+  
+  
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="tab-pane" id="tab5" role="tabpanel">
+          <div class="card-body">
+  
+  
+  <div class="checkinpage">
+    <div class="row">
+  
+      <div class="col-md-12 no-padding">
+  
+        <div class="heading">Check In / Check Out Summary</div>
+        <div class="checkdiv table-responsive">
+       <table class="table">
+            <thead class="tableinnercheckin">
+              <tr>
+                <th>Resource Name</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr class="tablerowcheckin1">
+                <td>Zulfiquar Shaikh</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+  
+              <tr class="tablerowcheckin2">
+                <td>ZEENAT BADI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="tablerowcheckin1">
+                <td>Zulfiquar Shaikh</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+  
+              <tr class="tablerowcheckin2">
+                <td>ZEENAT BADI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="tablerowcheckin1">
+                <td>Zulfiquar Shaikh</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+  
+              <tr class="tablerowcheckin2">
+                <td>ZEENAT BADI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="tablerowcheckin1">
+                <td>Zulfiquar Shaikh</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+  
+              <tr class="tablerowcheckin2">
+                <td>ZEENAT BADI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="tablerowcheckin1">
+                <td>Zulfiquar Shaikh</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+  
+              <tr class="tablerowcheckin2">
+                <td>ZEENAT BADI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="tablerowcheckin1">
+                <td>Zulfiquar Shaikh</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+  
+              <tr class="tablerowcheckin2">
+                <td>ZEENAT BADI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr class="tablerowcheckin1">
+                <td>Zulfiquar Shaikh</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+  
+              <tr class="tablerowcheckin2">
+                <td>ZEENAT BADI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+  
+  
+          </table>
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  </div>
+  
+          </div>
+        </div>
+  
+  
+        <div class="tab-pane" id="tab6" role="tabpanel">
+        <div class="card-body">
+          <div class="menuemp">
+            <div class="col-md-12 Totalhrs">
+              <div class="col-md-8 tablewithoutchart no-padding table-responsive">
+               <table class="table">
+                    <thead class="tableinner">
+                      <tr>
+                        <th>Employee Name</th>
+                        <th>1 Week</th>
+                        <th>2 Week</th>
+                        <th>3 Week</th>
+                        <th>4 Week</th>
+                        <th>5 Week</th>
+                      </tr>
+                    </thead>
+  
+                    <tbody>
+                      <tr class="tablerow1">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow2">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow1">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow2">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+  
+  
+                      <tr class="tablerow1">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow2">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow1">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow2">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+  
+                      <tr class="tablerow1">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow2">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow1">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+                      <tr class="tablerow2">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+  
+                      <tr class="tablerow1">
+                        <td>Amit Kumar</td>
+                        <td>0.15</td>
+                        <td>-0.02</td>
+                        <td>-0.02</td>
+                        <td>0.15</td>
+                        <td>0.06</td>
+                      </tr>
+  
+                    </tbody>
+  
+  
+                  </table>
+              </div>
+              <div class="col-md-4 chart2 mobilespace">
+                <h4 class="tableinnerchart">Total Hour on Project</h4>
+  
+              <div class="chartdiv">
+                <fusioncharts
+                  width="100%"
+                  height="300"
+                  type="doughnut2d"
+                  dataFormat="json"
+                  [dataSource]="dataResource"
+                >
+                </fusioncharts>
+              </div>
+  
+  
+  
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+  
+      <div class="tab-pane" id="tab7" role="tabpanel">
+        <div class="card-body">
+          <div class="menuemp menuemp2 table-responsive">
+            <table class="table">
+              <thead class="tableinner">
+                <tr>
+                  <th>Project Name</th>
+                  <th>Employee Name</th>
+                  <th>Hour</th>
+                  <th>Day</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+  
+              <tbody>
+                <tr class="tablerow1">
+                  <td></td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>1</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow2">
+                  <td>ON Bench</td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>1</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow1">
+                  <td></td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>2</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow2">
+                  <td>ON Bench</td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>2</td>
+                  <td></td>
+                </tr>
+  
+  
+                <tr class="tablerow1">
+                  <td></td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>3</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow2">
+                  <td>ON Bench</td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>3</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow1">
+                  <td></td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>4</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow2">
+                  <td>ON Bench</td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>4</td>
+                  <td></td>
+                </tr>
+  
+                <tr class="tablerow1">
+                  <td></td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>5</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow2">
+                  <td>ON Bench</td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>5</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow1">
+                  <td></td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>6</td>
+                  <td></td>
+                </tr>
+                <tr class="tablerow2">
+                  <td>ON Bench</td>
+                  <td>Parul Arora</td>
+                  <td>0.15</td>
+                  <td>6</td>
+                  <td></td>
+                </tr>
+  
+              </tbody>
+  
+              <thead class="tableinner1">
+                <tr>
+                  <th>Total</th>
+                  <th></th>
+                  <th>5:30</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+  
+        </div>
+      </div>
+  
+  
+      <div class="tab-pane" id="tab8" role="tabpanel">
+        <div class="card-body">
+  
+  
+          <div class="menuemp menuemp2">
+            <div class="row">
+  
+  
+              <div class="col-md-12 no-padding table-responsive">
+                <table class="table">
+                     <thead class="tableinner">
+                       <tr>
+                         <th>Customer Name</th>
+                         <th>Project Name</th>
+                         <th>Project Admin</th>
+                         <th>Project Manager</th>
+                         <th>Cost</th>
+                         <th>Time</th>
+                         <th>Health</th>
+                         <th>MOM</th>
+                         <th>RoadBlock</th>
+                         <th>Attendance</th>
+  
+  
+                       </tr>
+                     </thead>
+  
+                     <tbody>
+                       <tr class="tablerow1">
+                         <td>Cadila Zydus</td>
+                         <td>Zydus</td>
+                         <td>Sweety Patyal</td>
+                         <td>Paresh Gudhka</td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                       </tr>
+                       <tr class="tablerow2">
+                        <td>Cadila Zydus</td>
+                        <td>Zydus</td>
+                        <td>Sweety Patyal</td>
+                        <td>Paresh Gudhka</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                       </tr>
+                     </tbody>
+                   </table>
+               </div>
+              <div class="col-md-12 no-padding">
+                <div class="table-responsive">
+               <table class="table">
+                    <thead class="tableinner">
+                      <tr>
+                        <th>Customer Name</th>
+                        <th>Project Name</th>
+                        <th>Planned Start Date</th>
+                        <th>Actual Start Date</th>
+                        <th>In Progress </th>
+                        <th>Planned End Date</th>
+                        <th>Total Expense</th>
+                        <th>Budget </th>
+                        <th>Rev</th>
+  
+                      </tr>
+                    </thead>
+  
+                    <tbody>
+                      <tr class="tablerow1">
+                        <td>CRG Solutions Pvt Ltd</td>
+                        <td>ON Bench</td>
+                        <td>3/26/2021</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td>06/17/2022</td>
+                        <td>3,971.00K</td>
+                        <td>10.20K</td>
+                        <td>1,124</td>
+  
+                      </tr>
+  
+                    </tbody>
+                  </table>
+                  </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="tab-pane" id="tab9" role="tabpanel">
+        <div class="card-body">
+  
+          <div class="col-md-12 no-padding ytdRow">
+            <div class="col-md-4 no-padding">
+              <div class="box">
+              <div class="heading">Total Resources on Project</div>
+              <fusioncharts
+    width="100%"
+    height="600"
+   type="treemap"
+    dataFormat="json"
+    [dataSource]="datatotalProject"
+  >
+  </fusioncharts>
+  </div>
+            </div>
+            <div class="col-md-8">
+              <div class="col-md-12 no-padding">
+                <div class="box">
+                  <div class="heading">Admin</div>
+                  <div style="padding: 10px;" class="table-responsive">
+                  <table class="table table-responsive detailTable allocateTable">
+                    <tr>
+                      <th>Project Admin</th>
+                      <th>No. of Manager</th>
+                      <th>Total Projects</th>
+                      <th>No. of Resource</th>
+  
+                    </tr>
+                    <tr>
+                      <td>Gatik Vij</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+  
+                    </tr>
+                    <tr>
+                      <td>Harpreet Singh</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+  
+                    </tr>
+                    <tr>
+                      <td>Himanshu Sethi</td>
+                      <td>100</td>
+                      <td>100</td>
+                      <td>100</td>
+  
+                    </tr>
+                  </table>
+                </div>
+                </div>
+              </div>
+  
+              <div class="col-md-6 no-padding">
+  
+                <div class="box">
+                  <div class="heading">Summary</div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Total Projects</div>
+                    <div class="col-md-6 valueTime">93</div>
+                  </div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Total Admin</div>
+                    <div class="col-md-6 valueTime">3</div>
+                  </div>
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Total Manager</div>
+                    <div class="col-md-6 valueTime">23</div>
+                  </div>
+  
+                  <div class="form-group timesRow">
+                    <div class="col-md-6">Total Resource</div>
+                    <div class="col-md-6 valueTime">193</div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-md-6 mobilespace" style="padding-right: 0;">
+  
+                <div class="box">
+                  <div class="heading">Manager on Admin</div>
+                  <fusioncharts
+                  width="100%"
+                  height="300"
+                 type="treemap"
+                  dataFormat="json"
+                  [dataSource]="datatotalProject"
+                >
+                </fusioncharts>
+                </div>
+              </div>
+  
+  
+            </div>
+  
+  
+  
+          </div>
+  
+  
+        </div>
+      </div>
+  
+  
+      </div>
+    </div> -->
+  
+  
+  
+  
+    <div class="inner-support">
+  
+      <ul class="nav nav-pills" role="tablist">
+        <li class="nav-item active ">
+          <a class="nav-link active " data-toggle="tab" href="#business" role="tab">Business</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link " data-toggle="tab" href="#tab1" role="tab">People</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#projecttab" role="tab">Project</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab2" role="tab">Expense</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab3" role="tab">Actionable Insights</a>
+        </li>
+  
+        <!--
+  
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab4" role="tab">Resource Allocation</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab9" role="tab">Load Allocation</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab5" role="tab">Check In/Out Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab6" role="tab">Week Timesheet</a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab7" role="tab">Employee Work Discription</a>
+        </li>
+  
+  
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#tab8" role="tab">Exception Import</a>
+        </li> -->
+  
+      </ul>
+  
+  
+      <div class="tab-content">
+  
+        <div class="tab-pane active" id="business" role="tabpanel">
+          <div class="card-body">
+            <ul class="nav nav-tabs subtabs" role="tablist">
+              <li class="nav-item active">
+                <a class="nav-link active" data-toggle="tab" href="#overview" role="tab">Overview</a>
+              </li>
+  
+              </ul>
+  
+           <div class="tab-content">
+             <div class="tab-pane active" id="overview" role="tabpanel">
+              <div class="card-body">
+                <div class="col-md-12 no-padding rateRow">
+                  <div class="boxExpense">
+                    <h4>Project</h4>
+                    <div class="expenseValue expenseValue1">
+                      <div class="YearValue"><p># Project</p><p>$ Project</p><p>$ Avg. Resource</p><p>Revenue to be billed</p></div>
+                      <div>
+                        <p>2022</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      </div>
+                      <div>
+                        <p>2021</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+  
+                      </div>
+  
+                    </div>
+                  </div>
+  
+                  <div class="boxExpense boxExpenseSpace">
+                    <h4>People</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p># Total</p><p>$ Total</p><p>Billable</p><p>Non Billable</p><p>Avg. Cost $/Resource</p>
+                      <p>Avg. Revenue/Resource</p><p>Attrition</p></div>
+                      <div>
+                        <p>2021</p>
+                        <p><span>3,000</span></p>
+                        <p><span>5,000</span></p>
+                        <p><span>3,000</span></p>
+                        <p><span>5,000</span></p>
+                        <p><span>3,000</span></p>
+                        <p><span>5,000</span></p>
+                        <p><span>29%</span></p>
+                      </div>
+                      <div>
+                        <p>2022</p>
+                        <p><span>3,000</span></p>
+                        <p><span>5,000</span></p>
+                        <p><span>3,000</span></p>
+                        <p><span>5,000</span></p>
+                        <p><span>3,000</span></p>
+                        <p><span>5,000</span></p>
+                        <p><span>15%</span></p>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="boxExpense expenseValue1">
+                    <h4>Expense</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p>Total</p><p>Billable</p><p>Non Billable </p><p>Avg. Expense/Resouce</p></div>
+                      <div>
+                        <p>2021</p>
+                        <p><span>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div></span>
+                        </p>
+                        <p><span>$4,000 </span></p>
+                        <p><span>$4,000 </span></p>
+                        <p><span>$4,000 </span></p>
+                      </div>
+                      <div>
+                        <p>2022</p>
+                        <p><span>
+                          <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div></span>
+                        </p>
+                        <p><span>$4,000 </span></p>
+                        <p><span>$4,000 </span></p>
+                        <p><span>$4,000 </span></p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+  
+  
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Project Category (Last Six Months)</h4>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Deploy % (Last Six Months)</h4>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Expense Breakup (Last Six Months)</h4>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Revenue (Last Six Months)</h4>
+                  </div>
+  
+                  <div class="chartBox">
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts>  
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Avg. Revenue/Headcount (Last Six Months)</h4>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="spline"
+                    dataFormat="json"
+                    [dataSource]="dataspline">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Expense vs Headcount vs Project (Last Six Months)</h4>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="scrollcombidy2d"
+                    dataFormat="json"
+                    [dataSource]="datahead">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+  
+                </div>
+                </div>
+                </div>
+  
+  
+  
+          </div>
+        </div>
+  
+        <div class="tab-pane" id="tab1" role="tabpanel">
+          <div class="card-body">
+  
+  
+            <ul class="nav nav-tabs subtabs" role="tablist">
+              <li class="nav-item active">
+                <a class="nav-link active" data-toggle="tab" href="#overviewpeople" role="tab">Overview</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#performance" role="tab">Employee Performance</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#xyz" role="tab">XYZ</a>
+              </li>
+  
+              </ul>
+  
+           <div class="tab-content">
+             <div class="tab-pane active" id="overviewpeople" role="tabpanel">
+              <div class="card-body">
+                <div class="col-md-12 no-padding rateRow">
+                  <div class="boxExpense">
+                    <h4>Employee Headcount & Growth Rate</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div>
+                        <p>Month (Apr)</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      </div>
+                      <div>
+                        <p>YOY</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="boxExpense boxExpenseSpace">
+                    <h4>Employee addition & growth rate</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div>
+                        <p>Month (Apr)</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      </div>
+                      <div>
+                        <p>YOY</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="boxExpense">
+                    <h4>Employee attrition & growth rate</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div>
+                        <p>Month (Apr)</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      </div>
+                      <div>
+                        <p>YOY</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                      </div>
+                    </div>
+                  </div>
+              </div>
+  
+              <div class="col-md-12 no-padding rateRow">
+                <div class="boxExpense">
+                  <h4>Vendor Headcount & Growth Rate</h4>
+                  <div class="expenseValue">
+                    <div class="YearValue"><p>2021</p><p>2022</p></div>
+                    <div>
+                      <p>Month (Apr)</p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                    </div>
+                    <div>
+                      <p>YOY</p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="boxExpense boxExpenseSpace">
+                  <h4>Vendor addition & growth rate</h4>
+                  <div class="expenseValue">
+                    <div class="YearValue"><p>2021</p><p>2022</p></div>
+                    <div>
+                      <p>Month (Apr)</p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                    </div>
+                    <div>
+                      <p>YOY</p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="boxExpense">
+                  <h4>Vendor attrition & growth rate</h4>
+                  <div class="expenseValue">
+                    <div class="YearValue"><p>2021</p><p>2022</p></div>
+                    <div>
+                      <p>Month (Apr)</p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                    </div>
+                    <div>
+                      <p>YOY</p>
+                      <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                    </div>
+                  </div>
+                </div>
+            </div>
+  
+            <div class="col-md-12 no-padding ChartRow">
+              <div class="boxTenture">
+                <div class="ChartRowHead">
+                  <h4 class="headingFour">Avg. Tenure Wise Employee Details</h4>
+                </div>
+                <div class="chartBox">
+                  <fusioncharts
+                  width="100%"
+                  height="400"
+                  type="msstackedcolumn2dlinedy"
+                  dataFormat="json"
+                  [dataSource]="tentureDetails">
+              </fusioncharts>
+                </div>
+              </div>
+            </div>
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Resource Utilization (Last Six Months)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts> 
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Employee vs Vendor (Last Six Months)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts> 
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Employee addition trend (Last Six Months)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts> 
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Employee attrition trend (Last Six Months) </h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+  
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts> 
+  
+  
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Designation (Top 30)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Department (Top 30)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Location (Top 30)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Age</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Job Band</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Gender</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts> 
+                  </div>
+                </div>
+  
+  
+              </div>
+                </div>
+                </div>
+  
+  
+                <div class="tab-pane" id="performance" role="tabpanel">
+                  <div class="card-body">
+                <div class="OutlierSection">
+                  <div class="OutlierHead">
+                    <div><h3 style="margin: 7px 0 20px;">Employee Performance</h3></div>
+  
+                  </div>
+  
+                  <div class="table-responsive tableBorders">
+                    <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+          [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+          [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+           [allowPaging]='true' [allowExcelExport]='true' >
+          <e-columns>
+            <e-column field='uSername' headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
+              <ng-template #template let-data>
+  
+                <span>
+  
+                    <!-- <img src="{{userImage(data)}}" style="width: 28px;margin-right: 5px; border-radius: 50%;">
+                    {{data.uSername}} -->
+                </span>
+              </ng-template>
+  
+            </e-column>
+            <e-column field='reportname' headerText='Reporting Manager' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+            </e-column>
+            <e-column field='receiptdate' headerText='Total Tenture' [filter]='filter' clipMode='EllipsisWithTooltip'>
+              <ng-template #template let-data>
+                <!-- {{dateformat(data.receiptdate)}} -->
+              </ng-template>
+            </e-column>
+              <e-column field='receiptNo' headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='category' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+              <e-column field='amount' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                <ng-template #template let-data>
+                  <!-- {{decimalformat(data.amount)}} -->
+                  <!-- <img *ngIf="data.inrTotalAmount !== null" src="{{currencySymbols(data.currencyName)}}"
+                  style="width: 15px;" /> -->
+                </ng-template>
+              </e-column>
+  
+              <e-column field='receiptNo' headerText='Open Project' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='category' headerText='Avg. Daily Time' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+              <e-column field='receiptNo' headerText='Avg. Monthly Expense' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='category' headerText='Avg. Leave/Monthly' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+  
+              <e-column field='receiptNo' headerText='Avg. Time Corre. Req.' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+              <e-column field='category' headerText='Avg. Missing Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+  
+              <e-column field='receiptNo' headerText='Time on Bench' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+              <e-column field='category' headerText='On Bench > 1 Month' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+  
+              <e-column field='receiptNo' headerText='Avg. Deployment Period (Month)' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+              <e-column field='category' headerText='Current OE' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+              <e-column field='category' headerText='Avg. OE' [filter]='filter' clipMode='EllipsisWithTooltip' freeze='Left'></e-column>
+  
+  
+  
+          </e-columns>
+  
+  
+        </ejs-grid>
+                  </div>
+                </div>
+  </div>
+  </div>
+  
+  
+                </div>
+  
+  
+  
+  
+          </div>
+        </div>
+  
+  
+  
+  
+        <div class="tab-pane" id="projecttab" role="tabpanel">
+          <div class="card-body">
+  
+  
+            <ul class="nav nav-tabs subtabs" role="tablist">
+              <li class="nav-item active">
+                <a class="nav-link active" data-toggle="tab" href="#projectoverview" role="tab">Overview</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#projectportfolio" role="tab">Project Portfolio</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#projectdetails" role="tab">Project Details</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#projectpl" role="tab">Project P & L</a>
+              </li>
+  
+              </ul>
+  
+           <div class="tab-content">
+             <div class="tab-pane active" id="projectoverview" role="tabpanel">
+              <div class="card-body">
+                <div class="col-md-12 rateRow project no-padding">
+                  <div class="col-md-4 no-padding" style="margin-right: 10px;">
+                    <div class="col-md-12 no-padding">
+                      <div class="boxExpense">
+                        <h4># Projects</h4>
+                        <div class="expenseValue">
+                          <div class="YearValue"><p>Open</p><p>Close</p></div>
+                          <div>
+                            <p>Month (Apr)</p>
+                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                          </div>
+                          <div>
+                            <p>YOY</p>
+                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-12 no-padding">
+                      <div class="boxExpense">
+                        <h4>$ Projects</h4>
+                        <div class="expenseValue">
+                          <div class="YearValue"><p>Revenue</p><p>Cost</p></div>
+                          <div>
+                            <p>Month (Apr)</p>
+                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                          </div>
+                          <div>
+                            <p>YOY</p>
+                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-8 no-padding project8">
+                    <div class="col-md-12 no-padding">
+                      <div class="headingnew">
+                        <h4>Resource</h4>
+                      </div>
+                      <div class="col-md-6 no-padding1">
+                        <div class="boxExpense">
+  
+                          <div class="expenseValue">
+                            <div class="YearValue"><p>Total</p><p>Onbench</p></div>
+                            <div>
+                              <p>Month (Apr)</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            </div>
+                            <div>
+                              <p>YOY</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 no-padding1">
+                        <div class="boxExpense">
+  
+                          <div class="expenseValue">
+                            <div class="YearValue"><p>Service Provider</p><p>Vendor</p></div>
+                            <div>
+                              <p>Month (Apr)</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            </div>
+                            <div>
+                              <p>YOY</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="col-md-6 no-padding1 ">
+                        <div class="boxExpense">
+  
+                          <div class="expenseValue">
+                            <div class="YearValue"><p>Total Leave</p><p>Avg. Leave</p></div>
+                            <div>
+                              <p>Month (Apr)</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            </div>
+                            <div>
+                              <p>YOY</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 no-padding1">
+                        <div class="boxExpense">
+  
+                          <div class="expenseValue">
+                            <div class="YearValue"><p>Billable</p><p>Non Billable</p></div>
+                            <div>
+                              <p>Month (Apr)</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            </div>
+                            <div>
+                              <p>YOY</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                    </div>
+  
+                  </div>
+                </div>
+  
+  
+  
+  
+                    <div class="col-md-12 no-padding ChartRow">
+                      <div class="ChartRowCol ChartRowColRightMargin">
+                        <div class="ChartRowHead">
+                          <h4 class="headingFour"># Projects (Last Six Months) </h4>
+                          <a href="#">Detailed Report</a>
+                        </div>
+  
+                        <div class="chartBox">
+                          <fusioncharts
+                          width="100%"
+                          height="400"
+                          type="pareto2d"
+                          dataFormat="json"
+                          [dataSource]="datades23">
+                      </fusioncharts>
+                        </div>
+                      </div>
+  
+                      <div class="ChartRowCol ChartRowColLefttMargin">
+                        <div class="ChartRowHead">
+                          <h4 class="headingFour">Employee vs Vendor (Last Six Months)</h4>
+                          <a href="#">Detailed Report</a>
+                        </div>
+  
+                        <div class="chartBox">
+                          <fusioncharts
+                          width="100%"
+                          height="400"
+                          type="pareto2d"
+                          dataFormat="json"
+                          [dataSource]="datades23">
+                      </fusioncharts>
+                        </div>
+                      </div>
+  
+  
+                    </div>
+  
+                    <div class="col-md-12 no-padding ChartRow">
+                      <div class="ChartRowCol ChartRowColRightMargin">
+                        <div class="ChartRowHead">
+                          <h4 class="headingFour">$ Projects (Last Six Months)</h4>
+                          <a href="#">Detailed Report</a>
+                        </div>
+  
+                        <div class="chartBox">
+                          <fusioncharts
+                  width="100%"
+                  height="400"
+                  type="overlappedcolumn2d"
+                  dataFormat="json"
+                  [dataSource]="dataProjectValue">
+                </fusioncharts>
+                        </div>
+                      </div>
+  
+                      <div class="ChartRowCol ChartRowColLefttMargin">
+                        <div class="ChartRowHead">
+                          <h4 class="headingFour">Deployed vs On bench (Last Six Months) </h4>
+                          <a href="#">Detailed Report</a>
+                        </div>
+  
+                        <div class="chartBox">
+                          <fusioncharts
+                  width="100%"
+                  height="400"
+                  type="scrollcolumn2d"
+                  dataFormat="json"
+                  [dataSource]="data111"
+                >
+                </fusioncharts>
+                        </div>
+                      </div>
+  
+  
+                    </div>
+  
+                    <div class="col-md-12 no-padding ChartRow">
+                      <div class="ChartRowCol ChartRowColRightMargin">
+                        <div class="ChartRowHead">
+                          <h4 class="headingFour">Leaves (Last Six Months) </h4>
+                          <a href="#">Detailed Report</a>
+                        </div>
+  
+                        <div class="chartBox">
+                          <fusioncharts
+                          width="100%"
+                          height="400"
+                          type="pareto2d"
+                          dataFormat="json"
+                          [dataSource]="datades23">
+                      </fusioncharts>
+                        </div>
+                      </div>
+  
+                      <div class="ChartRowCol ChartRowColLefttMargin">
+                        <div class="ChartRowHead">
+                          <h4 class="headingFour">Billable vs Non Billable (Last Six Months) </h4>
+                          <a href="#">Detailed Report</a>
+                        </div>
+  
+                        <div class="chartBox">
+                          <fusioncharts
+                          width="100%"
+                          height="400"
+                          type="pareto2d"
+                          dataFormat="json"
+                          [dataSource]="datades23">
+                      </fusioncharts>
+                        </div>
+                      </div>
+  
+  
+                    </div>
+  
+  
+                </div>
+                </div>
+  
+  
+                <div class="tab-pane" id="projectportfolio" role="tabpanel">
+                  <div class="card-body">
+                    <div class="OutlierSection">
+                      <div class="OutlierHead">
+                        <div><h3>Project Portfolio</h3></div>
+  
+                        <div>
+                          <ul class="mandateItem">
+                            <li><span class="circle1"></span>Vendor</li>
+                            <li><span class="circle2"></span>Service Provider</li>
+                          </ul>
+                        </div>
+  
+  
+                        <div>
+                          <ul class="mandateItem">
+                            <li><span class="circle3"></span>Total</li>
+                            <li><span class="circle4"></span>Approved</li>
+                            <li><span class="circle5"></span>Pending</li>
+                            <li><span class="circle6"></span>Open</li>
+                            <li><span class="circle7"></span>Closed</li>
+                          </ul>
+                        </div>
+                      </div>
+  
+                      <div class="table-responsive">
+                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+                        [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+                        [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                         [allowPaging]='true' [allowExcelExport]='true' >
+                        <e-columns>
+                          <e-column field='uSername' headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                          </e-column>
+                          <e-column field='reportname' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                          </e-column>
+                          <e-column field='receiptdate' headerText='Resources' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                          </e-column>
+                            <e-column field='receiptNo' headerText='# Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+                            <e-column field='category' headerText='₹ Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+  
+                            <e-column field='amount' headerText='# Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+  
+                            <e-column field='receiptNo' headerText='₹ Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+                            <e-column field='category' headerText='Tenure (M)' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+                            <e-column field='receiptNo' headerText='Progress' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+                            <e-column field='category' headerText='Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+  
+                            <e-column field='receiptNo' headerText='MOM' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+                            <e-column field='category' headerText='Roadblock' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template>
+                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                            </ejs-progressbar>
+                              </ng-template>
+                            </e-column>
+  
+  
+  
+  
+                        </e-columns>
+  
+  
+                      </ejs-grid>
+  
+  
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="tab-pane" id="projectdetails" role="tabpanel">
+                  <div class="card-body">
+                    <div class="col-md-12 no-padding maindiv">
+                      <div class="col-md-3 no-padding mobInfo">
+  
+                        <div class="col-md-12 innderdiv">
+  
+                          <div class="col-md-6 halfdiv">
+                            <h5>Project Name</h5>
+                            <h5>Revenue</h5>
+                            <h5>Cost</h5>
+                            <h5>Margin</h5>
+                            <h5>Resource</h5>
+                          </div>
+                          <div class="col-md-6 halfdiv1">
+  
+                            <h5>Tata Steel</h5>
+                            <h5>$ 20,000</h5>
+                            <h5>$ 16,000</h5>
+                            <h5>20%</h5>
+                            <h5>01</h5>
+                          </div>
+  
+                        </div>
+  
+                      </div>
+  
+                      <div class="col-md-3 mobInfo">
+  
+                        <div class="col-md-12 innderdiv">
+  
+                          <div class="col-md-6 halfdiv">
+                            <h5>Project Name</h5>
+                            <h5>Revenue</h5>
+                            <h5>Cost</h5>
+                            <h5>Margin</h5>
+                            <h5>Resource</h5>
+                          </div>
+                          <div class="col-md-6 halfdiv1">
+  
+                            <h5>Tata Steel</h5>
+                            <h5>$ 20,000</h5>
+                            <h5>$ 16,000</h5>
+                            <h5>20%</h5>
+                            <h5>01</h5>
+                          </div>
+                        </div>
+  
+                      </div>
+                      <div class="col-md-6 innderdiv no-padding">
+  
+                        <div class="chartBox">
+                          <fusioncharts
+                          width="100%"
+                          height="200"
+                          type="pareto2d"
+                          dataFormat="json"
+                          [dataSource]="dataprogresscost">
+                      </fusioncharts>
+                        </div>
+                        </div>
+  
+                      </div>
+                    <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
+                      <ejs-grid #overviewgrid [dataSource]="" [allowResizing]="true"  height='450'
+                      [allowFiltering]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
+                      >
+                       <e-columns>
+                         <e-column field='obl' headerText='' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
+  
+                         </e-column>
+                         <e-column field='suplierName' headerText='Assign Date' clipMode='EllipsisWithTooltip'>
+  
+                         </e-column>
+                         <e-column field='itemName' headerText='Total Hours' clipMode='EllipsisWithTooltip'></e-column>
+  
+  
+  
+  
+                           <e-column headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column headerText='MOM' [columns]='Planwk2' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column headerText='Roadblocks' [columns]='Planwk3' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column field='itemName' headerText='Leave' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column headerText='$ Expense' [columns]='Planwk4' clipMode='EllipsisWithTooltip'></e-column>
+  
+  
+  
+                       </e-columns>
+  
+  
+  
+  
+  
+  
+  
+                   </ejs-grid>
+                    </div>
+  
+  
+  
+                    <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
+                      <h3 style="margin-top: 0; font-size: 20px; color: #000;">Deviation</h3>
+                      <ejs-grid #overviewgrid [dataSource]="" [allowResizing]="true"  height='450'
+                      [allowFiltering]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
+                      >
+                       <e-columns>
+                         <e-column field='obl' headerText='Phase' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
+  
+                         </e-column>
+                         <e-column field='suplierName' headerText='Sub Phase' clipMode='EllipsisWithTooltip'>
+  
+                         </e-column>
+                         <e-column field='itemName' headerText='Task' clipMode='EllipsisWithTooltip'></e-column>
+  
+  
+                           <e-column field='itemName' headerText='Plan' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column field='itemName' headerText='Actual' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column field='itemName' headerText='&#9650;' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column field='itemName' headerText='Progress%' clipMode='EllipsisWithTooltip'></e-column>
+  
+                           <e-column field='itemName' headerText='Alert' clipMode='EllipsisWithTooltip'></e-column>
+  
+  
+                       </e-columns>
+  
+  
+  
+  
+  
+  
+  
+                   </ejs-grid>
+                    </div>
+  
+  
+  
+                  </div>
+                </div>
+  
+                <div class="tab-pane" id="projectpl" role="tabpanel">
+                  <div class="card-body">
+                    <div class="OutlierSection OutlierSection2">
+                      <div class="OutlierHead OutlierHead2">
+                        <div><h3>Project P & L</h3></div>
+  
+                      </div>
+  
+                      <div class="col-md-12 no-padding rateRow">
+                        <div class="boxExpense">
+  
+                          <div class="expenseValue expenseValue1">
+                            <div class="YearValue"><p># Project</p><p>$ Project</p><p>Avg. Revenue</p><p>Avg. Tenure</p></div>
+                            <div>
+                              <p>2022</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            </div>
+                            <div>
+                              <p>2021</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+  
+                            </div>
+  
+                          </div>
+                        </div>
+  
+                        <div class="boxExpense" style="margin-left: 10px;">
+  
+                          <div class="expenseValue expenseValue1">
+                            <div class="YearValue"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>
+                            <div>
+                              <p>2022</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            </div>
+                            <div>
+                              <p>2021</p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+  
+                            </div>
+  
+                          </div>
+                        </div>
+  
+                        </div>
+  
+                      <div class="table-responsive tableBorders" style="display: inline-block;">
+                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+              [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+              [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+               [allowPaging]='true' [allowExcelExport]='true' >
+              <e-columns>
+                <e-column field='uSername' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                </e-column>
+                <e-column field='reportname' headerText='PM' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                </e-column>
+                <e-column field='receiptdate' headerText='Tenure' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                </e-column>
+                  <e-column field='receiptNo' headerText='Total Revenue' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='category' headerText='Direct Cost' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+                  <e-column field='amount' headerText='Indirect Cost' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                  </e-column>
+  
+                  <e-column field='receiptNo' headerText='Net Revenue' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='category' headerText='Margin %' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+                  <e-column field='receiptNo' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+  
+  
+  
+              </e-columns>
+  
+  
+            </ejs-grid>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+  
+                </div>
+  
+  
+  
+  
+          </div>
+        </div>
+  
+        <div class="tab-pane" id="tab2" role="tabpanel">
+          <div class="card-body">
+            <ul class="nav nav-tabs subtabs" role="tablist">
+              <li class="nav-item active">
+                <a class="nav-link active" data-toggle="tab" href="#overviewexpense" role="tab">Overview</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#actionin" role="tab">Actionable Insights</a>
+              </li>
+  
+  
+  
+              </ul>
+  
+           <div class="tab-content">
+             <div class="tab-pane active" id="overviewexpense" role="tabpanel">
+              <div class="card-body">
+                <div class="col-md-12 no-padding rateRow">
+                  <div class="boxExpense">
+                    <h4>Total Expense & Growth Rate</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div>
+                        <p>Month (Apr)</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      </div>
+                      <div>
+                        <p>YOY</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="boxExpense boxExpenseSpace">
+                    <h4>Service Provider Expenses & Growth Rate</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div>
+                        <p>Month (Apr)</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      </div>
+                      <div>
+                        <p>YOY</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="boxExpense">
+                    <h4>Customer Expense & Growth Rate</h4>
+                    <div class="expenseValue">
+                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div>
+                        <p>Month (Apr)</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      </div>
+                      <div>
+                        <p>YOY</p>
+                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+  
+                      </div>
+                    </div>
+                  </div>
+              </div>
+  
+  
+              <div class="col-md-12 CurrentYear">
+                <h4 class="headingFour">Current Financial Year Insights</h4>
+  
+                <div class="CurrentYearBox">
+                  <div>
+                    <h5>Total Reports</h5>
+                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                  </div>
+  
+                  <div>
+                    <h5>Unsubmitted Report</h5>
+                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                  </div>
+  
+                  <div>
+                    <h5>Pending Report</h5>
+                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                  </div>
+  
+                  <div>
+                    <h5>Approved Report</h5>
+                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                  </div>
+  
+                  <div>
+                    <h5>Reimbursed</h5>
+                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                  </div>
+  
+                  <div>
+                    <h5>Inprocess</h5>
+                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                  </div>
+  
+                </div>
+              </div>
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Employee Count vs Expense (Last 6 Months)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts> 
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Active Project Count vs Expense (Last 6 Months)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts> 
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Customer vs Service Provider Spend (Last 6 Months)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                     <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="pareto2d"
+                    dataFormat="json"
+                    [dataSource]="datades23">
+                </fusioncharts> 
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Expense Classification</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts>
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Spend Department Wise (Top 5)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                        width="100%"
+                        height="300"
+                        type="bar2d"
+                        dataFormat="json"
+                        [dataSource]="dataExpense"
+                      >
+                      </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Top Spender User Wise (Current Year)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="300"
+                    type="heatmap"
+                    dataFormat="json"
+                    [dataSource]="dataExcat2"
+                  >
+                  </fusioncharts>
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+  
+              <div class="col-md-12 no-padding ChartRow">
+                <div class="ChartRowCol ChartRowColRightMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Spend Project Wise (Top 5)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+        width="100%"
+        height="300"
+        type="stackedbar2d"
+        dataFormat="json"
+        [dataSource]="dataSpendCustomer"
+      >
+      </fusioncharts>
+                  </div>
+                </div>
+  
+                <div class="ChartRowCol ChartRowColLefttMargin">
+                  <div class="ChartRowHead">
+                    <h4 class="headingFour">Top Spender Customer Wise (Current Year)</h4>
+                    <a href="#">Detailed Report</a>
+                  </div>
+  
+                  <div class="chartBox">
+                    <fusioncharts
+                    width="100%"
+                    height="300"
+                    type="heatmap"
+                    dataFormat="json"
+                    [dataSource]="dataExcat2"
+                  >
+                  </fusioncharts>
+                  </div>
+                </div>
+  
+  
+              </div>
+                </div>
+                </div>
+                </div>
+  
+  
+  
+          </div>
+        </div>
+  
+  
+  
+        <div class="tab-pane" id="tab3" role="tabpanel">
+          <div class="card-body">
+            <ul class="nav nav-tabs subtabs" role="tablist">
+              <li class="nav-item active">
+                <a class="nav-link active" data-toggle="tab" href="#timesheetout" role="tab">Time sheet Outlier</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#checkinout" role="tab">Check in check out</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#insights" role="tab">Insights</a>
+              </li>
+  
+              </ul>
+  
+           <div class="tab-content">
+             <div class="tab-pane active" id="timesheetout" role="tabpanel">
+              <div class="card-body">
+  
+            <div class="OutlierSection">
+              <div class="OutlierHead">
+                <div><h3>Time sheet Outlier</h3></div>
+  
+  
+                <div>
+                  <ul class="mandateItem">
+                    <li><span class="nonsubmission"></span>Non Submission</li>
+                    <li><span class="latesubmission"></span>Late Submission</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="table-responsive">
+                <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                 [allowPaging]='true' [allowExcelExport]='true' >
+                <e-columns>
+                  <e-column field='uSername' [disableHtmlEncode]="false" headerText='Name <br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                  </e-column>
+                  <e-column field='reportname' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                    <ng-template>
+                      <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
+                    </ng-template>
+  
+                  </e-column>
+                  <e-column field='receiptdate' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                    <ng-template>
+                      <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
+                    </ng-template>
+                  </e-column>
+                    <e-column field='receiptNo' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='category' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+                    <e-column field='amount' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+  
+                </e-columns>
+  
+  
+              </ejs-grid>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+  
+        <div class="tab-pane" id="checkinout" role="tabpanel">
+          <div class="card-body">
+  
+        <div class="OutlierSection">
+          <div class="OutlierHead">
+            <div><h3>Check in check out</h3></div>
+  
+  
+            <div>
+              <ul class="mandateItem">
+                <li>#Number in Hours</li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="table-responsive" style="margin-top: 12px;">
+            <ejs-schedule #scheduleObj width='100%' cssClass='timeline-resource-grouping' height='650px'
+        [selectedDate]="selectedDate" [group]="group" [workDays]="workDays">
+        <e-resources>
+          <e-resource field='ProjectId' title='Choose Project' [dataSource]='newdata'
+            [allowMultiple]='allowMultiple' name='Projects' textField='text' idField='id' colorField='color'>
+          </e-resource>
+          <e-resource field='TaskId' title='Category' [dataSource]='newdata' [allowMultiple]='allowMultiple'
+            name='Categories' textField='text' idField='id' groupIDField='groupId' colorField='color'>
+          </e-resource>
+        </e-resources>
+        <e-views>
+          <e-view option="TimelineDay"></e-view>
+          <e-view option="TimelineWeek"></e-view>
+          <e-view option="TimelineWorkWeek"></e-view>
+          <e-view option="TimelineMonth"></e-view>
+          <e-view option="Agenda"></e-view>
+        </e-views>
+      </ejs-schedule>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+    <div class="tab-pane" id="insights" role="tabpanel">
+      <div class="card-body">
+  
+    <div class="OutlierSection">
+      <div class="OutlierHead">
+        <div><h3>Insights</h3></div>
+  <div class="insightbox">
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+      <label class="custom-control-label" for="defaultUnchecked">MOM</label>
+    </div>
+  
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+      <label class="custom-control-label" for="defaultUnchecked">Roadblock</label>
+    </div>
+  
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+      <label class="custom-control-label" for="defaultUnchecked">Overdue Tasks</label>
+    </div>
+  
+  </div>
+  
+        <div>
+          <ul class="mandateItem">
+            <li><span class="nonsubmission"></span>Open</li>
+            <li><span class="latesubmission"></span>Delayed Closed</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="table-responsive" style="margin-top: 12px;">
+        <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                 [allowPaging]='true' [allowExcelExport]='true' >
+                <e-columns>
+                  <e-column field='uSername' [disableHtmlEncode]="false" headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+                  </e-column>
+                  <e-column field='reportname' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  </e-column>
+  
+                    <e-column field='receiptNo' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='category' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+                    <e-column field='amount' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='amount' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+  
+                </e-columns>
+  
+  
+              </ejs-grid>
+      </div>
+    </div>
+  
+  </div>
+  </div>
+  
+      </div>
+    </div>
+  
+  
+  </div>
+  
+  
+      <!-- <div class="row" id="tableData">
+  
+  
+        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+          [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+          [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+          (load)='load()' [allowPaging]='true' [pageSettings]='pageSettings'[allowExcelExport]='true' >
+          <e-columns>
+            <e-column field='uSername' headerText='User Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
+              <ng-template #template let-data>
+  
+                <span>
+  
+                    <img src="{{userImage(data)}}" style="width: 28px;margin-right: 5px; border-radius: 50%;">
+                    {{data.uSername}}
+                </span>
+              </ng-template>
+  
+            </e-column>
+            <e-column field='reportname' headerText='Report' [filter]='filter' clipMode='EllipsisWithTooltip'>
+  
+            </e-column>
+            <e-column field='receiptdate' headerText='Expense Date' [filter]='filter' clipMode='EllipsisWithTooltip'>
+              <ng-template #template let-data>
+                {{dateformat(data.receiptdate)}}
+              </ng-template>
+            </e-column>
+              <e-column field='receiptNo' headerText='Receipt #' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='category' headerText='Category' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  
+              <e-column field='amount' headerText='Amount' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                <ng-template #template let-data>
+                  {{decimalformat(data.amount)}}
+                  <img *ngIf="data.inrTotalAmount !== null" src="{{currencySymbols(data.currencyName)}}"
+                  style="width: 15px;" />
+                </ng-template>
+              </e-column>
+  
+  
+  
+          </e-columns>
+  
+          <e-aggregates>
+            <e-aggregate>
+                <e-columns>
+                    <e-column field="amount" type="sum">
+                        <ng-template #footerTemplate let-data>{{decimalformat(addSum())}}  <img src="{{currencySymbols(curancy)}}" style="width: 15px;" /> </ng-template>
+                    </e-column>
+                </e-columns>
+            </e-aggregate>
+          </e-aggregates>
+        </ejs-grid>
+  
+  
+      </div> -->
+  
+  
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div
+    class="modal fade expense-det small-filter"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Expense Details</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- <div class="modal-body">
+          <form [formGroup]="expenseReportForm" (ngSubmit)="onexpenseReportFilter(getuserid)" >
+            <div class="form-group">
+              <div class="col-md-4">
+                <label>Date Range</label>
+              </div>
+                  <div class="col-md-4">
+                     <input type="date" placeholder="From date" formControlName="fromdate" class="e-input" style="    font-size: 12px;">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="date" placeholder="To date" formControlName="todate" class="e-input" style="    font-size: 12px;">
+                  </div>
+            </div>
+  
+              <div class="form-group">
+                  <div class="col-md-4">
+                      <label>Customer</label>
+                    </div>
+  
+                    <div class="col-md-8">
+                      <select  (change)="seTCustomer($event.target.value)"
+                        class="form-control"
+                        formControlName="customerId"
+                      >
+                      <option [ngValue]="null"
+                      [disabled]="true">Select Customer</option>
+                        <option
+                          *ngFor="let item of customerList"
+                          [value]="item.customerId"
+                        >
+                          {{ item.customerName }}
+                        </option>
+                      </select>
+                    </div>
+              </div>
+  
+              <div class="form-group">
+                  <div class="col-md-4">
+                    <label> Report Name</label>
+                    </div>
+  
+                    <div class="col-md-8">
+                      <select (change)="setReport($event.target.value)"
+                      class="form-control"
+                      formControlName="reportId"
+                    >
+                    <option [ngValue]="null"
+                    [disabled]="true">Select Report</option>
+                      <option
+                        *ngFor="let item of reportList"
+                        [value]="item.reportId"
+                      >
+                        {{item.reportTitle}}
+                      </option>
+                    </select>
+                      </div>
+              </div>
+  
+              <div class="form-group">
+                  <div class="col-md-4">
+                     <label>User</label>
+                    </div>
+  
+                    <div class="col-md-8">
+                      <select class="form-control" (change)="setUserid($event.target.value)">
+                        <option [ngValue]="null"
+                        [disabled]="true">Select User</option>
+                        <option   *ngFor="let item of UsersList"
+                      [value]="item.employeeId">{{item.name}}	</option>
+                      </select>
+                      </div>
+              </div>
+  
+              <hr>
+              <div _ngcontent-c12="" class="form-group">
+  
+                <button _ngcontent-c12="" class="btn btn-primary">Run Report</button>
+  
+              </div>
+  
+          </form>
+  
+  
+  
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  

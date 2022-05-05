@@ -1,0 +1,47 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "module": "es2020",
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "allowJs": false,
+    "checkJs": false,
+    "noEmit": false,
+    "baseUrl": "./",
+    "resolveJsonModule":true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true, 
+    "strict": true,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "lib": [
+      "es2018",
+      "dom"
+    ],"typeRoots": [
+      "node_modules/@types",
+      "src/typings.d.ts"
+    ],
+  },
+  "angularCompilerOptions": {
+    "strictPropertyInitialization":false,
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "disableTypeScriptVersionCheck": true,
+   
+ 
+  }
+  
+}

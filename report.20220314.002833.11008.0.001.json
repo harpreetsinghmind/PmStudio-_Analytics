@@ -1,0 +1,377 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20220314.002833.11008.0.001.json",
+    "dumpEventTime": "2022-03-14T00:28:33Z",
+    "dumpEventTimeStamp": "1647197913075",
+    "processId": 11008,
+    "cwd": "C:\\pravesh\\LGWEB",
+    "commandLine": [
+      "node",
+      "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\\\node_modules\\@angular\\cli\\bin\\ng",
+      "build"
+    ],
+    "nodejsVersion": "v12.5.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.5.0",
+      "v8": "7.5.288.22-node.14",
+      "uv": "1.29.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.38.0",
+      "napi": "4",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1c",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.5.0/node-v12.5.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.5.0/node-v12.5.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.5.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.14393",
+    "osVersion": "Windows Server 2016 Standard",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz",
+        "speed": 3392,
+        "user": 19897562,
+        "nice": 0,
+        "sys": 9862140,
+        "idle": 782852046,
+        "irq": 524656
+      }
+    ],
+    "host": "WIN-AQU6OLRM3NL"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff641e86e09",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10889"
+    },
+    {
+      "pc": "0x00007ff641e8a704",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+25476"
+    },
+    {
+      "pc": "0x00007ff641e89728",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+21416"
+    },
+    {
+      "pc": "0x00007ff641f72f5b",
+      "symbol": "v8::base::CPU::has_sse+38011"
+    },
+    {
+      "pc": "0x00007ff642757e2e",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff64274017a",
+      "symbol": "v8::SharedArrayBuffer::Externalize+842"
+    },
+    {
+      "pc": "0x00007ff6425d197c",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff6425d989f",
+      "symbol": "v8::internal::Heap::OldGenerationSizeOfObjects+4879"
+    },
+    {
+      "pc": "0x00007ff6425cfb43",
+      "symbol": "v8::internal::Heap::CollectGarbage+1235"
+    },
+    {
+      "pc": "0x00007ff6425ce3d4",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2292"
+    },
+    {
+      "pc": "0x00007ff6425eceb5",
+      "symbol": "v8::internal::Factory::NewFillerObject+53"
+    },
+    {
+      "pc": "0x00007ff6423a321d",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+3757"
+    },
+    {
+      "pc": "0x00007ff642800b1d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+614605"
+    },
+    {
+      "pc": "0x0000036a45efb3bf",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2153005056,
+    "totalCommittedMemory": 2153005056,
+    "usedMemory": 2117478288,
+    "availableMemory": 49717544,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261832,
+        "used": 31960,
+        "available": 229872
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 2097152,
+        "capacity": 1047328,
+        "used": 68320,
+        "available": 979008
+      },
+      "old_space": {
+        "memorySize": 1919823872,
+        "committedMemory": 1919823872,
+        "capacity": 1895185360,
+        "used": 1892534264,
+        "available": 2651096
+      },
+      "code_space": {
+        "memorySize": 3833856,
+        "committedMemory": 3833856,
+        "capacity": 3340608,
+        "used": 3340608,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 9179136,
+        "committedMemory": 9179136,
+        "capacity": 4184560,
+        "used": 4184560,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 217186304,
+        "committedMemory": 217186304,
+        "capacity": 216768272,
+        "used": 216768272,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550304,
+        "used": 550304,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047328,
+        "used": 0,
+        "available": 1047328
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 424.218,
+    "kernelCpuSeconds": 11.562,
+    "cpuConsumptionPercent": 153.444,
+    "maxRss": 2290630656,
+    "pageFaults": {
+      "IORequired": 1851154,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 8489,
+      "writes": 429
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\pravesh\\LGWEB",
+    "=ExitCode": "00000000",
+    "aliases": "C:\\laragon\\bin\\cmder\\config\\user-aliases.cmd",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\Administrator\\AppData\\Roaming",
+    "architecture": "64",
+    "BROWSERSLIST_IGNORE_OLD_DATA": "1",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132666713431380043",
+    "CLIENTNAME": "LAPTOP-BT7IF2PO",
+    "CMDER_ROOT": "C:\\laragon\\bin\\cmder",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "WIN-AQU6OLRM3NL",
+    "ComSpec": "C:\\Windows\\system32\\cmd.exe",
+    "DOCUMENT_ROOT": "C:\\laragon\\www",
+    "dp0": "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\",
+    "FULL_TITLE": "\"C:\\pravesh\\LGWEB\"",
+    "GIT_INSTALL_ROOT": "C:\\laragon\\bin\\cmder\\..\\git",
+    "HOME": "C:\\Users\\Administrator",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\Administrator",
+    "LARAGON_ROOT": "C:\\laragon\\",
+    "LOCALAPPDATA": "C:\\Users\\Administrator\\AppData\\Local",
+    "LOGONSERVER": "\\\\WIN-AQU6OLRM3NL",
+    "MSMPI_BENCHMARKS": "C:\\Program Files\\Microsoft MPI\\Benchmarks\\",
+    "MSMPI_BIN": "C:\\Program Files\\Microsoft MPI\\Bin\\",
+    "NUMBER_OF_PROCESSORS": "8",
+    "NVM_HOME": "C:\\Users\\Administrator\\AppData\\Roaming\\nvm",
+    "NVM_SYMLINK": "C:\\Program Files\\nodejs",
+    "OPENSSL_CONF": "C:\\laragon\\bin\\apache\\httpd-2.4.35-win64-VC15\\conf\\openssl.cnf",
+    "OS": "Windows_NT",
+    "Path": "C:\\Users\\Administrator\\AppData\\Local\\Yarn\\config\\global\\node_modules\\.bin;C:\\Users\\Administrator\\AppData\\Roaming\\npm;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin;;C:\\laragon\\bin\\laragon\\utils;C:\\laragon\\bin\\mysql\\mysql-5.7.24-winx64\\bin;C:\\laragon\\bin\\php\\php-7.2.19-Win32-VC15-x64;C:\\laragon\\bin\\composer;C:\\laragon\\bin\\apache\\httpd-2.4.35-win64-VC15\\bin;C:\\laragon\\bin\\redis\\redis-x64-3.2.100;C:\\laragon\\bin\\nodejs\\node-v12;C:\\laragon\\bin\\nginx\\nginx-1.16.0;C:\\laragon\\bin\\notepad++;C:\\laragon\\bin\\telnet;C:\\laragon\\bin\\ngrok;C:\\laragon\\bin\\git\\bin;C:\\laragon\\bin\\git\\cmd;C:\\laragon\\bin\\git\\usr\\bin;C:\\laragon\\bin\\git\\mingw64\\bin;C:\\laragon\\bin;C:\\laragon\\usr\\bin;C:\\laragon\\bin\\putty;C:\\laragon\\bin\\cmder\\bin;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Python39\\Scripts\\;C:\\Python39\\;C:\\Program Files\\Microsoft MPI\\Bin\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Microsoft\\Web Platform Installer\\;C:\\Program Files (x86)\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\150\\DTS\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\150\\DTS\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\dotnet\\;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;C:\\laragon\\bin\\php\\php-7.2.19-Win32-VC15-x64;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Program Files\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Administrator\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\Administrator\\AppData\\Roaming\\npm;C:\\Program Files\\Google\\Chrome\\Application;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\usr\\share\\vim\\vim74;C:\\laragon\\bin\\cmder\\;",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.PY;.PYW",
+    "PLINK_PROTOCOL": "ssh",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "3a09",
+    "PROG27B48B2C054": "1",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "C\bL\bI\bN\bK\b \b$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\150\\Tools\\PowerShell\\Modules\\",
+    "PUBLIC": "C:\\Users\\Public",
+    "SESSIONNAME": "RDP-Tcp#126",
+    "SVN_SSH": "C:\\\\Program Files\\\\Git\\\\bin\\\\ssh.exe",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\Windows",
+    "TEMP": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\5",
+    "TERM": "cygwin",
+    "TER_TITLE": "LGWEB",
+    "TMP": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\5",
+    "user-aliases": "C:\\laragon\\bin\\cmder\\config\\user-aliases.cmd",
+    "USERDOMAIN": "WIN-AQU6OLRM3NL",
+    "USERDOMAIN_ROAMINGPROFILE": "WIN-AQU6OLRM3NL",
+    "USERNAME": "Administrator",
+    "USERPROFILE": "C:\\Users\\Administrator",
+    "USER_DIR": "C:\\laragon\\usr",
+    "USR_DIR": "C:\\laragon\\usr",
+    "verbose-output": "0 ",
+    "WEBPACK_DEV_SERVER": "true",
+    "windir": "C:\\Windows",
+    "_prog": "node"
+  },
+  "sharedObjects": [
+    "C:\\laragon\\bin\\nodejs\\node-v12\\node.exe",
+    "C:\\Windows\\SYSTEM32\\ntdll.dll",
+    "C:\\Windows\\System32\\KERNEL32.DLL",
+    "C:\\Windows\\System32\\KERNELBASE.dll",
+    "C:\\Windows\\System32\\WS2_32.dll",
+    "C:\\Windows\\System32\\sechost.dll",
+    "C:\\Windows\\System32\\RPCRT4.dll",
+    "C:\\Windows\\SYSTEM32\\dbghelp.dll",
+    "C:\\Windows\\System32\\ucrtbase.dll",
+    "C:\\Windows\\System32\\ADVAPI32.dll",
+    "C:\\Windows\\System32\\msvcrt.dll",
+    "C:\\Windows\\System32\\USER32.dll",
+    "C:\\Windows\\System32\\win32u.dll",
+    "C:\\Windows\\System32\\GDI32.dll",
+    "C:\\Windows\\System32\\gdi32full.dll",
+    "C:\\Windows\\System32\\PSAPI.DLL",
+    "C:\\Windows\\System32\\CRYPT32.dll",
+    "C:\\Windows\\System32\\MSASN1.dll",
+    "C:\\Windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Windows\\SYSTEM32\\USERENV.dll",
+    "C:\\Windows\\SYSTEM32\\bcrypt.dll",
+    "C:\\Windows\\System32\\profapi.dll",
+    "C:\\Windows\\SYSTEM32\\WINMM.dll",
+    "C:\\Windows\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\Windows\\System32\\cfgmgr32.dll",
+    "C:\\Windows\\System32\\IMM32.DLL",
+    "C:\\Windows\\System32\\powrprof.dll",
+    "C:\\Windows\\system32\\uxtheme.dll",
+    "C:\\Windows\\System32\\combase.dll",
+    "C:\\Windows\\System32\\bcryptPrimitives.dll",
+    "C:\\Windows\\system32\\mswsock.dll",
+    "C:\\Windows\\System32\\kernel.appcore.dll",
+    "C:\\Windows\\system32\\napinsp.dll",
+    "C:\\Windows\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\System32\\NSI.dll",
+    "C:\\Windows\\System32\\winrnr.dll",
+    "C:\\Windows\\system32\\NLAapi.dll"
+  ]
+}

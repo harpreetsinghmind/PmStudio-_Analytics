@@ -1,0 +1,13 @@
+
+<app-header *ngIf="header"></app-header>
+<app-toaster-container></app-toaster-container>
+<span #notauthenticated class="layoutset">
+    <app-sidebar *ngIf="header" style="background-color: #e0314f;"></app-sidebar>
+    <router-outlet class="contentright"></router-outlet>
+</span>
+
+
+<!-- <div *ngIf="!header" >
+    <app-toaster-container></app-toaster-container>
+    <router-outlet></router-outlet>
+    </div> -->
