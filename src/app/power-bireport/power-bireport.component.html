@@ -1899,7 +1899,8 @@
                     height="400"
                     type="pareto2d"
                     dataFormat="json"
-                    [dataSource]="dataempoyeeattrition">
+                    [dataSource]="dataempoyeeaddition">
+
                 </fusioncharts>
                   </div>
                 </div>
@@ -1917,7 +1918,8 @@
                     height="400"
                     type="pareto2d"
                     dataFormat="json"
-                    [dataSource]="dataempoyeeaddition">
+                    [dataSource]="dataempoyeeattrition">
+
                 </fusioncharts>
 
 
@@ -2079,7 +2081,12 @@
                 {{dateformat(data.totalTenure)}}
               </ng-template> -->
             </e-column>
-              <e-column field='joiningDate' headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='joiningDate' headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'>
+
+                   <!-- <ng-template #template let-data>
+                {{dateformat(data.joiningDate)}}
+              </ng-template> -->
+              </e-column>
               <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
              <e-column field='totalPRoject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip'>

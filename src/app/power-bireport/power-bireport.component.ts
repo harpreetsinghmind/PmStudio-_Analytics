@@ -5,6 +5,9 @@ import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
 import { GroupModel } from '@syncfusion/ej2-angular-schedule';
 import { ToasterService } from '../toaster/toaster.service';
 import { GlobalServiceService } from '../global-service.service';
+import { min } from 'moment';
+import { DatePipe, DecimalPipe } from '@angular/common';
+
 
 
 
@@ -1776,101 +1779,6 @@ export class PowerBIReportComponent implements OnInit {
 
 
 
-  tentureDetails = {
-    chart: {
-      caption: "",
-      pyaxisname: "Monthly Active Users [MAU]",
-      syaxisname: "Growth Ratio",
-      numbersuffix: "M",
-      numdivlines: "7",
-      adjustdiv: "0",
-      syaxismaxvalue: "5",
-      syaxisminvalue: "-3",
-      yaxisminvalue: "-30",
-      yaxismaxvalue: "30",
-      theme: "fusion",
-      drawcustomlegendicon: "1",
-      plottooltext: "$label, $seriesname: $dataValue",
-      palettecolors: "#7cb5ec,#ed8f1d"
-    },
-    categories: [
-      {
-        category: [
-          {
-            label: "January"
-          },
-          {
-            label: "February"
-          },
-          {
-            label: "March"
-          },
-          {
-            label: "April"
-          },
-          {
-            label: "May"
-          },
-          {
-            label: "June"
-          }
-        ]
-      }
-    ],
-    dataset: [
-      {
-        dataset: [
-          {
-            seriesname: "Churned",
-            data: [
-              {
-                value: "-8"
-              },
-              {
-                value: "-7"
-              },
-              {
-                value: "-5"
-              },
-              {
-                value: "-21"
-              },
-              {
-                value: "-23"
-              },
-              {
-                value: "-15"
-              }
-            ]
-          },
-          {
-            seriesname: "New",
-            data: [
-              {
-                value: "8"
-              },
-              {
-                value: "8"
-              },
-              {
-                value: "22"
-              },
-              {
-                value: "24"
-              },
-              {
-                value: "14"
-              },
-              {
-                value: "4"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-
-  };
 
 
 
@@ -2671,6 +2579,8 @@ this.getpbiPeopleEmployeeVsVendor()
 this.getpbiPeopleEmployeeAddition()
 this.getpbiPeopleEmployeeAttrition()
 this.getpbiPeopleEmployeePerformance()
+this.getpbiPeopleTenureWiseEmployee()
+
 
 
 
@@ -2687,6 +2597,12 @@ this.getpbiPeopleEmployeePerformance()
       this.dataDesignation=[]
       this.HTTP.getPbiReportDesignation(year,cmpcode).subscribe(arg => {
       this.getListDesignation=  arg.data.table
+      var getColor=[]
+
+      for(var i=0;i<this.getListDesignation.length;i++)
+      {
+        getColor.push(this.setColor[i])
+      }
       for(var i=0;i<this.getListDesignation.length;i++)
       {
 this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"value":this.getListDesignation[i].designationId})
@@ -2703,7 +2619,7 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
-          'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
+          'paletteColors' :getColor.toString(),
           "theme": "fusion"
         },
         "data": this.dataDesignation
@@ -2757,6 +2673,13 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
       this.getListDepartment=  arg.data.table
 //       designationId: 15
 // designationName: 
+var getColor=[]
+
+for(var i=0;i<this.getListDepartment.length;i++)
+{
+  getColor.push(this.setColor[i])
+}
+
       for(var i=0;i<this.getListDepartment.length;i++)
       {
 this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"value":this.getListDepartment[i].departmentId})
@@ -2773,7 +2696,7 @@ this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"valu
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
-          'paletteColors' :'7bb7ed, e4d556',
+          'paletteColors' :getColor.toString(),
           "theme": "fusion"
         },
         "data": this.dataDepartment
@@ -2794,8 +2717,15 @@ this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"valu
       this.getListGender=  arg.data.table
 //       designationId: 15
 // designationName: 
+
 var male=[]
 var female=[]
+      var getColor=[]
+
+      for(var i=0;i<this.getListGender.length;i++)
+      {
+        getColor.push(this.setColor[i])
+      }
       for(var i=0;i<this.getListGender.length;i++)
       {
         if(this.getListGender[i].gender=="Male")
@@ -2821,7 +2751,7 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
-          'paletteColors' :'7bb7ed, e4d556',
+          'paletteColors' :getColor.toString(),
           "theme": "fusion"
         },
         "data": this.dataGender
@@ -2845,6 +2775,12 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
       this.getListEmployeeVsVendor=  arg.data.table
 //       designationId: 15
 // designationName: 
+var getColor=[]
+
+for(var i=0;i<this.getListEmployeeVsVendor.length;i++)
+{
+  getColor.push(this.setColor[i])
+}
       for(var i=0;i<this.getListEmployeeVsVendor.length;i++)
       {
 //this.dataEmployeeVsVendor.push({"label":this.getListEmployeeVsVendor[i].monthNames,"value":this.getListEmployeeVsVendor[i].employee,'value':this.getListEmployeeVsVendor[i].vendor})
@@ -2858,14 +2794,17 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
       }
        this.dataempoyeevsvendor = {
         chart: {
-          caption: "Reach of Social Media Platforms amoung youth",
+          'paletteColors':getColor.toString(),
+          caption: "",
           yaxisname: "% of youth on this platform",
-          subcaption: "2012-2016",
+          subcaption: "",
           showhovereffect: "1",
           numbersuffix: "%",
           drawcrossline: "1",
           plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
-          theme: "fusion"
+          theme: "fusion",
+          
+          
         },
         categories: [
           {
@@ -2937,6 +2876,12 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
       this.getListEmployeeAddition=  arg.data.table
 //       designationId: 15
 // designationName: 
+var getColor=[]
+
+for(var i=0;i<this.getListEmployeeAddition.length;i++)
+{
+  getColor.push(this.setColor[i])
+}
       for(var i=0;i<this.getListEmployeeAddition.length;i++)
       {
      this.getListEmployeeVsVendor.push()
@@ -2952,7 +2897,7 @@ this.dataEmployeeAddition.push({"label":this.getListEmployeeAddition[i].monthNam
       "sYAxisname": "Cumulative Percentage",
       "showValues": "0",
       "showXAxisLine": "1",
-      'paletteColors' :'7bb7ed',
+      'paletteColors' :getColor.toString(),
       "showLineValues": "1"
     },
     "data":this.dataEmployeeAddition
@@ -2980,6 +2925,241 @@ this.dataEmployeeAddition.push({"label":this.getListEmployeeAddition[i].monthNam
     
       })
   }
+  getListTenureWiseEmployee:any=[]
+  getListTenureWiseEmployeeAvg:any=[]
+  tenurUpList:any=[]
+  tenureDownList:any=[]
+  tentureDetails:any=[]
+  getpbiPeopleTenureWiseEmployee(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportEmployeeTenureWiseEmployeeDetail(year,cmpcode).subscribe(arg => {
+        debugger;
+      this.getListTenureWiseEmployee=  arg.data.table
+      this.getListTenureWiseEmployeeAvg=arg.data.table1
+    this.tenurUpList.push(
+      {'value':this.getListTenureWiseEmployee[0].janmax},
+      {'value':this.getListTenureWiseEmployee[0].febmax},
+      {'value':this.getListTenureWiseEmployee[0].marmax},
+      {'value':this.getListTenureWiseEmployee[0].aprmax},
+      {'value':this.getListTenureWiseEmployee[0].maymax}
+
+      )
+      this.tenureDownList.push({'value':this.getListTenureWiseEmployee[0].janmin},
+      {'value':this.getListTenureWiseEmployee[0].febmin},
+      {'value':this.getListTenureWiseEmployee[0].marmin},
+      {'value':this.getListTenureWiseEmployee[0].aprmin},
+      {'value':this.getListTenureWiseEmployee[0].maymin})
+      var totalSum=(this.getListTenureWiseEmployeeAvg[0].aprilavg+this.getListTenureWiseEmployeeAvg[0].janavg+this.getListTenureWiseEmployeeAvg[0].febavg+
+      this.getListTenureWiseEmployeeAvg[0].marchavg+this.getListTenureWiseEmployeeAvg[0].mayavg)/6
+//       designationId: 15
+// designationName: 
+var maxValue=Math.max(...this.tenurUpList);
+var minValue=-Math.max(...this.tenurUpList);
+var newMax=Math.max(...this.tenureDownList);
+var newmin=-Math.max(...this.tenureDownList);
+this.tentureDetails = {
+  chart: {
+    caption: "",
+    pyaxisname: "Monthly Active Users [MAU]",
+    syaxisname: "Growth Ratio",
+    numbersuffix: "M",
+    numdivlines: "6",
+    adjustdiv: totalSum.toString(),
+    syaxismaxvalue: maxValue.toString(),
+    syaxisminvalue: minValue.toString(),
+    yaxisminvalue: newmin.toString(),
+    yaxismaxvalue: newMax.toString(),
+    theme: "fusion",
+    drawcustomlegendicon: "1",
+    plottooltext: "$label, $seriesname: $dataValue",
+    palettecolors: "#7cb5ec,#ed8f1d"
+  },
+  categories: [
+    {
+      category: [
+        {
+          label: "January"
+        },
+        {
+          label: "February"
+        },
+        {
+          label: "March"
+        },
+        {
+          label: "April"
+        },
+        {
+          label: "May"
+        }
+       
+      ]
+    }
+  ],
+  dataset: [
+    {
+      dataset: [
+        {
+          seriesname: "Churned",
+          data: this.tenurUpList
+        },
+        {
+          seriesname: "New",
+          data: this.tenureDownList
+        }
+      ]
+    }
+  ],
+
+};
+
+
+
+// this.tentureDetails = {
+//   chart: {
+//     caption: "",
+//     pyaxisname: "Monthly Active Users [MAU]",
+//     syaxisname: "Growth Ratio",
+//     numbersuffix: "M",
+//     numdivlines: "7",
+//     adjustdiv: "0",
+//     syaxismaxvalue: "5",
+//     syaxisminvalue: "-3",
+//     yaxisminvalue: "-30",
+//     yaxismaxvalue: "30",
+//     theme: "fusion",
+//     drawcustomlegendicon: "1",
+//     plottooltext: "$label, $seriesname: $dataValue",
+//     palettecolors: "#7cb5ec,#ed8f1d"
+//   },
+//   categories: [
+//     {
+//       category: [
+//         {
+//           label: "January"
+//         },
+//         {
+//           label: "February"
+//         },
+//         {
+//           label: "March"
+//         },
+//         {
+//           label: "April"
+//         },
+//         {
+//           label: "May"
+//         },
+//         {
+//           label: "June"
+//         }
+//       ]
+//     }
+//   ],
+//   dataset: [
+//     {
+//       dataset: [
+//         {
+//           seriesname: "Churned",
+//           data: [
+//             {
+//               value: "-8"
+//             },
+//             {
+//               value: "-7"
+//             },
+//             {
+//               value: "-5"
+//             },
+//             {
+//               value: "-21"
+//             },
+//             {
+//               value: "-23"
+//             },
+//             {
+//               value: "-15"
+//             }
+//           ]
+//         },
+//         {
+//           seriesname: "New",
+//           data: [
+//             {
+//               value: "8"
+//             },
+//             {
+//               value: "8"
+//             },
+//             {
+//               value: "22"
+//             },
+//             {
+//               value: "24"
+//             },
+//             {
+//               value: "14"
+//             },
+//             {
+//               value: "4"
+//             }
+//           ]
+//         }
+//       ]
+//     }
+//   ],
+
+// };
+
+
+      // this.dataempoyeevsvendor = {
+      //   chart: {
+      //     "numberPrefix": "$",
+      //     "bgColor": "#ffffff",
+      //     "startingAngle": "100",
+      //     "showLegend": "1",
+      //     "defaultCenterLabel": "",
+      //     "centerLabel": "Revenue from $label: $value",
+      //     "centerLabelBold": "1",
+      //     "showTooltip": "0",
+      //     "decimals": "0",
+      //     'paletteColors' :'7bb7ed, e4d556',
+      //     "theme": "fusion"
+      //   },
+      //   "data": this.dataEmployeeVsVendor
+      // };
+    
+    
+      })
+  }
+
+  // dateformat(datas)
+  // {
+  //   return this.datePipe.transform(datas, 'dd/MM/yyyy')
+
+  // }
+  // DateFormat:any
+  // Dateformat(datas:string){
+  // //  this.DateFormat= this.getdateFormat();
+  // this.DateFormat= '-1'
+
+  //   if (this.DateFormat=='1')
+  //   {
+  //     return this.datePipe.transform(datas, 'MM/dd/yyyy')   
+  //   }
+  //   if(this.DateFormat=='2')
+  //   {
+  //     return this.datePipe.transform(datas, 'dd/MM/yyyy')
+  //   }
+  //   if(this.DateFormat== '3')
+  //   {
+  //     return this.datePipe.transform(datas, 'yyyy/MM/dd')
+  //   } 
+  // }
+
+
   getListEmployeePerformance:any=[]
   getpbiPeopleEmployeePerformance(){
       let cmpcode=1
@@ -3026,6 +3206,12 @@ this.dataEmployeeAddition.push({"label":this.getListEmployeeAddition[i].monthNam
       this.getListEmployeeAttrition=  arg.data.table
 //       designationId: 15
 // designationName: 
+var getColor=[]
+
+for(var i=0;i<this.getListEmployeeAttrition.length;i++)
+{
+  getColor.push(this.setColor[i])
+}
       for(var i=0;i<this.getListEmployeeAttrition.length;i++)
       {
      this.getListEmployeeVsVendor.push()
@@ -3042,7 +3228,7 @@ this.dataEmployeeAttrition.push({"label":this.getListEmployeeAttrition[i].monthN
       "sYAxisname": "Cumulative Percentage",
       "showValues": "0",
       "showXAxisLine": "1",
-      'paletteColors' :'7bb7ed',
+      'paletteColors' :getColor.toString(),
       "showLineValues": "1"
     },
     "data":this.dataEmployeeAttrition
@@ -3083,6 +3269,12 @@ this.dataEmployeeAttrition.push({"label":this.getListEmployeeAttrition[i].monthN
       this.getListJobband=  arg.data.table
 //       designationId: 15
 // designationName: 
+var getColor=[]
+
+for(var i=0;i<this.getListJobband.length;i++)
+{
+  getColor.push(this.setColor[i])
+}
       for(var i=0;i<this.getListJobband.length;i++)
       {
 this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.getListJobband[i].jobandId})
@@ -3099,7 +3291,7 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
-          'paletteColors' :'',
+          'paletteColors' :getColor.toString(),
           "theme": "fusion"
         },
         "data": this.dataJobband
@@ -3111,12 +3303,20 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
   getListLocation:any=[]
   dataLocation:any=[]
   datalocation:any
+  setColor=['7bb7ed', 'e4d556','FF0000','00FF00','0000FF','800080','008000']
   getpbiPeopleLocation(){
       let cmpcode=1
       let year='2022-02-20'
       this.dataDesignation=[]
       this.HTTP.getPbiReportLocation(year,cmpcode).subscribe(arg => {
+        debugger
       this.getListLocation=  arg.data.table
+      var getColor=[]
+
+      for(var i=0;i<this.getListLocation.length;i++)
+      {
+        getColor.push(this.setColor[i])
+      }
 //       designationId: 15
 // designationName: 
       for(var i=0;i<this.getListLocation.length;i++)
@@ -3135,7 +3335,7 @@ this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":thi
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
-          'paletteColors' :'7bb7ed, e4d556,FF0000,00FF00,0000FF',
+          'paletteColors' :getColor.toString(),
           "theme": "fusion"
         },
         "data": this.dataLocation
@@ -3156,6 +3356,12 @@ this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":thi
       this.dataDesignation=[]
       this.HTTP.getPbiReportAge(year,cmpcode).subscribe(arg => {
       this.getListAge=  arg.data.table
+      var getColor=[]
+
+      for(var i=0;i<this.getListAge.length;i++)
+      {
+        getColor.push(this.setColor[i])
+      }
 //       designationId: 15
 // designationName: 
 var data20=[]
@@ -3235,7 +3441,7 @@ data45.push(this.getListAge[i].age)
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
-          'paletteColors' :'7bb7ed, e4d556,FF0000,00FF00,0000FF,008000,800080',
+          'paletteColors' :getColor.toString(),
           "theme": "fusion"
         },
         "data": this.totalAgeArray
