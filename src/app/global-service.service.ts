@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 
 
@@ -350,16 +351,199 @@ getRatioChart(Start, End, productname,pic,port): Observable<any> {
 }
 
 
-loginUser(username: string, password: string ): Observable<any> {
+// loginUser(username: string, password: string ): Observable<any> {
+//   debugger;
+//   const formData = new FormData();
+//   formData.append('username', username);
+//   formData.append('password', password);
+//   // formData.append('ClientId', cmp);
+//   formData.append('grant_type', 'password');
+
+//   const userData = "password=" + password + "&grant_type=password"+"&username="+username;
+//   const reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+//   return this.httpClient.post(`https://demo.pm-studio.com/api/api/oauth/token`, userData, { headers: reqHeader })
+// }
+
+
+loginUser(username: string, password: string , cmp): Observable<any> {
   const formData = new FormData();
   formData.append('username', username);
   formData.append('password', password);
-  // formData.append('ClientId', cmp);
+  formData.append('ClientId', cmp);
+  
   formData.append('grant_type', 'password');
 
-  const userData = "password=" + password + "&grant_type=password"+"&username="+username;
+  const userData = "ClientId=" + cmp + "&password=" + password + "&grant_type=password"+"&username="+username;
   const reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-  return this.httpClient.post(`https://demo.pm-studio.com/LGAPI/oauth/token`, userData, { headers: reqHeader })
+  return this.httpClient.post(`https://demo.pm-studio.com/api/oauth/token`, userData, { headers: reqHeader });
+}
+
+getPbiReportDetail(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+
+  //const URL ="${environment.apiUrl}pbiPeople/getPbiPeopleDetail?year="+year+"&cmpcode="+cmpcode;
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleDetail?year=`+year+"&cmpcode="+cmpcode
+ //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleDetail?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+  
+    
+}
+
+getPbiReportDesignation(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleDesignation?year=`+year+"&cmpcode="+cmpcode
+
+  //const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleDesignation?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleDesignation?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+
+getPbiReportDepartment(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleDepartment?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleDepartment?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleDepartment?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+getPbiReportLocation(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleLocation?year=`+year+"&cmpcode="+cmpcode
+
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleLocation?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleLocation?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+
+getPbiReportJobband(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleJobband?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleJobband?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleJobband?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+getPbiReportGender(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleGender?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleGender?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleGender?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+etPbiReportEmployeeVsVendor(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleEmployeeVsVendor?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleEmployeeVsVendor?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleEmployeeVsVendor?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+etPbiReportEmployeeAddition(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleEmployeeAddition?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleEmployeeAddition?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleEmployeeAddition?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+getPbiReportEmployeePerformance(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleEmployeePerformance?year=`+year+"&cmpcode="+cmpcode
+
+  //const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleEmployeePerformance?year="+year+"&cmpcode="+cmpcode;
+ // const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleEmployeePerformance?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+etPbiReportEmployeeAttrition(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleEmployeeAttrition?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleEmployeeAttrition?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleEmployeeAttrition?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+getPbiReportAge(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleAge?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleAge?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleAge?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
 }
 
 

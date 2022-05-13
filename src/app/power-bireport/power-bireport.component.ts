@@ -1,10 +1,11 @@
-import { DecimalPipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExcelExportProperties, GridComponent } from '@syncfusion/ej2-angular-grids';
 import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
 import { GroupModel } from '@syncfusion/ej2-angular-schedule';
 import { ToasterService } from '../toaster/toaster.service';
+import { GlobalServiceService } from '../global-service.service';
+
 
 
 type AOA = any[][];
@@ -486,65 +487,28 @@ export class PowerBIReportComponent implements OnInit {
       "theme": "fusion"
   },
   "data": [{
-      "label": "Traffic",
+      "label": "May",
       "value": "2000"
   }, {
-      "label": "Family",
+      "label": "Apr",
       "value": "1800"
   }, {
-      "label": "Public",
+      "label": "March",
       "value": "1600"
   }, {
-      "label": "Weather",
+      "label": "Feb",
       "value": "1400"
   }, {
-      "label": "Emergency",
+      "label": "Jan",
       "value": "1200"
   }, {
-      "label": "Others",
+      "label": "Dec",
       "value": "1000"
   }]
   };
 
 
-  datades21 = {
-    chart: {
-      "numberPrefix": "$",
-      "bgColor": "#ffffff",
-      "startingAngle": "100",
-      "showLegend": "1",
-      "defaultCenterLabel": "",
-      "centerLabel": "Revenue from $label: $value",
-      "centerLabelBold": "1",
-      "showTooltip": "0",
-      "decimals": "0",
-      'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c, 93e8e1',
-      "theme": "fusion"
-    },
-    "data": [{
-        "label": "Travel",
-        "value": "28504"
-      },
-      {
-        "label": "Customer Welfare",
-        "value": "14633"
-      },
-      {
-        "label": "Food",
-        "value": "10507"
-      },
-      {
-        "label": "Fuel/Mileage",
-        "value": "4910"
-      },
-      {
-        "label": "Office Supplies",
-        "value": "4910"
-      }
-    ]
-  };
-
-
+ 
   datades23 = {
     "chart": {
       "theme": "fusion",
@@ -558,27 +522,27 @@ export class PowerBIReportComponent implements OnInit {
       "showLineValues": "1"
     },
     "data": [{
-        "label": "Traffic",
+        "label": "May",
         "value": "5680"
       },
       {
-        "label": "Family Engagement",
+        "label": "Apr",
         "value": "1036"
       },
       {
-        "label": "Public Transport",
+        "label": "Mar",
         "value": "950"
       },
       {
-        "label": "Weather",
+        "label": "Feb",
         "value": "500"
       },
       {
-        "label": "Emergency",
+        "label": "Jan",
         "value": "140"
       },
       {
-        "label": "Others",
+        "label": "Dec",
         "value": "68"
       }
     ]
@@ -2621,10 +2585,15 @@ export class PowerBIReportComponent implements OnInit {
 
 
   constructor(
+   private  HTTP: GlobalServiceService,
 
   ) { }
+  
+
   ngOnInit(): void {
 
+    this.filterSettings = { type: "Menu" };
+    this.filter = { type: "CheckBox" };
     this.Planwk1 = [
       {
         field: 'wK1_Week40feeet',
@@ -2691,10 +2660,1030 @@ export class PowerBIReportComponent implements OnInit {
 
       },
     ];
+this.getpbiPeopleDetailList()
+this.getpbiPeopleDesignation()
+this.getpbiPeopleDepartment()
+this.getpbiPeopleLocation()
+this.getpbiPeopleAge()
+this.getpbiPeopleJoband()
+this.getpbiPeopleGender()
+this.getpbiPeopleEmployeeVsVendor()
+this.getpbiPeopleEmployeeAddition()
+this.getpbiPeopleEmployeeAttrition()
+this.getpbiPeopleEmployeePerformance()
+
+
+
+
+
   }
+  
+  getListDesignation:any=[]
+  dataDesignation:any=[]
+  datades21:any
+  getpbiPeopleDesignation(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportDesignation(year,cmpcode).subscribe(arg => {
+      this.getListDesignation=  arg.data.table
+      for(var i=0;i<this.getListDesignation.length;i++)
+      {
+this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"value":this.getListDesignation[i].designationId})
+      }
+      
+      this.datades21 = {
+        chart: {
+          "numberPrefix": "$",
+          "bgColor": "#ffffff",
+          "startingAngle": "100",
+          "showLegend": "1",
+          "defaultCenterLabel": "",
+          "centerLabel": "Revenue from $label: $value",
+          "centerLabelBold": "1",
+          "showTooltip": "0",
+          "decimals": "0",
+          'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
+          "theme": "fusion"
+        },
+        "data": this.dataDesignation
+      };
+    
+    
+      })
+  }
+  // datades21 = {
+  //   chart: {
+  //     "numberPrefix": "$",
+  //     "bgColor": "#ffffff",
+  //     "startingAngle": "100",
+  //     "showLegend": "1",
+  //     "defaultCenterLabel": "",
+  //     "centerLabel": "Revenue from $label: $value",
+  //     "centerLabelBold": "1",
+  //     "showTooltip": "0",
+  //     "decimals": "0",
+  //     'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
+  //     "theme": "fusion"
+  //   },
+  //   "data": [{
+  //     "label": "Traffic",
+  //     "value": "5680"
+  //   },
+  //   {
+  //     "label": "Family Engagement",
+  //     "value": "1036"
+  //   },
+  //   {
+  //     "label": "Public Transport",
+  //     "value": "950"
+  //   },
+  //   {
+  //     "label": "Weather",
+  //     "value": "500"
+  //   }
+  // ]
+
+  // };
+
+  getListDepartment:any=[]
+  dataDepartment:any=[]
+  datadepartement:any
+  getpbiPeopleDepartment(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportDepartment(year,cmpcode).subscribe(arg => {
+      this.getListDepartment=  arg.data.table
+//       designationId: 15
+// designationName: 
+      for(var i=0;i<this.getListDepartment.length;i++)
+      {
+this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"value":this.getListDepartment[i].departmentId})
+      }
+      
+      this.datadepartement = {
+        chart: {
+          "numberPrefix": "$",
+          "bgColor": "#ffffff",
+          "startingAngle": "100",
+          "showLegend": "1",
+          "defaultCenterLabel": "",
+          "centerLabel": "Revenue from $label: $value",
+          "centerLabelBold": "1",
+          "showTooltip": "0",
+          "decimals": "0",
+          'paletteColors' :'7bb7ed, e4d556',
+          "theme": "fusion"
+        },
+        "data": this.dataDepartment
+      };
+    
+    
+      })
+  }
+  
+  getListGender:any=[]
+  dataGender:any=[]
+  datagender:any
+  getpbiPeopleGender(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportGender(year,cmpcode).subscribe(arg => {
+      this.getListGender=  arg.data.table
+//       designationId: 15
+// designationName: 
+var male=[]
+var female=[]
+      for(var i=0;i<this.getListGender.length;i++)
+      {
+        if(this.getListGender[i].gender=="Male")
+        {
+male.push(this.getListGender[i].gender)
+        }
+        else{
+          female.push(this.getListGender[i].gender)
+
+        }
+      }
+this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"value":female.length}
+)
+      
+      this.datagender = {
+        chart: {
+          "numberPrefix": "$",
+          "bgColor": "#ffffff",
+          "startingAngle": "100",
+          "showLegend": "1",
+          "defaultCenterLabel": "",
+          "centerLabel": "Revenue from $label: $value",
+          "centerLabelBold": "1",
+          "showTooltip": "0",
+          "decimals": "0",
+          'paletteColors' :'7bb7ed, e4d556',
+          "theme": "fusion"
+        },
+        "data": this.dataGender
+      };
+    
+    
+      })
+  }
+
+
+  getListEmployeeVsVendor:any=[]
+  dataEmployeeVsVendor:any=[]
+  dataempoyeevsvendor:any
+  dataEmployee:any=[]
+  dataVendor:any=[]
+  getpbiPeopleEmployeeVsVendor(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.etPbiReportEmployeeVsVendor(year,cmpcode).subscribe(arg => {
+      this.getListEmployeeVsVendor=  arg.data.table
+//       designationId: 15
+// designationName: 
+      for(var i=0;i<this.getListEmployeeVsVendor.length;i++)
+      {
+//this.dataEmployeeVsVendor.push({"label":this.getListEmployeeVsVendor[i].monthNames,"value":this.getListEmployeeVsVendor[i].employee,'value':this.getListEmployeeVsVendor[i].vendor})
+
+this.dataEmployeeVsVendor.push({"label":this.getListEmployeeVsVendor[i].monthNames})
+this.dataEmployee.push({'value':this.getListEmployeeVsVendor[i].employee})
+this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
+
+
+
+      }
+       this.dataempoyeevsvendor = {
+        chart: {
+          caption: "Reach of Social Media Platforms amoung youth",
+          yaxisname: "% of youth on this platform",
+          subcaption: "2012-2016",
+          showhovereffect: "1",
+          numbersuffix: "%",
+          drawcrossline: "1",
+          plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
+          theme: "fusion"
+        },
+        categories: [
+          {
+            category:this.dataEmployeeVsVendor
+          }
+        ],
+        dataset: [
+          {
+            seriesname: "Employee",
+            data:this.dataEmployee
+          },
+          {
+            seriesname: "Vendor",
+            data:this.dataVendor
+          },
+         
+         
+        ]
+      };
+    
+  // this.dataempoyeevsvendor = {
+  //   "chart": {
+  //     "theme": "fusion",
+  //     "subCaption": "Last month",
+  //     "xAxisName": "Reported Cause",
+  //     "pYAxisName": "No. of Occurrence",
+  //     "sYAxisname": "Cumulative Percentage",
+  //     "showValues": "0",
+  //     "showXAxisLine": "1",
+  //     'paletteColors' :'7bb7ed',
+  //     "showLineValues": "1"
+  //   },
+  // "data":this.dataEmployeeVsVendor
+  
+ 
+  // };
+
+
+
+      // this.dataempoyeevsvendor = {
+      //   chart: {
+      //     "numberPrefix": "$",
+      //     "bgColor": "#ffffff",
+      //     "startingAngle": "100",
+      //     "showLegend": "1",
+      //     "defaultCenterLabel": "",
+      //     "centerLabel": "Revenue from $label: $value",
+      //     "centerLabelBold": "1",
+      //     "showTooltip": "0",
+      //     "decimals": "0",
+      //     'paletteColors' :'7bb7ed, e4d556',
+      //     "theme": "fusion"
+      //   },
+      //   "data": this.dataEmployeeVsVendor
+      // };
+    
+    
+      })
+  }
+  
+  getListEmployeeAddition:any=[]
+  dataEmployeeAddition:any=[]
+  dataempoyeeaddition:any
+  getpbiPeopleEmployeeAddition(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.etPbiReportEmployeeAddition(year,cmpcode).subscribe(arg => {
+      this.getListEmployeeAddition=  arg.data.table
+//       designationId: 15
+// designationName: 
+      for(var i=0;i<this.getListEmployeeAddition.length;i++)
+      {
+     this.getListEmployeeVsVendor.push()
+this.dataEmployeeAddition.push({"label":this.getListEmployeeAddition[i].monthNames,"value":this.getListEmployeeAddition[i].employee})
+
+      }
+      this.dataempoyeeaddition={
+    "chart": {
+      "theme": "fusion",
+      "subCaption": "Last month",
+      "xAxisName": "Reported Cause",
+      "pYAxisName": "No. of Occurrence",
+      "sYAxisname": "Cumulative Percentage",
+      "showValues": "0",
+      "showXAxisLine": "1",
+      'paletteColors' :'7bb7ed',
+      "showLineValues": "1"
+    },
+    "data":this.dataEmployeeAddition
+  };
  
 
 
+      // this.dataempoyeevsvendor = {
+      //   chart: {
+      //     "numberPrefix": "$",
+      //     "bgColor": "#ffffff",
+      //     "startingAngle": "100",
+      //     "showLegend": "1",
+      //     "defaultCenterLabel": "",
+      //     "centerLabel": "Revenue from $label: $value",
+      //     "centerLabelBold": "1",
+      //     "showTooltip": "0",
+      //     "decimals": "0",
+      //     'paletteColors' :'7bb7ed, e4d556',
+      //     "theme": "fusion"
+      //   },
+      //   "data": this.dataEmployeeVsVendor
+      // };
+    
+    
+      })
+  }
+  getListEmployeePerformance:any=[]
+  getpbiPeopleEmployeePerformance(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportEmployeePerformance(year,cmpcode).subscribe(arg => {
+        debugger;
+      this.getListEmployeePerformance=  arg.data.table
+//       designationId: 15
+// designationName: 
 
+
+      // this.dataempoyeevsvendor = {
+      //   chart: {
+      //     "numberPrefix": "$",
+      //     "bgColor": "#ffffff",
+      //     "startingAngle": "100",
+      //     "showLegend": "1",
+      //     "defaultCenterLabel": "",
+      //     "centerLabel": "Revenue from $label: $value",
+      //     "centerLabelBold": "1",
+      //     "showTooltip": "0",
+      //     "decimals": "0",
+      //     'paletteColors' :'7bb7ed, e4d556',
+      //     "theme": "fusion"
+      //   },
+      //   "data": this.dataEmployeeVsVendor
+      // };
+    
+    
+      })
+  }
+
+
+  
+  getListEmployeeAttrition:any=[]
+  dataEmployeeAttrition:any=[]
+  dataempoyeeattrition:any
+  getpbiPeopleEmployeeAttrition(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.etPbiReportEmployeeAttrition(year,cmpcode).subscribe(arg => {
+      this.getListEmployeeAttrition=  arg.data.table
+//       designationId: 15
+// designationName: 
+      for(var i=0;i<this.getListEmployeeAttrition.length;i++)
+      {
+     this.getListEmployeeVsVendor.push()
+this.dataEmployeeAttrition.push({"label":this.getListEmployeeAttrition[i].monthNames,"value":this.getListEmployeeAttrition[i].employee})
+
+      }
+    
+  this.dataempoyeeattrition = {
+    "chart": {
+      "theme": "fusion",
+      "subCaption": "Last month",
+      "xAxisName": "Reported Cause",
+      "pYAxisName": "No. of Occurrence",
+      "sYAxisname": "Cumulative Percentage",
+      "showValues": "0",
+      "showXAxisLine": "1",
+      'paletteColors' :'7bb7ed',
+      "showLineValues": "1"
+    },
+    "data":this.dataEmployeeAttrition
+  };
+
+
+
+      // this.dataempoyeevsvendor = {
+      //   chart: {
+      //     "numberPrefix": "$",
+      //     "bgColor": "#ffffff",
+      //     "startingAngle": "100",
+      //     "showLegend": "1",
+      //     "defaultCenterLabel": "",
+      //     "centerLabel": "Revenue from $label: $value",
+      //     "centerLabelBold": "1",
+      //     "showTooltip": "0",
+      //     "decimals": "0",
+      //     'paletteColors' :'7bb7ed, e4d556',
+      //     "theme": "fusion"
+      //   },
+      //   "data": this.dataEmployeeVsVendor
+      // };
+    
+    
+      })
+  }
+
+
+  getListJobband:any=[]
+  dataJobband:any=[]
+  datajobband:any
+  getpbiPeopleJoband(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportJobband(year,cmpcode).subscribe(arg => {
+      this.getListJobband=  arg.data.table
+//       designationId: 15
+// designationName: 
+      for(var i=0;i<this.getListJobband.length;i++)
+      {
+this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.getListJobband[i].jobandId})
+      }
+      
+      this.datajobband = {
+        chart: {
+          "numberPrefix": "$",
+          "bgColor": "#ffffff",
+          "startingAngle": "100",
+          "showLegend": "1",
+          "defaultCenterLabel": "",
+          "centerLabel": "Revenue from $label: $value",
+          "centerLabelBold": "1",
+          "showTooltip": "0",
+          "decimals": "0",
+          'paletteColors' :'',
+          "theme": "fusion"
+        },
+        "data": this.dataJobband
+      };
+    
+    
+      })
+  }
+  getListLocation:any=[]
+  dataLocation:any=[]
+  datalocation:any
+  getpbiPeopleLocation(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportLocation(year,cmpcode).subscribe(arg => {
+      this.getListLocation=  arg.data.table
+//       designationId: 15
+// designationName: 
+      for(var i=0;i<this.getListLocation.length;i++)
+      {
+this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":this.getListLocation[i].locationid})
+      }
+      
+      this.datalocation = {
+        chart: {
+          "numberPrefix": "$",
+          "bgColor": "#ffffff",
+          "startingAngle": "100",
+          "showLegend": "1",
+          "defaultCenterLabel": "",
+          "centerLabel": "Revenue from $label: $value",
+          "centerLabelBold": "1",
+          "showTooltip": "0",
+          "decimals": "0",
+          'paletteColors' :'7bb7ed, e4d556,FF0000,00FF00,0000FF',
+          "theme": "fusion"
+        },
+        "data": this.dataLocation
+      };
+    
+    
+      })
+  }
+
+  getListAge:any=[]
+  dataAge:any=[]
+  dataage:any
+  totalAgeArray:any=[]
+  //colorList:any=['7bb7ed, e4d556,FF0000,00FF00,0000FF,008000,800080']
+  getpbiPeopleAge(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.dataDesignation=[]
+      this.HTTP.getPbiReportAge(year,cmpcode).subscribe(arg => {
+      this.getListAge=  arg.data.table
+//       designationId: 15
+// designationName: 
+var data20=[]
+var data25=[]
+var data30=[]
+var data35=[]
+var data40=[]
+var data45=[]
+var data50=[]
+      for(var i=0;i<this.getListAge.length;i++)
+      {
+        if(Number(this.getListAge[i].age)>20 && Number(this.getListAge[i].age)<=25)
+        {
+             data20.push(this.getListAge[i].age)
+          
+         // this.dataAge.push({"label":this.getListAge[i].locationName,"value":this.getListAge[i].locationid})
+
+        }
+        else if(Number(this.getListAge[i].age)>25 && Number(this.getListAge[i].age)<=30)
+        {
+data25.push(this.getListAge[i].age)
+        }
+        else if(Number(this.getListAge[i].age)>30 && Number(this.getListAge[i].age)<=35)
+        {
+data30.push(this.getListAge[i].age)
+        }
+        else if(Number(this.getListAge[i].age)>35 && Number(this.getListAge[i].age)<=40)
+        {
+data35.push(this.getListAge[i].age)
+        }
+        else if(Number(this.getListAge[i].age)>40 && Number(this.getListAge[i].age)<=45)
+        {
+data40.push(this.getListAge[i].age)
+        }
+        else if(Number(this.getListAge[i].age)>45 && Number(this.getListAge[i].age)<=50)
+        {
+data45.push(this.getListAge[i].age)
+        }
+        else if(Number(this.getListAge[i].age)>50){
+          data50.push(this.getListAge[i].age)
+        }
+
+      }
+      this.totalAgeArray.push({'label':'20-25','value':data20.length},{
+        'label':'25-30','value':data25.length
+      },
+      {
+        'label':'30-35','value':data30.length
+
+      },
+      {
+        'label':'35-40','value':data35.length
+
+      },
+      {
+        'label':'40-45','value':data40.length
+
+      },
+      {
+        'label':'45-50','value':data45.length
+
+      },
+      {
+        'label':'50-to','value':data50.length
+
+      }
+      )
+      
+      this.dataage = {
+        chart: {
+          "numberPrefix": "$",
+          "bgColor": "#ffffff",
+          "startingAngle": "100",
+          "showLegend": "1",
+          "defaultCenterLabel": "",
+          "centerLabel": "Revenue from $label: $value",
+          "centerLabelBold": "1",
+          "showTooltip": "0",
+          "decimals": "0",
+          'paletteColors' :'7bb7ed, e4d556,FF0000,00FF00,0000FF,008000,800080',
+          "theme": "fusion"
+        },
+        "data": this.totalAgeArray
+      };
+    
+    
+      })
+  }
+
+
+
+  // datades21 = {
+  //   chart: {
+  //     "numberPrefix": "$",
+  //     "bgColor": "#ffffff",
+  //     "startingAngle": "100",
+  //     "showLegend": "1",
+  //     "defaultCenterLabel": "",
+  //     "centerLabel": "Revenue from $label: $value",
+  //     "centerLabelBold": "1",
+  //     "showTooltip": "0",
+  //     "decimals": "0",
+  //     'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
+  //     "theme": "fusion"
+  //   },
+  //   "data": this.dataDesignation
+  // };
+  getListData:any=[]
+  currentAddtionYear:any
+  currentGrowthAddtionYearPercent:any
+  currentGrowthVendorAddtionYearPercent:any
+  currentGrowthVendorYearPercent:any
+  currentGrowthVendorattritionYearPercent:any
+  currentGrowthYearPercent:any
+  currentGrowthattritionYearPercent:any
+  currentVendorAddtionYear:any
+  currentVendorYear:any
+  currentVendorAttritionYear:any
+  currentYear:any
+  valcurrentYear:any
+  currentattritionYear:any
+  perviousYear:any
+  totalAdditionGrowthYoyYearPercent:any
+totalAdditionPreviousYear:any
+totalAdditionVendorPreviousYear:any
+totalAdditionyoyYear:any
+totalAttritionGrowthYoyYearPercent:any
+totalGrowthAdditionPreviousYearPercent:any
+totalGrowthAdditionVendorPreviousYearPercent:any
+totalAttritionyoyYear:any
+
+totalGrowthPrevousYearPercent:any
+totalGrowthVendorattritionYearPercent:any
+totalGrowthYoyYearPercent:any
+totalGrowthattritionPerviousYearPercent:any
+totalPrevousYear:any
+totalVendorAdditionGrowthYoyYearPercent:any
+
+totalVendorAdditionyoyYear:any
+totalVendorAttritionGrowthYoyYearPercent:any
+totalVendorAttritionyoyYear:any
+
+totalVendorGrowthPrevoisYearPercent:any
+totalVendorGrowthYoyYearPercent:any
+totalVendorPrevoisYear:any
+totalVendorattritionYear:any
+
+totalVendoryoyYear:any
+totalattritionPerviousYear:any
+totalyoyYear:any
+employeePercentage:any
+employeePerviousYearpercentage:any
+employeeyoyprecentage:any
+employeeAdditionPercentage:any
+employeeAdditionCurrentYearPercentage:any
+employeeAdditionyoypercentage:any
+employeeAttritionPercentage:any
+employeeAttritionCurrentPercent:any
+employeeAttritionYoyPercentage:any
+VendorCurrentYearPercentage:any
+VendorPreviousPercentage:any
+VendorYoyPercentage:any
+VendorAddtionprevousPercentage:any
+VendorAddtionCurrentPercentage:any
+VendorAddtionYoyPercentage:any
+VendorAttritionPercentage:any
+currentVendorAttritionPercentage:any
+currentVendorAttritionYoyPercentage:any
+upUrl:any="../../assets/img/up.jpg"
+downUrl:any="../../assets/img/down.jpg"
+imgUrl:any
+imgUrl1:any
+imgUrl2:any
+imgUrl3:any
+imgUrl4:any
+imgUrl5:any
+imgUrl6:any
+imgUrl7:any
+imgUrl8:any
+imgUrl9:any
+imgUrl10:any
+imgUrl11:any
+imgUrl12:any
+imgUrl13:any
+imgUrl14:any
+imgUrl15:any
+imgUrl16:any
+imgUrl17:any
+imgUrl18:any
+ getpbiPeopleDetailList(){
+try {
+  let cmpcode=1
+  let year='2022-02-20'
+  this.HTTP.getPbiReportDetail(year,cmpcode).subscribe(arg => {
+debugger
+
+  this.getListData=  arg.data.table
+  
+this.currentAddtionYear=this.getListData[0].currentAddtionYear
+this.currentGrowthAddtionYearPercent=this.getListData[0].currentGrowthAddtionYearPercent
+this.currentGrowthVendorAddtionYearPercent=this.getListData[0].currentGrowthVendorAddtionYearPercent
+this.currentGrowthVendorYearPercent=this.getListData[0].currentGrowthVendorYearPercent
+this.currentGrowthVendorattritionYearPercent=this.getListData[0].currentGrowthVendorattritionYearPercent
+this.currentGrowthYearPercent=this.getListData[0].currentGrowthYearPercent
+this.currentGrowthattritionYearPercent=this.getListData[0].currentGrowthattritionYearPercent
+this.currentVendorAddtionYear=this.getListData[0].currentVendorAddtionYear
+this.currentVendorYear=this.getListData[0].currentVendorYear
+this.currentVendorAttritionYear=this.getListData[0].currentVendorAttritionYear
+
+this.currentYear=this.getListData[0].currentYear
+this.valcurrentYear=this.getListData[0].valcurrentYear
+
+this.currentattritionYear=this.getListData[0].currentattritionYear
+this.perviousYear=this.getListData[0].perviousYear
+
+
+this.totalAdditionGrowthYoyYearPercent=this.getListData[0].totalAdditionGrowthYoyYearPercent
+
+this.totalAdditionPreviousYear=this.getListData[0].totalAdditionPreviousYear
+this.totalAdditionVendorPreviousYear=this.getListData[0].totalAdditionVendorPreviousYear
+this.totalAdditionyoyYear=this.getListData[0].totalAdditionyoyYear
+this.totalAttritionGrowthYoyYearPercent=this.getListData[0].totalAttritionGrowthYoyYearPercent
+this.totalAttritionyoyYear=this.getListData[0].totalAttritionyoyYear
+this.totalGrowthAdditionPreviousYearPercent=this.getListData[0].totalGrowthAdditionPreviousYearPercent
+this.totalGrowthAdditionVendorPreviousYearPercent=this.getListData[0].totalGrowthAdditionVendorPreviousYearPercent
+this.totalGrowthPrevousYearPercent=this.getListData[0].totalGrowthPrevousYearPercent
+this.totalGrowthVendorattritionYearPercent=this.getListData[0].totalGrowthVendorattritionYearPercent
+this.totalGrowthYoyYearPercent=this.getListData[0].totalGrowthYoyYearPercent
+this.totalGrowthattritionPerviousYearPercent=this.getListData[0].totalGrowthattritionPerviousYearPercent
+this.totalPrevousYear=this.getListData[0].totalPrevousYear
+this.totalVendorAdditionGrowthYoyYearPercent=this.getListData[0].totalVendorAdditionGrowthYoyYearPercent
+this.totalVendorAdditionyoyYear=this.getListData[0].totalVendorAdditionyoyYear
+this.totalVendorAttritionGrowthYoyYearPercent=this.getListData[0].totalVendorAttritionGrowthYoyYearPercent
+this.totalVendorAttritionyoyYear=this.getListData[0].totalVendorAttritionyoyYear
+
+this.totalVendorGrowthPrevoisYearPercent=this.getListData[0].totalVendorGrowthPrevoisYearPercent
+this.totalVendorGrowthYoyYearPercent=this.getListData[0].totalVendorGrowthYoyYearPercent
+this.totalVendorPrevoisYear=this.getListData[0].totalVendorPrevoisYear
+
+this.totalVendorattritionYear=this.getListData[0].totalVendorattritionYear
+this.totalVendoryoyYear=this.getListData[0].totalVendoryoyYear
+this.totalattritionPerviousYear=this.getListData[0].totalattritionPerviousYear
+this.totalyoyYear=this.getListData[0].totalyoyYear
+if(this.totalGrowthPrevousYearPercent==0)
+{
+  this.employeePercentage=0
+}
+else{
+  this.employeePercentage =this.totalPrevousYear-this.totalGrowthPrevousYearPercent*100/this.totalGrowthPrevousYearPercent
 
 }
+if(this.employeePercentage>0)
+{
+  this.imgUrl=this.downUrl
+}
+else{
+  this.imgUrl=this.upUrl
+}
+if(this.currentGrowthYearPercent==0)
+{
+this.employeePerviousYearpercentage=0
+}
+else{
+  this.employeePerviousYearpercentage=(this.valcurrentYear-this.currentGrowthYearPercent)*100/this.currentGrowthYearPercent
+
+}
+if(this.employeePerviousYearpercentage>0)
+{
+  this.imgUrl1=this.downUrl
+}
+else{
+  this.imgUrl1=this.upUrl
+}
+if(this.employeeyoyprecentage>0)
+{
+  this.imgUrl2=this.downUrl
+}
+else{
+  this.imgUrl2=this.upUrl
+}
+if(this.totalGrowthYoyYearPercent==0)
+{
+this.employeeyoyprecentage=0
+}
+else{
+  this.employeeyoyprecentage=(this.totalyoyYear-this.totalGrowthYoyYearPercent)/this.totalGrowthYoyYearPercent*100
+
+}
+if( this.totalGrowthAdditionPreviousYearPercent==0)
+{
+  this.employeeAdditionPercentage=0
+}
+else{
+  this.employeeAdditionPercentage=(this.totalAdditionPreviousYear-this.totalGrowthAdditionPreviousYearPercent)*100/this.totalGrowthAdditionPreviousYearPercent
+
+}
+if(this.employeeAdditionPercentage>0)
+{
+  this.imgUrl3=this.downUrl
+}
+else{
+  this.imgUrl3=this.upUrl
+}
+if(this.currentGrowthAddtionYearPercent==0)
+{
+  this.employeeAdditionCurrentYearPercentage=0
+}
+else{
+this.employeeAdditionCurrentYearPercentage=(this.currentAddtionYear-this.currentGrowthAddtionYearPercent)*100/this.currentGrowthAddtionYearPercent
+
+}
+if(this.employeeAdditionCurrentYearPercentage>0)
+{
+  this.imgUrl4=this.downUrl
+}
+else{
+  this.imgUrl4=this.upUrl
+}
+if(this.totalAdditionGrowthYoyYearPercent==0)
+{
+  this.employeeAdditionyoypercentage=0
+}
+else{
+  this.employeeAdditionyoypercentage=(this.totalAdditionyoyYear-this.totalAdditionGrowthYoyYearPercent)*100/this.totalAdditionGrowthYoyYearPercent
+
+}
+if(this.employeeAdditionyoypercentage>0)
+{
+  this.imgUrl5=this.downUrl
+}
+else{
+  this.imgUrl5=this.upUrl
+}
+
+if(this.totalGrowthattritionPerviousYearPercent==0)
+{
+  this.employeeAttritionPercentage=0
+}
+else{
+  this.employeeAttritionPercentage=(this.totalattritionPerviousYear-this.totalGrowthattritionPerviousYearPercent)*100/this.totalattritionPerviousYear
+
+}
+if(this.employeeAttritionPercentage>0)
+{
+  this.imgUrl6=this.downUrl
+}
+else{
+  this.imgUrl6=this.upUrl
+}
+debugger;
+if(this.currentGrowthattritionYearPercent==0)
+{
+this.employeeAttritionCurrentPercent=0
+}
+else{
+  this.employeeAttritionCurrentPercent=(this.currentattritionYear-this.currentGrowthattritionYearPercent)*100/this.currentGrowthattritionYearPercent
+}
+if(this.employeeAttritionCurrentPercent>0)
+{
+  this.imgUrl7=this.downUrl
+}
+else{
+  this.imgUrl7=this.upUrl
+}
+
+if(this.totalAttritionGrowthYoyYearPercent==0)
+{
+  this.employeeAttritionYoyPercentage=0
+}
+else if(this.totalAttritionGrowthYoyYearPercent==0)
+{
+  this.employeeAttritionYoyPercentage=0
+
+}
+else{
+  this.employeeAttritionYoyPercentage=(this.totalAttritionyoyYear-this.totalAttritionGrowthYoyYearPercent)*100/this.totalAttritionGrowthYoyYearPercent
+
+}
+if(this.employeeAttritionYoyPercentage>0)
+{
+  this.imgUrl8=this.downUrl
+}
+else{
+  this.imgUrl8=this.upUrl
+}
+if(this.totalVendorGrowthPrevoisYearPercent==0)
+{
+  this.VendorPreviousPercentage=0
+}
+else{
+this.VendorPreviousPercentage=(this.totalVendorPrevoisYear-this.totalVendorGrowthPrevoisYearPercent)*100/this.totalVendorGrowthPrevoisYearPercent
+
+}
+if(this.VendorPreviousPercentage>0)
+{
+  this.imgUrl9=this.downUrl
+}
+else{
+  this.imgUrl9=this.upUrl
+}
+
+if(this.currentGrowthVendorYearPercent==0)
+{
+  this.VendorCurrentYearPercentage=0
+}
+else{
+this.VendorCurrentYearPercentage=(this.currentVendorYear-this.currentGrowthVendorYearPercent)*100/this.currentGrowthVendorYearPercent
+}
+if(this.VendorCurrentYearPercentage>0)
+{
+  this.imgUrl10=this.downUrl
+}
+else{
+  this.imgUrl10=this.upUrl
+}
+if(this.totalVendorGrowthYoyYearPercent==0)
+{
+  this.VendorYoyPercentage=0
+}
+else{
+this.VendorYoyPercentage=(this.totalVendoryoyYear-this.totalVendorGrowthYoyYearPercent)*100/this.totalVendorGrowthYoyYearPercent
+
+}
+if(this.VendorYoyPercentage>0)
+{
+  this.imgUrl11=this.downUrl
+}
+else{
+  this.imgUrl11=this.upUrl
+}
+if(this.totalGrowthAdditionVendorPreviousYearPercent==0)
+{
+  this.VendorAddtionprevousPercentage=0
+}
+else{
+this.VendorAddtionprevousPercentage=(this.totalAdditionVendorPreviousYear-this.totalGrowthAdditionVendorPreviousYearPercent)*100/this.totalGrowthAdditionVendorPreviousYearPercent
+}
+if(this.VendorAddtionprevousPercentage>0)
+{
+  this.imgUrl12=this.downUrl
+}
+else{
+  this.imgUrl12=this.upUrl
+}
+if(this.currentGrowthVendorAddtionYearPercent==0)
+{
+  this.VendorAddtionCurrentPercentage=0
+}
+else{
+this.VendorAddtionCurrentPercentage=(this.currentVendorAddtionYear-this.currentGrowthVendorAddtionYearPercent)*100/this.currentGrowthVendorAddtionYearPercent
+}
+if(this.VendorAddtionCurrentPercentage>0)
+{
+  this.imgUrl13=this.downUrl
+}
+else{
+  this.imgUrl13=this.upUrl
+}
+if(this.totalVendorAdditionGrowthYoyYearPercent==0)
+{
+  this.VendorAddtionYoyPercentage=0
+}
+else{
+this.VendorAddtionYoyPercentage=(this.totalVendorAdditionyoyYear-this.totalVendorAdditionGrowthYoyYearPercent)*100/this.totalVendorAdditionGrowthYoyYearPercent
+}
+if(this.VendorAddtionYoyPercentage>0)
+{
+  this.imgUrl14=this.downUrl
+}
+else{
+  this.imgUrl14=this.upUrl
+}
+if(this.totalGrowthVendorattritionYearPercent==0)
+{
+  this.VendorAttritionPercentage=0
+}
+else{
+this.VendorAttritionPercentage=(this.totalVendorattritionYear-this.totalGrowthVendorattritionYearPercent)*100/this.totalGrowthVendorattritionYearPercent
+}
+if(this.VendorAttritionPercentage>0)
+{
+  this.imgUrl15=this.downUrl
+}
+else{
+  this.imgUrl15=this.upUrl
+}
+if(this.totalGrowthVendorattritionYearPercent==0)
+{
+  this.currentVendorAttritionPercentage=0
+}
+else{
+this.currentVendorAttritionPercentage=(this.currentVendorAttritionYear-this.currentGrowthVendorattritionYearPercent)*100/this.currentGrowthVendorattritionYearPercent
+}
+if(this.currentVendorAttritionPercentage>0)
+{
+  this.imgUrl16=this.downUrl
+}
+else{
+  this.imgUrl16=this.upUrl
+}
+if(this.totalVendorAttritionGrowthYoyYearPercent==0)
+{
+  this.currentVendorAttritionYoyPercentage=0
+}
+else{
+this.currentVendorAttritionYoyPercentage=(this.totalVendorAttritionyoyYear-this.totalVendorAttritionGrowthYoyYearPercent)*100/this.totalVendorAttritionGrowthYoyYearPercent
+}
+if(this.currentVendorAttritionYoyPercentage>0)
+{
+  this.imgUrl17=this.downUrl
+}
+else{
+  this.imgUrl17=this.upUrl
+}
+})
+
+  
+} catch (error) {
+
+}
+
+  }
+
+}
+
+
+
+
+
+
+

@@ -66,9 +66,13 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     let auth = this.common.GetLocalauth()
-    if(auth != null || auth != undefined){
-      this.router.navigate(['Dashboard']);
-    }
+    // if(auth != null || auth != undefined){
+    //   this.router.navigate(['Dashboard']);
+    // }
+       this.router.navigate(['PowerBIReport']);
+
+
+    
 
   
 
@@ -87,10 +91,12 @@ export class LoginComponent implements OnInit {
     return
    }
    this.Require =  false
+   let encryptedPassworda  = forge.util.binary.hex.encode(forge.pkcs5.pbkdf2(val.form.value.password, 'a salt', 1000, 256/8));
+
    let encryptedPassword  = forge.util.binary.hex.encode(forge.pkcs5.pbkdf2(val.form.value.password, 'a salt', 1000, 256/8));
-   let password = encryptedPassword
+   let password = encryptedPassworda
    try {
-    this.Http.loginUser(val.form.value.username,  password).subscribe( res =>{
+    this.Http.loginUser(val.form.value.username,  password,null).subscribe( res =>{
       debugger;
 
         
