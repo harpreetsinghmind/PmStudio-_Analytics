@@ -394,6 +394,37 @@ getPbiReportDetail(year,cmpcode): Observable<any> {
     
 }
 
+getPbiProjectDetail(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDetail?year=`+year+"&cmpcode="+cmpcode
+
+  //const URL ="${environment.apiUrl}pbiPeople/GetPbiProjectDetail?year="+year+"&cmpcode="+cmpcode;
+ //const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDetail?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+  
+    
+}
+
+getPbiPeopleResources(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+
+  //const URL ="${environment.apiUrl}pbiPeople/GetPbiPeopleResourceEmployee?year="+year+"&cmpcode="+cmpcode;
+  const URL=`${environment.apiUrl}pbiPeople/GetPbiPeopleResourceEmployee?year=`+year+"&cmpcode="+cmpcode
+ //const URL ="http://localhost:63000/api/pbiPeople/GetPbiPeopleResourceEmployee?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+  
+    
+}
 getPbiReportDesignation(year,cmpcode): Observable<any> {
   // debugger;
   const headers = new HttpHeaders();

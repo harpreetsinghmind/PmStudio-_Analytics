@@ -32,7 +32,7 @@ import { ProgressBarModule } from '@syncfusion/ej2-angular-progressbar';
 import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-angular-schedule';
 import  * as TreeMap from 'fusioncharts/fusioncharts.treemap';
 import * as Overlappedcolumn2d from "fusioncharts/fusioncharts.overlappedcolumn2d";
-
+import { DatePipe } from '@angular/common';
 
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme,PowerCharts,TreeMap,Overlappedcolumn2d);
 import { FusionChartsModule } from "angular-fusioncharts";
@@ -83,7 +83,9 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
   ],
   providers: [ExcelExportService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    AuthGuard
+    AuthGuard,
+    DatePipe,
+
   ],
 
   bootstrap: [AppComponent]

@@ -1,11 +1,11 @@
 <div class="jumbotron expensereport">
     <div class="reports-pages">
       <div class="row report-row" style="padding: 5px 0;">
-        <div class="col-md-8 no-padding" style="text-align: left;">
+        <div class="col-md-10 no-padding" style="text-align: left;">
           <h4 class="title-new title-new-100">Analytics Report</h4>
         </div>
 
-        <div class="col-md-2">
+        <!-- <div class="col-md-2">
           <select class="form-control">
             <option>Select Customer</option>
           </select>
@@ -15,6 +15,10 @@
           <select class="form-control">
             <option>Select Project</option>
           </select>
+        </div> -->
+
+        <div class="col-md-2">
+          <input type="date" [(ngModel)]="getDate" (change)="changeDate($event)" class="form-control">
         </div>
 
 
@@ -1629,12 +1633,12 @@
                 <a class="nav-link" data-toggle="tab" href="#performance" role="tab">Employee Performance</a>
               </li>
 
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#xyz" role="tab">XYZ</a>
-              </li>
+              </li> -->
 
               </ul>
-
+           
            <div class="tab-content">
              <div class="tab-pane active" id="overviewpeople" role="tabpanel">
               <div class="card-body">
@@ -1642,29 +1646,37 @@
                   <div class="boxExpense">
                     <h4>Employee Headcount & Growth Rate</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p>{{perviousYear}}</p><p>{{currentYear}}</p></div>
+                      <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
-                        <p>Month (Feb)</p>
+                        <p>Month ({{monthName}})</p>
+                        <p><span>{{valcurrentYear}} |</span><span>{{employeePerviousYearpercentage | number :'1.2-2'}}%</span>
+                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{imgUrl1}}">
+
+                        </p>
                         <p><span>{{totalPrevousYear}} |</span><span>{{employeePercentage | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <!-- <img src="../../assets/img/down.jpg"> -->
                           <img src="{{imgUrl}}">
 
                         </p>
-                        <p><span>{{valcurrentYear}} |</span><span>{{employeePerviousYearpercentage | number :'1.2-2'}}%</span>
-                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
-                          <img src="{{imgUrl1}}">
-
-                        </p>
+                      
                       </div>
                       <div>
                         <p>YOY</p>
+                        <p><span>{{totalCurrentyoyYear}} |</span><span>{{totalCurrentGrowthyoyPercent | number :'1.2-2'}}%
+
+                        </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgUrl19}}">
+                        
+                      </p>
                         <p><span>{{totalyoyYear}} |</span><span>{{employeeyoyprecentage | number :'1.2-2'}}%
 
                         </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl2}}">
                         
                       </p>
+                      
 
                       </div>
                     </div>
@@ -1673,29 +1685,35 @@
                   <div class="boxExpense boxExpenseSpace">
                     <h4>Employee addition & growth rate</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p>{{perviousYear}}</p><p>{{currentYear}}</p></div>
+                      <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
-                        <p>Month (Feb)</p>
-                        <p><span>{{totalAdditionPreviousYear}} |</span><span>{{employeeAdditionPercentage | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
-                          <img src="{{imgUrl3}}">
-                        
-                        </p>
+                        <p>Month ({{monthName}})</p>
                         <p><span>{{currentAddtionYear}} |</span><span>{{employeeAdditionCurrentYearPercentage | number :'1.2-2'}}%
 
                         </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl4}}">
                       
                       </p>
+                        <p><span>{{totalAdditionPreviousYear}} |</span><span>{{employeeAdditionPercentage | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{imgUrl3}}">
+                        
+                        </p>
+                       
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{totalAdditionyoyYear}}|</span><span>{{employeeAdditionyoypercentage | number :'1.2-2'}}%
+                        <p><span>{{totalCurrentAdditionyoyYear}}|</span><span>{{totalGrowthCurrentAdditionyoyYearPercent | number :'1.2-2'}}%
 
-                        </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
-                        <img src="{{imgUrl5}}">
+                        </span>
+                        <img src="{{imgUrl21}}">
                       
                       </p>
+                      <p><span>{{totalAdditionyoyYear}}|</span><span>{{employeeAdditionyoypercentage | number :'1.2-2'}}%
 
+                      </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                      <img src="{{imgUrl5}}">
+                    
+                    </p>
                       </div>
                     </div>
                   </div>
@@ -1703,15 +1721,9 @@
                   <div class="boxExpense">
                     <h4>Employee attrition & growth rate</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p>{{perviousYear}}</p><p>{{currentYear}}</p></div>
+                      <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
-                        <p>Month (Feb)</p>
-                        <p><span>{{totalattritionPerviousYear}} |</span>
-                          <span>{{employeeAttritionPercentage | number :'1.2-2'}}%</span>
-                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
-                          <img src="{{imgUrl6}}">
-
-                        </p>
+                        <p>Month ({{monthName}})</p>
                         <p><span>{{currentattritionYear}} |</span><span>
                           {{employeeAttritionCurrentPercent}}
                           %
@@ -1719,9 +1731,22 @@
                         <img src="{{imgUrl7}}">
                       
                       </p>
+                        <p><span>{{totalattritionPerviousYear}} |</span>
+                          <span>{{employeeAttritionPercentage | number :'1.2-2'}}%</span>
+                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{imgUrl6}}">
+
+                        </p>
+                        
                       </div>
                       <div>
                         <p>YOY</p>
+                        <p><span>{{totalCurrentAttritionyoyYear}}|</span><span>
+                          {{totalCurrentGrowthAttritionyoyYearPercent}}
+                          %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                          <img src="{{imgUrl23}}">
+                        
+                        </p>
                         <p><span>{{totalAttritionyoyYear}}|</span><span>
                           {{employeeAttritionYoyPercentage}}
                           %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
@@ -1738,22 +1763,28 @@
                 <div class="boxExpense">
                   <h4>Vendor Headcount & Growth Rate</h4>
                   <div class="expenseValue">
-                    <div class="YearValue"><p>{{perviousYear}}</p><p>{{currentYear}}</p></div>
+                    <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
-                      <p>Month (Feb)</p>
-                      <p><span>{{totalVendorPrevoisYear}} |</span>
-                        <span>{{VendorPreviousPercentage | number :'1.2-2'}}%</span>
-                        <img src="{{imgUrl9}}">
-
-                        <span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      <p>Month ({{monthName}})</p>
                       <p><span>{{currentVendorYear}} |</span><span>{{VendorCurrentYearPercentage | number :'1.2-2'}}%</span>
                         <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl10}}">
                       
                       </p>
+                      <p><span>{{totalVendorPrevoisYear}} |</span>
+                        <span>{{VendorPreviousPercentage | number :'1.2-2'}}%</span>
+                        <img src="{{imgUrl9}}">
+
+                        <span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                    
                     </div>
                     <div>
                       <p>YOY</p>
+                      <p><span>{{totalVendorCurrentyoyYear}} |</span><span>{{totalVendorCurrentGrowthYoyPercent | number :'1.2-2'}}%</span>
+                        <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgUrl20}}">
+                      
+                      </p>
                       <p><span>{{totalVendoryoyYear}} |</span><span>{{VendorYoyPercentage | number :'1.2-2'}}%</span>
                         <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl11}}">
@@ -1767,15 +1798,9 @@
                 <div class="boxExpense boxExpenseSpace">
                   <h4>Vendor addition & growth rate</h4>
                   <div class="expenseValue">
-                    <div class="YearValue"><p>{{perviousYear}}</p><p>{{currentYear}}</p></div>
+                    <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
-                      <p>Month (Feb)</p>
-                      <p><span>{{totalAdditionVendorPreviousYear}}|</span>
-                        <span>{{VendorAddtionprevousPercentage | number :'1.2-2'}}%</span>
-                        <img src="{{imgUrl12}}">
-                        
-                        <span class="glyphicon glyphicon-arrow-up upgrowth">
-                      </span><i class="bi bi-arrow-up-short"></i></p>
+                      <p>Month ({{monthName}})</p>
                       <p><span>{{currentVendorAddtionYear}} |</span><span>
                         {{VendorAddtionCurrentPercentage}}
                         %
@@ -1783,9 +1808,22 @@
                       <img src="{{imgUrl13}}">
 
                     </p>
+                      <p><span>{{totalAdditionVendorPreviousYear}}|</span>
+                        <span>{{VendorAddtionprevousPercentage | number :'1.2-2'}}%</span>
+                        <img src="{{imgUrl12}}">
+                        
+                        <span class="glyphicon glyphicon-arrow-up upgrowth">
+                      </span><i class="bi bi-arrow-up-short"></i></p>
+                      
                     </div>
                     <div>
                       <p>YOY</p>
+                      <p><span>{{totalVendorCurrentAdditionyoyYear}} |</span><span>
+                        {{totalVendorGrowthCurrentAdditionyoyYearPercent}}
+                        %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgUrl22}}">
+                      
+                      </p>
                       <p><span>{{totalVendorAdditionyoyYear}} |</span><span>
                         {{VendorAddtionYoyPercentage}}
                         %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
@@ -1800,24 +1838,31 @@
                 <div class="boxExpense">
                   <h4>Vendor attrition & growth rate</h4>
                   <div class="expenseValue">
-                    <div class="YearValue"><p>{{perviousYear}}</p><p>{{currentYear}}</p></div>
+                    <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
-                      <p>Month (Feb)</p>
-                      <p><span>{{totalVendorattritionYear}} |</span><span>
-                        {{VendorAttritionPercentage}}
-                        %
-                        <img src="{{imgUrl15}}">
-
-                      </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      <p>Month ({{monthName}})</p>
                       <p><span>{{currentVendorAttritionYear}} |</span><span>
                         {{currentVendorAttritionPercentage}}
                         %
                         <img src="{{imgUrl16}}">
 
                       </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                      <p><span>{{totalVendorattritionYear}} |</span><span>
+                        {{VendorAttritionPercentage}}
+                        %
+                        <img src="{{imgUrl15}}">
+
+                      </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                     
                     </div>
                     <div>
                       <p>YOY</p>
+                      <p><span>{{totalVendorCurrentAttritionyoyYear}} |</span><span>
+                        {{totalVendorCurrentGrowthAttritionyoyYearPercent}}
+                        %
+                        <img src="{{imgUrl24}}">
+
+                      </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
                       <p><span>{{totalVendorAttritionyoyYear}} |</span><span>
                         {{currentVendorAttritionYoyPercentage}}
                         %
@@ -1858,9 +1903,9 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="pareto2d"
+                    type="scrollstackedcolumn2d"
                     dataFormat="json"
-                    [dataSource]="datades23">
+                    [dataSource]="totalData">
                 </fusioncharts>
                   </div>
                 </div>
@@ -1897,7 +1942,7 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="pareto2d"
+                    type="scrollcombidy2d"
                     dataFormat="json"
                     [dataSource]="dataempoyeeaddition">
 
@@ -1916,7 +1961,7 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="pareto2d"
+                    type="scrollcombidy2d"
                     dataFormat="json"
                     [dataSource]="dataempoyeeattrition">
 
@@ -2167,13 +2212,13 @@
                         <div class="expenseValue">
                           <div class="YearValue"><p>Open</p><p>Close</p></div>
                           <div>
-                            <p>Month (Feb)</p>
-                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p>Month ({{monthName}})</p>
+                            <p><span>{{totalOpenProject}} |</span><span>{{totalGrowthOpenProjectPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p><span>{{totalCloseProject}} |</span><span>{{totalGrowthCloseProjectPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                           </div>
                           <div>
                             <p>YOY</p>
-                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                            <p><span>{{totalProjectyoyYear}} |</span><span>{{totalGrowthProjectYoyYearPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
 
                           </div>
                         </div>
@@ -2186,13 +2231,13 @@
                         <div class="expenseValue">
                           <div class="YearValue"><p>Revenue</p><p>Cost</p></div>
                           <div>
-                            <p>Month (Feb)</p>
-                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p>Month ({{monthName}})</p>
+                            <p><span>{{revenue}} |</span><span>{{revenuePercentageGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p><span>{{cost}} |</span><span>{{costPercentageGrowthValue}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                           </div>
                           <div>
                             <p>YOY</p>
-                            <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                            <p><span>{{revenueCostTotalYoy}} |</span><span>{{revenueCostTotalYoyPercent}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
 
                           </div>
                         </div>
@@ -2212,13 +2257,13 @@
                           <div class="expenseValue">
                             <div class="YearValue"><p>Total</p><p>Onbench</p></div>
                             <div>
-                              <p>Month (Feb)</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>Month ({{monthName}})</p>
+                              <p><span>{{totalResource}} |</span><span>{{totalResourcePercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{onBenchTotalResource}} |</span><span>{{onBenchTotalResourcePercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{onBenchTotalYoy}} |</span><span>{{onBenchTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
 
                             </div>
                           </div>
@@ -2230,13 +2275,13 @@
                           <div class="expenseValue">
                             <div class="YearValue"><p>Service Provider</p><p>Vendor</p></div>
                             <div>
-                              <p>Month (Feb)</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>Month ({{monthName}})</p>
+                              <p><span>{{serviceProviderTotalResource}} |</span><span>{{serviceProviderTotalResourcePercentageGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{vendorTotalResource}} |</span><span>{{vendorTotalResourcePercentageGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{vendorTotalYoy}} |</span><span>{{vendorTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
 
                             </div>
                           </div>
@@ -2253,13 +2298,13 @@
                           <div class="expenseValue">
                             <div class="YearValue"><p>Total Leave</p><p>Avg. Leave</p></div>
                             <div>
-                              <p>Month (Feb)</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>Month ({{monthName}})</p>
+                              <p><span>{{totalLeaveResource}} |</span><span>{{totalLeaveResourcePercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{avgLeaveTotal}} |</span><span>{{avgLeaveTotalPercentage}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{leaveTotalYoy}} |</span><span>{{leaveTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
 
                             </div>
                           </div>
@@ -2271,13 +2316,13 @@
                           <div class="expenseValue">
                             <div class="YearValue"><p>Billable</p><p>Non Billable</p></div>
                             <div>
-                              <p>Month (Feb)</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>Month ({{monthName}})</p>
+                              <p><span>{{billableResourceTotal}} |</span><span>{{billableResourceTotalPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{nonBillableResourceTotal}} |</span><span>{{nonBillableResourceTotalPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{nonBillableResourceTotalYoy}} |</span><span>{{nonBillableResourceTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
 
                             </div>
                           </div>
@@ -2819,7 +2864,7 @@
                     <div class="expenseValue">
                       <div class="YearValue"><p>2021</p><p>2022</p></div>
                       <div>
-                        <p>Month (Feb)</p>
+                        <p>Month ({{monthName}})</p>
                         <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                         <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                       </div>
@@ -2836,7 +2881,7 @@
                     <div class="expenseValue">
                       <div class="YearValue"><p>2021</p><p>2022</p></div>
                       <div>
-                        <p>Month (Feb)</p>
+                        <p>Month ({{monthName}})</p>
                         <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                         <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                       </div>
@@ -2853,7 +2898,7 @@
                     <div class="expenseValue">
                       <div class="YearValue"><p>2021</p><p>2022</p></div>
                       <div>
-                        <p>Month (Feb)</p>
+                        <p>Month ({{monthName}})</p>
                         <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                         <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
                       </div>

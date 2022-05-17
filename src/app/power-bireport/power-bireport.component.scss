@@ -19,7 +19,7 @@ p.context {
 
 .expenseValue img {
   width: 10px;
-  margin-left: 2px;
+  margin-left: 2px;transform: rotate(180deg);
 }
 
   .CurrentYearBox h5 {
@@ -793,7 +793,7 @@ p.context {
     justify-content: space-between;
   }
 
-  .ChartRowHead a{font-size: 15px; color: #49b4fc;}
+  .ChartRowHead a{font-size: 15px; color: #49b4fc; display: none;}
 
   .ChartRowColRightMargin{ }
   .ChartRowColLefttMargin{ margin-left: 10px; margin-right: 10px; }
