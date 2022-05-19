@@ -590,6 +590,34 @@ getPbiReportAge(year,cmpcode): Observable<any> {
   return this.httpClient.get(URL,{headers:headers})
 
 }
+getPbiProjectEmployeeVsVendor(year,cmpcode): Observable<any> {
+   debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectEmployeeVsVendor?year=`+year+"&cmpcode="+cmpcode
+
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectEmployeeVsVendor?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectEmployeeVsVendor?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+
+getPbiProjectDeployeeVsBench(year,cmpcode): Observable<any> {
+ const headers = new HttpHeaders();
+ // let token = this.authService.getToken();
+ // headers.append('Authorization', `bearer ${token}`)
+ headers.append('Content-Type', 'application/json');
+ const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDeployeVsBench?year=`+year+"&cmpcode="+cmpcode
+
+// const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectEmployeeVsVendor?year="+year+"&cmpcode="+cmpcode;
+ //const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDeployeVsBench?year="+year+"&cmpcode="+cmpcode;
+
+ return this.httpClient.get(URL,{headers:headers})
+
+}
 
 
 }

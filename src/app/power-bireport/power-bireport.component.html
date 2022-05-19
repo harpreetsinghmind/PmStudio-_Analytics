@@ -1630,7 +1630,7 @@
                 <a class="nav-link active" data-toggle="tab" href="#overviewpeople" role="tab">Overview</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#performance" role="tab">Employee Performance</a>
+                <a class="nav-link" data-toggle="tab" href="#performance" (click)="getPerformance()" role="tab">Employee Performance</a>
               </li>
 
               <!-- <li class="nav-item">
@@ -1884,7 +1884,7 @@
                   <fusioncharts
                   width="100%"
                   height="400"
-                  type="msstackedcolumn2dlinedy"
+                  type="column2d"
                   dataFormat="json"
                   [dataSource]="tentureDetails">
               </fusioncharts>
@@ -1979,7 +1979,7 @@
               <div class="col-md-12 no-padding ChartRow">
                 <div class="ChartRowCol ChartRowColRightMargin">
                   <div class="ChartRowHead">
-                    <h4 class="headingFour">Designation (Top 30)</h4>
+                    <h4 class="headingFour">Designation</h4>
                     <a href="#">Detailed Report</a>
                   </div>
 
@@ -1996,7 +1996,7 @@
 
                 <div class="ChartRowCol ChartRowColLefttMargin">
                   <div class="ChartRowHead">
-                    <h4 class="headingFour">Department (Top 30)</h4>
+                    <h4 class="headingFour">Department </h4>
                     <a href="#">Detailed Report</a>
                   </div>
 
@@ -2018,7 +2018,7 @@
               <div class="col-md-12 no-padding ChartRow">
                 <div class="ChartRowCol ChartRowColRightMargin">
                   <div class="ChartRowHead">
-                    <h4 class="headingFour">Location (Top 30)</h4>
+                    <h4 class="headingFour">Location </h4>
                     <a href="#">Detailed Report</a>
                   </div>
 
@@ -2104,12 +2104,12 @@
                   </div>
 
                   <div class="table-responsive tableBorders">
-                    <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListEmployeePerformance' rowHeight='38' 
+                    <ejs-grid #overviewgrid id='overviewgrid'  [frozenRows]='0' [frozenColumns]='1'    [dataSource]='getListEmployeePerformance' rowHeight='38' 
           [allowSorting]='true' height='600' [enableHover]='false'
           [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
            [allowPaging]='true' [allowExcelExport]='true' >
           <e-columns>
-            <e-column field='userName' headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
+            <e-column field='userName' headerText='Name' [freeze]="true" [filter]='filter' clipMode='EllipsisWithTooltip'>
               <ng-template #template let-data>
                 <span>
 
@@ -2134,9 +2134,9 @@
               </e-column>
               <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-             <e-column field='totalPRoject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+             <e-column field='totalProject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
                 <ng-template #template let-data>
-                  {{(data.totalPRoject)}}
+                  {{(data.totalProject)}}
                 </ng-template>
               </e-column>
 
@@ -2213,12 +2213,25 @@
                           <div class="YearValue"><p>Open</p><p>Close</p></div>
                           <div>
                             <p>Month ({{monthName}})</p>
-                            <p><span>{{totalOpenProject}} |</span><span>{{totalGrowthOpenProjectPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                            <p><span>{{totalCloseProject}} |</span><span>{{totalGrowthCloseProjectPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p><span>{{totalOpenProject}} |</span><span>{{totalGrowthOpenProjectPercentGrowth  | number :'1.2-2'}}%
+
+                            </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgtotalGrowthOpenProjectPercentGrowth}}">
+                          
+                          </p>
+                            <p><span>{{totalCloseProject}} |</span><span>{{totalGrowthCloseProjectPercentGrowth  | number :'1.2-2'}}%</span>
+                              <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgtotalGrowthCloseProjectPercentGrowth}}">
+                            
+                            </p>
                           </div>
                           <div>
                             <p>YOY</p>
-                            <p><span>{{totalProjectyoyYear}} |</span><span>{{totalGrowthProjectYoyYearPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                            <p><span>{{totalProjectyoyYear}} |</span><span>{{totalGrowthProjectYoyYearPercentGrowth  | number :'1.2-2'}}%</span>
+                              <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgtotalGrowthProjectYoyYearPercentGrowth}}">
+                            
+                            </p>
 
                           </div>
                         </div>
@@ -2232,12 +2245,24 @@
                           <div class="YearValue"><p>Revenue</p><p>Cost</p></div>
                           <div>
                             <p>Month ({{monthName}})</p>
-                            <p><span>{{revenue}} |</span><span>{{revenuePercentageGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                            <p><span>{{cost}} |</span><span>{{costPercentageGrowthValue}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                            <p><span>{{revenue}} |</span><span>{{revenuePercentageGrowthPercent  | number :'1.2-2'}}%</span>
+                              <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgrevenuePercentageGrowthPercent}}">
+                            
+                            </p>
+                            <p><span>{{cost}} |</span><span>{{+costPercentageGrowthValue  | number :'1.2-2'}}%</span>
+                              <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgcostPercentageGrowthValue}}">
+                            
+                            </p>
                           </div>
                           <div>
                             <p>YOY</p>
-                            <p><span>{{revenueCostTotalYoy}} |</span><span>{{revenueCostTotalYoyPercent}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                            <p><span>{{revenueCostTotalYoy}} |</span><span>{{revenueCostTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
+                              <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgrevenueCostTotalYoyPercentGrowth}}">
+                            
+                            </p>
 
                           </div>
                         </div>
@@ -2258,12 +2283,29 @@
                             <div class="YearValue"><p>Total</p><p>Onbench</p></div>
                             <div>
                               <p>Month ({{monthName}})</p>
-                              <p><span>{{totalResource}} |</span><span>{{totalResourcePercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>{{onBenchTotalResource}} |</span><span>{{onBenchTotalResourcePercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{totalResource}} |</span><span>{{totalResourcePercentGrowth  | number :'1.2-2'}}%
+
+                              </span>
+                        <img src="{{imgtotalResourcePercentGrowth}}">
+                        <!-- <img src="{{imgonBenchTotalResourcePercentGrowth}}"> -->
+
+                            
+                            </p>
+                              <p><span>{{onBenchTotalResource}} |</span><span>{{onBenchTotalResourcePercentGrowth  | number :'1.2-2'}}%
+
+                              </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgonBenchTotalResourcePercentGrowth}}">
+                            
+                            </p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>{{onBenchTotalYoy}} |</span><span>{{onBenchTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{onBenchTotalYoy}} |</span><span>{{onBenchTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
+                                <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgonBenchTotalYoyPercentGrowth}}">
+                              
+                              
+                              </p>
 
                             </div>
                           </div>
@@ -2276,12 +2318,23 @@
                             <div class="YearValue"><p>Service Provider</p><p>Vendor</p></div>
                             <div>
                               <p>Month ({{monthName}})</p>
-                              <p><span>{{serviceProviderTotalResource}} |</span><span>{{serviceProviderTotalResourcePercentageGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>{{vendorTotalResource}} |</span><span>{{vendorTotalResourcePercentageGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{serviceProviderTotalResource}} |</span><span>{{serviceProviderTotalResourcePercentageGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgserviceProviderTotalResourcePercentageGrowth}}">
+                              
+                              </p>
+                              <p><span>{{vendorTotalResource}} |</span><span>{{vendorTotalResourcePercentageGrowth | number :'1.2-2'}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgvendorTotalResourcePercentageGrowth}}">
+                              
+                              </p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>{{vendorTotalYoy}} |</span><span>{{vendorTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{vendorTotalYoy}} |</span><span>{{vendorTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
+                                <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgvendorTotalYoyPercentGrowth}}">
+                              
+                              </p>
 
                             </div>
                           </div>
@@ -2299,12 +2352,26 @@
                             <div class="YearValue"><p>Total Leave</p><p>Avg. Leave</p></div>
                             <div>
                               <p>Month ({{monthName}})</p>
-                              <p><span>{{totalLeaveResource}} |</span><span>{{totalLeaveResourcePercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>{{avgLeaveTotal}} |</span><span>{{avgLeaveTotalPercentage}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{totalLeaveResource}} |</span><span>{{totalLeaveResourcePercentGrowth  | number :'1.2-2'}}%
+
+                              </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgtotalLeaveResourcePercentGrowth}}">
+                            
+                            </p>
+                              <p><span>{{avgLeaveTotal}} |</span><span>{{avgLeaveTotalPercentage  | number :'1.2-2'}}%
+
+                              </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgavgLeaveTotalPercentage}}">
+                            
+                            </p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>{{leaveTotalYoy}} |</span><span>{{leaveTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{leaveTotalYoy}} |</span><span>{{leaveTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
+                                <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgleaveTotalYoyPercentGrowth}}">
+                              
+                              </p>
 
                             </div>
                           </div>
@@ -2317,12 +2384,29 @@
                             <div class="YearValue"><p>Billable</p><p>Non Billable</p></div>
                             <div>
                               <p>Month ({{monthName}})</p>
-                              <p><span>{{billableResourceTotal}} |</span><span>{{billableResourceTotalPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>{{nonBillableResourceTotal}} |</span><span>{{nonBillableResourceTotalPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p><span>{{billableResourceTotal}} |</span><span>{{billableResourceTotalPercentGrowth  | number :'1.2-2'}}%
+
+
+
+                              </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <img src="{{imgbillableResourceTotalPercentGrowth}}">
+                            
+                            </p>
+                              <p><span>{{nonBillableResourceTotal}} |</span><span>{{nonBillableResourceTotalPercentGrowth  | number :'1.2-2'}}%</span>
+                                
+                        <img src="{{imgnonBillableResourceTotalPercentGrowth}}">
+
+                        
+                              </p>
                             </div>
                             <div>
                               <p>YOY</p>
-                              <p><span>{{nonBillableResourceTotalYoy}} |</span><span>{{nonBillableResourceTotalYoyPercentGrowth}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                              <p><span>{{nonBillableResourceTotalYoy  | number :'1.2-2'}} |</span><span>
+                                {{nonBillableResourceTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
+                                <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <img src="{{imgnonBillableResourceTotalYoyPercentGrowth}}">
+                              
+                              </p>
 
                             </div>
                           </div>
@@ -2362,15 +2446,24 @@
                           <a href="#">Detailed Report</a>
                         </div>
 
-                        <div class="chartBox">
+                        <!-- <div class="chartBox">
                           <fusioncharts
                           width="100%"
                           height="400"
-                          type="pareto2d"
+                          type="scrollcolumn2d"
                           dataFormat="json"
-                          [dataSource]="datades23">
+                          [dataSource]="dataprojectEmployeevsvendor">
                       </fusioncharts>
-                        </div>
+                        </div> -->
+                        <div class="chartBox">
+                          <fusioncharts
+                         width="100%"
+                         height="400"
+                         type="scrollcolumn2d"
+                         dataFormat="json"
+                         [dataSource]="data111">
+                     </fusioncharts>
+                       </div>
                       </div>
 
 

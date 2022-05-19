@@ -20,8 +20,9 @@ type AOA = any[][];
   styleUrls: ['./power-bireport.component.scss']
 })
 export class PowerBIReportComponent implements OnInit {
-
   public selectedDate: Date = new Date(2021, 3, 4);
+  @ViewChild('overviewgrid')
+  public grids: GridComponent;
   public workDays: number[] = [0, 1, 2, 3, 4, 5];
   public group: GroupModel = {
     resources: ['Projects', 'Categories']
@@ -149,12 +150,12 @@ export class PowerBIReportComponent implements OnInit {
 
   datades = {
     chart: {
-      "numberPrefix": "$",
+      "numberPrefix": "",
       "bgColor": "#ffffff",
       "startingAngle": "100",
       "showLegend": "1",
       "defaultCenterLabel": "Total revenue: $64.08K",
-      //"centerLabel": "Revenue from $label: $value",
+      "centerLabel": "$label: $value",
       "centerLabelBold": "1",
       "showTooltip": "0",
       "decimals": "0",
@@ -272,7 +273,7 @@ export class PowerBIReportComponent implements OnInit {
   };
 
 
-  data111 = {
+   data111 = {
     chart: {
 
       'paletteColors' :'7cb5ec, ed8f1d',
@@ -2588,6 +2589,8 @@ this.getpbiPeopleEmployeePerformance()
 this.getpbiPeopleTenureWiseEmployee()
 this.getpbiProjectDetailList()
 this.getpbiPeopleResources()
+this.getpbiProjectEmployeeVsVendor()
+this.getpbiProjecDeployeeVsBench()
 
 
 
@@ -2620,12 +2623,13 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
       
       this.datades21 = {
         chart: {
-          "numberPrefix": "$",
+          "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
+          "legendPosition": "right",
           "defaultCenterLabel": "",
-          //"centerLabel": " $label: $value",
+        "centerLabel": " $label: $value",
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
@@ -2698,12 +2702,13 @@ this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"valu
       
       this.datadepartement = {
         chart: {
-          "numberPrefix": "$",
+          "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
+          "legendPosition": "right",
           "defaultCenterLabel": "",
-         // "centerLabel": "Revenue from $label: $value",
+         "centerLabel": "$label: $value",
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
@@ -2754,12 +2759,13 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
       
       this.datagender = {
         chart: {
-          "numberPrefix": "$",
+          "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
+          "legendPosition": "right",
           "showLegend": "1",
           "defaultCenterLabel": "",
-         // "centerLabel": "Revenue from $label: $value",
+          "centerLabel": "$label: $value",
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
@@ -2879,11 +2885,213 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
     
       })
   }
+  dataProjectVsVendor:any=[]
+  getListProjectVsVendor:any=[]
+  dataProjectEmployee:any=[]
+  dataVendorEmployee:any=[]
+  dataprojectEmployeevsvendor:any
+  getpbiProjectEmployeeVsVendor(){
+    let cmpcode=1
+    let year='2022-02-20'
+    this.dataProjectVsVendor=[]
+    this.getListProjectVsVendor=[]
+    this.dataProjectEmployee=[]
+    this.dataVendorEmployee=[]
+    debugger;
+    this.HTTP.getPbiProjectEmployeeVsVendor(this.setDate,this.CmpCode).subscribe(arg => {
+    this.getListProjectVsVendor=  arg.data.table
+//       designationId: 15
+// designationName: 
+if(this.getListProjectVsVendor.length>0)
+{
+
+var getColor=[]
+
+for(var i=0;i<this.getListProjectVsVendor.length;i++)
+{
+getColor.push(this.setColor[i])
+}
+    for(var i=0;i<this.getListProjectVsVendor.length;i++)
+    {
+//this.dataEmployeeVsVendor.push({"label":this.getListEmployeeVsVendor[i].monthNames,"value":this.getListEmployeeVsVendor[i].employee,'value':this.getListEmployeeVsVendor[i].vendor})
+
+this.dataProjectVsVendor.push({"label":this.getListEmployeeVsVendor[i].monthNames})
+this.dataProjectEmployee.push({'value':this.getListEmployeeVsVendor[i].employee})
+this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
+
+
+
+    }
+     
+    // this.dataprojectEmployeevsvendor = {
+    //   chart: {
+    //     'paletteColors':getColor.toString(),
+    //   numvisibleplot: "12",
+    //   labeldisplay: "auto",
+    //   theme: "fusion"
+    //     //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
+        
+        
+    //   },
+    //   categories: [
+    //     {
+    //       category:this.dataProjectVsVendor
+    //     }
+    //   ],
+    //   dataset: [
+    //     {
+    //       seriesname: "Employeevs",
+    //       data:this.dataProjectEmployee
+    //     },
+    //     {
+    //       seriesname: "Vendorvs",
+    //       data:this.dataVendorEmployee
+    //     },
+       
+       
+    //   ]
+    // };
+    this.dataprojectEmployeevsvendor = {
+      chart: {
   
+        'paletteColors' :'7cb5ec, ed8f1d',
+        numvisibleplot: "12",
+        labeldisplay: "auto",
+        theme: "fusion"
+      },
+      categories: [
+        {
+          category: this.dataProjectVsVendor
+
+            
+        }
+      ],
+      dataset: [
+        {
+          seriesname: "Deployed",
+          data: this.dataProjectEmployee
+        },
+        {
+          seriesname: "On bench",
+          data:this.dataVendorEmployee
+          
+        }
+      ]
+    };
+  
+// this.dataempoyeevsvendor = {
+//   "chart": {
+//     "theme": "fusion",
+//     "subCaption": "Last month",
+//     "xAxisName": "Reported Cause",
+//     "pYAxisName": "No. of Occurrence",
+//     "sYAxisname": "Cumulative Percentage",
+//     "showValues": "0",
+//     "showXAxisLine": "1",
+//     'paletteColors' :'7bb7ed',
+//     "showLineValues": "1"
+//   },
+// "data":this.dataEmployeeVsVendor
+
+}
+  
+  
+    })
+}
+dataProjectVsDeployee:any=[]
+getListProjectVsBench:any=[]
+dataProjectdeployee:any=[]
+dataVendorBench:any=[]
+dataprojectDeployeeVsBench:any=[]
+getpbiProjecDeployeeVsBench(){
+  let cmpcode=1
+  let year='2022-02-20'
+  this.dataProjectVsDeployee=[]
+  this.getListProjectVsBench=[]
+  this.dataProjectdeployee=[]
+  this.dataVendorBench=[]
+  this.HTTP.getPbiProjectDeployeeVsBench(this.setDate,this.CmpCode).subscribe(arg => {
+  this.getListProjectVsBench=  arg.data.table
+//       designationId: 15
+// designationName: 
+if(this.getListProjectVsBench.length>0)
+{
+
+var getColor=[]
+
+for(var i=0;i<this.getListProjectVsBench.length;i++)
+{
+getColor.push(this.setColor[i])
+}
+  for(var i=0;i<this.getListProjectVsBench.length;i++)
+  {
+//this.dataEmployeeVsVendor.push({"label":this.getListEmployeeVsVendor[i].monthNames,"value":this.getListEmployeeVsVendor[i].employee,'value':this.getListEmployeeVsVendor[i].vendor})
+
+this.dataProjectVsDeployee.push({"label":this.getListProjectVsBench[i].monthNames})
+this.dataProjectdeployee.push({'value':this.getListProjectVsBench[i].employee})
+this.dataVendorBench.push({'value':this.getListProjectVsBench[i].vendor})
+
+
+
+  }
+   this.dataprojectDeployeeVsBench = {
+    chart: {
+      'paletteColors':getColor.toString(),
+      caption: "",
+      yaxisname: "",
+      subcaption: "",
+      showhovereffect: "1",
+      numbersuffix: "",
+      drawcrossline: "1",
+      //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
+      theme: "fusion",
+      
+      
+    },
+    categories: [
+      {
+        category:this.dataProjectVsDeployee
+      }
+    ],
+    dataset: [
+      {
+        seriesname: "Employee",
+        data:this.dataProjectdeployee
+      },
+      {
+        seriesname: "Vendor",
+        data:this.dataVendorBench
+      },
+     
+     
+    ]
+  };
+
+// this.dataempoyeevsvendor = {
+//   "chart": {
+//     "theme": "fusion",
+//     "subCaption": "Last month",
+//     "xAxisName": "Reported Cause",
+//     "pYAxisName": "No. of Occurrence",
+//     "sYAxisname": "Cumulative Percentage",
+//     "showValues": "0",
+//     "showXAxisLine": "1",
+//     'paletteColors' :'7bb7ed',
+//     "showLineValues": "1"
+//   },
+// "data":this.dataEmployeeVsVendor
+
+}
+
+
+  })
+}
+
   getListEmployeeAddition:any=[]
   dataEmployeeAddition:any=[]
   dataempoyeeaddition:any
   cateList:any=[]
+  percentAddList:any=[]
   getpbiPeopleEmployeeAddition(){
       let cmpcode=1
       let year='2022-02-20'
@@ -2911,8 +3119,9 @@ this.dataEmployeeAddition.push({"label":this.getListEmployeeAddition[i].monthNam
 for(var i=0;i<this.getListEmployeeAddition.length;i++)
 {
 this.cateList.push({"value":this.getListEmployeeAddition[i].employee})
+this.percentAddList.push({"value":this.getListEmployeeAddition[i].avgPercent})
+
 }
-      debugger
   //     this.dataempoyeeaddition={
   //   "chart": {
   //     caption: "Late arrivals by reported cause",
@@ -2940,7 +3149,8 @@ this.cateList.push({"value":this.getListEmployeeAddition[i].employee})
       scrollheight: "10",
       numvisibleplot: "10",
       drawcrossline: "1",
-      theme: "fusion"
+      theme: "fusion",
+plottooltext:     " $label: <b>$dataValue</b>",
     },
     categories: [
       {
@@ -2959,8 +3169,8 @@ this.cateList.push({"value":this.getListEmployeeAddition[i].employee})
         parentyaxis: "S",
         renderas: "line",
        // plottooltext: "$dataValue subsidies received",
-        showvalues: "0",
-        data: this.cateList
+        //showvalues: "0",
+        data: this.percentAddList
       }
     ]
   };
@@ -3002,14 +3212,14 @@ this.cateList.push({"value":this.getListEmployeeAddition[i].employee})
       this.getListTenureWiseEmployee=  arg.data.table
       this.getListTenureWiseEmployeeAvg=arg.data.table1
     this.tenurUpList.push(
-      {'value':this.getListTenureWiseEmployee[0].janmax},
-      {'value':this.getListTenureWiseEmployee[0].febmax},
-      {'value':this.getListTenureWiseEmployee[0].marmax},
-      {'value':this.getListTenureWiseEmployee[0].aprmax},
-      {'value':this.getListTenureWiseEmployee[0].maymax}
+      {"label": "Jan",'value':this.getListTenureWiseEmployee[0].janmax},
+      {"label": "Feb",'value':this.getListTenureWiseEmployee[0].febmax},
+      {"label": "Mar",'value':-this.getListTenureWiseEmployee[0].marmax},
+      {"label": "Apr",'value':-this.getListTenureWiseEmployee[0].aprmax},
+      {"label": "May",'value':this.getListTenureWiseEmployee[0].maymax}
 
       )
-      this.tenureDownList.push({'value':this.getListTenureWiseEmployee[0].janmin},
+      this.tenureDownList.push({'value':this.getListTenureWiseEmployee[0].janmin,},
       {'value':this.getListTenureWiseEmployee[0].febmin},
       {'value':this.getListTenureWiseEmployee[0].marmin},
       {'value':this.getListTenureWiseEmployee[0].aprmin},
@@ -3022,61 +3232,123 @@ var maxValue=Math.max(...this.tenurUpList);
 var minValue=-Math.max(...this.tenurUpList);
 var newMax=Math.max(...this.tenureDownList);
 var newmin=-Math.max(...this.tenureDownList);
-this.tentureDetails = {
-  chart: {
-    caption: "",
-   // pyaxisname: "Monthly Active Users [MAU]",
-   // syaxisname: "Growth Ratio",
-    numbersuffix: "M",
-    numdivlines: "6",
-    adjustdiv: totalSum.toString(),
-    syaxismaxvalue: maxValue.toString(),
-    syaxisminvalue: minValue.toString(),
-    yaxisminvalue: newmin.toString(),
-    yaxismaxvalue: newMax.toString(),
-    theme: "fusion",
-    drawcustomlegendicon: "1",
-    //plottooltext: "$label, $seriesname: $dataValue",
-    palettecolors: "#7cb5ec,#ed8f1d"
-  },
-  categories: [
-    {
-      category: [
-        {
-          label: "January"
-        },
-        {
-          label: "February"
-        },
-        {
-          label: "March"
-        },
-        {
-          label: "April"
-        },
-        {
-          label: "May"
-        }
+this.tentureDetails={
+chart: {
+  "caption": "",
+  "subcaption": "",
+  "yaxisname": "",
+  "theme": "fusion",
+  "zeroplanethickness": "1.5",
+  "zeroplanecolor": "#000000",
+  "zeroplanealpha":totalSum.toString()
+},
+"data":this.tenurUpList
+      }
+// this.tentureDetails = {
+//   chart: {
+//     caption: "",
+//     numbersuffix: "M",
+//     numdivlines: "6",
+//     adjustdiv: totalSum.toString(),
+//     syaxismaxvalue: maxValue.toString(),
+//     syaxisminvalue: minValue.toString(),
+//     yaxisminvalue: newmin.toString(),
+//     yaxismaxvalue: newMax.toString(),
+//     theme: "fusion",
+//     drawcustomlegendicon: "1",
+//     palettecolors: "#7cb5ec,#ed8f1d"
+//   },
+//   categories: [
+//     {
+//       category: [
+//         {
+//           label: "January"
+//         },
+//         {
+//           label: "February"
+//         },
+//         {
+//           label: "March"
+//         },
+//         {
+//           label: "April"
+//         },
+//         {
+//           label: "May"
+//         }
        
-      ]
-    }
-  ],
-  dataset: [
-    {
-      dataset: [
-        {
-          seriesname: "Employee",
-          data: this.tenurUpList
-        },
-        {
-          seriesname: "Avg",
-          data: this.tenureDownList
-        }
-      ]
-    }
-  ],
+//       ]
+//     }
+//   ],
+//   dataset: [
+//     {
+//       dataset: [
+//         {
+//           seriesname: "Employee",
+//           data: this.tenurUpList
+//         },
+//         {
+//           seriesname: "Avg",
+//           data: this.tenureDownList
+//         }
+//       ]
+//     }
+//   ],
 
-};
+// };
+
+// this.tentureDetails = {
+//   chart: {
+//     caption: "",
+//     numbersuffix: "M",
+//     numdivlines: "6",
+//     adjustdiv: totalSum.toString(),
+//     syaxismaxvalue: maxValue.toString(),
+//     syaxisminvalue: minValue.toString(),
+//     yaxisminvalue: newmin.toString(),
+//     yaxismaxvalue: newMax.toString(),
+//     theme: "fusion",
+//     drawcustomlegendicon: "1",
+//     palettecolors: "#7cb5ec,#ed8f1d"
+//   },
+//   categories: [
+//     {
+//       category: [
+//         {
+//           label: "January"
+//         },
+//         {
+//           label: "February"
+//         },
+//         {
+//           label: "March"
+//         },
+//         {
+//           label: "April"
+//         },
+//         {
+//           label: "May"
+//         }
+       
+//       ]
+//     }
+//   ],
+//   dataset: [
+//     {
+//       dataset: [
+//         {
+//           seriesname: "Employee",
+//           data: this.tenurUpList
+//         },
+//         {
+//           seriesname: "Avg",
+//           data: this.tenureDownList
+//         }
+//       ]
+//     }
+//   ],
+
+// };
 
 
 
@@ -3222,15 +3494,25 @@ this.tentureDetails = {
   //   } 
   // }
 
-
+  getPerformance()
+  {
+    this.getListEmployeePerformance=[]
+    this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode).subscribe(arg => {
+    this.getListEmployeePerformance=  arg.data.table
+    this.grids.refresh()
+    this.grids.refreshColumns()
+    this.grids.dataSource=this.getListEmployeePerformance
+    })
+  }
   getListEmployeePerformance:any=[]
   getpbiPeopleEmployeePerformance(){
       let cmpcode=1
       let year='2022-02-20'
       this.getListEmployeePerformance=[]
       this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode).subscribe(arg => {
-        debugger;
       this.getListEmployeePerformance=  arg.data.table
+      this.grids.refresh()
+      this.grids.refreshColumns()
 //       designationId: 15
 // designationName: 
 
@@ -3287,7 +3569,7 @@ this.catAttritionList.push({"label":this.getListEmployeeAttrition[i].monthNames}
     }
     for(var i=0;i<this.getListEmployeeAttrition.length;i++)
     {
-this.PercentList.push({"value":this.getListEmployeeAttrition[i].employee})
+this.PercentList.push({"value":this.getListEmployeeAttrition[i].avgPercent})
 
     }
     for(var i=0;i<this.getListEmployeeAttrition.length;i++)
@@ -3295,7 +3577,6 @@ this.PercentList.push({"value":this.getListEmployeeAttrition[i].employee})
 this.dataEmployeeAttrition.push({"value":this.getListEmployeeAttrition[i].employee})
 
     }
-  debugger
 // this.dataempoyeeattrition = {
 //   "chart": {
 //     "theme": "fusion",
@@ -3395,12 +3676,13 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
       
       this.datajobband = {
         chart: {
-          "numberPrefix": "$",
+          "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
+          "legendPosition": "right",
           "showLegend": "1",
           "defaultCenterLabel": "",
-          //"centerLabel": " $label: $value",
+          "centerLabel": " $label: $value",
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
@@ -3423,7 +3705,6 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
       this.getListLocation=[]
       this.dataLocation=[]
       this.HTTP.getPbiReportLocation(this.setDate,this.CmpCode).subscribe(arg => {
-        debugger
       this.getListLocation=  arg.data.table
       var getColor=[]
 
@@ -3440,12 +3721,13 @@ this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":thi
       
       this.datalocation = {
         chart: {
-          "numberPrefix": "$",
+          "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
+          "legendPosition": "right",
           "defaultCenterLabel": "",
-          //"centerLabel": "Revenue from $label: $value",
+          "centerLabel": "$label: $value",
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
@@ -3540,19 +3822,20 @@ data45.push(this.getListAge[i].age)
 
       },
       {
-        'label':'50-to','value':data50.length
+        'label':'50-Above','value':data50.length
 
       }
       )
       
       this.dataage = {
         chart: {
-          "numberPrefix": "$",
+          "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
+          "legendPosition": "right",
           "defaultCenterLabel": "",
-          //"centerLabel": "Revenue from $label: $value",
+          "centerLabel": "$label: $value",
           "centerLabelBold": "1",
           "showTooltip": "0",
           "decimals": "0",
@@ -3697,7 +3980,6 @@ try {
   let year='2022-02-20'
   this.getListData=[]
   this.HTTP.getPbiReportDetail(this.setDate,this.CmpCode).subscribe(arg => {
-debugger
 
   this.getListData=  arg.data.table
   
@@ -3886,11 +4168,9 @@ else{
 }
 if(this.employeeyoyprecentage>0)
 {
-  debugger
   this.imgUrl2=this.downUrl
 }
 else{
-  debugger
   this.imgUrl2=this.upUrl
 }
 if( this.totalGrowthAdditionPreviousYearPercent==0)
@@ -3954,7 +4234,6 @@ if(this.employeeAttritionPercentage>0)
 else{
   this.imgUrl6=this.upUrl
 }
-debugger;
 if(this.currentGrowthattritionYearPercent==0)
 {
 this.employeeAttritionCurrentPercent=0
@@ -4142,7 +4421,7 @@ nonBillableResourceTotalPercent: any
 nonBillableResourceTotalYoy: any
 nonBillableResourceTotalYoyPercent: any
 onBenchTotalResource: any
-onBenchTotalResourcePercent: any
+onBenchTotalResouPercent: any=0
 revenue: any
 revenueCostTotalYoy: any
 revenueCostTotalYoyPercent: any
@@ -4164,7 +4443,7 @@ vendorTotalResourcePercentage: any
 vendorTotalYoy: any
 vendorTotalYoyPercent: any
 avgLeaveTotalPercentage:any
-billableResourceTotalPercentGrowth:any
+billableResourceTotalPercentGrowth:any=0
 costPercentageGrowthValue:any
 leaveTotalYoyPercentGrowth:any
 nonBillableResourceTotalPercentGrowth:any
@@ -4184,6 +4463,26 @@ vendorTotalYoyPercentGrowth:any
 onBenchTotalYoy:any
 OnBenchTotalYoyPercent:any
 onBenchTotalYoyPercentGrowth:any
+imgtotalResourcePercentGrowthPercentGrowth:any
+imgavgLeaveTotalPercentage:any
+imgcostPercentageGrowthValue:any
+imgleaveTotalYoyPercentGrowth:any
+imgnonBillableResourceTotalPercentGrowth:any
+imgnonBillableResourceTotalYoyPercentGrowth:any
+imgrevenueCostTotalYoyPercentGrowth:any
+imgrevenuePercentageGrowthPercent:any
+imgserviceProviderTotalResourcePercentageGrowth:any
+imgtotalGrowthCloseProjectPercentGrowth:any
+imgtotalLeaveResourcePercentGrowth:any
+imgtotalGrowthOpenProjectPercentGrowth:any
+imgtotalResourcePercentGrowth:any
+imgtotalGrowthProjectYoyYearPercentGrowth:any
+imgvendorTotalResourcePercentageGrowth:any
+imgvendorTotalYoyPercentGrowth:any
+imgonBenchTotalYoyPercentGrowth:any
+
+imgonBenchTotalResourcePercentGrowth:any
+imgbillableResourceTotalPercentGrowth:any
   getpbiProjectDetailList(){
     let cmpcode=1
     let year='2022-02-20'
@@ -4192,8 +4491,8 @@ onBenchTotalYoyPercentGrowth:any
       debugger
       
   this.getProjectListData=  arg.data.table
-  if(this.getProjectListData>0)
-  {
+ // if(this.getProjectListData>0)
+  //{
 
 this.avgLeavePercent=this.getProjectListData[0].avgLeavePercent
 this.avgLeaveTotal=this.getProjectListData[0].avgLeaveTotal
@@ -4203,19 +4502,29 @@ if(this.avgLeavePercent==0)
 this.avgLeaveTotalPercentage=0
 }
 
-this.billableResourceTotal=this.getProjectListData[0].billableResourceTotal
-this.billableResourceTotalPercent=this.getProjectListData[0].billableResourceTotalPercent
-this.billableResourceTotalPercentGrowth=(this.billableResourceTotal-this.billableResourceTotalPercent)*100/this.billableResourceTotalPercent
-(this.billableResourceTotalPercent==0)
+
+if(this.avgLeaveTotalPercentage>0)
 {
-  this.billableResourceTotalPercentGrowth=0
+  this.imgavgLeaveTotalPercentage=this.downUrl
 }
+else{
+  this.imgavgLeaveTotalPercentage=this.upUrl
+}
+
 this.cost =this.getProjectListData[0].cost
+debugger
 this.costPercentageGrowth=this.getProjectListData[0].costPercentageGrowth
 this.costPercentageGrowthValue=(this.cost-this.costPercentageGrowth)*100/this.costPercentageGrowth
 if(this.costPercentageGrowth==0)
 {
-  this.costPercentageGrowthValue==0
+  this.costPercentageGrowthValue=0
+}
+if(this.costPercentageGrowthValue>0)
+{
+  this.imgcostPercentageGrowthValue=this.downUrl
+}
+else{
+  this.imgcostPercentageGrowthValue=this.upUrl
 }
 this.leaveTotalYoy=this.getProjectListData[0].leaveTotalYoy
 this.leaveTotalYoyPercent=this.getProjectListData[0].leaveTotalYoyPercent
@@ -4224,12 +4533,29 @@ if(this.leaveTotalYoyPercent==0)
 {
 this.leaveTotalYoyPercentGrowth=0
 }
+if(this.leaveTotalYoyPercentGrowth>0)
+{
+  this.imgleaveTotalYoyPercentGrowth=this.downUrl
+}
+else{
+  this.imgleaveTotalYoyPercentGrowth=this.upUrl
+}
+this.billableResourceTotal=this.getProjectListData[0].billableResourceTotal
+
 this.nonBillableResourceTotal=this.getProjectListData[0].nonBillableResourceTotal
 this.nonBillableResourceTotalPercent=this.getProjectListData[0].nonBillableResourceTotalPercent
+debugger;
 this.nonBillableResourceTotalPercentGrowth=(this.nonBillableResourceTotal-this.nonBillableResourceTotalPercent)*100/this.nonBillableResourceTotalPercent
 if(this.nonBillableResourceTotalPercent==0)
 {
   this.nonBillableResourceTotalPercentGrowth=0
+}
+if(this.nonBillableResourceTotalPercentGrowth>0)
+{
+  this.imgnonBillableResourceTotalPercentGrowth=this.downUrl
+}
+else{
+  this.imgnonBillableResourceTotalPercentGrowth=this.upUrl
 }
 this.nonBillableResourceTotalYoy=this.getProjectListData[0].nonBillableResourceTotalYoy
 this.nonBillableResourceTotalYoyPercent=this.getProjectListData[0].nonBillableResourceTotalYoyPercent
@@ -4238,16 +4564,29 @@ if(this.nonBillableResourceTotalYoyPercent==0)
 {
   this.nonBillableResourceTotalYoyPercentGrowth=0
 }
-this.onBenchTotalYoy=this.getProjectListData[0].onBenchTotalYoy
-this.OnBenchTotalYoyPercent=this.getProjectListData[0].OnBenchTotalYoyPercent
-this.onBenchTotalYoyPercentGrowth=(this.onBenchTotalYoy-this.OnBenchTotalYoyPercent)*100/this.OnBenchTotalYoyPercent
-debugger
-this.onBenchTotalResource=this.getProjectListData[0].onBenchTotalResource
-this.onBenchTotalResourcePercent=this.getProjectListData[0].onBenchTotalResourcePercent
-this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTotalResourcePercent)*100/this.onBenchTotalResourcePercent
-(this.onBenchTotalResourcePercent==0)
+
+if(this.nonBillableResourceTotalYoyPercentGrowth>0)
 {
-  this.onBenchTotalResourcePercentGrowth=0
+  this.imgnonBillableResourceTotalYoyPercentGrowth=this.downUrl
+}
+else{
+  this.imgnonBillableResourceTotalYoyPercentGrowth=this.upUrl
+}
+this.onBenchTotalYoy=this.getProjectListData[0].onBenchTotalYoy
+debugger;
+this.OnBenchTotalYoyPercent=this.getProjectListData[0].onBenchTotalYoyPercent
+this.onBenchTotalYoyPercentGrowth=(this.onBenchTotalYoy-this.OnBenchTotalYoyPercent)*100/this.OnBenchTotalYoyPercent
+if(this.OnBenchTotalYoyPercent==0)
+{
+  this.onBenchTotalYoyPercentGrowth=0
+}
+
+if(this.onBenchTotalYoyPercentGrowth>0)
+{
+  this.imgonBenchTotalYoyPercentGrowth=this.downUrl
+}
+else{
+  this.imgonBenchTotalYoyPercentGrowth=this.upUrl
 }
 this.revenue=this.getProjectListData[0].revenue
 this.revenueCostTotalYoy=this.getProjectListData[0].revenueCostTotalYoy
@@ -4257,12 +4596,28 @@ if(this.revenueCostTotalYoyPercent==0)
 {
   this.revenueCostTotalYoyPercentGrowth=0
 }
+
+if(this.revenueCostTotalYoyPercentGrowth>0)
+{
+  this.imgrevenueCostTotalYoyPercentGrowth=this.downUrl
+}
+else{
+  this.imgrevenueCostTotalYoyPercentGrowth=this.upUrl
+}
 this.revenuePercentageGrowth=this.getProjectListData[0].revenuePercentageGrowth
 this.revenuePercentageGrowthPercent=(this.revenue-this.revenuePercentageGrowth)*100/this.revenuePercentageGrowthPercent
 if(this.revenuePercentageGrowth==0)
 {
   this.revenuePercentageGrowthPercent=0
 }
+if(this.revenuePercentageGrowthPercent>0)
+{
+  this.imgrevenuePercentageGrowthPercent=this.downUrl
+}
+else{
+  this.imgrevenuePercentageGrowthPercent=this.upUrl
+}
+
 this.serviceProviderTotalResource=this.getProjectListData[0].serviceProviderTotalResource
 this.serviceProviderTotalResourcePercentage=this.getProjectListData[0].serviceProviderTotalResourcePercentage
 this.serviceProviderTotalResourcePercentageGrowth=(this.serviceProviderTotalResource-this.serviceProviderTotalResourcePercentage)*100/this.serviceProviderTotalResourcePercentage
@@ -4270,6 +4625,13 @@ if(this.serviceProviderTotalResourcePercentage==0)
   {
     this.serviceProviderTotalResourcePercentageGrowth=0
   }
+  if(this.serviceProviderTotalResourcePercentageGrowth>0)
+{
+  this.imgserviceProviderTotalResourcePercentageGrowth=this.downUrl
+}
+else{
+  this.imgserviceProviderTotalResourcePercentageGrowth=this.upUrl
+}
 
 this.totalResource=this.getProjectListData[0].totalResource
 this.totalCloseProject=this.getProjectListData[0].totalCloseProject
@@ -4279,6 +4641,13 @@ if(this.totalGrowthCloseProjectPercent==0)
 {
   this.totalGrowthCloseProjectPercentGrowth=0
 }
+if(this.totalGrowthCloseProjectPercentGrowth>0)
+{
+  this.imgtotalGrowthCloseProjectPercentGrowth=this.downUrl
+}
+else{
+  this.imgtotalGrowthCloseProjectPercentGrowth=this.upUrl
+}
 this.totalGrowthOpenProjectPercent=this.getProjectListData[0].totalGrowthOpenProjectPercent
 this.totalLeaveResource=this.getProjectListData[0].totalLeaveResource
 this.totalLeaveResourcePercent=this.getProjectListData[0].totalLeaveResourcePercent
@@ -4287,11 +4656,25 @@ if(this.totalLeaveResourcePercent==0)
 {
   this.totalLeaveResourcePercentGrowth=0
 }
+if(this.totalLeaveResourcePercentGrowth>0)
+{
+  this.imgtotalLeaveResourcePercentGrowth=this.downUrl
+}
+else{
+  this.imgtotalLeaveResourcePercentGrowth=this.upUrl
+}
 this.totalOpenProject=this.getProjectListData[0].totalOpenProject
 this.totalGrowthOpenProjectPercentGrowth=(this.totalOpenProject-this.totalGrowthOpenProjectPercent)*100/this.totalGrowthOpenProjectPercent
 if(this.totalGrowthOpenProjectPercent==0)
 {
   this.totalGrowthOpenProjectPercentGrowth=0
+}
+if(this.totalGrowthOpenProjectPercentGrowth>0)
+{
+  this.imgtotalGrowthOpenProjectPercentGrowth=this.downUrl
+}
+else{
+  this.imgtotalGrowthOpenProjectPercentGrowth=this.upUrl
 }
 this.totalResourcePercent=this.getProjectListData[0].totalResourcePercent
 this.totalResourcePercentGrowth=(this.totalResource-this.totalResourcePercent)*100/this.totalResourcePercent
@@ -4300,11 +4683,26 @@ if(this.totalResourcePercent==0)
   this.totalResourcePercentGrowth=0
 
 }
+if(this.totalResourcePercentGrowth>0)
+{
+  this.imgtotalResourcePercentGrowth=this.downUrl
+}
+else{
+  this.imgtotalResourcePercentGrowth=this.upUrl
+}
 this.totalResourcePercentGrowthPercentGrowth=(this.totalResourcePercent-this.totalResourcePercentGrowth)*100/this.totalResourcePercentGrowth
 if(this.totalResourcePercentGrowth==0)
 {
   this.totalResourcePercentGrowthPercentGrowth=0
 }
+if(this.totalResourcePercentGrowthPercentGrowth>0)
+{
+  this.imgtotalResourcePercentGrowthPercentGrowth=this.downUrl
+}
+else{
+  this.imgtotalResourcePercentGrowthPercentGrowth=this.upUrl
+}
+
 this.totalProjectyoyYear=this.getProjectListData[0].totalProjectyoyYear
 this.totalGrowthProjectYoyYearPercent=this.getProjectListData[0].totalGrowthProjectYoyYearPercent
 this.totalGrowthProjectYoyYearPercentGrowth=(this.totalProjectyoyYear-this.totalGrowthProjectYoyYearPercent)*100/this.totalGrowthOpenProjectPercent
@@ -4312,12 +4710,27 @@ if(this.totalGrowthProjectYoyYearPercent==0)
 {
   this.totalGrowthProjectYoyYearPercentGrowth=0
 }
+if(this.totalGrowthProjectYoyYearPercentGrowth>0)
+{
+  this.imgtotalGrowthProjectYoyYearPercentGrowth=this.downUrl
+}
+else{
+  this.imgtotalGrowthProjectYoyYearPercentGrowth=this.upUrl
+}
+
 this.vendorTotalResource=this.getProjectListData[0].vendorTotalResource
 this.vendorTotalResourcePercentage=this.getProjectListData[0].vendorTotalResourcePercentage
 this.vendorTotalResourcePercentageGrowth=(this.vendorTotalResource-this.vendorTotalResourcePercentage)*100/this.vendorTotalResourcePercentage
 if(this.vendorTotalResourcePercentage==0)
 {
   this.vendorTotalResourcePercentageGrowth=0
+}
+if(this.vendorTotalResourcePercentageGrowth>0)
+{
+  this.imgvendorTotalResourcePercentageGrowth=this.downUrl
+}
+else{
+  this.imgvendorTotalResourcePercentageGrowth=this.upUrl
 }
 this.vendorTotalYoy=this.getProjectListData[0].vendorTotalYoy
 this.vendorTotalYoyPercent=this.getProjectListData[0].vendorTotalYoyPercent
@@ -4327,7 +4740,44 @@ if(this.vendorTotalYoyPercent==0)
   this.vendorTotalYoyPercentGrowth=0
 
 }
-  }
+if(this.vendorTotalYoyPercentGrowth>0)
+{
+  this.imgvendorTotalYoyPercentGrowth=this.downUrl
+}
+else{
+  this.imgvendorTotalYoyPercentGrowth=this.upUrl
+}
+
+this.onBenchTotalResource=this.getProjectListData[0].onBenchTotalResource;
+//this.onBenchTotalResouPercent=this.getProjectListData[0].onBenchTotalResourcePercent;
+this.onBenchTotalResouPercent=0;
+this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTotalResouPercent)/this.onBenchTotalResource
+(this.onBenchTotalResouPercent==0)
+{
+  this.onBenchTotalResourcePercentGrowth=0
+}
+if(this.onBenchTotalResourcePercentGrowth>0)
+{
+  this.imgonBenchTotalResourcePercentGrowth=this.downUrl
+}
+else{
+  this.imgonBenchTotalResourcePercentGrowth=this.upUrl
+}
+this.billableResourceTotalPercent=this.getProjectListData[0].billableResourceTotalPercent
+this.billableResourceTotalPercent=0;
+//this.billableResourceTotalPercentGrowth=(this.billableResourceTotal-this.billableResourceTotalPercent)*100/this.getProjectListData[0].billableResourceTotalPercent
+(this.billableResourceTotalPercent==0)
+{
+  this.billableResourceTotalPercentGrowth=0
+}
+if(this.billableResourceTotalPercentGrowth>0)
+{
+  this.imgbillableResourceTotalPercentGrowth=this.downUrl
+}
+else{
+  this.imgbillableResourceTotalPercentGrowth=this.upUrl
+}
+  //}
     })
   }
   getDate:any
@@ -4335,7 +4785,6 @@ if(this.vendorTotalYoyPercent==0)
   monthName:any
   changeDate(e)
   {
-debugger
 var date=e.target.value
 let latest_date =this. datepipe. transform(new Date(date), 'yyyy-MM-dd');
 this.setDate=latest_date
@@ -4356,6 +4805,9 @@ this.getpbiPeopleEmployeePerformance()
 this.getpbiPeopleTenureWiseEmployee()
 this.getpbiProjectDetailList()
 this.getpbiPeopleResources()
+this.getpbiProjectEmployeeVsVendor()
+this.getpbiProjecDeployeeVsBench()
+
   }
   getResourcesDetail:any=[]
   category:any=[]
@@ -4363,7 +4815,6 @@ this.getpbiPeopleResources()
  deployeeList:any=[]
  totalData:any
   getpbiPeopleResources(){
-    debugger;
     let cmpcode=1
     let year='2022-02-20'
     this.getResourcesDetail=[]
@@ -4398,6 +4849,8 @@ this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
           subcaption: "",
           flatscrollbars: "0",
           scrollheight: "12",
+          //"showToolTip": "0",
+          //"plotToolText": "<b>$dataValue</b> Deploy Project $seriesName in $label",
           numvisibleplot: "8",
          // plottooltext:
          //   "<b>$dataValue</b> Deploy Project $seriesName in $label",
@@ -4410,17 +4863,25 @@ this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
         ],
         dataset: [
           {
+            seriesname: "Project",
+            data: this.deployeeList
+          },
+          // {
+          //   seriesname: "Project",
+          //   data: this.deployeeList
+          // },
+          {
             seriesname:'Employee',
             data: this.employeeList
           },
-          {
-            seriesname: "Project",
-            data: this.deployeeList
-          }
+          // {
+          //   seriesname:'totalEmployee',
+          //   data: this.employeeList=[]
+          // },
+         
         ]
       };
       
-      debugger
     })
   }
       
