@@ -2591,6 +2591,8 @@ this.getpbiProjectDetailList()
 this.getpbiPeopleResources()
 this.getpbiProjectEmployeeVsVendor()
 this.getpbiProjecDeployeeVsBench()
+this.getProjectPortFoliyo()
+this.getProjectProjectDetailRevnueAndCost()
 
 
 
@@ -2897,7 +2899,6 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
     this.getListProjectVsVendor=[]
     this.dataProjectEmployee=[]
     this.dataVendorEmployee=[]
-    debugger;
     this.HTTP.getPbiProjectEmployeeVsVendor(this.setDate,this.CmpCode).subscribe(arg => {
     this.getListProjectVsVendor=  arg.data.table
 //       designationId: 15
@@ -3170,7 +3171,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
         renderas: "line",
        // plottooltext: "$dataValue subsidies received",
         //showvalues: "0",
-        data: this.percentAddList
+        data: this.cateList
       }
     ]
   };
@@ -3208,7 +3209,6 @@ plottooltext:     " $label: <b>$dataValue</b>",
       this.tenurUpList=[]
       this.tenureDownList=[]
       this.HTTP.getPbiReportEmployeeTenureWiseEmployeeDetail(this.setDate,this.CmpCode).subscribe(arg => {
-        debugger;
       this.getListTenureWiseEmployee=  arg.data.table
       this.getListTenureWiseEmployeeAvg=arg.data.table1
     this.tenurUpList.push(
@@ -3504,6 +3504,45 @@ chart: {
     this.grids.dataSource=this.getListEmployeePerformance
     })
   }
+  getListProjectPortfoliyo:any=[]
+  getProjectPortFoliyo()
+  {
+    this.getListEmployeePerformance=[]
+    this.HTTP.getPbiProjectPortfoliyo(this.setDate,this.CmpCode).subscribe(arg => {
+      debugger
+    this.getListProjectPortfoliyo=  arg.data.table
+    })
+  }
+  getListProjectDetailRevnureAndCost:any=[]
+  costFirst:any
+  costSecond:any
+  marginFirst:any
+  projectNameFirst:any
+  projectNameSecond:any
+  resourceFirst:any
+  revnueSecond:any
+  marginSecond:any
+  resourceSecond:any
+  revnueFirst:any
+  getProjectProjectDetailRevnueAndCost()
+  {
+    this.getListProjectDetailRevnureAndCost=[]
+    this.HTTP.getProjectProjectDetailRevnueAndCost(this.setDate,this.CmpCode).subscribe(arg => {
+      debugger
+    this.getListProjectDetailRevnureAndCost=  arg.data.table
+    this.costFirst=this.getListProjectDetailRevnureAndCost[0].costFirst
+this.costSecond=this.getListProjectDetailRevnureAndCost[0].costFirst
+this.marginFirst= this.getListProjectDetailRevnureAndCost[0].costFirst
+this.marginSecond=this.getListProjectDetailRevnureAndCost[0].costFirst
+this.projectNameFirst= this.getListProjectDetailRevnureAndCost[0].costFirst
+this.projectNameSecond=this.getListProjectDetailRevnureAndCost[0].costFirst
+this.resourceFirst=this.getListProjectDetailRevnureAndCost[0].costFirst
+this.resourceSecond= this.getListProjectDetailRevnureAndCost[0].costFirst
+this.revnueFirst=this.getListProjectDetailRevnureAndCost[0].costFirst
+this.revnueSecond= this.getListProjectDetailRevnureAndCost[0].costFirst
+    
+    })
+  }
   getListEmployeePerformance:any=[]
   getpbiPeopleEmployeePerformance(){
       let cmpcode=1
@@ -3622,7 +3661,7 @@ this.dataempoyeeattrition = {
       renderas: "line",
      // plottooltext: "$dataValue subsidies received",
       showvalues: "0",
-      data: this.PercentList
+      data: this.dataEmployeeAttrition
     }
   ]
 };
@@ -4488,7 +4527,6 @@ imgbillableResourceTotalPercentGrowth:any
     let year='2022-02-20'
     this.getProjectListData=[]
     this.HTTP.getPbiProjectDetail(this.setDate,this.CmpCode).subscribe(arg => {
-      debugger
       
   this.getProjectListData=  arg.data.table
  // if(this.getProjectListData>0)
@@ -4512,7 +4550,6 @@ else{
 }
 
 this.cost =this.getProjectListData[0].cost
-debugger
 this.costPercentageGrowth=this.getProjectListData[0].costPercentageGrowth
 this.costPercentageGrowthValue=(this.cost-this.costPercentageGrowth)*100/this.costPercentageGrowth
 if(this.costPercentageGrowth==0)
@@ -4544,7 +4581,6 @@ this.billableResourceTotal=this.getProjectListData[0].billableResourceTotal
 
 this.nonBillableResourceTotal=this.getProjectListData[0].nonBillableResourceTotal
 this.nonBillableResourceTotalPercent=this.getProjectListData[0].nonBillableResourceTotalPercent
-debugger;
 this.nonBillableResourceTotalPercentGrowth=(this.nonBillableResourceTotal-this.nonBillableResourceTotalPercent)*100/this.nonBillableResourceTotalPercent
 if(this.nonBillableResourceTotalPercent==0)
 {
@@ -4573,7 +4609,6 @@ else{
   this.imgnonBillableResourceTotalYoyPercentGrowth=this.upUrl
 }
 this.onBenchTotalYoy=this.getProjectListData[0].onBenchTotalYoy
-debugger;
 this.OnBenchTotalYoyPercent=this.getProjectListData[0].onBenchTotalYoyPercent
 this.onBenchTotalYoyPercentGrowth=(this.onBenchTotalYoy-this.OnBenchTotalYoyPercent)*100/this.OnBenchTotalYoyPercent
 if(this.OnBenchTotalYoyPercent==0)
@@ -4807,6 +4842,8 @@ this.getpbiProjectDetailList()
 this.getpbiPeopleResources()
 this.getpbiProjectEmployeeVsVendor()
 this.getpbiProjecDeployeeVsBench()
+this.getProjectPortFoliyo()
+this.getProjectProjectDetailRevnueAndCost()
 
   }
   getResourcesDetail:any=[]

@@ -2577,95 +2577,95 @@
                       </div>
 
                       <div class="table-responsive">
-                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectPortfoliyo' rowHeight='38' [allowSelection]='true'
                         [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                         [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                          [allowPaging]='true' [allowExcelExport]='true' >
                         <e-columns>
-                          <e-column field='uSername' headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                          <e-column field='customer' headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
                           </e-column>
-                          <e-column field='reportname' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
-
-                          </e-column>
-                          <e-column field='receiptdate' headerText='Resources' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                          <e-column field='project' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                           </e-column>
-                            <e-column field='receiptNo' headerText='# Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                          <e-column field='resource' headerText='Resources' [filter]='filter' clipMode='EllipsisWithTooltip'>
+
+                          </e-column>
+                            <e-column field='billable' headerText='# Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
                             </ejs-progressbar>
-                              </ng-template>
+                              </ng-template> -->
                             </e-column>
-                            <e-column field='category' headerText='₹ Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                            <e-column field='billablePer' headerText='₹ Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
                             </ejs-progressbar>
-                              </ng-template>
+                              </ng-template> -->
                             </e-column>
 
-                            <e-column field='amount' headerText='# Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                            <e-column field='nonBillable' headerText='# Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
                             </ejs-progressbar>
-                              </ng-template>
+                              </ng-template> -->
                             </e-column>
 
-                            <e-column field='receiptNo' headerText='₹ Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                            <e-column field='nonBillablePer' headerText='₹ Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
                             </ejs-progressbar>
-                              </ng-template>
+                              </ng-template> -->
                             </e-column>
-                            <e-column field='category' headerText='Tenure (M)' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                            <e-column field='tenure' headerText='Tenure (M)' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                            <e-column field='receiptNo' headerText='Progress' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                            <e-column field='progress' headerText='Progress' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
                             </ejs-progressbar>
-                              </ng-template>
+                              </ng-template> -->
                             </e-column>
-                            <e-column field='category' headerText='Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                            <e-column field='timeSheet' headerText='Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
                             </ejs-progressbar>
-                              </ng-template>
+                              </ng-template> -->
                             </e-column>
 
-                            <e-column field='receiptNo' headerText='MOM' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                            <e-column field='mom' headerText='MOM' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template>
+                            </ejs-progressbar> 
+                              </ng-template>-->
                             </e-column>
-                            <e-column field='category' headerText='Roadblock' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <ng-template>
+                            <e-column field='roadBlock' headerText='Roadblock' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <!-- <ng-template>
                                 <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
                                showProgressValue='true' [animation]='animation'
                                 [labelStyle]='labelStyle1' >
                             </ejs-progressbar>
-                              </ng-template>
+                              </ng-template> -->
                             </e-column>
 
 
@@ -2699,11 +2699,11 @@
                           </div>
                           <div class="col-md-6 halfdiv1">
 
-                            <h5>Tata Steel</h5>
-                            <h5>$ 20,000</h5>
-                            <h5>$ 16,000</h5>
-                            <h5>20%</h5>
-                            <h5>01</h5>
+                            <h5>{{projectNameFirst}}</h5>
+                            <h5>{{revnueFirst}}</h5>
+                            <h5>{{costFirst}}</h5>
+                            <h5>{{marginFirst}}</h5>
+                            <h5>{{resourceFirst}}</h5>
                           </div>
 
                         </div>
@@ -2723,11 +2723,11 @@
                           </div>
                           <div class="col-md-6 halfdiv1">
 
-                            <h5>Tata Steel</h5>
-                            <h5>$ 20,000</h5>
-                            <h5>$ 16,000</h5>
-                            <h5>20%</h5>
-                            <h5>01</h5>
+                            <h5>{{projectNameSecond}}</h5>
+                            <h5>{{revnueSecond}}</h5>
+                            <h5>{{costSecond}}</h5>
+                            <h5>{{marginSecond}}</h5>
+                            <h5>{{resourceSecond}}</h5>
                           </div>
                         </div>
 
