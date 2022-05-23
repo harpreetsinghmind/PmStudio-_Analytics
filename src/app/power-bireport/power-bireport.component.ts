@@ -3645,7 +3645,9 @@ curAvgLsit:any=[]
       this.HTTP.getPbiReportEmployeeTenureWiseEmployeeDetail(this.setDate,this.CmpCode).subscribe(arg => {
       this.getListTenureWiseEmployee=  arg.data.table
       this.getListTenureWiseEmployeeAvg=arg.data.table1
- 
+ this.avgMin=[]
+ this.avgMax=[]
+ this.catList=[]
       this.avgMin.push({'value':arg.data.table1[0].january},
       {'value':arg.data.table1[0].february},
       {'value':arg.data.table1[0].march},{'value':arg.data.table1[0].april}
@@ -3788,7 +3790,9 @@ this.tentureDetails={
     },
     categories: [
       {
-        category:this.tenCatList
+       // category:this.tenCatList
+        category:this.catList
+
       }
     ],
     dataset: [
