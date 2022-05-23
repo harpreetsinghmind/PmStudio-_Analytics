@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExcelExportProperties, GridComponent } from '@syncfusion/ej2-angular-grids';
 import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
-import { GroupModel } from '@syncfusion/ej2-angular-schedule';
+import { dataBinding, GroupModel } from '@syncfusion/ej2-angular-schedule';
 import { ToasterService } from '../toaster/toaster.service';
 import { GlobalServiceService } from '../global-service.service';
 import { min } from 'moment';
 import { DatePipe } from '@angular/common'
+import { threadId } from 'worker_threads';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 
@@ -2485,7 +2487,7 @@ export class PowerBIReportComponent implements OnInit {
   public filter: Object;
   public filterSettings: Object;
   public selectionSettings: Object;
-  public height: string = '240px';
+  //public height: string = '240px';
   public fields: Object = { text: 'text', value: 'value' };
   public item: number[] = [1, 2, 3, 4, 5];
   roleIds: any;
@@ -2594,14 +2596,438 @@ this.getpbiProjecDeployeeVsBench()
 this.getProjectPortFoliyo()
 this.getProjectProjectDetailRevnueAndCost()
 
+this.getProjectProjectDetailPAndLGridList()
 
-
-
-
+this.getPbiProjectDetailProgressAndCost()
+this.getpbiProjectDetailRoadblock()
+this.getpbiProjectDevaition()
+this.getpbiProjectDetailPAndLList()
+this.getProjectExpenseDetailList()
 
 
   }
+  getListProgress:any=[]
+  dataProgress:any=[]
+  dataprogressandcostproject:any
+  dataProjectCostList:any=[]
+  dataProjectProgressList:any=[]
+  setList:any=[]
+  getPbiProjectDetailProgressAndCost(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.getListProgress=[]
+      this.dataProgress=[]
+      this.dataProjectProgressList=[]
+      this.dataProjectCostList=[]
+      this.HTTP.getPbiProjectDetailProgressAndCost(this.setDate,this.CmpCode).subscribe(arg => {
+      this.getListProgress=  arg.data.table
+      var getColor=[]
+
+      for(var i=0;i<this.getListProgress.length;i++)
+      {
+        getColor.push(this.setColor[i])
+      }
+      for(var i=0;i<this.getListProgress.length;i++)
+      {
+this.dataProgress.push({"label":this.getListProgress[i].monthes})
+this.dataProjectProgressList.push({"value":this.getListProgress[i].cost})
+this.dataProjectCostList.push({"value":this.getListProgress[i].progress})
+this.setList.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
+    
+}
+      
+
+this.dataProjectProgressList = {
+  "chart": {
+    "caption": "Progress & Cost %",
+    'paletteColors' :'7cb5ec',
+    "showHoverEffect": "1",
+    "theme": "fusion"
+},
+"data":this.setList
+};
+
+      
+    
+    
+      })
+  }
+  // datades21 = {
+  //   chart: {
+  //     "numberPrefix": "$",
+  //     "bgColor": "#ffffff",
+  //     "startingAngle": "100",
+  //     "showLegend": "1",
+  //     "defaultCenterLabel": "",
+  //     "centerLabel": "Revenue from $label: $value",
+  //     "centerLabelBold": "1",
+  //     "showTooltip": "0",
+  //     "decimals": "0",
+  //     'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
+  //     "theme": "fusion"
+  //   },
+  //   "data": [{
+  //     "label": "Traffic",
+  //     "value": "5680"
+  //   },
+  //   {
+  //     "label": "Family Engagement",
+  //     "value": "1036"
+  //   },
+  //   {
+  //     "label": "Public Transport",
+  //     "value": "950"
+  //   },
+  //   {
+  //     "label": "Weather",
+  //     "value": "500"
+  //   }
+  // ]
+
+  // };
+  getListProjectDetailRoadblock:any=[]
+  getpbiProjectDetailRoadblock(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.getListProjectDetailRoadblock=[]
+      this.HTTP.getPbiProjectDetailRoadBlockList(this.setDate,this.CmpCode).subscribe(arg => {
+        debugger
+      this.getListProjectDetailRoadblock=  arg.data.table
+     
+      })
+  }
   
+  getListProjectDetailDevialtion:any=[]
+  getpbiProjectDevaition(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.getListProjectDetailDevialtion=[]
+      this.HTTP.getPbiProjectDetailDeviationList(this.setDate,this.CmpCode).subscribe(arg => {
+        debugger
+      this.getListProjectDetailDevialtion=  arg.data.table
+     
+      })
+  }
+  avgMarginCurrentYear:any
+      avgMarginPreviousYear:any
+      avgMarginCurrentYearGrowth:any
+      avgMarginPreviousYearGrowth:any
+      avgRevenueCurrentYear:any
+avgRevenueCurrentYearGrowth:any
+avgRevenuePreviousYear:any
+avgRevenuePreviousYearGrowth:any
+avgTenureCurrentYear:any
+avgTenureCurrentYearGrowth:any
+avgTenurePreviousYear:any
+avgTenurePreviousYearGrowth:any
+netRevenueCurrentYear:any
+netRevenueCurrentYearGrowth:any
+netRevenuePreviousYear:any
+projectCostCurrentYear:any
+netRevenuePreviousYearGrowth:any
+projectCostCurrentYearGrowth:any
+projectCostInDollarCurrentYear:any
+projectCostInDollarCurrentYearGrowth:any
+projectCostInDollarPerviousYear:any
+projectCostInDollarPreviousYearGrowth:any
+projectCostPreviousYear:any
+projectCostPreviousYearGrowth:any
+projectWithAvgMarginCurrentYear:any
+projectWithAvgMarginCurrentYearGrowth:any
+projectWithAvgMarginPreviousYear:any
+projectWithAvgMarginPreviousYearGrowth:any
+totalCostCurrentYear:any
+totalCostCurrentYearGrowth:any
+totalCostPreviouYear:any
+totalCostPreviouYearGrowth:any
+getprojectDetailPAndLList:any=[]
+totalCostPreviouYearGrowthPercent:any
+totalCostCurrentYearGrowthPercent:any
+projectWithAvgMarginPreviousYearGrowthPercent:any
+projectWithAvgMarginCurrentYearGrowthPercent:any
+projectCostPreviousYearGrowthPercent:any
+avgMarginCurrentYearGrowthPercent:any
+avgMarginPreviousYearGrowthPercent:any
+avgRevenueCurrentYearGrowthPercent:any
+avgRevenuePreviousYearGrowthPercent:any
+avgTenureCurrentYearGrowthPercent:any
+avgTenurePreviousYearGrowthPercent:any
+netRevenueCurrentYearGrowthPercent:any
+netRevenuePreviousYearGrowthPercent:any
+projectCostCurrentYearGrowthPercent:any
+projectCostInDollarPreviousYearGrowthPercent:any
+projectCostInDollarCurrentYearGrowthPercent:any
+plcurrentYear:any
+plpreviousYear:any
+avgMarginCurrentYearGrowthPercentimg:any
+avgMarginPreviousYearGrowthPercentimg:any
+avgRevenueCurrentYearGrowthPercentimg:any
+avgRevenuePreviousYearGrowthPercentimg:any
+avgTenureCurrentYearGrowthPercentimg:any
+avgTenurePreviousYearGrowthPercentimg:any
+netRevenueCurrentYearGrowthPercentimg:any
+netRevenuePreviousYearGrowthPercentimg:any
+projectCostCurrentYearGrowthPercentimg:any
+projectCostInDollarCurrentYearGrowthPercentimg:any
+projectCostPreviousYearGrowthPercentimg:any
+projectWithAvgMarginCurrentYearGrowthPercentimg:any
+projectWithAvgMarginPreviousYearGrowthPercentimg:any
+totalCostCurrentYearGrowthPercentimg:any
+totalCostPreviouYearGrowthPercentimg:any
+  getpbiProjectDetailPAndLList(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.getprojectDetailPAndLList=[]
+      this.HTTP.getPbiProjectDetailPAndLList(this.setDate,this.CmpCode).subscribe(arg => {
+        debugger
+      this.getprojectDetailPAndLList=  arg.data.table
+this.plcurrentYear= this.getprojectDetailPAndLList[0].plcurrentYear
+this.plpreviousYear= this.getprojectDetailPAndLList[0].plpreviousYear
+
+      
+this.avgMarginCurrentYear= this.getprojectDetailPAndLList[0].avgMarginCurrentYear
+this.avgMarginCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgMarginCurrentYearGrowth
+this.avgMarginCurrentYearGrowthPercent=(this.avgMarginCurrentYear-this.avgMarginCurrentYearGrowth)*100/this.avgMarginCurrentYearGrowth
+if(this.avgMarginCurrentYearGrowth==0)
+{
+  this.avgMarginCurrentYearGrowthPercent=0
+}
+
+if(this.avgMarginCurrentYearGrowthPercent>0)
+{
+  this.avgMarginCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgMarginCurrentYearGrowthPercentimg=this.upUrl
+}
+this.avgMarginPreviousYear=this.getprojectDetailPAndLList[0].avgMarginPreviousYear
+this.avgMarginPreviousYearGrowth=this.getprojectDetailPAndLList[0].avgMarginPreviousYearGrowth
+
+this.avgMarginPreviousYearGrowthPercent=(this.avgMarginPreviousYear-this.avgMarginPreviousYearGrowth)*100/this.avgMarginPreviousYearGrowth
+if(this.avgMarginPreviousYearGrowth==0)
+{
+  this.avgMarginPreviousYearGrowthPercent=0
+}
+if(this.avgMarginPreviousYearGrowthPercent>0)
+{
+  this.avgMarginPreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgMarginPreviousYearGrowthPercentimg=this.upUrl
+}
+this.avgRevenueCurrentYear=this.getprojectDetailPAndLList[0].avgRevenueCurrentYear
+this.avgRevenueCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgRevenueCurrentYearGrowth
+
+this.avgRevenueCurrentYearGrowthPercent=(this.avgRevenueCurrentYear-this.avgRevenueCurrentYearGrowth)*100/this.avgRevenueCurrentYearGrowth
+if(this.avgRevenueCurrentYearGrowth==0)
+{
+  this.avgRevenueCurrentYearGrowthPercent=0
+}
+
+if(this.avgRevenueCurrentYearGrowthPercent>0)
+{
+  this.avgRevenueCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgRevenueCurrentYearGrowthPercentimg=this.upUrl
+}
+this.avgRevenuePreviousYear=this.getprojectDetailPAndLList[0].avgRevenuePreviousYear
+this.avgRevenuePreviousYearGrowth=this.getprojectDetailPAndLList[0].avgRevenuePreviousYearGrowth
+this.avgRevenuePreviousYearGrowthPercent=(this.avgRevenuePreviousYear-this.avgRevenuePreviousYearGrowth)*100/this.avgRevenuePreviousYearGrowth
+if(this.avgRevenuePreviousYearGrowth==0)
+{
+  this.avgRevenuePreviousYearGrowthPercent=0
+}
+if(this.avgRevenuePreviousYearGrowthPercent>0)
+{
+  this.avgRevenuePreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgRevenuePreviousYearGrowthPercentimg=this.upUrl
+}
+this.avgTenureCurrentYear=this.getprojectDetailPAndLList[0].avgTenureCurrentYear
+this.avgTenureCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgTenureCurrentYearGrowth
+this.avgTenureCurrentYearGrowthPercent=(this.avgTenureCurrentYear-this.avgTenureCurrentYearGrowth)*100/this.avgTenureCurrentYearGrowth
+if(this.avgTenureCurrentYearGrowth==0)
+{
+  this.avgTenureCurrentYearGrowthPercent=0
+}
+if(this.avgTenureCurrentYearGrowthPercent>0)
+{
+  this.avgTenureCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgTenureCurrentYearGrowthPercentimg=this.upUrl
+}
+
+this.avgTenurePreviousYear=this.getprojectDetailPAndLList[0].avgTenurePreviousYear
+this.avgTenurePreviousYearGrowth= this.getprojectDetailPAndLList[0].avgTenurePreviousYearGrowth
+
+this.avgTenurePreviousYearGrowthPercent=(this.avgTenurePreviousYear-this.avgTenurePreviousYearGrowth)*100/this.avgTenurePreviousYearGrowth
+if(this.avgTenurePreviousYearGrowth==0)
+{
+  this.avgTenurePreviousYearGrowthPercent=0
+}
+if(this.avgTenurePreviousYearGrowthPercent>0)
+{
+  this.avgTenurePreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgTenurePreviousYearGrowthPercentimg=this.upUrl
+}
+this.netRevenueCurrentYear= this.getprojectDetailPAndLList[0].netRevenueCurrentYear
+this.netRevenueCurrentYearGrowth=this.getprojectDetailPAndLList[0].netRevenueCurrentYearGrowth
+
+this.netRevenueCurrentYearGrowthPercent=(this.netRevenueCurrentYear-this.netRevenueCurrentYearGrowth)*100/this.netRevenueCurrentYearGrowth
+if(this.netRevenueCurrentYearGrowth==0)
+{
+  this.netRevenueCurrentYearGrowthPercent=0
+}
+if(this.netRevenueCurrentYearGrowthPercent>0)
+{
+  this.netRevenueCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.netRevenueCurrentYearGrowthPercentimg=this.upUrl
+}
+
+this.netRevenuePreviousYear=this.getprojectDetailPAndLList[0].netRevenuePreviousYear
+this.netRevenuePreviousYearGrowth=this.getprojectDetailPAndLList[0].netRevenuePreviousYearGrowth
+this.netRevenuePreviousYearGrowthPercent=(this.netRevenuePreviousYear-this.netRevenuePreviousYearGrowth)*100/this.netRevenuePreviousYearGrowth
+if(this.netRevenuePreviousYearGrowth==0)
+{
+  this.netRevenuePreviousYearGrowthPercent=0
+}
+if(this.netRevenuePreviousYearGrowthPercent>0)
+{
+  this.netRevenuePreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.netRevenuePreviousYearGrowthPercentimg=this.upUrl
+}
+
+this.projectCostCurrentYear=this.getprojectDetailPAndLList[0].projectCostCurrentYear
+this.projectCostCurrentYearGrowth=this.getprojectDetailPAndLList[0].projectCostCurrentYearGrowth
+this.projectCostCurrentYearGrowthPercent=(this.projectCostCurrentYear-this.projectCostCurrentYearGrowth)*100/this.projectCostCurrentYearGrowth
+if(this.projectCostCurrentYearGrowth==0)
+{
+  this.projectCostCurrentYearGrowthPercent=0
+}
+if(this.projectCostCurrentYearGrowthPercent>0)
+{
+  this.projectCostCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.projectCostCurrentYearGrowthPercentimg=this.upUrl
+}
+this.projectCostInDollarCurrentYear=this.getprojectDetailPAndLList[0].projectCostInDollarCurrentYear
+this.projectCostInDollarCurrentYearGrowth=this.getprojectDetailPAndLList[0].projectCostInDollarCurrentYearGrowth
+
+this.projectCostInDollarCurrentYearGrowthPercent=(this.projectCostInDollarCurrentYear-this.projectCostInDollarCurrentYearGrowth)*100/this.projectCostInDollarCurrentYearGrowth
+if(this.projectCostInDollarCurrentYearGrowth==0)
+{
+  this.projectCostInDollarCurrentYearGrowthPercent=0
+}
+if(this.projectCostInDollarCurrentYearGrowthPercent>0)
+{
+  this.projectCostInDollarCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.projectCostInDollarCurrentYearGrowthPercentimg=this.upUrl
+}
+
+this.projectCostInDollarPerviousYear=this.getprojectDetailPAndLList[0].projectCostInDollarPerviousYear
+this.projectCostInDollarPreviousYearGrowth=this.getprojectDetailPAndLList[0].projectCostInDollarPreviousYearGrowth
+this.projectCostInDollarPreviousYearGrowthPercent=(this.projectCostInDollarPerviousYear-this.projectCostInDollarPreviousYearGrowth)*100/this.projectCostInDollarPreviousYearGrowth
+if(this.projectCostInDollarPreviousYearGrowth==0)
+{
+  this.projectCostInDollarPreviousYearGrowthPercent=0
+}
+if(this.projectCostInDollarCurrentYearGrowthPercent>0)
+{
+  this.projectCostInDollarCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.projectCostInDollarCurrentYearGrowthPercentimg=this.upUrl
+}
+this.projectCostPreviousYear=this.getprojectDetailPAndLList[0].projectCostPreviousYear
+this.projectCostPreviousYearGrowth=this.getprojectDetailPAndLList[0].projectCostPreviousYearGrowth
+this.projectCostPreviousYearGrowthPercent=(this.projectCostPreviousYear-this.projectCostPreviousYearGrowth)*100/this.projectCostPreviousYearGrowth
+if(this.projectCostPreviousYearGrowth==0)
+{
+  this.projectCostPreviousYearGrowthPercent=0
+}
+if(this.projectCostPreviousYearGrowthPercent>0)
+{
+  this.projectCostPreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.projectCostPreviousYearGrowthPercentimg=this.upUrl
+}
+
+this.projectWithAvgMarginCurrentYear=this.getprojectDetailPAndLList[0].projectWithAvgMarginCurrentYear
+this.projectWithAvgMarginCurrentYearGrowth=this.getprojectDetailPAndLList[0].projectWithAvgMarginCurrentYearGrowth
+this.projectWithAvgMarginCurrentYearGrowthPercent=(this.projectWithAvgMarginCurrentYear-this.projectWithAvgMarginCurrentYearGrowth)*100/this.projectWithAvgMarginCurrentYearGrowth
+if(this.projectWithAvgMarginCurrentYearGrowth==0)
+{
+  this.projectWithAvgMarginCurrentYearGrowthPercent=0
+}
+if(this.projectWithAvgMarginCurrentYearGrowthPercent>0)
+{
+  this.projectWithAvgMarginCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.projectWithAvgMarginCurrentYearGrowthPercentimg=this.upUrl
+}
+this.projectWithAvgMarginPreviousYear=this.getprojectDetailPAndLList[0].projectWithAvgMarginPreviousYear
+this.projectWithAvgMarginPreviousYearGrowth=this.getprojectDetailPAndLList[0].projectWithAvgMarginPreviousYearGrowth
+this.projectWithAvgMarginPreviousYearGrowthPercent=(this.projectWithAvgMarginPreviousYear-this.projectWithAvgMarginPreviousYearGrowth)*100/this.projectWithAvgMarginPreviousYearGrowth
+if(this.projectWithAvgMarginPreviousYearGrowth==0)
+{
+  this.projectWithAvgMarginPreviousYearGrowthPercent=0
+}
+if(this.projectWithAvgMarginPreviousYearGrowthPercent>0)
+{
+  this.projectWithAvgMarginPreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.projectWithAvgMarginPreviousYearGrowthPercentimg=this.upUrl
+}
+
+this.totalCostCurrentYear=this.getprojectDetailPAndLList[0].totalCostCurrentYear
+this.totalCostCurrentYearGrowth=this.getprojectDetailPAndLList[0].totalCostCurrentYearGrowth
+this.totalCostCurrentYearGrowthPercent=(this.totalCostCurrentYear-this.totalCostCurrentYearGrowth)*100/this.totalCostCurrentYearGrowth
+if(this.totalCostCurrentYearGrowth==0)
+{
+  this.totalCostCurrentYearGrowthPercent=0
+}
+
+
+if(this.totalCostCurrentYearGrowthPercent>0)
+{
+  this.totalCostCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.totalCostCurrentYearGrowthPercentimg=this.upUrl
+}
+this.totalCostPreviouYear=this.getprojectDetailPAndLList[0].totalCostPreviouYear
+this.totalCostPreviouYearGrowth=this.getprojectDetailPAndLList[0].totalCostPreviouYearGrowth
+
+this.totalCostPreviouYearGrowthPercent=(this.totalCostPreviouYear-this.totalCostPreviouYearGrowth)*100/this.totalCostPreviouYearGrowth
+if(this.totalCostPreviouYearGrowth==0)
+{
+  this.totalCostPreviouYearGrowthPercent=0
+}
+if(this.totalCostPreviouYearGrowthPercent>0)
+{
+  this.totalCostPreviouYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.totalCostPreviouYearGrowthPercentimg=this.upUrl
+}
+
+})
+  }
   getListDesignation:any=[]
   dataDesignation:any=[]
   datades21:any
@@ -2640,6 +3066,7 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
         },
         "data": this.dataDesignation
       };
+
     
     
       })
@@ -3087,6 +3514,7 @@ this.dataVendorBench.push({'value':this.getListProjectVsBench[i].vendor})
 
   })
 }
+public format = {type:'date', format:'dd/MM/yyyy'} 
 
   getListEmployeeAddition:any=[]
   dataEmployeeAddition:any=[]
@@ -3201,6 +3629,12 @@ plottooltext:     " $label: <b>$dataValue</b>",
   tenurUpList:any=[]
   tenureDownList:any=[]
   tentureDetails:any=[]
+  avgMin:any=[]
+  avgMax:any=[]
+  avgTotal:any=[]
+  catList:any=[]
+tenCatList:any=[]
+curAvgLsit:any=[]
   getpbiPeopleTenureWiseEmployee(){
       let cmpcode=1
       let year='2022-02-20'
@@ -3211,261 +3645,181 @@ plottooltext:     " $label: <b>$dataValue</b>",
       this.HTTP.getPbiReportEmployeeTenureWiseEmployeeDetail(this.setDate,this.CmpCode).subscribe(arg => {
       this.getListTenureWiseEmployee=  arg.data.table
       this.getListTenureWiseEmployeeAvg=arg.data.table1
-    this.tenurUpList.push(
-      {"label": "Jan",'value':this.getListTenureWiseEmployee[0].janmax},
-      {"label": "Feb",'value':this.getListTenureWiseEmployee[0].febmax},
-      {"label": "Mar",'value':-this.getListTenureWiseEmployee[0].marmax},
-      {"label": "Apr",'value':-this.getListTenureWiseEmployee[0].aprmax},
-      {"label": "May",'value':this.getListTenureWiseEmployee[0].maymax}
+ 
+      this.avgMin.push({'value':arg.data.table1[0].january},
+      {'value':arg.data.table1[0].february},
+      {'value':arg.data.table1[0].march},{'value':arg.data.table1[0].april}
+      ,{'value':arg.data.table1[0].may},{'value':arg.data.table1[0].june},
+      {'value':arg.data.table1[0].july},{'value':arg.data.table1[0].august},
+      {'value':arg.data.table1[0].september},{'value':arg.data.table1[0].october},
+      {'value':arg.data.table1[0].november},{'value':arg.data.table1[0].december})
+      debugger
+      this.avgMax.push({'value':arg.data.table1[1].january},
+      {'value':arg.data.table1[1].february},{'value':arg.data.table1[1].march},
+      {'value':arg.data.table1[1].april},{'value':arg.data.table1[1].may},
+      {'value':arg.data.table1[1].june},{'value':arg.data.table1[1].july},
+      {'value':arg.data.table1[1].august},{'value':arg.data.table1[1].september},
+      {'value':arg.data.table1[1].october},{'value':arg.data.table1[1].november},
+      {'value':arg.data.table1[1].december})
+      this.catList.push({'Label':'january'},{'Label':"february"},{'Label':'march'},
+      {'Label':'april'},{'Label':'may'},
+      {'Label':'june'},{'Label':'july'},
+      {'Label':'august'},{'Label':'september'},
+      {'Label':'october'},{'Label':'november'},
+      {'Label':'december'})
+      var dat=new Date(this.setDate)
+             for(var i=0;i<dat.getMonth()+1;i++)
+             {
+               this.tenurUpList.push(this.avgMin[i])
+               this.tenureDownList.push(this.avgMax[i])
 
-      )
-      this.tenureDownList.push({'value':this.getListTenureWiseEmployee[0].janmin,},
-      {'value':this.getListTenureWiseEmployee[0].febmin},
-      {'value':this.getListTenureWiseEmployee[0].marmin},
-      {'value':this.getListTenureWiseEmployee[0].aprmin},
-      {'value':this.getListTenureWiseEmployee[0].maymin})
-      var totalSum=(this.getListTenureWiseEmployeeAvg[0].aprilavg+this.getListTenureWiseEmployeeAvg[0].janavg+this.getListTenureWiseEmployeeAvg[0].febavg+
-      this.getListTenureWiseEmployeeAvg[0].marchavg+this.getListTenureWiseEmployeeAvg[0].mayavg)/6
+               this.tenCatList.push(this.catList[i])
+               this.curAvgLsit.push({'value':arg.data.table[0].cruntavg})
+
+             }
+    // this.tenurUpList.push(
+    //   {"label": "Jan",'value':this.getListTenureWiseEmployee[0].janmax},
+    //   {"label": "Feb",'value':this.getListTenureWiseEmployee[0].febmax},
+    //   {"label": "Mar",'value':this.getListTenureWiseEmployee[0].marmax},
+    //   {"label": "Apr",'value':this.getListTenureWiseEmployee[0].aprmax},
+    //   {"label": "May",'value':this.getListTenureWiseEmployee[0].maymax}
+
+    //   )
+    //   this.tenureDownList.push({'value':this.getListTenureWiseEmployee[0].janmin,},
+    //   {'value':this.getListTenureWiseEmployee[0].febmin},
+    //   {'value':this.getListTenureWiseEmployee[0].marmin},
+    //   {'value':this.getListTenureWiseEmployee[0].aprmin},
+    //   {'value':this.getListTenureWiseEmployee[0].maymin})
+      // var totalSum=(this.getListTenureWiseEmployeeAvg[0].aprilavg+this.getListTenureWiseEmployeeAvg[0].janavg+this.getListTenureWiseEmployeeAvg[0].febavg+
+      // this.getListTenureWiseEmployeeAvg[0].marchavg+
+      // this.getListTenureWiseEmployeeAvg[0].mayavg)/5
 //       designationId: 15
 // designationName: 
-var maxValue=Math.max(...this.tenurUpList);
-var minValue=-Math.max(...this.tenurUpList);
-var newMax=Math.max(...this.tenureDownList);
-var newmin=-Math.max(...this.tenureDownList);
+// var avgList=[]
+// debugger
+// for(var i=0;i<this.tenurUpList.length;i++)
+// {
+//   avgList.push( {'value':totalSum})
+
+// }
+// var maxValue=Math.max(...this.tenurUpList);
+// var minValue=-Math.max(...this.tenurUpList);
+// var newMax=Math.max(...this.tenureDownList);
+// var newmin=-Math.max(...this.tenureDownList);
+// this.tentureDetails = {
+//   chart: {
+//     caption: "",
+//     numbersuffix: "",
+//     numdivlines: "6",
+//     adjustdiv: totalSum.toString(),
+//     syaxismaxvalue: maxValue.toString(),
+//     syaxisminvalue: minValue.toString(),
+//     yaxisminvalue: newmin.toString(),
+//     yaxismaxvalue: newMax.toString(),
+//     theme: "fusion",
+//     drawcustomlegendicon: "1",
+//     palettecolors: "#7cb5ec,#ed8f1d"
+//   },
+//   categories: [
+//     {
+//       category: [
+//         {
+//           label: "January"
+//         },
+//         {
+//           label: "February"
+//         },
+//         {
+//           label: "March"
+//         },
+//         {
+//           label: "April"
+//         },
+//         {
+//           label: "May"
+//         }
+       
+//       ]
+//     }
+//   ],
+//   dataset: [
+//     {
+//       dataset: [
+//         {
+//           seriesname: "Employee",
+//           data: this.tenurUpList
+//         },
+//         {
+//           seriesname: "Avg",
+//           data: this.tenureDownList
+//         }
+        
+//       ]
+//     }
+//   ],
+
+// };
 this.tentureDetails={
-chart: {
-  "caption": "",
-  "subcaption": "",
-  "yaxisname": "",
-  "theme": "fusion",
-  "zeroplanethickness": "1.5",
-  "zeroplanecolor": "#000000",
-  "zeroplanealpha":totalSum.toString()
-},
-"data":this.tenurUpList
+    chart: {
+      // caption: "Growth Accounting",
+      // pyaxisname: "Monthly Active Users [MAU]",
+      // syaxisname: "Growth Ratio",
+      // numbersuffix: "",
+      // numdivlines: "50",
+      // adjustdiv: "50",
+      // syaxismaxvalue: "15",
+      // syaxisminvalue: "3",
+      // yaxisminvalue: "300",
+      // yaxismaxvalue: "30",
+      // theme: "fusion",
+      // drawcustomlegendicon: "1",
+      // plottooltext: "$label, $seriesname: $dataValue",
+      // palettecolors: "#A5A5A5,#5EB863,#DD8341"
+      caption: "",
+      yaxisname: "",
+      subcaption: "",
+      numberprefix: "",
+      yaxisminvalue: "0",
+     // showsum: "1",
+      //plottooltext:
+      //  "$seriesName in $label was <b>$dataValue</b>  ($percentValue of monthly total)",
+      decimals: "1",
+      theme: "fusion"
+    },
+    categories: [
+      {
+        category:this.tenCatList
       }
-// this.tentureDetails = {
-//   chart: {
-//     caption: "",
-//     numbersuffix: "M",
-//     numdivlines: "6",
-//     adjustdiv: totalSum.toString(),
-//     syaxismaxvalue: maxValue.toString(),
-//     syaxisminvalue: minValue.toString(),
-//     yaxisminvalue: newmin.toString(),
-//     yaxismaxvalue: newMax.toString(),
-//     theme: "fusion",
-//     drawcustomlegendicon: "1",
-//     palettecolors: "#7cb5ec,#ed8f1d"
-//   },
-//   categories: [
-//     {
-//       category: [
-//         {
-//           label: "January"
-//         },
-//         {
-//           label: "February"
-//         },
-//         {
-//           label: "March"
-//         },
-//         {
-//           label: "April"
-//         },
-//         {
-//           label: "May"
-//         }
-       
-//       ]
-//     }
-//   ],
-//   dataset: [
-//     {
-//       dataset: [
-//         {
-//           seriesname: "Employee",
-//           data: this.tenurUpList
-//         },
-//         {
-//           seriesname: "Avg",
-//           data: this.tenureDownList
-//         }
-//       ]
-//     }
-//   ],
-
-// };
-
-// this.tentureDetails = {
-//   chart: {
-//     caption: "",
-//     numbersuffix: "M",
-//     numdivlines: "6",
-//     adjustdiv: totalSum.toString(),
-//     syaxismaxvalue: maxValue.toString(),
-//     syaxisminvalue: minValue.toString(),
-//     yaxisminvalue: newmin.toString(),
-//     yaxismaxvalue: newMax.toString(),
-//     theme: "fusion",
-//     drawcustomlegendicon: "1",
-//     palettecolors: "#7cb5ec,#ed8f1d"
-//   },
-//   categories: [
-//     {
-//       category: [
-//         {
-//           label: "January"
-//         },
-//         {
-//           label: "February"
-//         },
-//         {
-//           label: "March"
-//         },
-//         {
-//           label: "April"
-//         },
-//         {
-//           label: "May"
-//         }
-       
-//       ]
-//     }
-//   ],
-//   dataset: [
-//     {
-//       dataset: [
-//         {
-//           seriesname: "Employee",
-//           data: this.tenurUpList
-//         },
-//         {
-//           seriesname: "Avg",
-//           data: this.tenureDownList
-//         }
-//       ]
-//     }
-//   ],
-
-// };
-
-
-
-// this.tentureDetails = {
-//   chart: {
-//     caption: "",
-//     pyaxisname: "Monthly Active Users [MAU]",
-//     syaxisname: "Growth Ratio",
-//     numbersuffix: "M",
-//     numdivlines: "7",
-//     adjustdiv: "0",
-//     syaxismaxvalue: "5",
-//     syaxisminvalue: "-3",
-//     yaxisminvalue: "-30",
-//     yaxismaxvalue: "30",
-//     theme: "fusion",
-//     drawcustomlegendicon: "1",
-//     plottooltext: "$label, $seriesname: $dataValue",
-//     palettecolors: "#7cb5ec,#ed8f1d"
-//   },
-//   categories: [
-//     {
-//       category: [
-//         {
-//           label: "January"
-//         },
-//         {
-//           label: "February"
-//         },
-//         {
-//           label: "March"
-//         },
-//         {
-//           label: "April"
-//         },
-//         {
-//           label: "May"
-//         },
-//         {
-//           label: "June"
-//         }
-//       ]
-//     }
-//   ],
-//   dataset: [
-//     {
-//       dataset: [
-//         {
-//           seriesname: "Churned",
-//           data: [
-//             {
-//               value: "-8"
-//             },
-//             {
-//               value: "-7"
-//             },
-//             {
-//               value: "-5"
-//             },
-//             {
-//               value: "-21"
-//             },
-//             {
-//               value: "-23"
-//             },
-//             {
-//               value: "-15"
-//             }
-//           ]
-//         },
-//         {
-//           seriesname: "New",
-//           data: [
-//             {
-//               value: "8"
-//             },
-//             {
-//               value: "8"
-//             },
-//             {
-//               value: "22"
-//             },
-//             {
-//               value: "24"
-//             },
-//             {
-//               value: "14"
-//             },
-//             {
-//               value: "4"
-//             }
-//           ]
-//         }
-//       ]
-//     }
-//   ],
-
-// };
-
-
-      // this.dataempoyeevsvendor = {
-      //   chart: {
-      //     "numberPrefix": "$",
-      //     "bgColor": "#ffffff",
-      //     "startingAngle": "100",
-      //     "showLegend": "1",
-      //     "defaultCenterLabel": "",
-      //     "centerLabel": "Revenue from $label: $value",
-      //     "centerLabelBold": "1",
-      //     "showTooltip": "0",
-      //     "decimals": "0",
-      //     'paletteColors' :'7bb7ed, e4d556',
-      //     "theme": "fusion"
-      //   },
-      //   "data": this.dataEmployeeVsVendor
-      // };
+    ],
+    dataset: [
     
+     
+     
+      {
+        seriesname: "Avg Line",
+        plottooltext: "Avg Line in $label was <b>$dataValue</b>",
+        renderas: "Line",
+        //data:this.tenurUpList
+        data:this.curAvgLsit
+
+
+      },
+      {
+        seriesname: "Employee",
+        //data:this.tenurUpList
+        data:this.avgMin
+
+      },
+     
+      {
+        seriesname: "Avg",
+      // data:this.tenureDownList
+      data:this.avgMax
+
+      },
+    ]
+  
+}
     
       })
   }
@@ -3542,6 +3896,213 @@ this.revnueFirst=this.getListProjectDetailRevnureAndCost[0].costFirst
 this.revnueSecond= this.getListProjectDetailRevnureAndCost[0].costFirst
     
     })
+  }
+  getListProjectDetailPAndLGridList:any=[]
+  getProjectProjectDetailPAndLGridList()
+  {
+    this.getListProjectDetailPAndLGridList=[]
+    this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode).subscribe(arg => {
+      debugger
+    this.getListProjectDetailPAndLGridList=  arg.data.table
+    
+    })
+  }
+  customerExpenseCurrentYearGrowth:any
+customerExpenseCurrentYearGrowthYoy:any
+customerExpenseCurrentYearYoy:any
+customerExpenseCurrentYear:any
+  getListExpenseDetailList:any=[]
+  serviceProviderPreviousYearGrowth:any
+    serviceProviderPreviousYear:any
+    customerExpensePreviousYear:any
+    serviceProviderCurrentYearYoy:any
+    serviceProviderCurrentYearGrowthYoy:any
+    serviceProviderCurrentYear:any
+    serviceProviderCurrentYearGrowth:any
+    customerExpensePreviousYearGrowth:any
+    customerExpenseCurrentYearGrowthPercent:any
+    customerExpenseCurrentYearGrowthYoyPercent:any
+    customerExpensePreviousYearGrowthPercent:any
+    serviceProviderCurrentYearGrowthPercent:any
+    serviceProviderCurrentYearGrowthYoyPercent:any
+    serviceProviderPreviousYearGrowthPercent:any
+    customerExpenseCurrentYearGrowthPercentimg:any
+customerExpenseCurrentYearGrowthYoyPercentimg:any
+customerExpensePreviousYearGrowthPercentimg:any
+serviceProviderCurrentYearGrowthPercentimg:any
+   
+serviceProviderCurrentYearGrowthYoyPercentimg:any
+serviceProviderPreviousYearGrowthPercentimg:any
+totalExpenseCurrentYear:any
+    totalExpenseCurrentYearGrowth:any
+
+ totalExpensePreviousYear:any
+totalExpensePreviousYearGrowth:any
+ totalExpenseCurrentYearYoy:any
+totalExpenseCurrentYearYoyGrowth:any
+totalExpenseCurrentYearYoyGrowthPercent:any
+totalExpensePreviousYearGrowthPercent:any
+totalExpenseCurrentYearGrowthPercent:any
+totalExpenseCurrentYearYoyGrowthPercentimg:any
+totalExpensePreviousYearGrowthPercentimg:any
+expenseCurrentYear
+expensePreviousYear
+totalExpenseCurrentYearGrowthPercentimg:any
+  getProjectExpenseDetailList()
+  {
+    this.getListExpenseDetailList=[]
+    this.HTTP.getPbiExpenseDetailList(this.setDate,this.CmpCode).subscribe(arg => {
+      debugger
+    this.getListExpenseDetailList=  arg.data.table
+   this.expenseCurrentYear=this.getListExpenseDetailList[0].expenseCurrentYear
+     this.expensePreviousYear=this.getListExpenseDetailList[0].expensePreviousYear
+    this.customerExpenseCurrentYear=this.getListExpenseDetailList[0].customerExpenseCurrentYear
+    this.customerExpenseCurrentYearGrowth=this.getListExpenseDetailList[0].customerExpenseCurrentYearGrowth
+this.customerExpenseCurrentYearGrowthPercent=(this.customerExpenseCurrentYear-this.customerExpenseCurrentYearGrowth)*100/this.customerExpenseCurrentYearGrowth
+if(this.customerExpenseCurrentYearGrowth==0)
+{
+  this.customerExpenseCurrentYearGrowthPercent=0
+}
+
+if(this.customerExpenseCurrentYearGrowthPercent>0)
+{
+  this.customerExpenseCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.customerExpenseCurrentYearGrowthPercentimg=this.upUrl
+}
+
+
+this.customerExpenseCurrentYearGrowthYoy=this.getListExpenseDetailList[0].customerExpenseCurrentYearGrowthYoy
+
+    this.customerExpenseCurrentYearYoy=this.getListExpenseDetailList[0].customerExpenseCurrentYearYoy
+    this.customerExpenseCurrentYearGrowthYoyPercent=(this.customerExpenseCurrentYearYoy-this.customerExpenseCurrentYearGrowthYoy)*100/this.customerExpenseCurrentYearGrowthYoy
+    if(this.customerExpenseCurrentYearGrowthYoy==0)
+    {
+      this.customerExpenseCurrentYearGrowthYoyPercent=0
+    }
+    if(this.customerExpenseCurrentYearGrowthYoyPercent>0)
+{
+  this.customerExpenseCurrentYearGrowthYoyPercentimg=this.downUrl
+}
+else{
+  this.customerExpenseCurrentYearGrowthYoyPercentimg=this.upUrl
+}
+    
+    this.customerExpensePreviousYear=this.getListExpenseDetailList[0].customerExpensePreviousYear
+    this.customerExpensePreviousYearGrowth=this.getListExpenseDetailList[0].customerExpensePreviousYearGrowth
+   this.customerExpensePreviousYearGrowthPercent=(this.customerExpensePreviousYear-this.customerExpensePreviousYearGrowth)*100/this.customerExpensePreviousYearGrowth
+   if(this.customerExpensePreviousYearGrowth==0)
+    {
+      this.customerExpensePreviousYearGrowthPercent=0
+    }
+  
+   if(this.customerExpensePreviousYearGrowthPercent>0)
+   {
+     this.customerExpensePreviousYearGrowthPercentimg=this.downUrl
+   }
+   else{
+     this.customerExpensePreviousYearGrowthPercentimg=this.upUrl
+   }
+    this.serviceProviderCurrentYear=this.getListExpenseDetailList[0].serviceProviderCurrentYear
+    this.serviceProviderCurrentYearGrowth=this.getListExpenseDetailList[0].serviceProviderCurrentYearGrowth
+  
+    this.serviceProviderCurrentYearGrowthPercent=(this.serviceProviderCurrentYearGrowth-this.serviceProviderCurrentYearGrowth)*100/this.serviceProviderCurrentYearGrowth
+   
+    if(this.serviceProviderCurrentYearGrowth==0)
+    {
+      this.serviceProviderCurrentYearGrowthPercent=0
+    }
+    if(this.serviceProviderCurrentYearGrowthPercent>0)
+   {
+     this.serviceProviderCurrentYearGrowthPercentimg=this.downUrl
+   }
+   else{
+     this.serviceProviderCurrentYearGrowthPercentimg=this.upUrl
+   } 
+ 
+   this.serviceProviderCurrentYearGrowthYoy=this.getListExpenseDetailList[0].serviceProviderCurrentYearGrowthYoy
+    this.serviceProviderCurrentYearYoy=this.getListExpenseDetailList[0].serviceProviderCurrentYearYoy
+    this.serviceProviderCurrentYearGrowthYoyPercent=(this.serviceProviderCurrentYearYoy-this.serviceProviderCurrentYearGrowthYoy)*100/this.serviceProviderCurrentYearGrowthYoy
+    if(this.serviceProviderCurrentYearGrowthYoy==0)
+    {
+      this.serviceProviderCurrentYearGrowthYoyPercent=0
+    }
+   
+    if(this.serviceProviderCurrentYearGrowthYoyPercent>0)
+    {
+      this.serviceProviderCurrentYearGrowthYoyPercentimg=this.downUrl
+    }
+    else{
+      this.serviceProviderCurrentYearGrowthYoyPercentimg=this.upUrl
+    } 
+    this.serviceProviderPreviousYear=this.getListExpenseDetailList[0].serviceProviderPreviousYear
+    
+this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceProviderPreviousYearGrowth
+    this.serviceProviderPreviousYearGrowthPercent=(this.serviceProviderPreviousYear-this.serviceProviderPreviousYearGrowth)*100/this.serviceProviderPreviousYearGrowth
+    if(this.serviceProviderPreviousYearGrowth==0)
+    {
+      this.serviceProviderPreviousYearGrowthPercent=0
+    }
+   
+    if(this.serviceProviderPreviousYearGrowthPercent>0)
+    {
+      this.serviceProviderPreviousYearGrowthPercentimg=this.downUrl
+    }
+    else{
+      this.serviceProviderPreviousYearGrowthPercentimg=this.upUrl
+    } 
+
+   this.totalExpenseCurrentYear=this.getListExpenseDetailList[0].totalExpenseCurrentYear
+    this.totalExpenseCurrentYearGrowth=this.getListExpenseDetailList[0].totalExpenseCurrentYearGrowth
+ this.totalExpenseCurrentYearGrowthPercent=(this.totalExpenseCurrentYear-this.totalExpenseCurrentYearGrowth)*100/this.totalExpenseCurrentYearGrowth
+ if(this.totalExpenseCurrentYearGrowth==0)
+ {
+   this.totalExpenseCurrentYearGrowthPercent=0
+ }
+
+ if(this.totalExpenseCurrentYearGrowthPercent>0)
+ {
+   this.totalExpenseCurrentYearGrowthPercentimg=this.downUrl
+ }
+ else{
+   this.totalExpenseCurrentYearGrowthPercentimg=this.upUrl
+ } 
+
+    this.totalExpensePreviousYear=this.getListExpenseDetailList[0].totalExpensePreviousYear
+this.totalExpensePreviousYearGrowth=this.getListExpenseDetailList[0].totalExpensePreviousYearGrowth
+this.totalExpensePreviousYearGrowthPercent=(this.totalExpensePreviousYear-this.totalExpensePreviousYearGrowth)*100/this.totalExpensePreviousYearGrowth
+if(this.totalExpensePreviousYearGrowth==0)
+{
+  this.totalExpensePreviousYearGrowthPercent=0
+}
+
+if(this.totalExpensePreviousYearGrowthPercent>0)
+{
+  this.totalExpensePreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.totalExpensePreviousYearGrowthPercentimg=this.upUrl
+} 
+
+this.totalExpenseCurrentYearYoy=this.getListExpenseDetailList[0].totalExpenseCurrentYearYoy
+this.totalExpenseCurrentYearYoyGrowth=this.getListExpenseDetailList[0].totalExpenseCurrentYearYoyGrowth
+this.totalExpenseCurrentYearYoyGrowthPercent=(this.totalExpenseCurrentYearYoy-this.totalExpenseCurrentYearYoyGrowth)*100/this.totalExpenseCurrentYearYoyGrowth
+
+if(this.totalExpenseCurrentYearYoyGrowth==0)
+{
+  this.totalExpenseCurrentYearYoyGrowthPercent=0
+}
+
+if(this.totalExpenseCurrentYearYoyGrowthPercent>0)
+{
+  this.totalExpenseCurrentYearYoyGrowthPercentimg=this.downUrl
+}
+else{
+  this.totalExpenseCurrentYearYoyGrowthPercentimg=this.upUrl
+} 
+
+})
   }
   getListEmployeePerformance:any=[]
   getpbiPeopleEmployeePerformance(){
@@ -4844,6 +5405,12 @@ this.getpbiProjectEmployeeVsVendor()
 this.getpbiProjecDeployeeVsBench()
 this.getProjectPortFoliyo()
 this.getProjectProjectDetailRevnueAndCost()
+this.getPbiProjectDetailProgressAndCost()
+this.getpbiProjectDetailRoadblock()
+this.getpbiProjectDevaition()
+this.getProjectProjectDetailPAndLGridList()
+this.getpbiProjectDetailPAndLList()
+this.getProjectExpenseDetailList()
 
   }
   getResourcesDetail:any=[]
@@ -4851,6 +5418,12 @@ this.getProjectProjectDetailRevnueAndCost()
   employeeList:any=[]
  deployeeList:any=[]
  totalData:any
+ width = 600;
+  height = 400;
+    type = "overlappedcolumn2d";
+    dataFormat = "json";
+    ccData:any
+    
   getpbiPeopleResources(){
     let cmpcode=1
     let year='2022-02-20'
@@ -4858,8 +5431,10 @@ this.getProjectProjectDetailRevnueAndCost()
     this.category=[]
     this.deployeeList=[]
     this.employeeList=[]
+    
     this.HTTP.getPbiPeopleResources(this.setDate,this.CmpCode).subscribe(arg => {
       this.getResourcesDetail=arg.data.table
+      debugger
 //       deployeeproject: 10
 // mm: 9
 // monthNames: "September"
@@ -4879,19 +5454,177 @@ this.deployeeList.push({'value':this.getResourcesDetail[i].deployeeproject})
       {
 this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
       }
+      // this.ccData = {
+      //   chart: {
+      //     caption: "Growth Accounting",
+      //     pyaxisname: "Monthly Active Users [MAU]",
+      //     syaxisname: "Growth Ratio",
+      //     numbersuffix: "M",
+      //     numdivlines: "7",
+      //     adjustdiv: "0",
+      //     syaxismaxvalue: "5",
+      //     syaxisminvalue: "-3",
+      //     yaxisminvalue: "-30",
+      //     yaxismaxvalue: "30",
+      //     theme: "fusion",
+      //     drawcustomlegendicon: "1",
+      //     plottooltext: "$label, $seriesname: $dataValue",
+      //     palettecolors: "#A5A5A5,#5EB863,#DD8341"
+      //   },
+      //   categories: [
+      //     {
+      //       category: this.category
+      //     }
+      //   ],
+      //   dataset: [
+      //     {
+      //       dataset: [
+      //         {
+      //           seriesname: "Churned",
+      //           data:this.deployeeList
+      //         },
+      //         {
+      //           seriesname: "New",
+      //           data:this.employeeList
+      //         }
+             
+      //       ]
+      //     }
+      //   ],
+      //   lineset: [
+      //     {
+      //       seriesname: "Growth Ratio",
+      //       showvalues: "0",
+      //       color: "#FDCB50",
+      //       anchorbgcolor: "#FDCB50",
+      //       showanchors: "0",
+      //       data: [
+      //         {
+      //           value: "1"
+      //         },
+      //         {
+      //           value: "1"
+      //         },
+      //         {
+      //           value: "3.2"
+      //         },
+      //         {
+      //           value: "1.2"
+      //         },
+      //         {
+      //           value: "0.5"
+      //         },
+      //         {
+      //           value: "0.2"
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // };
+      // // this.totalData = {
+      //   chart: {
+      //     caption: "Sales Targets vs Achieved",
+      //     subcaption: "Bilbus",
+      //     yaxisname: "Revenue (In USD)",
+      //     numberprefix: "$",
+      //     drawcrossline: "1",
+      //     theme: "fusion",
+      //     showvalues: "0"
+      //   },
+      //   categories: [
+      //     {
+      //       category: [
+      //         {
+      //           label: "Oliver"
+      //         },
+      //         {
+      //           label: "Andy"
+      //         },
+      //         {
+      //           label: "Peter"
+      //         },
+      //         {
+      //           label: "Natasha"
+      //         },
+      //         {
+      //           label: "Robert"
+      //         },
+      //         {
+      //           label: "Bruce"
+      //         },
+      //         {
+      //           label: "Wanda"
+      //         }
+      //       ]
+      //     }
+      //   ],
+      //   dataset: [
+      //     {
+      //       seriesname: "Target",
+      //       data: [
+      //         {
+      //           value: "250000"
+      //         },
+      //         {
+      //           value: "200000"
+      //         },
+      //         {
+      //           value: "300000"
+      //         },
+      //         {
+      //           value: "200000"
+      //         },
+      //         {
+      //           value: "270000"
+      //         },
+      //         {
+      //           value: "350000"
+      //         },
+      //         {
+      //           value: "200000"
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       seriesname: "Achieved",
+      //       data: [
+      //         {
+      //           value: "260000"
+      //         },
+      //         {
+      //           value: "180000"
+      //         },
+      //         {
+      //           value: "290000"
+      //         },
+      //         {
+      //           value: "195000"
+      //         },
+      //         {
+      //           value: "300000"
+      //         },
+      //         {
+      //           value: "380000"
+      //         },
+      //         {
+      //           value: "210000"
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // };
+      
+      
       this.totalData = {
         chart: {
           caption: "",
-          yaxisname: "",
           subcaption: "",
-          flatscrollbars: "0",
-          scrollheight: "12",
-          //"showToolTip": "0",
-          //"plotToolText": "<b>$dataValue</b> Deploy Project $seriesName in $label",
-          numvisibleplot: "8",
-         // plottooltext:
-         //   "<b>$dataValue</b> Deploy Project $seriesName in $label",
-          theme: "fusion"
+          yaxisname: "",
+          numberprefix: "",
+          drawcrossline: "1",
+          theme: "fusion",
+          showvalues: "0",
+          renderAt: "chartContainer",
         },
         categories: [
           {
@@ -4900,6 +5633,10 @@ this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
         ],
         dataset: [
           {
+            seriesname:'Employee',
+            data: this.employeeList
+          },
+          {
             seriesname: "Project",
             data: this.deployeeList
           },
@@ -4907,10 +5644,7 @@ this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
           //   seriesname: "Project",
           //   data: this.deployeeList
           // },
-          {
-            seriesname:'Employee',
-            data: this.employeeList
-          },
+         
           // {
           //   seriesname:'totalEmployee',
           //   data: this.employeeList=[]
@@ -4918,6 +5652,9 @@ this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
          
         ]
       };
+      
+      
+     
       
     })
   }

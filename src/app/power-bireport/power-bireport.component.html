@@ -1884,7 +1884,7 @@
                   <fusioncharts
                   width="100%"
                   height="400"
-                  type="column2d"
+                  type="stackedcolumn2dline"
                   dataFormat="json"
                   [dataSource]="tentureDetails">
               </fusioncharts>
@@ -1900,13 +1900,16 @@
                   </div>
 
                   <div class="chartBox">
+      
+
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="scrollstackedcolumn2d"
+                    type="Overlappedcolumn2d"
                     dataFormat="json"
                     [dataSource]="totalData">
                 </fusioncharts>
+                <div id="chart-container"></div>
                   </div>
                 </div>
 
@@ -2103,7 +2106,7 @@
 
                   </div>
 
-                  <div class="table-responsive tableBorders">
+                  <div class="table-responsive tableBorders peopleheight">
                     <ejs-grid #overviewgrid id='overviewgrid'  [frozenRows]='0' [frozenColumns]='1'    [dataSource]='getListEmployeePerformance' rowHeight='38' 
           [allowSorting]='true' height='600' [enableHover]='false'
           [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
@@ -2118,43 +2121,43 @@
               </ng-template>
 
             </e-column>
-            <e-column field='reportName' headerText='Reporting Manager' [filter]='filter' clipMode='EllipsisWithTooltip'>
+            <e-column field='reportName' headerText='Reporting Manager' [filter]='filter' clipMode='EllipsisWithTooltip' width="150">
 
             </e-column>
-             <e-column field='totalTenure' headerText='Total Tenture' [filter]='filter' clipMode='EllipsisWithTooltip'>
+             <e-column field='totalTenure' headerText='Total Tenture' [filter]='filter' clipMode='EllipsisWithTooltip'width="150">
               <!-- <ng-template #template let-data>
                 {{dateformat(data.totalTenure)}}
               </ng-template> -->
             </e-column>
-              <e-column field='joiningDate' headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'>
+              <e-column field='joiningDate'  type='date'  [format]="format" headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'width="150">
 
                    <!-- <ng-template #template let-data>
                 {{dateformat(data.joiningDate)}}
               </ng-template> -->
               </e-column>
-              <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
 
-             <e-column field='totalProject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+             <e-column field='totalProject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip' width="150">
                 <ng-template #template let-data>
                   {{(data.totalProject)}}
                 </ng-template>
               </e-column>
 
-              <e-column field='openProject' headerText='Open Project' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='openProject' headerText='Open Project' [filter]='filter' clipMode='EllipsisWithTooltip'width="150"></e-column>
               <e-column field='avgDailyTime' headerText='Avg. Daily Time' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-              <e-column field='avgMonthlyTime' headerText='Avg. Monthly Expense' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='avgMonthlyTime' headerText='Avg. Monthly Expense' [filter]='filter' clipMode='EllipsisWithTooltip'width="150"></e-column>
                <e-column field='avgLeaveMonthly' headerText='Avg. Leave/Monthly' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
 
-              <e-column field='avgTimeCorrection' headerText='Avg. Time Corre. Req.' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
-              <e-column field='avgMissingTimesheet' headerText='Avg. Missing Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
+              <e-column field='avgTimeCorrection' headerText='Avg. Time Corre. Req.' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
+              <e-column field='avgMissingTimesheet' headerText='Avg. Missing Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
 
-            <e-column field='timeOnBench' headerText='Time on Bench' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
-              <e-column field='onBenchGreaterMonth' headerText='On Bench > 1 Month' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
+            <e-column field='timeOnBench' headerText='Time on Bench' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
+              <e-column field='onBenchGreaterMonth' headerText='On Bench > 1 Month' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
 
-              <e-column field='avgDeploymentPeriod' headerText='Avg. Deployment Period (Month)' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
-              <e-column field='currentOe' headerText='Current OE' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
-              <e-column field='avgOe' headerText='Avg. OE' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
+              <e-column field='avgDeploymentPeriod' headerText='Avg. Deployment Period (Month)' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
+              <e-column field='currentOe' headerText='Current OE' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
+              <e-column field='avgOe' headerText='Avg. OE' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
 
  
 
@@ -2480,7 +2483,7 @@
                           <fusioncharts
                   width="100%"
                   height="400"
-                  type="overlappedcolumn2d"
+                  type="scrollcolumn2d"
                   dataFormat="json"
                   [dataSource]="dataProjectValue">
                 </fusioncharts>
@@ -2740,37 +2743,36 @@
                           height="200"
                           type="pareto2d"
                           dataFormat="json"
-                          [dataSource]="dataprogresscost">
+                          [dataSource]="dataProjectProgressList">
                       </fusioncharts>
                         </div>
                         </div>
 
                       </div>
                     <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
-                      <ejs-grid #overviewgrid [dataSource]="" [allowResizing]="true"  height='450'
+                      <ejs-grid #overviewgrid [dataSource]="getListProjectDetailRoadblock" [allowResizing]="true"  height='450'
                       [allowFiltering]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
-                      >
+                       >
                        <e-columns>
-                         <e-column field='obl' headerText='' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
+                         <!-- <e-column field='obl' headerText='' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
+
+                         </e-column> -->
+                         <e-column field='assignDate' headerText='Assign Date' clipMode='EllipsisWithTooltip'>
 
                          </e-column>
-                         <e-column field='suplierName' headerText='Assign Date' clipMode='EllipsisWithTooltip'>
-
-                         </e-column>
-                         <e-column field='itemName' headerText='Total Hours' clipMode='EllipsisWithTooltip'></e-column>
+                         <e-column field='totalHours' headerText='Total Hours' clipMode='EllipsisWithTooltip'></e-column>
 
 
 
 
-                           <e-column headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='closeTask' headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column headerText='MOM' [columns]='Planwk2' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='closeMom' headerText='MOM' [columns]='Planwk2' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column headerText='Roadblocks' [columns]='Planwk3' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='closeRoadBlock' headerText='Roadblocks' [columns]='Planwk3' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='itemName' headerText='Leave' clipMode='EllipsisWithTooltip'></e-column>
-
-                           <e-column headerText='$ Expense' [columns]='Planwk4' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='leaveExpense' headerText='Leave' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='approveExpense' headerText='$ Expense' [columns]='Planwk4' clipMode='EllipsisWithTooltip'></e-column>
 
 
 
@@ -2789,28 +2791,28 @@
 
                     <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
                       <h3 style="margin-top: 0; font-size: 20px; color: #000;">Deviation</h3>
-                      <ejs-grid #overviewgrid [dataSource]="" [allowResizing]="true"  height='450'
+                      <ejs-grid #overviewgrid [dataSource]="getListProjectDetailDevialtion" [allowResizing]="true"  height='450'
                       [allowFiltering]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
                       >
                        <e-columns>
-                         <e-column field='obl' headerText='Phase' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
+                          <e-column field='phase' headerText='Phase' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
+
+                         </e-column> 
+                         <e-column field='subPhase' headerText='Sub Phase' clipMode='EllipsisWithTooltip'>
 
                          </e-column>
-                         <e-column field='suplierName' headerText='Sub Phase' clipMode='EllipsisWithTooltip'>
-
-                         </e-column>
-                         <e-column field='itemName' headerText='Task' clipMode='EllipsisWithTooltip'></e-column>
+                         <e-column field='task' headerText='Task' clipMode='EllipsisWithTooltip'></e-column>
 
 
-                           <e-column field='itemName' headerText='Plan' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='planed' headerText='Plan' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='itemName' headerText='Actual' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='actual' headerText='Actual' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='itemName' headerText='&#9650;' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='someThing' headerText='&#9650;' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='itemName' headerText='Progress%' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='progress' headerText='Progress%' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='itemName' headerText='Alert' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='alert' headerText='Alert' clipMode='EllipsisWithTooltip'></e-column>
 
 
                        </e-columns>
@@ -2843,18 +2845,55 @@
                           <div class="expenseValue expenseValue1">
                             <div class="YearValue"><p># Project</p><p>$ Project</p><p>Avg. Revenue</p><p>Avg. Tenure</p></div>
                             <div>
-                              <p>2022</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>{{plcurrentYear}}</p>
+                              <p><span>{{projectCostCurrentYear}} |</span><span>
+                                {{projectCostCurrentYearGrowthPercent}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{projectCostCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{projectCostInDollarCurrentYear}}|</span><span>{{projectCostInDollarCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{avgRevenueCurrentYear}} |</span><span>{{avgRevenueCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{avgTenureCurrentYear}} |</span><span>{{avgTenureCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{avgTenureCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
                             </div>
                             <div>
-                              <p>2021</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>{{plpreviousYear}}</p>
+                              <p><span>{{projectCostPreviousYear}} |</span><span>{{projectCostPreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                          <img src="{{projectCostPreviousYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{projectCostInDollarPerviousYear}} |</span><span>
+                                {{projectCostInDollarPreviousYearGrowthPercent}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{avgRevenuePreviousYear}} |</span><span>
+                                {{avgRevenuePreviousYearGrowthPercent}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{avgRevenuePreviousYearGrowthPercentimg}}">
+                              
+                              
+                              </p>
+                              <p><span>{{avgTenurePreviousYear}} |</span><span>
+                                {{avgTenurePreviousYearGrowthPercent}}%</span>
+                                
+                                <span class="glyphicon glyphicon-arrow-up upgrowth">
+
+                                </span>
+                          <img src="{{avgTenurePreviousYearGrowthPercentimg}}">
+                              
+                              
+                              </p>
 
                             </div>
 
@@ -2866,18 +2905,56 @@
                           <div class="expenseValue expenseValue1">
                             <div class="YearValue"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>
                             <div>
-                              <p>2022</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>{{plcurrentYear}}</p>
+                              <p><span>{{totalCostCurrentYear}} |</span>
+                                <span>{{totalCostCurrentYearGrowthPercent}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth">
+
+
+                                </span>
+                          <img src="{{totalCostCurrentYearGrowthPercentimg}}">
+                              
+                              
+                              </p>
+                              <p><span>{{netRevenueCurrentYear}} |</span>
+                                <span>{{netRevenueCurrentYearGrowthPercent}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth">
+
+                                </span>
+                          <img src="{{netRevenueCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{avgMarginCurrentYear}} |</span>
+                                <span>{{avgMarginCurrentYearGrowthPercent}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{avgMarginCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{projectWithAvgMarginCurrentYear}} |</span>
+                                <span>{{projectWithAvgMarginCurrentYearGrowthPercent}}%</span>
+                                <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{projectWithAvgMarginCurrentYearGrowthPercentimg}}">
+                              
+                              </p>
                             </div>
                             <div>
-                              <p>2021</p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                              <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                              <p>{{plpreviousYear}}</p>
+                              <p><span>{{totalCostPreviouYear}} |</span><span>{{totalCostPreviouYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                          <img src="{{totalCostPreviouYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{netRevenuePreviousYear}} |</span><span>{{netRevenuePreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{netRevenuePreviousYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{avgMarginPreviousYear}} |</span><span>{{avgMarginPreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{avgMarginPreviousYearGrowthPercentimg}}">
+                              
+                              </p>
+                              <p><span>{{projectWithAvgMarginPreviousYear}} |</span><span>{{projectWithAvgMarginPreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{projectWithAvgMarginPreviousYearGrowthPercentimg}}">
+                              
+                              </p>
 
                             </div>
 
@@ -2887,31 +2964,30 @@
                         </div>
 
                       <div class="table-responsive tableBorders" style="display: inline-block;">
-                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectDetailPAndLGridList' rowHeight='38' [allowSelection]='true'
               [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
               [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                [allowPaging]='true' [allowExcelExport]='true' >
               <e-columns>
-                <e-column field='uSername' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                <e-column field='project' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                 </e-column>
-                <e-column field='reportname' headerText='PM' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                <e-column field='pM' headerText='PM' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                 </e-column>
-                <e-column field='receiptdate' headerText='Tenure' [filter]='filter' clipMode='EllipsisWithTooltip'>
-
+                <e-column field='tenure' headerText='Tenure' [filter]='filter' clipMode='EllipsisWithTooltip'>
                 </e-column>
-                  <e-column field='receiptNo' headerText='Total Revenue' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                  <e-column field='category' headerText='Direct Cost' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='totalRevenue' headerText='Total Revenue' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='directCost' headerText='Direct Cost' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                  <e-column field='amount' headerText='Indirect Cost' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='indirectCost' headerText='Indirect Cost' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                   </e-column>
 
-                  <e-column field='receiptNo' headerText='Net Revenue' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                  <e-column field='category' headerText='Margin %' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='netRevenue' headerText='Net Revenue' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='margin' headerText='Margin %' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                  <e-column field='receiptNo' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='companyAvg' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
 
 
@@ -2955,15 +3031,29 @@
                   <div class="boxExpense">
                     <h4>Total Expense & Growth Rate</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>{{totalExpenseCurrentYear}} |</span><span>{{totalExpenseCurrentYearGrowthPercent}}%</span>
+                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{totalExpenseCurrentYearGrowthPercentimg}}">
+                        
+                        </p>
+                        <p><span>{{totalExpensePreviousYear}} |</span><span>
+                          {{totalExpensePreviousYearGrowthPercent}}%</span>
+                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{totalExpensePreviousYearGrowthPercentimg}}">
+                        
+                        </p>
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                        <p><span>{{totalExpenseCurrentYearYoy}} |</span>
+                          <span>{{totalExpenseCurrentYearYoyGrowthPercent}}%</span>
+                          <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                          <img src="{{totalExpenseCurrentYearYoyGrowthPercentimg}}">
+                        
+                        </p>
 
                       </div>
                     </div>
@@ -2972,15 +3062,37 @@
                   <div class="boxExpense boxExpenseSpace">
                     <h4>Service Provider Expenses & Growth Rate</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div class="YearValue"><p>{{expenseCurrentYear}}</p>
+                        <p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>{{serviceProviderCurrentYear}} |</span>
+                          <span>{{serviceProviderCurrentYearGrowthPercent}}%</span>
+                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{serviceProviderCurrentYearGrowthPercentimg}}">
+                        
+                        </p>
+                        <p><span>{{serviceProviderPreviousYear}} |</span>
+                          <span>{{serviceProviderPreviousYearGrowthPercent}}%</span>
+                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
+                        
+                        
+                        </p>
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                        <p><span>{{serviceProviderCurrentYearGrowthYoy}} |
+
+                        </span><span>{{serviceProviderCurrentYearGrowthYoyPercent}}%
+
+                        </span><span class="glyphicon glyphicon-arrow-down downgrowth">
+
+
+                        </span>
+                        <img src="{{serviceProviderCurrentYearGrowthYoyPercentimg}}">
+                      
+                      </p>
 
                       </div>
                     </div>
@@ -2989,15 +3101,35 @@
                   <div class="boxExpense">
                     <h4>Customer Expense & Growth Rate</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p>2021</p><p>2022</p></div>
+                      <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
+                        <p><span>{{customerExpenseCurrentYear}} |
+
+                        </span><span>{{customerExpenseCurrentYearGrowth}}%
+
+                        </span><span class="glyphicon glyphicon-arrow-up upgrowth">
+
+                        </span>
+                        <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
+                      
+                      </p>
+                        <p><span>{{customerExpensePreviousYear}} |</span>
+                          <span>{{customerExpensePreviousYearGrowthPercent}}%</span>
+                          <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{customerExpensePreviousYearGrowthPercentimg}}">
+                        
+                        </p>
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>133 |</span><span>1.53%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
+                        <p><span>{{customerExpenseCurrentYearYoy}} |</span>
+                          <span>{{customerExpenseCurrentYearGrowthYoyPercent}}%
+
+                          </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                          <img src="{{customerExpenseCurrentYearGrowthYoyPercentimg}}">
+                        
+                        </p>
 
                       </div>
                     </div>

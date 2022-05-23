@@ -33,19 +33,30 @@ import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-an
 import  * as TreeMap from 'fusioncharts/fusioncharts.treemap';
 import * as Overlappedcolumn2d from "fusioncharts/fusioncharts.overlappedcolumn2d";
 import { DatePipe } from '@angular/common';
-
-FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme,PowerCharts,TreeMap,Overlappedcolumn2d);
 import { FusionChartsModule } from "angular-fusioncharts";
+
+// Import FusionCharts library and chart modules
 import * as FusionCharts from "fusioncharts";
 import * as charts from "fusioncharts/fusioncharts.charts";
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+// Pass the fusioncharts library and chart modules
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 import { HomeComponent } from './home/home.component';
 import { PowerBIReportComponent } from './power-bireport/power-bireport.component';
-FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
+FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme,PowerCharts,TreeMap,Overlappedcolumn2d);
+
+//FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
+
+
+
+//FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
+
+// Pass the fusioncharts library and chart modules
+//FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
+
 
 @NgModule({
   declarations: [
