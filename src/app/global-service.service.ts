@@ -723,4 +723,151 @@ const URL ="http://localhost:63000/api/pbiPeople/getAllPbiExpenseDetailList?year
   return this.httpClient.get(URL,{headers:headers})
  
  }
+ getPbiProjectDetailInNumber(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectInNumber?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectInNumber?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectInNumber?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiProjectDetailInNumberInCost(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectInNumberInCost?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectInNumberInCost?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectInNumberInCost?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiProjectDetailInNumberInCostLeave(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectLeaveInSixMonth?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectLeaveInSixMonth?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectLeaveInSixMonth?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiProjectDetailBillableVsNonBillable(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectBillableVsNonBillable?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectBillableVsNonBillable?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectBillableVsNonBillable?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiExpenseReportList(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/GetPbiExpenseReportFinancial?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiExpenseReportFinancial?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/GetPbiExpenseReportFinancial?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiProjectDetailBillableVsNonBillablegetPbiProjectDetailBillableVsNonBillable(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/GetPbiExpenseEmployeeCountVsExpense?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiExpenseEmployeeCountVsExpense?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/GetPbiExpenseEmployeeCountVsExpense?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ 
+ getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/GetPbiExpenseEmployeeCountVsExpense?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiExpenseEmployeeCountVsExpense?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/GetPbiExpenseEmployeeCountVsExpense?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getpbiProjecDeployeeVsBenchBillCustomerVsService(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/GetPbiExpenseProjectCustomerVsService?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiExpenseProjectCustomerVsService?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/GetPbiExpenseProjectCustomerVsService?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getpbiExpenseListData(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+ // const URL=`${environment.apiUrl}pbiPeople/GetPbiExpenseClassification?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiExpenseClassification?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/GetPbiExpenseClassification?year="+year+"&cmpcode="+cmpcode;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiExpenseDepartment(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+//  const URL=`${environment.apiUrl}pbiPeople/GetPbiExpenseDeprtamentWise?year=`+year+"&cmpcode="+cmpcode
+
+  //const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiExpenseDeprtamentWise?year="+year+"&cmpcode="+cmpcode;
+  const URL ="http://localhost:63000/api/pbiPeople/GetPbiExpenseDeprtamentWise?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
 }
+getPbiExpenseSpenderWise(year,cmpcode): Observable<any> {
+  // debugger;
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+//  const URL=`${environment.apiUrl}pbiPeople/GetPbiExpenseSpenderWise?year=`+year+"&cmpcode="+cmpcode
+
+  //const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiExpenseSpenderWise?year="+year+"&cmpcode="+cmpcode;
+  const URL ="http://localhost:63000/api/pbiPeople/GetPbiExpenseSpenderWise?year="+year+"&cmpcode="+cmpcode;
+
+  return this.httpClient.get(URL,{headers:headers})
+
+}
+}
+

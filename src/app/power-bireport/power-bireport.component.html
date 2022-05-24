@@ -1992,7 +1992,7 @@
                     height="400"
                     type="doughnut2d"
                     dataFormat="json"
-                    [dataSource]="datades21">
+                    [dataSource]="dataexpenselist">
                 </fusioncharts>
                   </div>
                 </div>
@@ -2438,7 +2438,7 @@
                           height="400"
                           type="pareto2d"
                           dataFormat="json"
-                          [dataSource]="datades23">
+                          [dataSource]="projectDetailNumber">
                       </fusioncharts>
                         </div>
                       </div>
@@ -2449,7 +2449,7 @@
                           <a href="#">Detailed Report</a>
                         </div>
 
-                        <!-- <div class="chartBox">
+                       <div class="chartBox">
                           <fusioncharts
                           width="100%"
                           height="400"
@@ -2457,8 +2457,8 @@
                           dataFormat="json"
                           [dataSource]="dataprojectEmployeevsvendor">
                       </fusioncharts>
-                        </div> -->
-                        <div class="chartBox">
+                        </div>
+                        <!-- <div class="chartBox">
                           <fusioncharts
                          width="100%"
                          height="400"
@@ -2466,7 +2466,7 @@
                          dataFormat="json"
                          [dataSource]="data111">
                      </fusioncharts>
-                       </div>
+                       </div> -->
                       </div>
 
 
@@ -2483,9 +2483,9 @@
                           <fusioncharts
                   width="100%"
                   height="400"
-                  type="scrollcolumn2d"
+                  type="pareto2d"
                   dataFormat="json"
-                  [dataSource]="dataProjectValue">
+                  [dataSource]="projectDetailNumberInCost">
                 </fusioncharts>
                         </div>
                       </div>
@@ -2502,7 +2502,7 @@
                   height="400"
                   type="scrollcolumn2d"
                   dataFormat="json"
-                  [dataSource]="data111"
+                  [dataSource]="dataprojectDeployeeVsBench"
                 >
                 </fusioncharts>
                         </div>
@@ -2524,7 +2524,7 @@
                           height="400"
                           type="pareto2d"
                           dataFormat="json"
-                          [dataSource]="datades23">
+                          [dataSource]="projectDetailNumberInCostLeave">
                       </fusioncharts>
                         </div>
                       </div>
@@ -2539,9 +2539,9 @@
                           <fusioncharts
                           width="100%"
                           height="400"
-                          type="pareto2d"
+                          type="scrollcolumn2d"
                           dataFormat="json"
-                          [dataSource]="datades23">
+                          [dataSource]="dataprojectDeployeeVsBenchBill">
                       </fusioncharts>
                         </div>
                       </div>
@@ -3143,32 +3143,32 @@
                 <div class="CurrentYearBox">
                   <div>
                     <h5>Total Reports</h5>
-                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                    <h5>₹​ {{totalReports}} <span>({{totalReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Unsubmitted Report</h5>
-                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                    <h5>₹​ {{unsubmittedReports}} <span>({{unsubmittedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Pending Report</h5>
-                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                    <h5>₹​  {{pendingReports}}<span>({{pendingReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Approved Report</h5>
-                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                    <h5>₹​ {{approvedReports}} <span>({{approvedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Reimbursed</h5>
-                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                    <h5>₹​ {{reimbursed}} <span>({{reimbursedLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Inprocess</h5>
-                    <h5>₹​ 122,467 <span>(70)</span></h5>
+                    <h5>₹​ {{inprocess}} <span>({{inprocessLeft}})</span></h5>
                   </div>
 
                 </div>
@@ -3185,9 +3185,9 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="pareto2d"
+                    type="scrollcolumn2d"
                     dataFormat="json"
-                    [dataSource]="datades23">
+                    [dataSource]="dataprojectDeployeeVsBenchBillEmployeeCountVsExpense">
                 </fusioncharts>
                   </div>
                 </div>
@@ -3202,9 +3202,9 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="pareto2d"
+                    type="scrollcolumn2d"
                     dataFormat="json"
-                    [dataSource]="datades23">
+                    [dataSource]="dataprojectDeployeeVsBenchBillProjectCountVsExpense">
                 </fusioncharts>
                   </div>
                 </div>
@@ -3224,9 +3224,9 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="pareto2d"
+                    type="scrollcolumn2d"
                     dataFormat="json"
-                    [dataSource]="datades23">
+                    [dataSource]="dataprojectDeployeeVsBenchBillCustomerVsService">
                 </fusioncharts>
                   </div>
                 </div>
@@ -3266,7 +3266,7 @@
                         height="300"
                         type="bar2d"
                         dataFormat="json"
-                        [dataSource]="dataExpense"
+                        [dataSource]="dataexpensedepartement"
                       >
                       </fusioncharts>
                   </div>
@@ -3284,7 +3284,7 @@
                     height="300"
                     type="heatmap"
                     dataFormat="json"
-                    [dataSource]="dataExcat2"
+                    [dataSource]="dataspenderwise"
                   >
                   </fusioncharts>
                   </div>
