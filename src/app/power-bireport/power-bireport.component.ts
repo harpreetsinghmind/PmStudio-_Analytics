@@ -2613,8 +2613,7 @@ this.getProjectExpenseDetailList()
 this.getPbiProjectInNumber()
 this.getPbiProjectInNumberInCost()
 this.getPbiProjectInNumberInCostLeave()
-
-
+this.getpbiExpenseProject()
 
   }
   getListProjectInNumber:any=[]
@@ -3638,6 +3637,181 @@ this.dataExpenseDepartment.push({"label":this.getListExpenseDepartment[i].depart
       // };
 
     
+    
+      })
+  }
+  
+  getListExpenseProject:any=[]
+  dataExpenseCurrentProject:any=[]
+  dataExpensePreviousProject:any=[]
+  dataExpenseCatProject:any=[]
+
+
+  dataexpenseproject:any
+  getpbiExpenseProject(){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.getListExpenseProject=[]
+      this.dataExpenseDepartment=[]
+      this.HTTP.getPbiExpenseProject(this.setDate,this.CmpCode).subscribe(arg => {
+      this.getListExpenseProject=  arg.data.table
+      var getColor=[]
+
+      for(var i=0;i<this.getListExpenseProject.length;i++)
+      {
+        getColor.push(this.setColor[i])
+      }
+      for(var i=0;i<this.getListExpenseProject.length;i++)
+      {
+this.dataExpenseCatProject.push({"label":this.getListExpenseProject[i].projectName,})
+this.dataExpensePreviousProject.push({"value":this.getListExpenseProject[i].currentYearProject})
+this.dataExpenseCurrentProject.push({"value":this.getListExpenseProject[i].previousYearProject})
+      
+
+
+}
+this.dataexpenseproject = {
+  chart: {
+    caption: "",
+    subcaption: "",
+    yaxisname: "",
+    palettecolors: "#7cb5ec, #ed8f1d",
+    plotgradientcolor: " ",
+    theme: "fusion",
+    yaxismaxvalue: "30",
+    numdivlines: "2",
+    showlegend: "1",
+    interactivelegend: "0",
+    showvalues: "0",
+    'paletteColors' :'7cb5ec,ed8f1d',
+    showsum: "0"
+  },
+  categories: [
+    {
+      category: this.dataExpenseCatProject
+    }
+  ],
+  dataset: [
+    {
+      seriesname: "2016",
+      data: this.dataExpensePreviousProject
+    },
+    {
+      seriesname: "2017",
+      data: this.dataExpenseCurrentProject
+    }
+  ]
+  // annotations: {
+  //   groups: [
+  //     {
+  //       id: "infobar",
+  //       items: [
+  //         {
+  //           id: "1",
+  //           type: "line",
+  //           x: "$dataset.1.set.1.endx+10",
+  //           y: "$dataset.1.set.1.y",
+  //           tox: "$dataset.1.set.1.endx+50",
+  //           toy: "$dataset.1.set.1.y",
+  //           color: "#1b3c6a",
+  //           dashed: "0",
+  //           thickness: "1"
+  //         },
+  //         {
+  //           id: "2",
+  //           type: "line",
+  //           x: "$dataset.1.set.1.endx+50",
+  //           y: "$dataset.1.set.1.y",
+  //           tox: "$dataset.1.set.1.endx+50",
+  //           toy: "$dataset.0.set.1.y+50",
+  //           color: "#1b3c6a",
+  //           dashed: "0",
+  //           thickness: "1"
+  //         },
+  //         {
+  //           id: "3",
+  //           type: "line",
+  //           x: "$dataset.1.set.17.endx+5",
+  //           y: "$dataset.1.set.17.y",
+  //           tox: "$dataset.1.set.17.endx+200",
+  //           toy: "$dataset.0.set.17.y",
+  //           color: "#1b3c6a",
+  //           dashed: "0",
+  //           thickness: "1"
+  //         },
+  //         {
+  //           id: "4",
+  //           type: "line",
+  //           x: "$dataset.1.set.17.endx+200",
+  //           y: "$dataset.0.set.17.y",
+  //           tox: "$dataset.1.set.17.endx+200",
+  //           toy: "$dataset.0.set.17.y-40",
+  //           color: "#1b3c6a",
+  //           dashed: "0",
+  //           thickness: "1"
+  //         },
+  //         {
+  //           id: "shape",
+  //           type: "polygon",
+  //           startangle: "180",
+  //           sides: "3",
+  //           radius: "6",
+  //           color: "#1b3c6a",
+  //           x: "$dataset.1.set.17.endx+10",
+  //           y: "$dataset.1.set.17.y"
+  //         },
+  //         {
+  //           id: "shape",
+  //           type: "polygon",
+  //           startangle: "180",
+  //           sides: "3",
+  //           radius: "6",
+  //           color: "1b3c6a",
+  //           x: "$dataset.1.set.1.endx+10",
+  //           y: "$dataset.1.set.1.y"
+  //         },
+  //         {
+  //           id: "label1",
+  //           align: "RiGHT",
+  //           type: "text",
+  //           text: "",
+  //           fillcolor: "#1b3c6a",
+  //           rotate: "90",
+  //           x: "$dataset.1.set.1.endx+65",
+  //           y: "$dataset.0.set.5.y"
+  //         },
+  //         {
+  //           id: "label2",
+  //           align: "CENTER",
+  //           type: "text",
+  //           text:
+  //             "",
+  //           fillcolor: "#1b3c6a",
+  //           rotate: "90",
+  //           x: "$dataset.1.set.17.endx+200",
+  //           y: "$dataset.0.set.13.y"
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
+};
+
+      // this.dataexpenseproject = {
+      //   chart: {
+      //     caption: "",
+      //     xaxisname: "",
+      //     yaxisname: "",
+      //     aligncaptionwithcanvas: "0",
+      //     plottooltext: "<b>$dataValue</b> leads received",
+      //     theme: "fusion",
+      //     'paletteColors' :'7bb7ed'
+      //   },
+      //   data: this.dataExpenseProject
+      // };
+      
+      
+      
     
       })
   }
@@ -6390,7 +6564,7 @@ this.getProjectExpenseDetailList()
 this.getPbiProjectInNumber()
 this.getPbiProjectInNumberInCost()
 this.getPbiProjectInNumberInCostLeave()
-
+this.getpbiExpenseProject()
 
   }
   getResourcesDetail:any=[]
