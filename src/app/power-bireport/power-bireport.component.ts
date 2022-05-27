@@ -9,6 +9,7 @@ import { min } from 'moment';
 import { DatePipe } from '@angular/common'
 import { threadId } from 'worker_threads';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Tooltip } from '@syncfusion/ej2-popups';
 
 
 
@@ -25,6 +26,8 @@ export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
   @ViewChild('overviewgrid')
   public grids: GridComponent;
+  @ViewChild('getid')
+  public gridsFor: GridComponent;
   public workDays: number[] = [0, 1, 2, 3, 4, 5];
   public group: GroupModel = {
     resources: ['Projects', 'Categories']
@@ -2501,31 +2504,34 @@ export class PowerBIReportComponent implements OnInit {
 
   ) { }
   
-
   ngOnInit(): void {
 this.CmpCode="1"
 let latest_date =this. datepipe. transform(new Date(), 'yyyy-MM-dd');
 this.setDate=latest_date
 let getdate = new Date(); // 2020-06-21.
+this.getDate=latest_date
 let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
 this.monthName=shortMonth
     this.filterSettings = { type: "Menu" };
     this.filter = { type: "CheckBox" };
     this.Planwk1 = [
       {
-        field: 'wK1_Week40feeet',
+        field: 'openTask',
         headerText: 'Open',
+        textAlign:"Center"
 
 
       },
       {
-        field: 'wK1_Week20Feet',
+        field: 'pendingTask',
         headerText: 'Pending',
+        textAlign:"Center"
 
       },
       {
-        field: 'wK1_ConfirmFourtyFeet',
+        field: 'closeTask',
         headerText: 'Close',
+        textAlign:"Center"
 
 
       },
@@ -2533,48 +2539,47 @@ this.monthName=shortMonth
     ]
     this.Planwk2 = [
       {
-        field: 'wK2_Week40feeet',
+        field: 'openMom',
         headerText: 'Open',
-
-
+        textAlign:"Center"
 
       },
       {
-        field: 'wK2_Week20Feet',
+        field: 'wipMom',
         headerText: 'WIP',
-
+        textAlign:"Center"
       },
       {
-        field: 'wK2_ConfirmFourtyFeet',
+        field: 'closeMom',
         headerText: 'Close',
-
+        textAlign:"Center"
 
       },
     ]
     this.Planwk3 = [
       {
-        field: 'wK3_Week40feeet',
+        field: 'openRoadBlock',
         headerText: 'Open',
 
-
+        textAlign:"Center"
       },
       {
-        field: 'wK3_Week20Feet',
+        field: 'closeRoadBlock',
         headerText: 'Close',
-
+        textAlign:"Center"
       },
     ]
     this.Planwk4 = [
       {
-        field: 'wK4_Week40feeet',
+        field: 'approveExpense',
         headerText: 'Approved',
-
+        textAlign:"Center"
 
       },
       {
-        field: 'wK4_Week20Feet',
+        field: 'rejectExpense',
         headerText: 'Reject',
-
+        textAlign:"Center"
       },
     ];
     this.getpbiPeopleDetailList()
@@ -2603,10 +2608,11 @@ this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
 this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
 
 this.getProjectPortFoliyo()
-this.getProjectProjectDetailRevnueAndCost()
-this.getPbiProjectDetailProgressAndCost()
-this.getpbiProjectDetailRoadblock()
-this.getpbiProjectDevaition()
+//this.getProjectProjectDetailRevnueAndCost()
+//this.getPbiProjectDetailProgressAndCost()
+//this.getpbiProjectDetailRoadblock()
+//this.getpbiProjectDevaition()
+//this.getpbiProjectDevaitionAllTask()
 this.getProjectProjectDetailPAndLGridList()
 this.getpbiProjectDetailPAndLList()
 this.getProjectExpenseDetailList()
@@ -2848,14 +2854,14 @@ this.projectDetailNumberInCostLeave = {
   dataProjectCostList:any=[]
   dataProjectProgressList:any=[]
   setList:any=[]
-  getPbiProjectDetailProgressAndCost(){
+  getPbiProjectDetailProgressAndCost(data){
       let cmpcode=1
       let year='2022-02-20'
       this.getListProgress=[]
       this.dataProgress=[]
       this.dataProjectProgressList=[]
       this.dataProjectCostList=[]
-      this.HTTP.getPbiProjectDetailProgressAndCost(this.setDate,this.CmpCode).subscribe(arg => {
+      this.HTTP.getPbiProjectDetailProgressAndCost(this.setDate,this.CmpCode,data).subscribe(arg => {
       this.getListProgress=  arg.data.table
       var getColor=[]
 
@@ -2922,23 +2928,62 @@ this.dataProjectProgressList = {
 
   // };
   getListProjectDetailRoadblock:any=[]
-  getpbiProjectDetailRoadblock(){
+  getpbiProjectDetailRoadblock(data){
       let cmpcode=1
       let year='2022-02-20'
       this.getListProjectDetailRoadblock=[]
-      this.HTTP.getPbiProjectDetailRoadBlockList(this.setDate,this.CmpCode).subscribe(arg => {
+      this.HTTP.getPbiProjectDetailRoadBlockList(this.setDate,this.CmpCode,data).subscribe(arg => {
       this.getListProjectDetailRoadblock=  arg.data.table
-     
+      for(var i=0;i<this.getListProjectDetailRoadblock.length;i++)
+      {
+        if(this.getListProjectDetailRoadblock[i].billableHour==null)
+        {
+          this.getListProjectDetailRoadblock[i].billableHour=0
+        }
+        if(this.getListProjectDetailRoadblock[i].nonBillableHour==null)
+        {
+          this.getListProjectDetailRoadblock[i].nonBillableHour=0
+
+        }
+        var tooltipShow="Billable:"+Number(this.getListProjectDetailRoadblock[i].billableHour)+", Non-Billable:"+Number(this.getListProjectDetailRoadblock[i].nonBillableHour)
+        var total=Number(this.getListProjectDetailRoadblock[i].billableHour)+Number(this.getListProjectDetailRoadblock[i].nonBillableHour)
+      var billPercent=Number(this.getListProjectDetailRoadblock[i].billableHour)*100/total
+      this.getListProjectDetailRoadblock[i].tooltipShow=tooltipShow
+      this.getListProjectDetailRoadblock[i].billPercent=billPercent
+
+      var nonBillPercent=Number(this.getListProjectDetailRoadblock[i].nonBillableHour)*100/total
+      this.getListProjectDetailRoadblock[i].nonBillPercent=nonBillPercent
+      this.getListProjectDetailRoadblock[i].totalHours=total
+
+
+    }
+    debugger;
+
+      this.gridsFor.refresh()
+    this.gridsFor.refreshColumns()
+    this.gridsFor.dataSource=this.getListProjectDetailRoadblock
+    
       })
   }
   
   getListProjectDetailDevialtion:any=[]
-  getpbiProjectDevaition(){
+  getpbiProjectDevaition(data){
       let cmpcode=1
       let year='2022-02-20'
       this.getListProjectDetailDevialtion=[]
-      this.HTTP.getPbiProjectDetailDeviationList(this.setDate,this.CmpCode).subscribe(arg => {
+      this.HTTP.getPbiProjectDetailDeviationList(this.setDate,this.CmpCode,data).subscribe(arg => {
       this.getListProjectDetailDevialtion=  arg.data.table
+     
+      })
+  }
+
+  getListProjectDetailAllTaskList:any=[]
+  getpbiProjectDevaitionAllTask(data){
+      let cmpcode=1
+      let year='2022-02-20'
+      this.getListProjectDetailAllTaskList=[]
+      this.HTTP.getPbiProjectDetailAllTask(this.setDate,this.CmpCode,data).subscribe(arg => {
+      this.getListProjectDetailAllTaskList=  arg.data.table
      
       })
   }
@@ -4992,15 +5037,52 @@ this.tentureDetails={
   //     return this.datePipe.transform(datas, 'yyyy/MM/dd')
   //   } 
   // }
+  getPerformanceDetail(data)
+{
+this.getProjectProjectDetailRevnueAndCost(data)
+this.getpbiProjectDetailRoadblock(data)
+this.getpbiProjectDevaition(data)
+this.getpbiProjectDevaitionAllTask(data)
+this.getPbiProjectDetailProgressAndCost(data)
+//   this.getListProjectDetailRoadblock=[]
+//   this.HTTP.getPbiProjectDetailRoadBlockList(this.setDate,this.CmpCode,data).subscribe(arg => {
+//   this.getListProjectDetailRoadblock=  arg.data.table
+//   this.gridsFor.refresh()
+// this.gridsFor.refreshColumns()
+// this.gridsFor.dataSource=this.getListProjectDetailRoadblock
 
+// })
+}
+public tooltip: Tooltip;
+headerCellInfo(args) {
+  debugger;
+  if (args.cell.column.field != 'CustomerName') {
+      const toolcontent = args.cell.column.headerText;
+      this.tooltip = new Tooltip({
+          position: 'BottomCenter',
+          content: toolcontent,
+          opensOn: 'Click'
+      });
+      this.tooltip.appendTo(args.node);
+  } 
+} 
+tooltipfor(args: any){ 
+  debugger
+  // you can also add tooltip based on condition here 
+ let tooltip: Tooltip = new Tooltip({ 
+ content: args.data[args.column.field].toString() 
+ }, args.cell); 
+} 
   getPerformance()
   {
+  
     this.getListEmployeePerformance=[]
     this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode).subscribe(arg => {
     this.getListEmployeePerformance=  arg.data.table
     this.grids.refresh()
     this.grids.refreshColumns()
     this.grids.dataSource=this.getListEmployeePerformance
+   
     })
   }
   getListProjectPortfoliyo:any=[]
@@ -5009,6 +5091,128 @@ this.tentureDetails={
     this.getListEmployeePerformance=[]
     this.HTTP.getPbiProjectPortfoliyo(this.setDate,this.CmpCode).subscribe(arg => {
     this.getListProjectPortfoliyo=  arg.data.table
+    for(var i=0;i<this.getListProjectPortfoliyo.length;i++)
+    {
+      debugger
+      if(this.getListProjectPortfoliyo[i].V_Billable==null || this.getListProjectPortfoliyo[i].V_Billable=='')
+      {
+        this.getListProjectPortfoliyo[i].V_Billable=0
+      }
+      if(this.getListProjectPortfoliyo[i].billablePer==null || this.getListProjectPortfoliyo[i].billablePer=='')
+      {
+        this.getListProjectPortfoliyo[i].billablePer=0
+      }
+      var tooltipBillableCount='Billable:'+Number(this.getListProjectPortfoliyo[i].billablePer)+', NonBillable:'+Number(this.getListProjectPortfoliyo[i].V_Billable)
+  this.getListProjectPortfoliyo[i].tooltipBillableCount=tooltipBillableCount
+
+    var total=Number(this.getListProjectPortfoliyo[i].V_Billable)+Number(this.getListProjectPortfoliyo[i].billablePer)
+  let billablePercent= Number(this.getListProjectPortfoliyo[i].billablePer)*100/total
+  this.getListProjectPortfoliyo[i].billablePercent=billablePercent
+  let vbillablePercent= Number(this.getListProjectPortfoliyo[i].V_Billable)*100/total
+  this.getListProjectPortfoliyo[i].vbillablePercent=vbillablePercent
+if(total==0)
+{
+  this.getListProjectPortfoliyo[i].vbillablePercent=0
+  this.getListProjectPortfoliyo[i].billablePercent=0
+
+
+}
+
+  
+  debugger
+  if(this.getListProjectPortfoliyo[i].nonBillablePer==null || this.getListProjectPortfoliyo[i].nonBillablePer=='')
+  {
+    this.getListProjectPortfoliyo[i].nonBillablePer=0
+  }
+  if(this.getListProjectPortfoliyo[i].vNonBillable==null || this.getListProjectPortfoliyo[i].vNonBillable=='')
+  {
+    this.getListProjectPortfoliyo[i].vNonBillable=0
+  }
+  var tooltipNonBillableCount='E-Non-Billable:'+Number(this.getListProjectPortfoliyo[i].nonBillablePer)+', V-NonBillable:'+Number(this.getListProjectPortfoliyo[i].vNonBillable)
+  this.getListProjectPortfoliyo[i].tooltipNonBillableCount=tooltipNonBillableCount
+  var totalbill=Number(this.getListProjectPortfoliyo[i].nonBillablePer)+Number(this.getListProjectPortfoliyo[i].vNonBillable)
+let nonbillablePercent= Number(this.getListProjectPortfoliyo[i].nonBillablePer)*100/totalbill
+this.getListProjectPortfoliyo[i].nonbillablePercent=nonbillablePercent
+let vnonbillablePercent= Number(this.getListProjectPortfoliyo[i].vNonBillable)*100/totalbill
+this.getListProjectPortfoliyo[i].vnonbillablePercent=vnonbillablePercent
+if(totalbill==0)
+{
+  this.getListProjectPortfoliyo[i].nonbillablePercent=0
+  this.getListProjectPortfoliyo[i].vnonbillablePercent=0
+}
+
+  if(this.getListProjectPortfoliyo[i].billable==null || this.getListProjectPortfoliyo[i].billable=='')
+  {
+    this.getListProjectPortfoliyo[i].billable=0
+  }
+  if(this.getListProjectPortfoliyo[i].V_BillableAmount==null || this.getListProjectPortfoliyo[i].V_BillableAmount=='')
+  {
+    this.getListProjectPortfoliyo[i].V_BillableAmount=0
+  }
+  var tooltipBillableAmount='E-Billable Amount:'+Number(this.getListProjectPortfoliyo[i].billable)+', V-BillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
+  debugger;
+  this.getListProjectPortfoliyo[i].tooltipBillableAmount=tooltipBillableAmount
+  var totalbillAmount=Number(this.getListProjectPortfoliyo[i].billable)+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
+let billablePercentAmount= Number(this.getListProjectPortfoliyo[i].billable)*100/totalbillAmount
+this.getListProjectPortfoliyo[i].billablePercentAmount=billablePercentAmount
+let vbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].vNonBillable)*100/totalbillAmount
+this.getListProjectPortfoliyo[i].vbillablePercentAmount=vbillablePercentAmount
+if(totalbillAmount==0)
+{
+  this.getListProjectPortfoliyo[i].billablePercentAmount=0
+  this.getListProjectPortfoliyo[i].vbillablePercentAmount=0
+}
+
+
+if(this.getListProjectPortfoliyo[i].nonBillable==null || this.getListProjectPortfoliyo[i].nonBillable=='')
+{
+  this.getListProjectPortfoliyo[i].nonBillable=0
+}
+if(this.getListProjectPortfoliyo[i].V_NonBillableAmount==null || this.getListProjectPortfoliyo[i].V_NonBillableAmount=='')
+{
+  this.getListProjectPortfoliyo[i].V_NonBillableAmount=0
+}
+var tooltipNonBillableAmount='E-nonBillable Amount:'+Number(this.getListProjectPortfoliyo[i].nonBillable)+', V-nonBillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)
+debugger;
+this.getListProjectPortfoliyo[i].tooltipNonBillableAmount=tooltipNonBillableAmount
+var totalnonbillAmount=Number(this.getListProjectPortfoliyo[i].nonBillable)+Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)
+let nonbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].nonBillable)*100/totalnonbillAmount
+this.getListProjectPortfoliyo[i].nonbillablePercentAmount=nonbillablePercentAmount
+let vnonbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)*100/totalnonbillAmount
+this.getListProjectPortfoliyo[i].vnonbillablePercentAmount=vnonbillablePercentAmount
+if(totalnonbillAmount==0)
+{
+this.getListProjectPortfoliyo[i].nonbillablePercentAmount=0
+this.getListProjectPortfoliyo[i].vnonbillablePercentAmount=0
+}
+  
+
+if(this.getListProjectPortfoliyo[i].momclose==null || this.getListProjectPortfoliyo[i].momclose=='')
+{
+  this.getListProjectPortfoliyo[i].momclose=0
+}
+if(this.getListProjectPortfoliyo[i].momopen==null || this.getListProjectPortfoliyo[i].momopen=='')
+{
+  this.getListProjectPortfoliyo[i].momopen=0
+}
+var tooltipmom='Open Mom:'+Number(this.getListProjectPortfoliyo[i].momopen)+', Close Mom:'+Number(this.getListProjectPortfoliyo[i].momclose)
+debugger;
+
+
+this.getListProjectPortfoliyo[i].tooltipmom=tooltipmom
+var totalmom=Number(this.getListProjectPortfoliyo[i].momopen)+Number(this.getListProjectPortfoliyo[i].momclose)
+let momopenpercent= Number(this.getListProjectPortfoliyo[i].momopen)*100/totalmom
+this.getListProjectPortfoliyo[i].momopenpercent=momopenpercent
+let momclosepercent= Number(this.getListProjectPortfoliyo[i].momclose)*100/totalmom
+this.getListProjectPortfoliyo[i].momclosepercent=momclosepercent
+if(totalmom==0)
+{
+this.getListProjectPortfoliyo[i].momclosepercent=0
+this.getListProjectPortfoliyo[i].momopenpercent=0
+}
+  
+
+    }
     })
   }
   getListProjectDetailRevnureAndCost:any=[]
@@ -5022,21 +5226,27 @@ this.tentureDetails={
   marginSecond:any
   resourceSecond:any
   revnueFirst:any
-  getProjectProjectDetailRevnueAndCost()
+  startDate:any
+  endDate:any
+  getProjectProjectDetailRevnueAndCost(data)
   {
     this.getListProjectDetailRevnureAndCost=[]
-    this.HTTP.getProjectProjectDetailRevnueAndCost(this.setDate,this.CmpCode).subscribe(arg => {
+    this.HTTP.getProjectProjectDetailRevnueAndCost(this.setDate,this.CmpCode,data).subscribe(arg => {
     this.getListProjectDetailRevnureAndCost=  arg.data.table
-    this.costFirst=this.getListProjectDetailRevnureAndCost[0].costFirst
-this.costSecond=this.getListProjectDetailRevnureAndCost[0].costFirst
-this.marginFirst= this.getListProjectDetailRevnureAndCost[0].costFirst
-this.marginSecond=this.getListProjectDetailRevnureAndCost[0].costFirst
-this.projectNameFirst= this.getListProjectDetailRevnureAndCost[0].costFirst
-this.projectNameSecond=this.getListProjectDetailRevnureAndCost[0].costFirst
-this.resourceFirst=this.getListProjectDetailRevnureAndCost[0].costFirst
-this.resourceSecond= this.getListProjectDetailRevnureAndCost[0].costFirst
-this.revnueFirst=this.getListProjectDetailRevnureAndCost[0].costFirst
-this.revnueSecond= this.getListProjectDetailRevnureAndCost[0].costFirst
+    this.costFirst=this.getListProjectDetailRevnureAndCost[0].cost
+this.costSecond=this.getListProjectDetailRevnureAndCost[0].projectType
+this.marginFirst= this.getListProjectDetailRevnureAndCost[0].margin
+this.marginSecond=this.getListProjectDetailRevnureAndCost[0].delivery
+this.projectNameFirst= this.getListProjectDetailRevnureAndCost[0].projectName
+this.projectNameSecond=this.getListProjectDetailRevnureAndCost[0].projectManager
+this.resourceFirst=this.getListProjectDetailRevnureAndCost[0].resource
+//this.resourceSecond= this.getListProjectDetailRevnureAndCost[0].resourceSecond
+this.revnueFirst=this.getListProjectDetailRevnureAndCost[0].revnue
+this.revnueSecond= this.getListProjectDetailRevnureAndCost[0].projectAdmin
+this.startDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].startDate,'yyyy-MM-dd')
+
+this.endDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].endDate,'yyyy-MM-dd')
+
     
     })
   }
@@ -5046,6 +5256,15 @@ this.revnueSecond= this.getListProjectDetailRevnureAndCost[0].costFirst
     this.getListProjectDetailPAndLGridList=[]
     this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode).subscribe(arg => {
     this.getListProjectDetailPAndLGridList=  arg.data.table
+    for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++)
+    {
+      if(this.getListProjectDetailPAndLGridList[i].margin==null)
+      {
+this.getListProjectDetailPAndLGridList[i].margin=0
+      }
+      var margintwo=100-Number(this.getListProjectDetailPAndLGridList[i].margin)
+      var marginpercent=Number(this.getListProjectDetailPAndLGridList[i].margin)
+    }
     
     })
   }
@@ -6554,10 +6773,11 @@ this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
 this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
 
 this.getProjectPortFoliyo()
-this.getProjectProjectDetailRevnueAndCost()
-this.getPbiProjectDetailProgressAndCost()
-this.getpbiProjectDetailRoadblock()
-this.getpbiProjectDevaition()
+//this.getProjectProjectDetailRevnueAndCost()
+//this.getPbiProjectDetailProgressAndCost()
+//this.getpbiProjectDetailRoadblock()
+//this.getpbiProjectDevaition()
+//this.getpbiProjectDevaitionAllTask()
 this.getProjectProjectDetailPAndLGridList()
 this.getpbiProjectDetailPAndLList()
 this.getProjectExpenseDetailList()

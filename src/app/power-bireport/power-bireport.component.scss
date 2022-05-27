@@ -961,3 +961,112 @@ p.context {
     .peopleheight .e-content {
       height: 466px !important;
   }
+  .progress {
+    background-color: #e5e9eb;
+    height: 1.5em;
+    position: relative;
+    width: 8em;
+  }
+  .progress-bar {
+    animation-duration: 3s;
+    animation-name: width;
+  //  background-image: linear-gradient(to right, red, blue);
+    background-size: 24em 0.25em;
+    height: 100%;
+    position: relative;
+  }
+  @keyframes width {
+    0%, 100% {
+      transition-timing-function: cubic-bezier(1, 0, 0.65, 0.85);
+    }
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  .setBar{
+    //width: 50px;
+    background-color: #40ade2;
+  }
+  .getBar{
+    //width: 50px;
+    background-color :#ed8f1d;
+  }
+  .setBarMargin{
+    //width: 50px;
+    background-color: red;
+  }
+  .getBarMargin{
+    //width: 50px;
+    background-color :white;
+  }
+  .setBarMom{
+    //width: 50px;
+    background-color: #f8a35c;
+  }
+  .getBarMom{
+    //width: 50px;
+    background-color :#81b4e1;
+  }
+
+  .setBarBill{
+    //width: 50px;
+    background-color: #d6d5d4;
+  }
+  .getBarBill{
+    //width: 50px;
+    background-color :#8083bf;
+  }
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  .miniBarProgress {
+    background-color: #8a898a;
+    height: 100%;
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+  }
+  
+  .miniBar {
+    height: 0.5rem;
+    border: 1px solid #8a898a;
+    position: relative;
+    width: -webkit-calc(100% - 2rem);
+    width: -moz-calc(100% - 2rem);
+    width: calc(100% - 2rem);
+    margin-right: 0.5rem;
+  }

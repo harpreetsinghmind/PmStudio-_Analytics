@@ -619,15 +619,15 @@ getPbiProjectDeployeeVsBench(year,cmpcode): Observable<any> {
 
 }
 
-getProjectProjectDetailRevnueAndCost(year,cmpcode): Observable<any> {
+getProjectProjectDetailRevnueAndCost(year,cmpcode,projectid): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDetailsRevnureAndCost?year=`+year+"&cmpcode="+cmpcode
+  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDetailsRevnureAndCost?year=`+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectDetailsRevnureAndCost?year="+year+"&cmpcode="+cmpcode;
-  //const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDetailsRevnureAndCost?year="+year+"&cmpcode="+cmpcode;
+  //const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDetailsRevnureAndCost?year="+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
   return this.httpClient.get(URL,{headers:headers})
  
@@ -645,41 +645,41 @@ getPbiProjectPortfoliyo(year,cmpcode): Observable<any> {
   return this.httpClient.get(URL,{headers:headers})
  
  }
- getPbiProjectDetailProgressAndCost(year,cmpcode): Observable<any> {
+ getPbiProjectDetailProgressAndCost(year,cmpcode,projectid): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDetailsProgressAndCost?year=`+year+"&cmpcode="+cmpcode
+  //const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDetailsProgressAndCost?year=`+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectDetailsProgressAndCost?year="+year+"&cmpcode="+cmpcode;
-//const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDetailsProgressAndCost?year="+year+"&cmpcode="+cmpcode;
+const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDetailsProgressAndCost?year="+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
   return this.httpClient.get(URL,{headers:headers})
  
  }
- getPbiProjectDetailRoadBlockList(year,cmpcode): Observable<any> {
+ getPbiProjectDetailRoadBlockList(year,cmpcode,projectid): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectDetailProjectDetailRoadblockList?year=`+year+"&cmpcode="+cmpcode
+const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectDetailProjectDetailRoadblockList?year=`+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectDetailProjectDetailRoadblockList?year="+year+"&cmpcode="+cmpcode;
-//const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectDetailProjectDetailRoadblockList?year="+year+"&cmpcode="+cmpcode;
+//const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectDetailProjectDetailRoadblockList?year="+year+"&cmpcode="+cmpcode+"&projectid="+projectid;
  
   return this.httpClient.get(URL,{headers:headers})
  
  }
- getPbiProjectDetailDeviationList(year,cmpcode): Observable<any> {
+ getPbiProjectDetailDeviationList(year,cmpcode,projectid): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectDeviationDetail?year=`+year+"&cmpcode="+cmpcode
+  const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectDeviationDetail?year=`+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectDeviationDetail?year="+year+"&cmpcode="+cmpcode;
-//const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectDeviationDetail?year="+year+"&cmpcode="+cmpcode;
+//const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectDeviationDetail?year="+year+"&cmpcode="+cmpcode+"&projectid="+projectid;
  
   return this.httpClient.get(URL,{headers:headers})
  
@@ -883,5 +883,19 @@ getPbiExpenseProject(year,cmpcode): Observable<any> {
   return this.httpClient.get(URL,{headers:headers})
 
 }
+
+getPbiProjectDetailAllTask(year,cmpcode,projectid): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectAllTaskDetail?year=`+year+"&cmpcode="+cmpcode+"&projectid="+projectid;
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectAllTaskDetail?year="+year+"&cmpcode="+cmpcode;
+//const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectAllTaskDetail?year="+year+"&cmpcode="+cmpcode+"&projectid="+projectid;
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
 }
 

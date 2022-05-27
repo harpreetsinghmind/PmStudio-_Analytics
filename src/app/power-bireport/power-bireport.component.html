@@ -2195,7 +2195,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#projectdetails" role="tab">Project Details</a>
+                <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail('10282')" role="tab">Project Details</a>
               </li>
 
               <li class="nav-item">
@@ -2582,56 +2582,132 @@
                       <div class="table-responsive">
                         <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectPortfoliyo' rowHeight='38' [allowSelection]='true'
                         [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
-                        [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                        (queryCellInfo)='tooltipfor($event)'  (headerCellInfo)='headerCellInfo($event)'  [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                          [allowPaging]='true' [allowExcelExport]='true' >
                         <e-columns>
                           <e-column field='customer' headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
                           </e-column>
                           <e-column field='project' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                            <!-- <ng-template let-data>
+                <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail(data.projectid)" role="tab">
+                  {{data.projectid}}
+ 
+                </a>
+                          
+                            </ng-template> -->
+                            <ng-template #template let-data>
+                  <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail(data.projectid)" role="tab">
+                    {{data.project}}
+   
+                  </a>
+                            </ng-template>
+                          </e-column>
+        
+       
+        <e-column field='resource'  textAlign="Center"  headerText='Resources' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                           </e-column>
-                          <e-column field='resource' headerText='Resources' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                            <e-column field='tooltipBillableCount' headerText='# Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                                <!-- <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
+                                trackThickness='24' progressThickness='24'
+                               showProgressValue='true' [animation]='animation'
+                                [labelStyle]='labelStyle1' >
+                               
+                            </ejs-progressbar> -->
+                            <ng-template #template let-data>
+                            
+                            
+                              <div class="progress" >
+                                 
+                                     <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.billablePercent}}%">
+                                       Billable:{{data.billablePer}}
+                                   </div>
+                                     <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vbillablePercent}}%">
+                                       Non-Billable:{{data.V_Billable}}
+                                     </div>
+                                   <!-- </div> -->
+      
+                                   
+                                 </div>
+                                 <!-- <div class="progress" style="max-width: 40%">
+                                     <div class="progress-bar"
+                                         style="width: {{data.totalHours}}%; background-color: green">
+                                     </div>
+                                     <div class="progress-bar progress-bar-stripped"
+                                         style="width: {{data.totalHours}}%; background-color: #66b400">
+                                     </div>
+                                    
+                                 </div> -->
+                                 
+                           
+                              </ng-template>
+                            </e-column>
+                            <e-column field='tooltipBillableAmount' headerText='₹ Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template #template let-data>
+                            
+                            
+                                <div class="progress" >
+                                   
+                                       <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.billablePercentAmount}}%">
+                                         E-Billable-Amount:{{data.billable}}
+                                     </div>
+                                       <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vbillablePercentAmount}}%">
+                                         V-Billable-Amount:{{data.V_BillableAmount}}
+                                       </div>
+                                   
+        
+                                     
+                                   </div>
+                                 
+                                   
+                             
+                                </ng-template>
+                            </e-column>
 
-                          </e-column>
-                            <e-column field='billable' headerText='# Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template> -->
-                            </e-column>
-                            <e-column field='billablePer' headerText='₹ Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template> -->
-                            </e-column>
-
-                            <e-column field='nonBillable' headerText='# Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template> -->
+                            <e-column field='tooltipNonBillableCount' headerText='# Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template #template let-data>
+                            
+                            
+                                <div class="progress" >
+                                   
+                                       <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.nonbillablePercent}}%">
+                                         E-Non-Billable:{{data.nonBillablePer}}
+                                     </div>
+                                       <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vnonbillablePercent}}%">
+                                         V-Non-Billable:{{data.vNonBillable}}
+                                       </div>
+                                   
+        
+                                     
+                                   </div>
+                                 
+                                   
+                             
+                                </ng-template>
                             </e-column>
 
-                            <e-column field='nonBillablePer' headerText='₹ Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template> -->
+                            <e-column field='tooltipNonBillableAmount' headerText='₹ Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template #template let-data>
+                            
+                            
+                                <div class="progress" >
+                                   
+                                       <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.nonbillablePercentAmount}}%">
+                                         E-NonBillableAmount:{{data.nonBillable}}
+                                     </div>
+                                       <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vnonbillablePercentAmount}}%">
+                                         V-NonBillableAmount:{{data.V_NonBillableAmount}}
+                                       </div>
+                                   
+        
+                                     
+                                   </div>
+                                 
+                                   
+                             
+                                </ng-template>
                             </e-column>
-                            <e-column field='tenure' headerText='Tenure (M)' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                            <e-column field='tenure'  textAlign="Center"  headerText='Tenure (M)' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
                             <e-column field='progress' headerText='Progress' [filter]='filter' clipMode='EllipsisWithTooltip'>
                               <!-- <ng-template>
@@ -2652,14 +2728,26 @@
                               </ng-template> -->
                             </e-column>
 
-                            <e-column field='mom' headerText='MOM' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar> 
-                              </ng-template>-->
+                            <e-column field='tooltipmom' headerText='MOM' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template #template let-data>
+                            
+                            
+                                <div class="progress" >
+                                   
+                                       <div class="progress-bar setBarMom progress-bar-warning" role="progressbar" style="width:{{data.momopenpercent}}%">
+                                         Open Mom:{{data.momopen}}
+                                     </div>
+                                       <div   class="progress-bar getBarMom progress-bar-danger" role="progressbar" style="width:{{data.momclosepercent}}%">
+                                         Close Mom:{{data.momclose}}
+                                       </div>
+                                   
+        
+                                     
+                                   </div>
+                                 
+                                   
+                             
+                                </ng-template>
                             </e-column>
                             <e-column field='roadBlock' headerText='Roadblock' [filter]='filter' clipMode='EllipsisWithTooltip'>
                               <!-- <ng-template>
@@ -2699,14 +2787,18 @@
                             <h5>Cost</h5>
                             <h5>Margin</h5>
                             <h5>Resource</h5>
+                            <h5>Delivery</h5>
+
                           </div>
                           <div class="col-md-6 halfdiv1">
 
                             <h5>{{projectNameFirst}}</h5>
                             <h5>{{revnueFirst}}</h5>
                             <h5>{{costFirst}}</h5>
-                            <h5>{{marginFirst}}</h5>
+                            <h5>{{marginFirst |  number :'1.2-2'}}</h5>
                             <h5>{{resourceFirst}}</h5>
+                            <h5>{{marginSecond |  number :'1.2-2'}}</h5>
+
                           </div>
 
                         </div>
@@ -2718,19 +2810,21 @@
                         <div class="col-md-12 innderdiv setni">
 
                           <div class="col-md-6 halfdiv">
-                            <h5>Project Name</h5>
-                            <h5>Revenue</h5>
-                            <h5>Cost</h5>
-                            <h5>Margin</h5>
-                            <h5>Resource</h5>
+                            <h5>Project Manager</h5>
+                            <h5>Project Admin</h5>
+                            <h5>Project Type</h5>
+                            <h5>Project Start Date</h5>
+                            <h5>Project End Date</h5>
+
                           </div>
                           <div class="col-md-6 halfdiv1">
 
                             <h5>{{projectNameSecond}}</h5>
                             <h5>{{revnueSecond}}</h5>
                             <h5>{{costSecond}}</h5>
-                            <h5>{{marginSecond}}</h5>
-                            <h5>{{resourceSecond}}</h5>
+                            <h5>{{startDate}}</h5>
+                            <h5>{{endDate}}</h5>
+
                           </div>
                         </div>
 
@@ -2750,29 +2844,70 @@
 
                       </div>
                     <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
-                      <ejs-grid #overviewgrid [dataSource]="getListProjectDetailRoadblock" [allowResizing]="true"  height='450'
-                      [allowFiltering]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
+                      <ejs-grid #getid id="getid"  [frozenRows]='0' [frozenColumns]='1' [dataSource]="getListProjectDetailRoadblock" [allowResizing]="true"  height='450'
+                      (queryCellInfo)='tooltipfor($event)'  [allowFiltering]='true'  [allowPaging]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
                        >
                        <e-columns>
-                         <!-- <e-column field='obl' headerText='' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
-
-                         </e-column> -->
-                         <e-column field='assignDate' headerText='Assign Date' clipMode='EllipsisWithTooltip'>
+                         <e-column field='resourceName' textAlign="Center" headerText='Resource Name' class="des" clipMode='EllipsisWithTooltip' >
 
                          </e-column>
-                         <e-column field='totalHours' headerText='Total Hours' clipMode='EllipsisWithTooltip'></e-column>
+                         <e-column field='assignDate' textAlign="Center" type='date'  [format]="format" headerText='Assign Date' clipMode='EllipsisWithTooltip'>
+
+                         </e-column>
+                         <e-column field='tooltipShow' headerText='Total Hours' clipMode='EllipsisWithTooltip'>
+
+
+                          <ng-template #template let-data>
+                            
+                            
+                         <div class="progress" >
+                              <!-- <div class="progress-bar progress-bar-success" role="progressbar" style="{{data.totalHours}}%">
+                              </div> -->
+                              <!-- <div class="progress-bar progress-bar-warning" role="progressbar" style="width:{{data.billableHour}}%">
+                                Billable:{{data.billableHour}}
+                              </div>
+                              <div class="progress-bar progress-bar-danger" role="progressbar" style="width:{{data.nonBillableHour}}%">
+                                Non-Billable:{{data.nonBillableHour}}
+                              </div> -->
+                              <!-- <div *ngIf="data.totalHours !=0 "> -->
+                                <div class="progress-bar setBar progress-bar-warning" role="progressbar" style="width:{{data.billPercent}}%">
+                                {{data.billableHour}}
+                              </div>
+                                <div   class="progress-bar getBar progress-bar-danger" role="progressbar" style="width:{{data.nonBillPercent}}%">
+                                  {{data.nonBillableHour}}
+                                </div>
+                              <!-- </div> -->
+ 
+                              
+                            </div>
+                            <!-- <div class="progress" style="max-width: 40%">
+                                <div class="progress-bar"
+                                    style="width: {{data.totalHours}}%; background-color: green">
+                                </div>
+                                <div class="progress-bar progress-bar-stripped"
+                                    style="width: {{data.totalHours}}%; background-color: #66b400">
+                                </div>
+                               
+                            </div> -->
+                            
+                          </ng-template>
+             
+
+                         </e-column>
 
 
 
 
-                           <e-column field='closeTask' headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='' headerText='Task' textAlign="Center" [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
+                           <!-- <e-column field='pendingTask' headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='closeTask' headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column> -->
 
-                           <e-column field='closeMom' headerText='MOM' [columns]='Planwk2' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='' headerText='MOM' [columns]='Planwk2' textAlign="Center" clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='closeRoadBlock' headerText='Roadblocks' [columns]='Planwk3' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='' headerText='Roadblocks' textAlign="Center" [columns]='Planwk3' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='leaveExpense' headerText='Leave' clipMode='EllipsisWithTooltip'></e-column>
-                           <e-column field='approveExpense' headerText='$ Expense' [columns]='Planwk4' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='leaveExpense' headerText='Leave'textAlign="Center" clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='approveExpense' textAlign="Center" headerText='$ Expense' [columns]='Planwk4' clipMode='EllipsisWithTooltip'></e-column>
 
 
 
@@ -2790,40 +2925,101 @@
 
 
                     <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
-                      <h3 style="margin-top: 0; font-size: 20px; color: #000;">Deviation</h3>
-                      <ejs-grid #overviewgrid [dataSource]="getListProjectDetailDevialtion" [allowResizing]="true"  height='450'
-                      [allowFiltering]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
-                      >
-                       <e-columns>
-                          <e-column field='phase' headerText='Phase' class="des" clipMode='EllipsisWithTooltip' [allowFiltering]='false'>
+                      
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-target="#deviation" data-toggle="tab">Deviation</a></li>
+                        <li><a data-target="#tab2" data-toggle="tab">All Task</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="deviation" class="tab-pane active">
+                          
+                          
+                          <h3 style="margin-top: 0; font-size: 20px; color: #000;">Deviation</h3>
+                          <ejs-grid #overviewgrid [dataSource]="getListProjectDetailDevialtion" [allowResizing]="true"  height='450'
+                          [allowFiltering]='true'  [allowPaging]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
+                          >
+                           <e-columns>
+                              <e-column field='phase' textAlign="Center" headerText='Phase' class="des" clipMode='EllipsisWithTooltip' >
+    
+                             </e-column> 
+                             <e-column field='subPhase'textAlign="Center" headerText='Sub Phase' clipMode='EllipsisWithTooltip'>
+    
+                             </e-column>
+                             <e-column field='task' textAlign="Center" headerText='Task' clipMode='EllipsisWithTooltip'></e-column>
+    
+                             <e-column field='subTask' textAlign="Center" headerText='Subtask' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <e-column field='planed' textAlign="Center" type='date'  [format]="format" headerText='Plan' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <e-column field='actual' textAlign="Center" type='date'  [format]="format" headerText='Actual' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <e-column field='deviation' textAlign="Center"  headerText='&#9650;' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <e-column field='progress'textAlign="Center" headerText='Progress%' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <e-column field='alert' headerText='Alert' clipMode='EllipsisWithTooltip'></e-column>
+    
+    
+                           </e-columns>
+    
+    
+    
+    
+    
+    
+    
+                       </ejs-grid>
+                        
+                        </div>
+                        <div id="tab2" class="tab-pane">
+                          <h3 style="margin-top: 0; font-size: 20px; color: #000;">All Task</h3>
+                          <ejs-grid #overviewgrid [dataSource]="getListProjectDetailAllTaskList" [allowResizing]="true"  height='450'
+                          [allowFiltering]='true'  [allowPaging]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
+                          >
+                           <e-columns>
+                              <e-column field='phase' textAlign="Center"  headerText='Phase' class="des" clipMode='EllipsisWithTooltip' >
+    
+                             </e-column> 
+                             <e-column field='subPhase' textAlign="Center" headerText='Sub Phase' clipMode='EllipsisWithTooltip'>
+    
+                             </e-column>
+                             <e-column field='task' textAlign="Center" headerText='Task' clipMode='EllipsisWithTooltip'></e-column>
+                             <e-column field='subTask' textAlign="Center" headerText='Subtask' clipMode='EllipsisWithTooltip'></e-column>
+    
+    
+                               <e-column field='planed' textAlign="Center" type='date'  [format]="format" headerText='Plan' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <e-column field='actual' textAlign="Center" type='date'  [format]="format" headerText='Actual' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <!-- <e-column field='deviation' headerText='&#9650;' clipMode='EllipsisWithTooltip'></e-column> -->
+    
+                               <e-column field='progress' textAlign="Center" headerText='Progress%' clipMode='EllipsisWithTooltip'></e-column>
+    
+                               <e-column field='alert' textAlign="Center" headerText='Alert' clipMode='EllipsisWithTooltip'></e-column>
+    
+    
+                           </e-columns>
+    
+    
+    
+    
+    
+    
+    
+                       </ejs-grid>
+                          
+                        
+                        
+                        </div>
+                    </div>
 
-                         </e-column> 
-                         <e-column field='subPhase' headerText='Sub Phase' clipMode='EllipsisWithTooltip'>
-
-                         </e-column>
-                         <e-column field='task' headerText='Task' clipMode='EllipsisWithTooltip'></e-column>
-
-
-                           <e-column field='planed' headerText='Plan' clipMode='EllipsisWithTooltip'></e-column>
-
-                           <e-column field='actual' headerText='Actual' clipMode='EllipsisWithTooltip'></e-column>
-
-                           <e-column field='someThing' headerText='&#9650;' clipMode='EllipsisWithTooltip'></e-column>
-
-                           <e-column field='progress' headerText='Progress%' clipMode='EllipsisWithTooltip'></e-column>
-
-                           <e-column field='alert' headerText='Alert' clipMode='EllipsisWithTooltip'></e-column>
-
-
-                       </e-columns>
+                    
+                      
+                
 
 
 
-
-
-
-
-                   </ejs-grid>
+                    
                     </div>
 
 
@@ -2985,7 +3181,24 @@
                   </e-column>
 
                   <e-column field='netRevenue' headerText='Net Revenue' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                  <e-column field='margin' headerText='Margin %' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='margin' headerText='Margin %' [filter]='filter' clipMode='EllipsisWithTooltip'>
+
+                    <ng-template #template let-data>
+                      <div class="progress" >
+                                 
+                        <div class="progress-bar setBarMargin progress-bar-warning" role="progressbar" style="width:{{data.margin}}%">
+                      </div>
+                        <div   class="progress-bar getBarMargin progress-bar-danger" role="progressbar" style="width:100-{{data.margin}}%">
+                          <!-- --Non-Billable:{{data.V_Billable}} -->
+                        </div>
+                      <!-- </div> -->
+
+                      
+                    </div>
+      {{data.margin | number :'1.2-2'}}%
+                          
+                    </ng-template>
+                  </e-column>
 
                   <e-column field='companyAvg' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
