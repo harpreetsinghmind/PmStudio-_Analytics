@@ -2860,6 +2860,7 @@ this.projectDetailNumberInCostLeave = {
       this.getListProgress=[]
       this.dataProgress=[]
       this.dataProjectProgressList=[]
+      this.setList=[]
       this.dataProjectCostList=[]
       this.HTTP.getPbiProjectDetailProgressAndCost(this.setDate,this.CmpCode,data).subscribe(arg => {
       this.getListProgress=  arg.data.table
