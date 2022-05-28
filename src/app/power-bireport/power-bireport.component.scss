@@ -994,6 +994,45 @@ p.context {
     //width: 50px;
     background-color :#ed8f1d;
   }
+  .setBarTime{
+    //width: 50px;
+    background-color: #e4d353;
+  }
+  .getBarTime{
+    //width: 50px;
+    background-color :#9cce79;
+  }
+  .petBarTime{
+    //width: 50px;
+    background-color :#f15d5c;
+  }
+ // Timesheet: #e4d353, #9cce79, #f15d5c
+
+//MOM: #f8a35c, #81b4e1
+
+//Roadblock: #f8a35c, #81b4e1
+.setBarProg{
+  //width: 50px;
+  background-color :#9cce79;
+
+
+}
+.getBarProg{
+  //width: 50px;
+  background-color: #d6d5d4;
+
+}
+
+.setBarRoad{
+  //width: 50px;
+  background-color: #f8a35c;
+}
+.getBarRoad{
+  //width: 50px;
+  background-color :#81b4e1;
+}
+
+
   .setBarMargin{
     //width: 50px;
     background-color: red;
@@ -1013,11 +1052,13 @@ p.context {
 
   .setBarBill{
     //width: 50px;
-    background-color: #d6d5d4;
+    background-color :#8083bf;
+
   }
   .getBarBill{
     //width: 50px;
-    background-color :#8083bf;
+    background-color: #d6d5d4;
+
   }
   .tab {
     overflow: hidden;

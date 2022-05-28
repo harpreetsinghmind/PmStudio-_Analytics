@@ -2518,20 +2518,26 @@ this.monthName=shortMonth
       {
         field: 'openTask',
         headerText: 'Open',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
 
 
       },
       {
         field: 'pendingTask',
         headerText: 'Pending',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+  
+
 
       },
       {
         field: 'closeTask',
         headerText: 'Close',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+
 
 
       },
@@ -2541,18 +2547,24 @@ this.monthName=shortMonth
       {
         field: 'openMom',
         headerText: 'Open',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+
 
       },
       {
         field: 'wipMom',
         headerText: 'WIP',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+
       },
       {
         field: 'closeMom',
         headerText: 'Close',
-        textAlign:"Center"
+        textAlign:"Center",
+
+        width:'80'
 
       },
     ]
@@ -2561,25 +2573,33 @@ this.monthName=shortMonth
         field: 'openRoadBlock',
         headerText: 'Open',
 
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+
       },
       {
         field: 'closeRoadBlock',
         headerText: 'Close',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+
       },
     ]
     this.Planwk4 = [
       {
         field: 'approveExpense',
         headerText: 'Approved',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+
 
       },
       {
         field: 'rejectExpense',
         headerText: 'Reject',
-        textAlign:"Center"
+        textAlign:"Center",
+        width:'80'
+
       },
     ];
     this.getpbiPeopleDetailList()
@@ -5103,7 +5123,7 @@ tooltipfor(args: any){
       {
         this.getListProjectPortfoliyo[i].billablePer=0
       }
-      var tooltipBillableCount='Billable:'+Number(this.getListProjectPortfoliyo[i].billablePer)+', NonBillable:'+Number(this.getListProjectPortfoliyo[i].V_Billable)
+      var tooltipBillableCount='E-Billable:'+Number(this.getListProjectPortfoliyo[i].billablePer)+'</br> V-Billable:'+Number(this.getListProjectPortfoliyo[i].V_Billable)
   this.getListProjectPortfoliyo[i].tooltipBillableCount=tooltipBillableCount
 
     var total=Number(this.getListProjectPortfoliyo[i].V_Billable)+Number(this.getListProjectPortfoliyo[i].billablePer)
@@ -5129,7 +5149,7 @@ if(total==0)
   {
     this.getListProjectPortfoliyo[i].vNonBillable=0
   }
-  var tooltipNonBillableCount='E-Non-Billable:'+Number(this.getListProjectPortfoliyo[i].nonBillablePer)+', V-NonBillable:'+Number(this.getListProjectPortfoliyo[i].vNonBillable)
+  var tooltipNonBillableCount='E-Non-Billable:'+Number(this.getListProjectPortfoliyo[i].nonBillablePer)+'<br/> V-NonBillable:'+Number(this.getListProjectPortfoliyo[i].vNonBillable)
   this.getListProjectPortfoliyo[i].tooltipNonBillableCount=tooltipNonBillableCount
   var totalbill=Number(this.getListProjectPortfoliyo[i].nonBillablePer)+Number(this.getListProjectPortfoliyo[i].vNonBillable)
 let nonbillablePercent= Number(this.getListProjectPortfoliyo[i].nonBillablePer)*100/totalbill
@@ -5150,7 +5170,7 @@ if(totalbill==0)
   {
     this.getListProjectPortfoliyo[i].V_BillableAmount=0
   }
-  var tooltipBillableAmount='E-Billable Amount:'+Number(this.getListProjectPortfoliyo[i].billable)+', V-BillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
+  var tooltipBillableAmount='E-Billable Amount:'+Number(this.getListProjectPortfoliyo[i].billable)+'<br/> V-BillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
   debugger;
   this.getListProjectPortfoliyo[i].tooltipBillableAmount=tooltipBillableAmount
   var totalbillAmount=Number(this.getListProjectPortfoliyo[i].billable)+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
@@ -5173,7 +5193,7 @@ if(this.getListProjectPortfoliyo[i].V_NonBillableAmount==null || this.getListPro
 {
   this.getListProjectPortfoliyo[i].V_NonBillableAmount=0
 }
-var tooltipNonBillableAmount='E-nonBillable Amount:'+Number(this.getListProjectPortfoliyo[i].nonBillable)+', V-nonBillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)
+var tooltipNonBillableAmount='E-nonBillable Amount:'+Number(this.getListProjectPortfoliyo[i].nonBillable)+'<br/> V-nonBillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)
 debugger;
 this.getListProjectPortfoliyo[i].tooltipNonBillableAmount=tooltipNonBillableAmount
 var totalnonbillAmount=Number(this.getListProjectPortfoliyo[i].nonBillable)+Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)
@@ -5196,7 +5216,7 @@ if(this.getListProjectPortfoliyo[i].momopen==null || this.getListProjectPortfoli
 {
   this.getListProjectPortfoliyo[i].momopen=0
 }
-var tooltipmom='Open Mom:'+Number(this.getListProjectPortfoliyo[i].momopen)+', Close Mom:'+Number(this.getListProjectPortfoliyo[i].momclose)
+var tooltipmom='Open Mom:'+Number(this.getListProjectPortfoliyo[i].momopen)+'<br/>Close Mom:'+Number(this.getListProjectPortfoliyo[i].momclose)
 debugger;
 
 
@@ -5213,6 +5233,70 @@ this.getListProjectPortfoliyo[i].momopenpercent=0
 }
   
 
+    
+    
+if(this.getListProjectPortfoliyo[i].openRoadBlock==null || this.getListProjectPortfoliyo[i].openRoadBlock=='')
+{
+  this.getListProjectPortfoliyo[i].openRoadBlock=0
+}
+if(this.getListProjectPortfoliyo[i].closeRoadBlock==null || this.getListProjectPortfoliyo[i].closeRoadBlock=='')
+{
+  this.getListProjectPortfoliyo[i].closeRoadBlock=0
+}
+var tooltiproadblock='Open RoadBlock:'+Number(this.getListProjectPortfoliyo[i].openRoadBlock)+'<br/>Close RoadBlock:'+Number(this.getListProjectPortfoliyo[i].closeRoadBlock)
+debugger;
+
+
+this.getListProjectPortfoliyo[i].tooltiproadblock=tooltiproadblock
+var totalRoad=Number(this.getListProjectPortfoliyo[i].closeRoadBlock)+Number(this.getListProjectPortfoliyo[i].openRoadBlock)
+let roadblockopenpercent= Number(this.getListProjectPortfoliyo[i].openRoadBlock)*100/totalRoad
+this.getListProjectPortfoliyo[i].roadblockopenpercentroadblockopenpercent=roadblockopenpercent
+let roadblockclosepercent= Number(this.getListProjectPortfoliyo[i].closeRoadBlock)*100/totalRoad
+this.getListProjectPortfoliyo[i].roadblockclosepercent=roadblockclosepercent
+if(totalRoad==0)
+{
+this.getListProjectPortfoliyo[i].roadblockclosepercent=0
+this.getListProjectPortfoliyo[i].roadblockopenpercent=0
+}
+  
+
+   
+    
+if(this.getListProjectPortfoliyo[i].timepending==null || this.getListProjectPortfoliyo[i].timepending=='')
+{
+  this.getListProjectPortfoliyo[i].timepending=0
+}
+if(this.getListProjectPortfoliyo[i].timeapproved==null || this.getListProjectPortfoliyo[i].timeapproved=='')
+{
+  this.getListProjectPortfoliyo[i].timeapproved=0
+}
+if(this.getListProjectPortfoliyo[i].timerejected==null || this.getListProjectPortfoliyo[i].timerejected=='')
+{
+  this.getListProjectPortfoliyo[i].timerejected=0
+}
+var tooltiptime='Time Pending:'+Number(this.getListProjectPortfoliyo[i].timepending)+'<br/>Time Approved:'+Number(this.getListProjectPortfoliyo[i].timeapproved)+'<br/>Time Rejected:'+Number(this.getListProjectPortfoliyo[i].timerejected)
+debugger;
+
+
+this.getListProjectPortfoliyo[i].tooltiptime=tooltiptime
+var totaltime=Number(this.getListProjectPortfoliyo[i].timerejected)+Number(this.getListProjectPortfoliyo[i].timepending)+Number(this.getListProjectPortfoliyo[i].timeapproved)
+let timeopenpercent= Number(this.getListProjectPortfoliyo[i].timepending)*100/totaltime
+this.getListProjectPortfoliyo[i].timeopenpercent=timeopenpercent
+let timeclosepercent= Number(this.getListProjectPortfoliyo[i].timeapproved)*100/totaltime
+this.getListProjectPortfoliyo[i].timeclosepercent=timeclosepercent
+let timerejectedpercent= Number(this.getListProjectPortfoliyo[i].timerejectedpercent)*100/totaltime
+this.getListProjectPortfoliyo[i].timerejectedpercent=timerejectedpercent
+if(totaltime==0)
+{
+this.getListProjectPortfoliyo[i].timeopenpercent=0
+this.getListProjectPortfoliyo[i].timeclosepercent=0
+this.getListProjectPortfoliyo[i].timerejectedpercent=0
+if(this.getListProjectPortfoliyo[i].progress==null)
+{
+  this.getListProjectPortfoliyo[i].progress=0
+}
+
+}
     }
     })
   }
@@ -7011,7 +7095,7 @@ this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
             data: this.employeeList
           },
           {
-            seriesname: "Project",
+            seriesname: "On Project",
             data: this.deployeeList
           },
           // {

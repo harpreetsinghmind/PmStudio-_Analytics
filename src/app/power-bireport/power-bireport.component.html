@@ -2153,7 +2153,13 @@
               <e-column field='avgMissingTimesheet' headerText='Avg. Missing Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
 
             <e-column field='timeOnBench' headerText='Time on Bench' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
-              <e-column field='onBenchGreaterMonth' headerText='On Bench > 1 Month' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
+              <e-column field='onBenchGreaterMonth' headerText='On Bench > 1 Month' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" >
+                <ng-template #template let-data>
+                  <img *ngIf="data.onBenchGreaterMonth" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
+                  <img *ngIf="data.onBenchGreaterMonth === 0" src="../../assets/img/logo/green-signal.png" style="width: 22px;">
+                </ng-template>
+
+              </e-column>
 
               <e-column field='avgDeploymentPeriod' headerText='Avg. Deployment Period (Month)' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
               <e-column field='currentOe' headerText='Current OE' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
@@ -2620,10 +2626,10 @@
                               <div class="progress" >
                                  
                                      <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.billablePercent}}%">
-                                       Billable:{{data.billablePer}}
+                          {{data.billablePer}}
                                    </div>
                                      <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vbillablePercent}}%">
-                                       Non-Billable:{{data.V_Billable}}
+          {{data.V_Billable}}
                                      </div>
                                    <!-- </div> -->
       
@@ -2649,10 +2655,10 @@
                                 <div class="progress" >
                                    
                                        <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.billablePercentAmount}}%">
-                                         E-Billable-Amount:{{data.billable}}
+                            {{data.billable}}
                                      </div>
                                        <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vbillablePercentAmount}}%">
-                                         V-Billable-Amount:{{data.V_BillableAmount}}
+                  {{data.V_BillableAmount}}
                                        </div>
                                    
         
@@ -2671,10 +2677,10 @@
                                 <div class="progress" >
                                    
                                        <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.nonbillablePercent}}%">
-                                         E-Non-Billable:{{data.nonBillablePer}}
+                  {{data.nonBillablePer}}
                                      </div>
                                        <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vnonbillablePercent}}%">
-                                         V-Non-Billable:{{data.vNonBillable}}
+                          {{data.vNonBillable}}
                                        </div>
                                    
         
@@ -2693,10 +2699,10 @@
                                 <div class="progress" >
                                    
                                        <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.nonbillablePercentAmount}}%">
-                                         E-NonBillableAmount:{{data.nonBillable}}
+                        {{data.nonBillable}}
                                      </div>
                                        <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vnonbillablePercentAmount}}%">
-                                         V-NonBillableAmount:{{data.V_NonBillableAmount}}
+                                         {{data.V_NonBillableAmount}}
                                        </div>
                                    
         
@@ -2710,22 +2716,50 @@
                             <e-column field='tenure'  textAlign="Center"  headerText='Tenure (M)' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
                             <e-column field='progress' headerText='Progress' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template> -->
+                              <ng-template #template let-data>
+                            
+                            
+                                <div class="progress" >
+                                   
+                                       <div class="progress-bar setBarProg progress-bar-warning" role="progressbar" style="width:{{data.progress}}%">
+                        <!-- {{data.progress}} -->
+                                     </div>
+                                       <div   class="progress-bar getBarProg progress-bar-danger" role="progressbar" style="width:{{100-data.progress}}%">
+                                         <!-- {{100-data.progress}} -->
+                                       </div>
+                                   
+        
+                                     
+                                   </div>
+                                 
+                                   {{data.progress}}%
+                             
+                                </ng-template>
+
                             </e-column>
-                            <e-column field='timeSheet' headerText='Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template> -->
+                            <e-column field='tooltiptime' headerText='Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template #template let-data>
+                            
+                            
+                                <div class="progress" >
+                                   
+                                       <div class="progress-bar setBarTime progress-bar-warning" role="progressbar" style="width:{{data.timeopenpercent}}%">
+                                        {{data.timepending}} 
+                                     </div>
+                                       <div   class="progress-bar getBarTime progress-bar-danger" role="progressbar" style="width:{{data.timeclosepercent}}%">
+                                   {{data.timeapproved}} 
+                                       </div>
+                                       <div class="progress-bar petBarTime progress-bar-warning" role="progressbar" style="width:{{data.timerejectedpercent}}%">
+                                     {{data.timerejected}} 
+                                    </div>
+                                   
+        
+                                     
+                                   </div>
+                                 
+                                   
+                             
+                                </ng-template>
                             </e-column>
 
                             <e-column field='tooltipmom' headerText='MOM' [filter]='filter' clipMode='EllipsisWithTooltip'>
@@ -2735,10 +2769,10 @@
                                 <div class="progress" >
                                    
                                        <div class="progress-bar setBarMom progress-bar-warning" role="progressbar" style="width:{{data.momopenpercent}}%">
-                                         Open Mom:{{data.momopen}}
+                                     {{data.momopen}}
                                      </div>
                                        <div   class="progress-bar getBarMom progress-bar-danger" role="progressbar" style="width:{{data.momclosepercent}}%">
-                                         Close Mom:{{data.momclose}}
+                                    {{data.momclose}}
                                        </div>
                                    
         
@@ -2749,14 +2783,29 @@
                              
                                 </ng-template>
                             </e-column>
-                            <e-column field='roadBlock' headerText='Roadblock' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                              <!-- <ng-template>
-                                <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
-                                trackThickness='24' progressThickness='24'
-                               showProgressValue='true' [animation]='animation'
-                                [labelStyle]='labelStyle1' >
-                            </ejs-progressbar>
-                              </ng-template> -->
+                            <e-column field='tooltiproadblock' headerText='Roadblock' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                              <ng-template #template let-data>
+                            
+                            
+                                <div class="progress" >
+                                   
+                                       <div class="progress-bar setBarRoad progress-bar-warning" role="progressbar" style="width:{{data.roadblockopenpercent}}%">
+                                        {{data.openRoadBlock}}
+                                     </div>
+                                       <div   class="progress-bar getBarRoad progress-bar-danger" role="progressbar" style="width:{{data.roadblockclosepercent}}%">
+                                         {{data.closeRoadBlock}}
+                                       </div>
+                                       <!-- <div class="progress-bar petBarTime progress-bar-warning" role="progressbar" style="width:{{data.timerejectedpercent}}%">
+                                        Open Mom:{{data.timerejected}}
+                                    </div> -->
+                                   
+        
+                                     
+                                   </div>
+                                 
+                                   
+                             
+                                </ng-template>
                             </e-column>
 
 
@@ -2851,10 +2900,10 @@
                          <e-column field='resourceName' textAlign="Center" headerText='Resource Name' class="des" clipMode='EllipsisWithTooltip' >
 
                          </e-column>
-                         <e-column field='assignDate' textAlign="Center" type='date'  [format]="format" headerText='Assign Date' clipMode='EllipsisWithTooltip'>
+                         <e-column field='assignDate' width="100" textAlign="Center" type='date'  [format]="format" headerText='Assign Date' clipMode='EllipsisWithTooltip'>
 
                          </e-column>
-                         <e-column field='tooltipShow' headerText='Total Hours' clipMode='EllipsisWithTooltip'>
+                         <e-column field='tooltipShow' width="150" headerText='Total Hours' clipMode='EllipsisWithTooltip'>
 
 
                           <ng-template #template let-data>
@@ -2898,7 +2947,7 @@
 
 
 
-                           <e-column field='' headerText='Task' textAlign="Center" [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field=''  headerText='Task' textAlign="Center" [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
                            <!-- <e-column field='pendingTask' headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column>
                            <e-column field='closeTask' headerText='Task' [columns]='Planwk1' clipMode='EllipsisWithTooltip'></e-column> -->
 
@@ -2906,7 +2955,7 @@
 
                            <e-column field='' headerText='Roadblocks' textAlign="Center" [columns]='Planwk3' clipMode='EllipsisWithTooltip'></e-column>
 
-                           <e-column field='leaveExpense' headerText='Leave'textAlign="Center" clipMode='EllipsisWithTooltip'></e-column>
+                           <e-column field='leaveExpense' width="100"  headerText='Leave'textAlign="Center" clipMode='EllipsisWithTooltip'></e-column>
                            <e-column field='approveExpense' textAlign="Center" headerText='$ Expense' [columns]='Planwk4' clipMode='EllipsisWithTooltip'></e-column>
 
 

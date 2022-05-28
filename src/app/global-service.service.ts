@@ -650,10 +650,10 @@ getPbiProjectPortfoliyo(year,cmpcode): Observable<any> {
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  //const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDetailsProgressAndCost?year=`+year+"&cmpcode="+cmpcode+"&projectid="+projectid
+  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectDetailsProgressAndCost?year=`+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectDetailsProgressAndCost?year="+year+"&cmpcode="+cmpcode;
-const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDetailsProgressAndCost?year="+year+"&cmpcode="+cmpcode+"&projectid="+projectid
+//const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectDetailsProgressAndCost?year="+year+"&cmpcode="+cmpcode+"&projectid="+projectid
  
   return this.httpClient.get(URL,{headers:headers})
  
