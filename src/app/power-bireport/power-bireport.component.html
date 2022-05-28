@@ -2121,39 +2121,39 @@
               </ng-template>
 
             </e-column>
-            <e-column field='reportName' headerText='Reporting Manager' [filter]='filter' clipMode='EllipsisWithTooltip' width="150">
+            <e-column field='reportName' headerText='Reporting Manager' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'>
 
             </e-column>
-             <e-column field='totalTenure' headerText='Total Tenture' [filter]='filter' clipMode='EllipsisWithTooltip'width="150">
+             <e-column field='totalTenure' headerText='Total Tenture' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'>
               <!-- <ng-template #template let-data>
                 {{dateformat(data.totalTenure)}}
               </ng-template> -->
             </e-column>
-              <e-column field='joiningDate'  type='date'  [format]="format" headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'width="150">
+              <e-column field='joiningDate'  type='date'  [format]="format" headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'>
 
                    <!-- <ng-template #template let-data>
                 {{dateformat(data.joiningDate)}}
               </ng-template> -->
               </e-column>
-              <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
+              <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'></e-column>
 
-             <e-column field='totalProject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip' width="150">
+             <e-column field='totalProject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'>
                 <ng-template #template let-data>
                   {{(data.totalProject)}}
                 </ng-template>
               </e-column>
 
-              <e-column field='openProject' headerText='Open Project' [filter]='filter' clipMode='EllipsisWithTooltip'width="150"></e-column>
-              <e-column field='avgDailyTime' headerText='Avg. Daily Time' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='openProject' headerText='Open Project' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'></e-column>
+              <e-column field='avgDailyTime' headerText='Avg. Daily Time' [filter]='filter' clipMode='EllipsisWithTooltip' textAlign='Center'></e-column>
 
-              <e-column field='avgMonthlyTime' headerText='Avg. Monthly Expense' [filter]='filter' clipMode='EllipsisWithTooltip'width="150"></e-column>
-               <e-column field='avgLeaveMonthly' headerText='Avg. Leave/Monthly' [filter]='filter' clipMode='EllipsisWithTooltip' ></e-column>
+              <e-column field='avgMonthlyTime' headerText='Avg. Monthly Expense' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'></e-column>
+               <e-column field='avgLeaveMonthly' headerText='Avg. Leave/Monthly' [filter]='filter' clipMode='EllipsisWithTooltip' textAlign='Center'></e-column>
 
-              <e-column field='avgTimeCorrection' headerText='Avg. Time Corre. Req.' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
-              <e-column field='avgMissingTimesheet' headerText='Avg. Missing Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
+              <e-column field='avgTimeCorrection' headerText='Avg. Time Corre. Req.' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center' ></e-column>
+              <e-column field='avgMissingTimesheet' headerText='Avg. Missing Timesheet' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center' ></e-column>
 
-            <e-column field='timeOnBench' headerText='Time on Bench' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
-              <e-column field='onBenchGreaterMonth' headerText='On Bench > 1 Month' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" >
+            <e-column field='timeOnBench' headerText='Time on Bench' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'></e-column>
+              <e-column field='onBenchGreaterMonth' headerText='On Bench > 1 Month' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'>
                 <ng-template #template let-data>
                   <img *ngIf="data.onBenchGreaterMonth" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
                   <img *ngIf="data.onBenchGreaterMonth === 0" src="../../assets/img/logo/green-signal.png" style="width: 22px;">
@@ -2161,9 +2161,9 @@
 
               </e-column>
 
-              <e-column field='avgDeploymentPeriod' headerText='Avg. Deployment Period (Month)' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
-              <e-column field='currentOe' headerText='Current OE' [filter]='filter' clipMode='EllipsisWithTooltip' width="150"></e-column>
-              <e-column field='avgOe' headerText='Avg. OE' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" ></e-column>
+              <e-column field='avgDeploymentPeriod' headerText='Avg. Deployment Period (Month)' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'></e-column>
+              <e-column field='currentOe' headerText='Current OE' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'></e-column>
+              <e-column field='avgOe' headerText='Avg. OE' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'></e-column>
 
  
 
