@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common'
 import { threadId } from 'worker_threads';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Tooltip } from '@syncfusion/ej2-popups';
+import { debug } from 'console';
 
 
 
@@ -2503,10 +2504,55 @@ export class PowerBIReportComponent implements OnInit {
    private datepipe:DatePipe
 
   ) { }
-  
+  setDepartment:any
+  departmentList:any=[]
+  onChange(e)
+  {
+    this.departmentId=e.target.value
+    this.getpbiPeopleDetailList()
+    this.getpbiPeopleDesignation()
+    this.getpbiExpenseDepartment()
+    this.getpbiExpense()
+    this.getpbiSpenderWise()
+    this.getpbiPeopleDepartment()
+    this.getpbiPeopleLocation()
+    this.getpbiPeopleAge()
+    this.getpbiPeopleJoband()
+    this.getpbiPeopleGender()
+    this.getpbiPeopleEmployeeVsVendor()
+    this.getpbiPeopleEmployeeAddition()
+    this.getpbiPeopleEmployeeAttrition()
+    this.getpbiPeopleEmployeePerformance()
+    this.getpbiPeopleTenureWiseEmployee()
+    this.getpbiProjectDetailList()
+    this.getpbiPeopleResources()
+    this.getpbiProjectEmployeeVsVendor()
+    this.getpbiProjecDeployeeVsBench()
+    this.getpbiProjecDeployeeVsBenchBill()
+    this.getpbiExpenseReportList()
+    this.getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense()
+    this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
+    this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
+    
+    this.getProjectPortFoliyo()
+    //this.getProjectProjectDetailRevnueAndCost()
+    //this.getPbiProjectDetailProgressAndCost()
+    //this.getpbiProjectDetailRoadblock()
+    //this.getpbiProjectDevaition()
+    //this.getpbiProjectDevaitionAllTask()
+    this.getProjectProjectDetailPAndLGridList()
+    this.getpbiProjectDetailPAndLList()
+    this.getProjectExpenseDetailList()
+    this.getPbiProjectInNumber()
+    this.getPbiProjectInNumberInCost()
+    this.getPbiProjectInNumberInCostLeave()
+    this.getpbiExpenseProject()
+    
+  }
   ngOnInit(): void {
     this.departmentId=0
 this.CmpCode="1"
+//this.departmentList=[{depId:'1',depName:'it'},{depId:'2',depName:'Admin'}]
 let latest_date =this. datepipe. transform(new Date(), 'yyyy-MM-dd');
 this.setDate=latest_date
 let getdate = new Date(); // 2020-06-21.
@@ -2641,7 +2687,17 @@ this.getPbiProjectInNumber()
 this.getPbiProjectInNumberInCost()
 this.getPbiProjectInNumberInCostLeave()
 this.getpbiExpenseProject()
+this.getDepartmentListDropdown()
 
+  }
+
+  getDepartmentListDropdown()
+  {
+    debugger
+    this.HTTP.getpbiDepartmentList(this.setDate,this.CmpCode).subscribe(arg => {
+    
+      this.departmentList=  arg.data.table
+    })
   }
   getListProjectInNumber:any=[]
 month:any=[]
@@ -2979,7 +3035,6 @@ this.dataProjectProgressList = {
 
 
     }
-    debugger;
 
       this.gridsFor.refresh()
     this.gridsFor.refreshColumns()
@@ -3093,7 +3148,7 @@ if(this.avgMarginCurrentYearGrowth==0)
   this.avgMarginCurrentYearGrowthPercent=0
 }
 
-if(this.avgMarginCurrentYearGrowthPercent>0)
+if(this.avgMarginCurrentYearGrowthPercent>=0)
 {
   this.avgMarginCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3108,7 +3163,7 @@ if(this.avgMarginPreviousYearGrowth==0)
 {
   this.avgMarginPreviousYearGrowthPercent=0
 }
-if(this.avgMarginPreviousYearGrowthPercent>0)
+if(this.avgMarginPreviousYearGrowthPercent>=0)
 {
   this.avgMarginPreviousYearGrowthPercentimg=this.downUrl
 }
@@ -3124,7 +3179,7 @@ if(this.avgRevenueCurrentYearGrowth==0)
   this.avgRevenueCurrentYearGrowthPercent=0
 }
 
-if(this.avgRevenueCurrentYearGrowthPercent>0)
+if(this.avgRevenueCurrentYearGrowthPercent>=0)
 {
   this.avgRevenueCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3138,7 +3193,7 @@ if(this.avgRevenuePreviousYearGrowth==0)
 {
   this.avgRevenuePreviousYearGrowthPercent=0
 }
-if(this.avgRevenuePreviousYearGrowthPercent>0)
+if(this.avgRevenuePreviousYearGrowthPercent>=0)
 {
   this.avgRevenuePreviousYearGrowthPercentimg=this.downUrl
 }
@@ -3152,7 +3207,7 @@ if(this.avgTenureCurrentYearGrowth==0)
 {
   this.avgTenureCurrentYearGrowthPercent=0
 }
-if(this.avgTenureCurrentYearGrowthPercent>0)
+if(this.avgTenureCurrentYearGrowthPercent>=0)
 {
   this.avgTenureCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3168,7 +3223,7 @@ if(this.avgTenurePreviousYearGrowth==0)
 {
   this.avgTenurePreviousYearGrowthPercent=0
 }
-if(this.avgTenurePreviousYearGrowthPercent>0)
+if(this.avgTenurePreviousYearGrowthPercent>=0)
 {
   this.avgTenurePreviousYearGrowthPercentimg=this.downUrl
 }
@@ -3183,7 +3238,7 @@ if(this.netRevenueCurrentYearGrowth==0)
 {
   this.netRevenueCurrentYearGrowthPercent=0
 }
-if(this.netRevenueCurrentYearGrowthPercent>0)
+if(this.netRevenueCurrentYearGrowthPercent>=0)
 {
   this.netRevenueCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3198,7 +3253,7 @@ if(this.netRevenuePreviousYearGrowth==0)
 {
   this.netRevenuePreviousYearGrowthPercent=0
 }
-if(this.netRevenuePreviousYearGrowthPercent>0)
+if(this.netRevenuePreviousYearGrowthPercent>=0)
 {
   this.netRevenuePreviousYearGrowthPercentimg=this.downUrl
 }
@@ -3213,7 +3268,7 @@ if(this.projectCostCurrentYearGrowth==0)
 {
   this.projectCostCurrentYearGrowthPercent=0
 }
-if(this.projectCostCurrentYearGrowthPercent>0)
+if(this.projectCostCurrentYearGrowthPercent>=0)
 {
   this.projectCostCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3228,7 +3283,7 @@ if(this.projectCostInDollarCurrentYearGrowth==0)
 {
   this.projectCostInDollarCurrentYearGrowthPercent=0
 }
-if(this.projectCostInDollarCurrentYearGrowthPercent>0)
+if(this.projectCostInDollarCurrentYearGrowthPercent>=0)
 {
   this.projectCostInDollarCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3243,7 +3298,7 @@ if(this.projectCostInDollarPreviousYearGrowth==0)
 {
   this.projectCostInDollarPreviousYearGrowthPercent=0
 }
-if(this.projectCostInDollarCurrentYearGrowthPercent>0)
+if(this.projectCostInDollarCurrentYearGrowthPercent>=0)
 {
   this.projectCostInDollarCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3257,7 +3312,7 @@ if(this.projectCostPreviousYearGrowth==0)
 {
   this.projectCostPreviousYearGrowthPercent=0
 }
-if(this.projectCostPreviousYearGrowthPercent>0)
+if(this.projectCostPreviousYearGrowthPercent>=0)
 {
   this.projectCostPreviousYearGrowthPercentimg=this.downUrl
 }
@@ -3272,7 +3327,7 @@ if(this.projectWithAvgMarginCurrentYearGrowth==0)
 {
   this.projectWithAvgMarginCurrentYearGrowthPercent=0
 }
-if(this.projectWithAvgMarginCurrentYearGrowthPercent>0)
+if(this.projectWithAvgMarginCurrentYearGrowthPercent>=0)
 {
   this.projectWithAvgMarginCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3286,7 +3341,7 @@ if(this.projectWithAvgMarginPreviousYearGrowth==0)
 {
   this.projectWithAvgMarginPreviousYearGrowthPercent=0
 }
-if(this.projectWithAvgMarginPreviousYearGrowthPercent>0)
+if(this.projectWithAvgMarginPreviousYearGrowthPercent>=0)
 {
   this.projectWithAvgMarginPreviousYearGrowthPercentimg=this.downUrl
 }
@@ -3303,7 +3358,7 @@ if(this.totalCostCurrentYearGrowth==0)
 }
 
 
-if(this.totalCostCurrentYearGrowthPercent>0)
+if(this.totalCostCurrentYearGrowthPercent>=0)
 {
   this.totalCostCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -3318,7 +3373,7 @@ if(this.totalCostPreviouYearGrowth==0)
 {
   this.totalCostPreviouYearGrowthPercent=0
 }
-if(this.totalCostPreviouYearGrowthPercent>0)
+if(this.totalCostPreviouYearGrowthPercent>=0)
 {
   this.totalCostPreviouYearGrowthPercentimg=this.downUrl
 }
@@ -3383,9 +3438,7 @@ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value
       this.dataSpenderWise=[]
       this.columnList=[]
       this.rowList=[]
-      debugger
       this.HTTP.getPbiExpenseSpenderWise(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-        debugger
      
         this.getListSpenderWise=  arg.data.table
       var getColor=[]
@@ -4038,7 +4091,7 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
 // designationName: 
 var getColor=[]
       this.getListEmployeeVsVendor=  arg.data.table
-if(this.getListEmployeeVsVendor.length>0)
+if(this.getListEmployeeVsVendor.length>=0)
 {
 
 
@@ -4145,7 +4198,7 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
     this.getListProjectVsVendor=  arg.data.table
 //       designationId: 15
 // designationName: 
-if(this.getListProjectVsVendor.length>0)
+if(this.getListProjectVsVendor.length>=0)
 {
 
 var getColor=[]
@@ -4257,7 +4310,7 @@ getpbiProjecDeployeeVsBench(){
   this.getListProjectVsBench=  arg.data.table
 //       designationId: 15
 // designationName: 
-if(this.getListProjectVsBench.length>0)
+if(this.getListProjectVsBench.length>=0)
 {
 
 var getColor=[]
@@ -4384,7 +4437,7 @@ getpbiProjecDeployeeVsBenchBill(){
     this.getListProjectVsBenchBill=  arg.data.table
 //       designationId: 15
 // designationName: 
-if(this.getListProjectVsBenchBill.length>0)
+if(this.getListProjectVsBenchBill.length>=0)
 {
 
 var getColor=[]
@@ -4473,7 +4526,7 @@ getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense(){
     this.getListProjectVsBenchBillEmployeeCountVsExpense=  arg.data.table
 //       designationId: 15
 // designationName: 
-if(this.getListProjectVsBenchBillEmployeeCountVsExpense.length>0)
+if(this.getListProjectVsBenchBillEmployeeCountVsExpense.length>=0)
 {
 
 var getColor=[]
@@ -4562,7 +4615,7 @@ getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(){
     this.getListProjectVsBenchBillProjectCountVsExpense=  arg.data.table
 //       designationId: 15
 // designationName: 
-if(this.getListProjectVsBenchBillProjectCountVsExpense.length>0)
+if(this.getListProjectVsBenchBillProjectCountVsExpense.length>=0)
 {
 
 var getColor=[]
@@ -4653,7 +4706,7 @@ getpbiProjecDeployeeVsBenchBillCustomerVsService(){
     this.getListProjectVsBenchBillCustomerVsService=  arg.data.table
 //       designationId: 15
 // designationName: 
-if(this.getListProjectVsBenchBillCustomerVsService.length>0)
+if(this.getListProjectVsBenchBillCustomerVsService.length>=0)
 {
 
 var getColor=[]
@@ -5081,7 +5134,6 @@ this.getPbiProjectDetailProgressAndCost(data)
 }
 public tooltip: Tooltip;
 headerCellInfo(args) {
-  debugger;
   if (args.cell.column.field != 'CustomerName') {
       const toolcontent = args.cell.column.headerText;
       this.tooltip = new Tooltip({
@@ -5093,7 +5145,6 @@ headerCellInfo(args) {
   } 
 } 
 tooltipfor(args: any){ 
-  debugger
   // you can also add tooltip based on condition here 
  let tooltip: Tooltip = new Tooltip({ 
  content: args.data[args.column.field].toString() 
@@ -5105,7 +5156,7 @@ tooltipfor(args: any){
     this.getListEmployeePerformance=[]
     this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListEmployeePerformance=  arg.data.table
-    if(this.getListEmployeePerformance.length>0)
+    if(this.getListEmployeePerformance.length>=0)
     {
 
       this.grids.refresh()
@@ -5123,7 +5174,6 @@ tooltipfor(args: any){
     this.getListProjectPortfoliyo=  arg.data.table
     for(var i=0;i<this.getListProjectPortfoliyo.length;i++)
     {
-      debugger
       if(this.getListProjectPortfoliyo[i].V_Billable==null || this.getListProjectPortfoliyo[i].V_Billable=='')
       {
         this.getListProjectPortfoliyo[i].V_Billable=0
@@ -5149,7 +5199,6 @@ if(total==0)
 }
 
   
-  debugger
   if(this.getListProjectPortfoliyo[i].nonBillablePer==null || this.getListProjectPortfoliyo[i].nonBillablePer=='')
   {
     this.getListProjectPortfoliyo[i].nonBillablePer=0
@@ -5180,7 +5229,6 @@ if(totalbill==0)
     this.getListProjectPortfoliyo[i].V_BillableAmount=0
   }
   var tooltipBillableAmount='E-Billable Amount:'+Number(this.getListProjectPortfoliyo[i].billable)+'<br/> V-BillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
-  debugger;
   this.getListProjectPortfoliyo[i].tooltipBillableAmount=tooltipBillableAmount
   var totalbillAmount=Number(this.getListProjectPortfoliyo[i].billable)+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
 let billablePercentAmount= Number(this.getListProjectPortfoliyo[i].billable)*100/totalbillAmount
@@ -5203,7 +5251,6 @@ if(this.getListProjectPortfoliyo[i].V_NonBillableAmount==null || this.getListPro
   this.getListProjectPortfoliyo[i].V_NonBillableAmount=0
 }
 var tooltipNonBillableAmount='E-nonBillable Amount:'+Number(this.getListProjectPortfoliyo[i].nonBillable)+'<br/> V-nonBillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)
-debugger;
 this.getListProjectPortfoliyo[i].tooltipNonBillableAmount=tooltipNonBillableAmount
 var totalnonbillAmount=Number(this.getListProjectPortfoliyo[i].nonBillable)+Number(this.getListProjectPortfoliyo[i].V_NonBillableAmount)
 let nonbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].nonBillable)*100/totalnonbillAmount
@@ -5226,7 +5273,6 @@ if(this.getListProjectPortfoliyo[i].momopen==null || this.getListProjectPortfoli
   this.getListProjectPortfoliyo[i].momopen=0
 }
 var tooltipmom='Open Mom:'+Number(this.getListProjectPortfoliyo[i].momopen)+'<br/>Close Mom:'+Number(this.getListProjectPortfoliyo[i].momclose)
-debugger;
 
 
 this.getListProjectPortfoliyo[i].tooltipmom=tooltipmom
@@ -5253,7 +5299,6 @@ if(this.getListProjectPortfoliyo[i].closeRoadBlock==null || this.getListProjectP
   this.getListProjectPortfoliyo[i].closeRoadBlock=0
 }
 var tooltiproadblock='Open RoadBlock:'+Number(this.getListProjectPortfoliyo[i].openRoadBlock)+'<br/>Close RoadBlock:'+Number(this.getListProjectPortfoliyo[i].closeRoadBlock)
-debugger;
 
 
 this.getListProjectPortfoliyo[i].tooltiproadblock=tooltiproadblock
@@ -5284,7 +5329,6 @@ if(this.getListProjectPortfoliyo[i].timerejected==null || this.getListProjectPor
   this.getListProjectPortfoliyo[i].timerejected=0
 }
 var tooltiptime='Time Pending:'+Number(this.getListProjectPortfoliyo[i].timepending)+'<br/>Time Approved:'+Number(this.getListProjectPortfoliyo[i].timeapproved)+'<br/>Time Rejected:'+Number(this.getListProjectPortfoliyo[i].timerejected)
-debugger;
 
 
 this.getListProjectPortfoliyo[i].tooltiptime=tooltiptime
@@ -5418,7 +5462,7 @@ if(this.customerExpenseCurrentYearGrowth==0)
   this.customerExpenseCurrentYearGrowthPercent=0
 }
 
-if(this.customerExpenseCurrentYearGrowthPercent>0)
+if(this.customerExpenseCurrentYearGrowthPercent>=0)
 {
   this.customerExpenseCurrentYearGrowthPercentimg=this.downUrl
 }
@@ -5435,7 +5479,7 @@ this.customerExpenseCurrentYearGrowthYoy=this.getListExpenseDetailList[0].custom
     {
       this.customerExpenseCurrentYearGrowthYoyPercent=0
     }
-    if(this.customerExpenseCurrentYearGrowthYoyPercent>0)
+    if(this.customerExpenseCurrentYearGrowthYoyPercent>=0)
 {
   this.customerExpenseCurrentYearGrowthYoyPercentimg=this.downUrl
 }
@@ -5451,7 +5495,7 @@ else{
       this.customerExpensePreviousYearGrowthPercent=0
     }
   
-   if(this.customerExpensePreviousYearGrowthPercent>0)
+   if(this.customerExpensePreviousYearGrowthPercent>=0)
    {
      this.customerExpensePreviousYearGrowthPercentimg=this.downUrl
    }
@@ -5467,7 +5511,7 @@ else{
     {
       this.serviceProviderCurrentYearGrowthPercent=0
     }
-    if(this.serviceProviderCurrentYearGrowthPercent>0)
+    if(this.serviceProviderCurrentYearGrowthPercent>=0)
    {
      this.serviceProviderCurrentYearGrowthPercentimg=this.downUrl
    }
@@ -5483,7 +5527,7 @@ else{
       this.serviceProviderCurrentYearGrowthYoyPercent=0
     }
    
-    if(this.serviceProviderCurrentYearGrowthYoyPercent>0)
+    if(this.serviceProviderCurrentYearGrowthYoyPercent>=0)
     {
       this.serviceProviderCurrentYearGrowthYoyPercentimg=this.downUrl
     }
@@ -5499,7 +5543,7 @@ this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceP
       this.serviceProviderPreviousYearGrowthPercent=0
     }
    
-    if(this.serviceProviderPreviousYearGrowthPercent>0)
+    if(this.serviceProviderPreviousYearGrowthPercent>=0)
     {
       this.serviceProviderPreviousYearGrowthPercentimg=this.downUrl
     }
@@ -5515,7 +5559,7 @@ this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceP
    this.totalExpenseCurrentYearGrowthPercent=0
  }
 
- if(this.totalExpenseCurrentYearGrowthPercent>0)
+ if(this.totalExpenseCurrentYearGrowthPercent>=0)
  {
    this.totalExpenseCurrentYearGrowthPercentimg=this.downUrl
  }
@@ -5531,7 +5575,7 @@ if(this.totalExpensePreviousYearGrowth==0)
   this.totalExpensePreviousYearGrowthPercent=0
 }
 
-if(this.totalExpensePreviousYearGrowthPercent>0)
+if(this.totalExpensePreviousYearGrowthPercent>=0)
 {
   this.totalExpensePreviousYearGrowthPercentimg=this.downUrl
 }
@@ -5548,7 +5592,7 @@ if(this.totalExpenseCurrentYearYoyGrowth==0)
   this.totalExpenseCurrentYearYoyGrowthPercent=0
 }
 
-if(this.totalExpenseCurrentYearYoyGrowthPercent>0)
+if(this.totalExpenseCurrentYearYoyGrowthPercent>=0)
 {
   this.totalExpenseCurrentYearYoyGrowthPercentimg=this.downUrl
 }
@@ -6047,7 +6091,6 @@ this.currentGrowthYearPercent=this.getListData[0].currentGrowthYearPercent
 this.currentGrowthattritionYearPercent=this.getListData[0].currentGrowthattritionYearPercent
 this.currentVendorAddtionYear=this.getListData[0].currentVendorAddtionYear
 this.currentVendorYear=this.getListData[0].currentVendorYear
-debugger;
 this.currentVendorAttritionYear=this.getListData[0].currentVendorattritionYear
 
 this.currentYear=this.getListData[0].currentYear
@@ -6093,7 +6136,7 @@ if(this.totalGrowthCurrentyoyYear==0)
 {
   this.totalCurrentGrowthyoyPercent=0
 }
-if(this.totalCurrentGrowthyoyPercent>0)
+if(this.totalCurrentGrowthyoyPercent>=0)
 {
   this.imgUrl19=this.downUrl
 }
@@ -6107,7 +6150,7 @@ if(this.totalVendorCurrentGrowthYoyPercent==0)
 {
   this.totalVendorCurrentGrowthYoyPercent=0
 }
-if(this.totalVendorCurrentGrowthYoyPercent>0)
+if(this.totalVendorCurrentGrowthYoyPercent>=0)
 {
   this.imgUrl20=this.downUrl
 }
@@ -6122,7 +6165,7 @@ if(this.totalAdditionGrowthYoyYearPercent==0)
 {
 this.totalGrowthCurrentAdditionyoyYearPercent=0
 }
-if(this.totalGrowthCurrentAdditionyoyYearPercent>0)
+if(this.totalGrowthCurrentAdditionyoyYearPercent>=0)
 {
   this.imgUrl21=this.downUrl
 }
@@ -6136,7 +6179,7 @@ if(this.totalVendorGrowthCurrentAdditionyoyYear==0)
 {
 this.totalVendorGrowthCurrentAdditionyoyYearPercent=0
 }
-if(this.totalVendorGrowthCurrentAdditionyoyYearPercent>0)
+if(this.totalVendorGrowthCurrentAdditionyoyYearPercent>=0)
 {
   this.imgUrl22=this.downUrl
 }
@@ -6150,7 +6193,7 @@ if(this.totalCurrentGrowthAttritionyoyYear==0)
 {
 this.totalCurrentGrowthAttritionyoyYearPercent=0
 }
-if(this.totalCurrentGrowthAttritionyoyYearPercent>0)
+if(this.totalCurrentGrowthAttritionyoyYearPercent>=0)
 {
   this.imgUrl23=this.downUrl
 }
@@ -6165,7 +6208,7 @@ if(this.totalVendorCurrentGrowthAttritionyoyYear==0)
   this.totalVendorCurrentGrowthAttritionyoyYearPercent=0
 }
 
-if(this.totalVendorCurrentGrowthAttritionyoyYearPercent>0)
+if(this.totalVendorCurrentGrowthAttritionyoyYearPercent>=0)
 {
   this.imgUrl24=this.downUrl
 }
@@ -6191,7 +6234,7 @@ else{
   this.employeePercentage =(this.totalPrevousYear-this.totalGrowthPrevousYearPercent) *100 / this.totalGrowthPrevousYearPercent
 
 }
-if(this.employeePercentage>0)
+if(this.employeePercentage>=0)
 {
   this.imgUrl=this.downUrl
 }
@@ -6206,7 +6249,7 @@ else{
   this.employeePerviousYearpercentage=(this.valcurrentYear-this.currentGrowthYearPercent)*100/this.currentGrowthYearPercent
 
 }
-if(this.employeePerviousYearpercentage>0)
+if(this.employeePerviousYearpercentage>=0)
 {
   this.imgUrl1=this.downUrl
 }
@@ -6222,7 +6265,7 @@ else{
   this.employeeyoyprecentage=(this.totalyoyYear-this.totalGrowthYoyYearPercent)/this.totalGrowthYoyYearPercent*100
 
 }
-if(this.employeeyoyprecentage>0)
+if(this.employeeyoyprecentage>=0)
 {
   this.imgUrl2=this.downUrl
 }
@@ -6237,7 +6280,6 @@ else{
   this.employeeAdditionPercentage=(this.totalAdditionPreviousYear-this.totalGrowthAdditionPreviousYearPercent)*100/this.totalGrowthAdditionPreviousYearPercent
 
 }
-debugger;
 if(this.employeeAdditionPercentage>=0)
 {
   this.imgUrl3=this.downUrl
@@ -6253,7 +6295,7 @@ else{
 this.employeeAdditionCurrentYearPercentage=(this.currentAddtionYear-this.currentGrowthAddtionYearPercent)*100/this.currentGrowthAddtionYearPercent
 
 }
-if(this.employeeAdditionCurrentYearPercentage>0)
+if(this.employeeAdditionCurrentYearPercentage>=0)
 {
   this.imgUrl4=this.downUrl
 }
@@ -6268,7 +6310,7 @@ else{
   this.employeeAdditionyoypercentage=(this.totalAdditionyoyYear-this.totalAdditionGrowthYoyYearPercent)*100/this.totalAdditionGrowthYoyYearPercent
 
 }
-if(this.employeeAdditionyoypercentage>0)
+if(this.employeeAdditionyoypercentage>=0)
 {
   this.imgUrl5=this.downUrl
 }
@@ -6284,7 +6326,7 @@ else{
   this.employeeAttritionPercentage=(this.totalattritionPerviousYear-this.totalGrowthattritionPerviousYearPercent)*100/this.totalattritionPerviousYear
 
 }
-if(this.employeeAttritionPercentage>0)
+if(this.employeeAttritionPercentage>=0)
 {
   this.imgUrl6=this.downUrl
 }
@@ -6298,7 +6340,7 @@ this.employeeAttritionCurrentPercent=0
 else{
   this.employeeAttritionCurrentPercent=(this.currentattritionYear-this.currentGrowthattritionYearPercent)*100/this.currentGrowthattritionYearPercent
 }
-if(this.employeeAttritionCurrentPercent>0)
+if(this.employeeAttritionCurrentPercent>=0)
 {
   this.imgUrl7=this.downUrl
 }
@@ -6319,7 +6361,7 @@ else{
   this.employeeAttritionYoyPercentage=(this.totalAttritionyoyYear-this.totalAttritionGrowthYoyYearPercent)*100/this.totalAttritionGrowthYoyYearPercent
 
 }
-if(this.employeeAttritionYoyPercentage>0)
+if(this.employeeAttritionYoyPercentage>=0)
 {
   this.imgUrl8=this.downUrl
 }
@@ -6334,7 +6376,7 @@ else{
 this.VendorPreviousPercentage=(this.totalVendorPrevoisYear-this.totalVendorGrowthPrevoisYearPercent)*100/this.totalVendorGrowthPrevoisYearPercent
 
 }
-if(this.VendorPreviousPercentage>0)
+if(this.VendorPreviousPercentage>=0)
 {
   this.imgUrl9=this.downUrl
 }
@@ -6349,7 +6391,7 @@ if(this.currentGrowthVendorYearPercent==0)
 else{
 this.VendorCurrentYearPercentage=(this.currentVendorYear-this.currentGrowthVendorYearPercent)*100/this.currentGrowthVendorYearPercent
 }
-if(this.VendorCurrentYearPercentage>0)
+if(this.VendorCurrentYearPercentage>=0)
 {
   this.imgUrl10=this.downUrl
 }
@@ -6364,7 +6406,7 @@ else{
 this.VendorYoyPercentage=(this.totalVendoryoyYear-this.totalVendorGrowthYoyYearPercent)*100/this.totalVendorGrowthYoyYearPercent
 
 }
-if(this.VendorYoyPercentage>0)
+if(this.VendorYoyPercentage>=0)
 {
   this.imgUrl11=this.downUrl
 }
@@ -6378,7 +6420,7 @@ if(this.totalGrowthAdditionVendorPreviousYearPercent==0)
 else{
 this.VendorAddtionprevousPercentage=(this.totalAdditionVendorPreviousYear-this.totalGrowthAdditionVendorPreviousYearPercent)*100/this.totalGrowthAdditionVendorPreviousYearPercent
 }
-if(this.VendorAddtionprevousPercentage>0)
+if(this.VendorAddtionprevousPercentage>=0)
 {
   this.imgUrl12=this.downUrl
 }
@@ -6392,7 +6434,7 @@ if(this.currentGrowthVendorAddtionYearPercent==0)
 else{
 this.VendorAddtionCurrentPercentage=(this.currentVendorAddtionYear-this.currentGrowthVendorAddtionYearPercent)*100/this.currentGrowthVendorAddtionYearPercent
 }
-if(this.VendorAddtionCurrentPercentage>0)
+if(this.VendorAddtionCurrentPercentage>=0)
 {
   this.imgUrl13=this.downUrl
 }
@@ -6406,7 +6448,7 @@ if(this.totalVendorAdditionGrowthYoyYearPercent==0)
 else{
 this.VendorAddtionYoyPercentage=(this.totalVendorAdditionyoyYear-this.totalVendorAdditionGrowthYoyYearPercent)*100/this.totalVendorAdditionGrowthYoyYearPercent
 }
-if(this.VendorAddtionYoyPercentage>0)
+if(this.VendorAddtionYoyPercentage>=0)
 {
   this.imgUrl14=this.downUrl
 }
@@ -6420,7 +6462,7 @@ if(this.totalGrowthVendorattritionYearPercent==0)
 else{
 this.VendorAttritionPercentage=(this.totalVendorattritionYear-this.totalGrowthVendorattritionYearPercent)*100/this.totalGrowthVendorattritionYearPercent
 }
-if(this.VendorAttritionPercentage>0)
+if(this.VendorAttritionPercentage>=0)
 {
   this.imgUrl15=this.downUrl
 }
@@ -6434,7 +6476,7 @@ if(this.totalGrowthVendorattritionYearPercent==0)
 else{
 this.currentVendorAttritionPercentage=(this.currentVendorAttritionYear-this.currentGrowthVendorattritionYearPercent)*100/this.currentGrowthVendorattritionYearPercent
 }
-if(this.currentVendorAttritionPercentage>0)
+if(this.currentVendorAttritionPercentage>=0)
 {
   this.imgUrl16=this.downUrl
 }
@@ -6448,7 +6490,7 @@ if(this.totalVendorAttritionGrowthYoyYearPercent==0)
 else{
 this.currentVendorAttritionYoyPercentage=(this.totalVendorAttritionyoyYear-this.totalVendorAttritionGrowthYoyYearPercent)*100/this.totalVendorAttritionGrowthYoyYearPercent
 }
-if(this.currentVendorAttritionYoyPercentage>0)
+if(this.currentVendorAttritionYoyPercentage>=0)
 {
   this.imgUrl17=this.downUrl
 }
@@ -6547,7 +6589,7 @@ imgbillableResourceTotalPercentGrowth:any
     this.HTTP.getPbiProjectDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       
   this.getProjectListData=  arg.data.table
- // if(this.getProjectListData>0)
+ // if(this.getProjectListData>=0)
   //{
 
 this.avgLeavePercent=this.getProjectListData[0].avgLeavePercent
@@ -6559,7 +6601,7 @@ this.avgLeaveTotalPercentage=0
 }
 
 
-if(this.avgLeaveTotalPercentage>0)
+if(this.avgLeaveTotalPercentage>=0)
 {
   this.imgavgLeaveTotalPercentage=this.downUrl
 }
@@ -6574,7 +6616,7 @@ if(this.costPercentageGrowth==0)
 {
   this.costPercentageGrowthValue=0
 }
-if(this.costPercentageGrowthValue>0)
+if(this.costPercentageGrowthValue>=0)
 {
   this.imgcostPercentageGrowthValue=this.downUrl
 }
@@ -6588,7 +6630,7 @@ if(this.leaveTotalYoyPercent==0)
 {
 this.leaveTotalYoyPercentGrowth=0
 }
-if(this.leaveTotalYoyPercentGrowth>0)
+if(this.leaveTotalYoyPercentGrowth>=0)
 {
   this.imgleaveTotalYoyPercentGrowth=this.downUrl
 }
@@ -6604,7 +6646,7 @@ if(this.nonBillableResourceTotalPercent==0)
 {
   this.nonBillableResourceTotalPercentGrowth=0
 }
-if(this.nonBillableResourceTotalPercentGrowth>0)
+if(this.nonBillableResourceTotalPercentGrowth>=0)
 {
   this.imgnonBillableResourceTotalPercentGrowth=this.downUrl
 }
@@ -6619,7 +6661,7 @@ if(this.nonBillableResourceTotalYoyPercent==0)
   this.nonBillableResourceTotalYoyPercentGrowth=0
 }
 
-if(this.nonBillableResourceTotalYoyPercentGrowth>0)
+if(this.nonBillableResourceTotalYoyPercentGrowth>=0)
 {
   this.imgnonBillableResourceTotalYoyPercentGrowth=this.downUrl
 }
@@ -6634,7 +6676,7 @@ if(this.OnBenchTotalYoyPercent==0)
   this.onBenchTotalYoyPercentGrowth=0
 }
 
-if(this.onBenchTotalYoyPercentGrowth>0)
+if(this.onBenchTotalYoyPercentGrowth>=0)
 {
   this.imgonBenchTotalYoyPercentGrowth=this.downUrl
 }
@@ -6650,7 +6692,7 @@ if(this.revenueCostTotalYoyPercent==0)
   this.revenueCostTotalYoyPercentGrowth=0
 }
 
-if(this.revenueCostTotalYoyPercentGrowth>0)
+if(this.revenueCostTotalYoyPercentGrowth>=0)
 {
   this.imgrevenueCostTotalYoyPercentGrowth=this.downUrl
 }
@@ -6663,7 +6705,7 @@ if(this.revenuePercentageGrowth==0)
 {
   this.revenuePercentageGrowthPercent=0
 }
-if(this.revenuePercentageGrowthPercent>0)
+if(this.revenuePercentageGrowthPercent>=0)
 {
   this.imgrevenuePercentageGrowthPercent=this.downUrl
 }
@@ -6678,7 +6720,7 @@ if(this.serviceProviderTotalResourcePercentage==0)
   {
     this.serviceProviderTotalResourcePercentageGrowth=0
   }
-  if(this.serviceProviderTotalResourcePercentageGrowth>0)
+  if(this.serviceProviderTotalResourcePercentageGrowth>=0)
 {
   this.imgserviceProviderTotalResourcePercentageGrowth=this.downUrl
 }
@@ -6694,7 +6736,7 @@ if(this.totalGrowthCloseProjectPercent==0)
 {
   this.totalGrowthCloseProjectPercentGrowth=0
 }
-if(this.totalGrowthCloseProjectPercentGrowth>0)
+if(this.totalGrowthCloseProjectPercentGrowth>=0)
 {
   this.imgtotalGrowthCloseProjectPercentGrowth=this.downUrl
 }
@@ -6709,7 +6751,7 @@ if(this.totalLeaveResourcePercent==0)
 {
   this.totalLeaveResourcePercentGrowth=0
 }
-if(this.totalLeaveResourcePercentGrowth>0)
+if(this.totalLeaveResourcePercentGrowth>=0)
 {
   this.imgtotalLeaveResourcePercentGrowth=this.downUrl
 }
@@ -6722,7 +6764,7 @@ if(this.totalGrowthOpenProjectPercent==0)
 {
   this.totalGrowthOpenProjectPercentGrowth=0
 }
-if(this.totalGrowthOpenProjectPercentGrowth>0)
+if(this.totalGrowthOpenProjectPercentGrowth>=0)
 {
   this.imgtotalGrowthOpenProjectPercentGrowth=this.downUrl
 }
@@ -6736,7 +6778,7 @@ if(this.totalResourcePercent==0)
   this.totalResourcePercentGrowth=0
 
 }
-if(this.totalResourcePercentGrowth>0)
+if(this.totalResourcePercentGrowth>=0)
 {
   this.imgtotalResourcePercentGrowth=this.downUrl
 }
@@ -6748,7 +6790,7 @@ if(this.totalResourcePercentGrowth==0)
 {
   this.totalResourcePercentGrowthPercentGrowth=0
 }
-if(this.totalResourcePercentGrowthPercentGrowth>0)
+if(this.totalResourcePercentGrowthPercentGrowth>=0)
 {
   this.imgtotalResourcePercentGrowthPercentGrowth=this.downUrl
 }
@@ -6763,7 +6805,7 @@ if(this.totalGrowthProjectYoyYearPercent==0)
 {
   this.totalGrowthProjectYoyYearPercentGrowth=0
 }
-if(this.totalGrowthProjectYoyYearPercentGrowth>0)
+if(this.totalGrowthProjectYoyYearPercentGrowth>=0)
 {
   this.imgtotalGrowthProjectYoyYearPercentGrowth=this.downUrl
 }
@@ -6778,7 +6820,7 @@ if(this.vendorTotalResourcePercentage==0)
 {
   this.vendorTotalResourcePercentageGrowth=0
 }
-if(this.vendorTotalResourcePercentageGrowth>0)
+if(this.vendorTotalResourcePercentageGrowth>=0)
 {
   this.imgvendorTotalResourcePercentageGrowth=this.downUrl
 }
@@ -6793,7 +6835,7 @@ if(this.vendorTotalYoyPercent==0)
   this.vendorTotalYoyPercentGrowth=0
 
 }
-if(this.vendorTotalYoyPercentGrowth>0)
+if(this.vendorTotalYoyPercentGrowth>=0)
 {
   this.imgvendorTotalYoyPercentGrowth=this.downUrl
 }
@@ -6809,7 +6851,7 @@ this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTo
 {
   this.onBenchTotalResourcePercentGrowth=0
 }
-if(this.onBenchTotalResourcePercentGrowth>0)
+if(this.onBenchTotalResourcePercentGrowth>=0)
 {
   this.imgonBenchTotalResourcePercentGrowth=this.downUrl
 }
@@ -6823,7 +6865,7 @@ this.billableResourceTotalPercent=0;
 {
   this.billableResourceTotalPercentGrowth=0
 }
-if(this.billableResourceTotalPercentGrowth>0)
+if(this.billableResourceTotalPercentGrowth>=0)
 {
   this.imgbillableResourceTotalPercentGrowth=this.downUrl
 }
@@ -6910,7 +6952,7 @@ this.getpbiExpenseProject()
 // monthNames: "September"
 // totalemployee: 60
 // yy: 2021
-if(this.getResourcesDetail.length>0)
+if(this.getResourcesDetail.length>=0)
 {
   
       for(var i=0;i<this.getResourcesDetail.length;i++)

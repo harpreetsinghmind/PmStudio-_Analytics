@@ -897,5 +897,19 @@ getPbiProjectDetailAllTask(year,cmpcode,projectid,depid): Observable<any> {
   return this.httpClient.get(URL,{headers:headers})
  
  }
+ 
+getpbiDepartmentList(year,cmpcode): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}pbiPeople/getpbiDepartmentList?year=`+year+"&cmpcode="+cmpcode
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getpbiDepartmentList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+//const URL ="http://localhost:63000/api/pbiPeople/getpbiDepartmentList?year="+year+"&cmpcode="+cmpcode
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
 }
 

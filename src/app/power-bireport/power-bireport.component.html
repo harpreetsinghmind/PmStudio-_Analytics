@@ -9,25 +9,32 @@
           <select class="form-control">
             <option>Select Customer</option>
           </select>
-        </div>
-
-        <div class="col-md-2">
-          <select class="form-control">
-            <option>Select Project</option>
-          </select>
         </div> -->
 
         <div class="col-md-2">
+          Department : 
+        <select [(ngModel)]="setDepartment" (change)="onChange($event)">
+          <option value=""></option>
+          <option *ngFor="let web of departmentList" [value]="web.depId">
+              {{web.depName}}
+          </option>
+      </select>
+        </div>
+      
+  
+  
+        <div class="col-md-2">
           <input type="date" [(ngModel)]="getDate" (change)="changeDate($event)" class="form-control">
         </div>
-
+       
+        <div class="col-md-2">
+         
+        </div>
+  
 
       </div>
 
-
-
-
-
+    
 
 
 
