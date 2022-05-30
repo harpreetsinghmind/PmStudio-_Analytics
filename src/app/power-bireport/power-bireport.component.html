@@ -1,7 +1,7 @@
 <div class="jumbotron expensereport">
     <div class="reports-pages">
       <div class="row report-row" style="padding: 5px 0;">
-        <div class="col-md-10 no-padding" style="text-align: left;">
+        <div class="col-md-8 no-padding" style="text-align: left;">
           <h4 class="title-new title-new-100">Analytics Report</h4>
         </div>
 
@@ -11,30 +11,31 @@
           </select>
         </div> -->
 
-        <div class="col-md-2">
-          Department : 
-        <select [(ngModel)]="setDepartment" (change)="onChange($event)">
+        <div class="col-md-2" style="display: flex;  align-items: center;">
+          Department :
+        <select [(ngModel)]="setDepartment" (change)="onChange($event)" class="form-control" style="width: 180px;
+        margin-left: 10px;">
           <option value=""></option>
           <option *ngFor="let web of departmentList" [value]="web.depId">
               {{web.depName}}
           </option>
       </select>
         </div>
-      
-  
-  
+
+
+
         <div class="col-md-2">
           <input type="date" [(ngModel)]="getDate" (change)="changeDate($event)" class="form-control">
         </div>
-       
+
         <div class="col-md-2">
-         
+
         </div>
-  
+
 
       </div>
 
-    
+
 
 
 

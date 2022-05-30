@@ -518,7 +518,7 @@ export class PowerBIReportComponent implements OnInit {
   };
 
 
- 
+
   datades23 = {
     "chart": {
       "theme": "fusion",
@@ -2533,7 +2533,7 @@ export class PowerBIReportComponent implements OnInit {
     this.getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense()
     this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
     this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
-    
+
     this.getProjectPortFoliyo()
     //this.getProjectProjectDetailRevnueAndCost()
     //this.getPbiProjectDetailProgressAndCost()
@@ -2547,7 +2547,7 @@ export class PowerBIReportComponent implements OnInit {
     this.getPbiProjectInNumberInCost()
     this.getPbiProjectInNumberInCostLeave()
     this.getpbiExpenseProject()
-    
+
   }
   ngOnInit(): void {
     this.departmentId=0
@@ -2566,7 +2566,7 @@ this.monthName=shortMonth
         field: 'openTask',
         headerText: 'Open',
         textAlign:"Center",
-        width:'80'
+
 
 
       },
@@ -2574,8 +2574,8 @@ this.monthName=shortMonth
         field: 'pendingTask',
         headerText: 'Pending',
         textAlign:"Center",
-        width:'80'
-  
+
+
 
 
       },
@@ -2583,7 +2583,7 @@ this.monthName=shortMonth
         field: 'closeTask',
         headerText: 'Close',
         textAlign:"Center",
-        width:'80'
+
 
 
 
@@ -2595,7 +2595,7 @@ this.monthName=shortMonth
         field: 'openMom',
         headerText: 'Open',
         textAlign:"Center",
-        width:'80'
+
 
 
       },
@@ -2603,7 +2603,7 @@ this.monthName=shortMonth
         field: 'wipMom',
         headerText: 'WIP',
         textAlign:"Center",
-        width:'80'
+
 
       },
       {
@@ -2611,7 +2611,7 @@ this.monthName=shortMonth
         headerText: 'Close',
         textAlign:"Center",
 
-        width:'80'
+
 
       },
     ]
@@ -2621,14 +2621,14 @@ this.monthName=shortMonth
         headerText: 'Open',
 
         textAlign:"Center",
-        width:'80'
+
 
       },
       {
         field: 'closeRoadBlock',
         headerText: 'Close',
         textAlign:"Center",
-        width:'80'
+
 
       },
     ]
@@ -2637,7 +2637,7 @@ this.monthName=shortMonth
         field: 'approveExpense',
         headerText: 'Approved',
         textAlign:"Center",
-        width:'80'
+
 
 
       },
@@ -2645,7 +2645,7 @@ this.monthName=shortMonth
         field: 'rejectExpense',
         headerText: 'Reject',
         textAlign:"Center",
-        width:'80'
+
 
       },
     ];
@@ -2695,7 +2695,7 @@ this.getDepartmentListDropdown()
   {
     debugger
     this.HTTP.getpbiDepartmentList(this.setDate,this.CmpCode).subscribe(arg => {
-    
+
       this.departmentList=  arg.data.table
     })
   }
@@ -2713,7 +2713,7 @@ setProjectNumberList:any=[]
       this.numberProject=[]
       this.venderNumber=[]
       this.HTTP.getPbiProjectDetailInNumber(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-    
+
         this.getListProjectInNumber=  arg.data.table
       var getColor=[]
 
@@ -2729,7 +2729,7 @@ this.venderNumber.push({"value":this.getListProjectInNumber[i].vendor})
 //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
     this.setProjectNumberList.push({"label":this.getListProjectInNumber[i].monthNames,"value":this.getListProjectInNumber[i].employee})
 }
-      
+
   this.projectDetailNumber = {
     "chart": {
       "theme": "fusion",
@@ -2769,9 +2769,9 @@ this.venderNumber.push({"value":this.getListProjectInNumber[i].vendor})
 // "data":this.setList
 // };
 
-      
-    
-    
+
+
+
       })
   }
   getListProjectInNumberInCost:any=[]
@@ -2788,7 +2788,7 @@ this.venderNumber.push({"value":this.getListProjectInNumber[i].vendor})
     this.numberProjectInCost=[]
     this.venderNumberInCost=[]
     this.HTTP.getPbiProjectDetailInNumberInCost(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-  
+
       this.getListProjectInNumberInCost=  arg.data.table
     var getColor=[]
 
@@ -2804,7 +2804,7 @@ this.venderNumberInCost.push({"value":this.getListProjectInNumber[i].vendor})
 //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
   this.setProjectNumberListInCost.push({"label":this.getListProjectInNumberInCost[i].monthNames,"value":this.getListProjectInNumberInCost[i].employee})
 }
-    
+
 this.projectDetailNumberInCost = {
   "chart": {
     "theme": "fusion",
@@ -2844,9 +2844,9 @@ this.projectDetailNumberInCost = {
 // "data":this.setList
 // };
 
-    
-  
-  
+
+
+
     })
 }
 getListProjectInNumberInCostLeave:any=[]
@@ -2864,7 +2864,7 @@ getListProjectInNumberInCostLeave:any=[]
     this.venderNumberInCostLeave=[]
     this.setProjectNumberListInCostLeave=[]
     this.HTTP.getPbiProjectDetailInNumberInCostLeave(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-  
+
       this.getListProjectInNumberInCostLeave=  arg.data.table
     var getColor=[]
 
@@ -2880,7 +2880,7 @@ this.venderNumberInCostLeave.push({"value":this.getListProjectInNumberInCostLeav
 //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
   this.setProjectNumberListInCostLeave.push({"label":this.getListProjectInNumberInCostLeave[i].monthNames,"value":this.getListProjectInNumberInCostLeave[i].employee})
 }
-    
+
 this.projectDetailNumberInCostLeave = {
   "chart": {
     "theme": "fusion",
@@ -2920,9 +2920,9 @@ this.projectDetailNumberInCostLeave = {
 // "data":this.setList
 // };
 
-    
-  
-  
+
+
+
     })
 }
   getListProgress:any=[]
@@ -2953,9 +2953,9 @@ this.dataProgress.push({"label":this.getListProgress[i].monthes})
 this.dataProjectProgressList.push({"value":this.getListProgress[i].cost})
 this.dataProjectCostList.push({"value":this.getListProgress[i].progress})
 this.setList.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
-    
+
 }
-      
+
 
 this.dataProjectProgressList = {
   "chart": {
@@ -2967,9 +2967,9 @@ this.dataProjectProgressList = {
 "data":this.setList
 };
 
-      
-    
-    
+
+
+
       })
   }
   // datades21 = {
@@ -3039,10 +3039,10 @@ this.dataProjectProgressList = {
       this.gridsFor.refresh()
     this.gridsFor.refreshColumns()
     this.gridsFor.dataSource=this.getListProjectDetailRoadblock
-    
+
       })
   }
-  
+
   getListProjectDetailDevialtion:any=[]
   getpbiProjectDevaition(data){
       let cmpcode=1
@@ -3050,7 +3050,7 @@ this.dataProjectProgressList = {
       this.getListProjectDetailDevialtion=[]
       this.HTTP.getPbiProjectDetailDeviationList(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
       this.getListProjectDetailDevialtion=  arg.data.table
-     
+
       })
   }
 
@@ -3061,7 +3061,7 @@ this.dataProjectProgressList = {
       this.getListProjectDetailAllTaskList=[]
       this.HTTP.getPbiProjectDetailAllTask(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
       this.getListProjectDetailAllTaskList=  arg.data.table
-     
+
       })
   }
   avgMarginCurrentYear:any
@@ -3139,7 +3139,7 @@ totalCostPreviouYearGrowthPercentimg:any
 this.plcurrentYear= this.getprojectDetailPAndLList[0].plcurrentYear
 this.plpreviousYear= this.getprojectDetailPAndLList[0].plpreviousYear
 
-      
+
 this.avgMarginCurrentYear= this.getprojectDetailPAndLList[0].avgMarginCurrentYear
 this.avgMarginCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgMarginCurrentYearGrowth
 this.avgMarginCurrentYearGrowthPercent=(this.avgMarginCurrentYear-this.avgMarginCurrentYearGrowth)*100/this.avgMarginCurrentYearGrowth
@@ -3403,7 +3403,7 @@ else{
       {
 this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
       }
-      
+
       this.dataexpenselist = {
         chart: {
           "numberPrefix": "",
@@ -3422,8 +3422,8 @@ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value
         "data": this.dataExpenselist
       };
 
-    
-    
+
+
       })
   }
   getListSpenderWise:any=[]
@@ -3439,7 +3439,7 @@ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value
       this.columnList=[]
       this.rowList=[]
       this.HTTP.getPbiExpenseSpenderWise(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-     
+
         this.getListSpenderWise=  arg.data.table
       var getColor=[]
 
@@ -3450,12 +3450,12 @@ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value
       for(var i=0;i<this.getListSpenderWise.length;i++)
       {
 this.dataSpenderWise.push({"rowid":this.getListSpenderWise[i].rowid,"columnid":this.getListSpenderWise[i].columnid,"value":this.getListSpenderWise[i].setVAlue})
-     
+
 this.columnList.push({"id":this.getListSpenderWise[i].columnid,"label":this.getListSpenderWise[i].columnid,})
 this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
 
 }
-    
+
   this.dataspenderwise = {
     colorrange: {
       gradient: "1",
@@ -3658,8 +3658,8 @@ this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
   //     plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>"
   //   }
   // };
-    
-    
+
+
       })
   }
   getListDesignation:any=[]
@@ -3682,7 +3682,7 @@ this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
       {
 this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"value":this.getListDesignation[i].designationId})
       }
-      
+
       this.datades21 = {
         chart: {
           "numberPrefix": "",
@@ -3701,8 +3701,8 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
         "data": this.dataDesignation
       };
 
-    
-    
+
+
       })
   }
   getListExpenseDepartment:any=[]
@@ -3737,7 +3737,7 @@ this.dataExpenseDepartment.push({"label":this.getListExpenseDepartment[i].depart
         },
         data: this.dataExpenseDepartment
       };
-      
+
       // this.dataexpensedepartement = {
       //   chart: {
       //     "numberPrefix": "",
@@ -3756,11 +3756,11 @@ this.dataExpenseDepartment.push({"label":this.getListExpenseDepartment[i].depart
       //   "data": this.dataExpenseDepartment
       // };
 
-    
-    
+
+
       })
   }
-  
+
   getListExpenseProject:any=[]
   dataExpenseCurrentProject:any=[]
   dataExpensePreviousProject:any=[]
@@ -3786,7 +3786,7 @@ this.dataExpenseDepartment.push({"label":this.getListExpenseDepartment[i].depart
 this.dataExpenseCatProject.push({"label":this.getListExpenseProject[i].projectName,})
 this.dataExpensePreviousProject.push({"value":this.getListExpenseProject[i].currentYearProject})
 this.dataExpenseCurrentProject.push({"value":this.getListExpenseProject[i].previousYearProject})
-      
+
 
 
 }
@@ -3929,10 +3929,10 @@ this.dataexpenseproject = {
       //   },
       //   data: this.dataExpenseProject
       // };
-      
-      
-      
-    
+
+
+
+
       })
   }
   // datades21 = {
@@ -3980,7 +3980,7 @@ this.dataexpenseproject = {
       this.HTTP.getPbiReportDepartment(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListDepartment=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 var getColor=[]
 
 for(var i=0;i<this.getListDepartment.length;i++)
@@ -3992,7 +3992,7 @@ for(var i=0;i<this.getListDepartment.length;i++)
       {
 this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"value":this.getListDepartment[i].departmentId})
       }
-      
+
       this.datadepartement = {
         chart: {
           "numberPrefix": "",
@@ -4010,11 +4010,11 @@ this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"valu
         },
         "data": this.dataDepartment
       };
-    
-    
+
+
       })
   }
-  
+
   getListGender:any=[]
   dataGender:any=[]
   datagender:any
@@ -4026,7 +4026,7 @@ this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"valu
       this.HTTP.getPbiReportGender(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListGender=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 
 var male=[]
 var female=[]
@@ -4049,7 +4049,7 @@ male.push(this.getListGender[i].gender)
       }
 this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"value":female.length}
 )
-      
+
       this.datagender = {
         chart: {
           "numberPrefix": "",
@@ -4067,8 +4067,8 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
         },
         "data": this.dataGender
       };
-    
-    
+
+
       })
   }
 
@@ -4088,7 +4088,7 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
       this.HTTP.etPbiReportEmployeeVsVendor(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListEmployeeVsVendor=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 var getColor=[]
       this.getListEmployeeVsVendor=  arg.data.table
 if(this.getListEmployeeVsVendor.length>=0)
@@ -4121,8 +4121,8 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
           drawcrossline: "1",
           //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
           theme: "fusion",
-          
-          
+
+
         },
         categories: [
           {
@@ -4138,8 +4138,8 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
             seriesname: "Vendor",
             data:this.dataVendor
           },
-         
-         
+
+
         ]
       };
 
@@ -4156,8 +4156,8 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
   //     "showLineValues": "1"
   //   },
   // "data":this.dataEmployeeVsVendor
-  
- 
+
+
   // };
 
 
@@ -4179,7 +4179,7 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
       //   "data": this.dataEmployeeVsVendor
       // };
 }
-    
+
       })
   }
   dataProjectVsVendor:any=[]
@@ -4197,7 +4197,7 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
     this.HTTP.getPbiProjectEmployeeVsVendor(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsVendor=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 if(this.getListProjectVsVendor.length>=0)
 {
 
@@ -4218,7 +4218,7 @@ this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
 
 
     }
-     
+
     // this.dataprojectEmployeevsvendor = {
     //   chart: {
     //     'paletteColors':getColor.toString(),
@@ -4226,8 +4226,8 @@ this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
     //   labeldisplay: "auto",
     //   theme: "fusion"
     //     //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
-        
-        
+
+
     //   },
     //   categories: [
     //     {
@@ -4243,13 +4243,13 @@ this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
     //       seriesname: "Vendorvs",
     //       data:this.dataVendorEmployee
     //     },
-       
-       
+
+
     //   ]
     // };
     this.dataprojectEmployeevsvendor = {
       chart: {
-  
+
         'paletteColors' :'7cb5ec, ed8f1d',
         numvisibleplot: "12",
         labeldisplay: "auto",
@@ -4259,7 +4259,7 @@ this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
         {
           category: this.dataProjectVsVendor
 
-            
+
         }
       ],
       dataset: [
@@ -4270,11 +4270,11 @@ this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
         {
           seriesname: "Vender",
           data:this.dataVendorEmployee
-          
+
         }
       ]
     };
-  
+
 // this.dataempoyeevsvendor = {
 //   "chart": {
 //     "theme": "fusion",
@@ -4290,8 +4290,8 @@ this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
 // "data":this.dataEmployeeVsVendor
 
 }
-  
-  
+
+
     })
 }
 dataProjectVsDeployee:any=[]
@@ -4309,7 +4309,7 @@ getpbiProjecDeployeeVsBench(){
   this.HTTP.getPbiProjectDeployeeVsBench(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
   this.getListProjectVsBench=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 if(this.getListProjectVsBench.length>=0)
 {
 
@@ -4341,8 +4341,8 @@ this.dataVendorBench.push({'value':this.getListProjectVsBench[i].vendor})
       drawcrossline: "1",
       //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
       theme: "fusion",
-      
-      
+
+
     },
     categories: [
       {
@@ -4358,8 +4358,8 @@ this.dataVendorBench.push({'value':this.getListProjectVsBench[i].vendor})
         seriesname: "On Bench",
         data:this.dataVendorBench
       },
-     
-     
+
+
     ]
   };
 
@@ -4402,7 +4402,7 @@ getpbiExpenseReportList(){
   this.HTTP.getPbiExpenseReportList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.dataExpenseReportList=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 this.approvedReports=this.dataExpenseReportList[0].approvedReports
 this.inprocess=this.dataExpenseReportList[0].inprocess
 this.pendingReports=this.dataExpenseReportList[0].pendingReports
@@ -4436,7 +4436,7 @@ getpbiProjecDeployeeVsBenchBill(){
   this.HTTP.getPbiProjectDetailBillableVsNonBillable(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBill=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 if(this.getListProjectVsBenchBill.length>=0)
 {
 
@@ -4468,8 +4468,8 @@ this.dataVendorBenchBill.push({'value':this.getListProjectVsBenchBill[i].vendor}
       drawcrossline: "1",
       //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
       theme: "fusion",
-      
-      
+
+
     },
     categories: [
       {
@@ -4485,8 +4485,8 @@ this.dataVendorBenchBill.push({'value':this.getListProjectVsBenchBill[i].vendor}
         seriesname: "On Bench",
         data:this.dataVendorBenchBill
       },
-     
-     
+
+
     ]
   };
 
@@ -4525,7 +4525,7 @@ getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense(){
   this.HTTP.getPbiProjectDetailBillableVsNonBillablegetPbiProjectDetailBillableVsNonBillable(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillEmployeeCountVsExpense=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 if(this.getListProjectVsBenchBillEmployeeCountVsExpense.length>=0)
 {
 
@@ -4557,8 +4557,8 @@ this.dataVendorBenchBillEmployeeCountVsExpense.push({'value':this.getListProject
       drawcrossline: "1",
       //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
       theme: "fusion",
-      
-      
+
+
     },
     categories: [
       {
@@ -4574,8 +4574,8 @@ this.dataVendorBenchBillEmployeeCountVsExpense.push({'value':this.getListProject
         seriesname: "Expense",
         data:this.dataVendorBenchBillEmployeeCountVsExpense
       },
-     
-     
+
+
     ]
   };
 
@@ -4614,7 +4614,7 @@ getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(){
   this.HTTP.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillProjectCountVsExpense=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 if(this.getListProjectVsBenchBillProjectCountVsExpense.length>=0)
 {
 
@@ -4646,8 +4646,8 @@ this.dataVendorBenchBillProjectCountVsExpense.push({'value':this.getListProjectV
       drawcrossline: "1",
       //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
       theme: "fusion",
-      
-      
+
+
     },
     categories: [
       {
@@ -4663,8 +4663,8 @@ this.dataVendorBenchBillProjectCountVsExpense.push({'value':this.getListProjectV
         seriesname: "Expense",
         data:this.dataVendorBenchBillProjectCountVsExpense
       },
-     
-     
+
+
     ]
   };
 
@@ -4705,7 +4705,7 @@ getpbiProjecDeployeeVsBenchBillCustomerVsService(){
   this.HTTP.getpbiProjecDeployeeVsBenchBillCustomerVsService(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillCustomerVsService=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 if(this.getListProjectVsBenchBillCustomerVsService.length>=0)
 {
 
@@ -4737,8 +4737,8 @@ this.dataVendorBenchBillCustomerVsService.push({'value':this.getListProjectVsBen
       drawcrossline: "1",
       //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
       theme: "fusion",
-      
-      
+
+
     },
     categories: [
       {
@@ -4754,8 +4754,8 @@ this.dataVendorBenchBillCustomerVsService.push({'value':this.getListProjectVsBen
         seriesname: "Expense",
         data:this.dataVendorBenchBillCustomerVsService
       },
-     
-     
+
+
     ]
   };
 
@@ -4781,7 +4781,7 @@ this.dataVendorBenchBillCustomerVsService.push({'value':this.getListProjectVsBen
 
 
 
-public format = {type:'date', format:'dd/MM/yyyy'} 
+public format = {type:'date', format:'dd/MM/yyyy'}
 
   getListEmployeeAddition:any=[]
   dataEmployeeAddition:any=[]
@@ -4797,7 +4797,7 @@ public format = {type:'date', format:'dd/MM/yyyy'}
       this.HTTP.etPbiReportEmployeeAddition(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListEmployeeAddition=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 var getColor=[]
 
 for(var i=0;i<this.getListEmployeeAddition.length;i++)
@@ -4829,11 +4829,11 @@ this.percentAddList.push({"value":this.getListEmployeeAddition[i].avgPercent})
   //     plottooltext:
   //       "Due to $label, late arrivals count is : <b>$dataValue</b> of the total <b>$sum</b> employees",
   //     drawcrossline: "1"
-      
+
   //   },
   //   "data":this.dataEmployeeAddition
   // };
- 
+
   this.dataempoyeeaddition = {
     chart: {
       //caption: "Analysing Subsidies by Youth Population",
@@ -4859,7 +4859,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
       //  plottooltext: "Employee: $dataValue",
         data:this.cateList
       },
-     
+
       {
         seriesname: "Percentage",
         parentyaxis: "S",
@@ -4887,8 +4887,8 @@ plottooltext:     " $label: <b>$dataValue</b>",
       //   },
       //   "data": this.dataEmployeeVsVendor
       // };
-    
-    
+
+
       })
   }
   getListTenureWiseEmployee:any=[]
@@ -4965,7 +4965,7 @@ newList:any=[]
       // this.getListTenureWiseEmployeeAvg[0].marchavg+
       // this.getListTenureWiseEmployeeAvg[0].mayavg)/5
 //       designationId: 15
-// designationName: 
+// designationName:
 // var avgList=[]
 // debugger
 // for(var i=0;i<this.tenurUpList.length;i++)
@@ -5011,18 +5011,18 @@ newList:any=[]
 //         data: this.newList
 //         //data: this.tenurUpList
 
-          
+
 //       }
 //       // {
 //       //   seriesname: "avg max Value",
 //       //   //data: this.newList
 //       //   data: this.tenureDownList
 
-          
+
 //       // }
 //     ]
-  
-  
+
+
 // }
 this.tentureDetails={
     chart: {
@@ -5061,9 +5061,9 @@ this.tentureDetails={
       }
     ],
     dataset: [
-    
-     
-     
+
+
+
       {
         seriesname: "Avg Tenure",
         plottooltext: "Avg Tenure in $label was <b>$dataValue</b>",
@@ -5079,7 +5079,7 @@ this.tentureDetails={
         data:this.avgMin
 
       },
-     
+
       {
         seriesname: "Below Avg",
       // data:this.tenureDownList
@@ -5087,9 +5087,9 @@ this.tentureDetails={
 
       },
     ]
-  
+
 }
-    
+
       })
   }
 
@@ -5105,7 +5105,7 @@ this.tentureDetails={
 
   //   if (this.DateFormat=='1')
   //   {
-  //     return this.datePipe.transform(datas, 'MM/dd/yyyy')   
+  //     return this.datePipe.transform(datas, 'MM/dd/yyyy')
   //   }
   //   if(this.DateFormat=='2')
   //   {
@@ -5114,7 +5114,7 @@ this.tentureDetails={
   //   if(this.DateFormat== '3')
   //   {
   //     return this.datePipe.transform(datas, 'yyyy/MM/dd')
-  //   } 
+  //   }
   // }
   getPerformanceDetail(data)
 {
@@ -5142,17 +5142,17 @@ headerCellInfo(args) {
           opensOn: 'Click'
       });
       this.tooltip.appendTo(args.node);
-  } 
-} 
-tooltipfor(args: any){ 
-  // you can also add tooltip based on condition here 
- let tooltip: Tooltip = new Tooltip({ 
- content: args.data[args.column.field].toString() 
- }, args.cell); 
-} 
+  }
+}
+tooltipfor(args: any){
+  // you can also add tooltip based on condition here
+ let tooltip: Tooltip = new Tooltip({
+ content: args.data[args.column.field].toString()
+ }, args.cell);
+}
   getPerformance()
   {
-  
+
     this.getListEmployeePerformance=[]
     this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListEmployeePerformance=  arg.data.table
@@ -5163,7 +5163,7 @@ tooltipfor(args: any){
       this.grids.refreshColumns()
       this.grids.dataSource=this.getListEmployeePerformance
     }
-   
+
     })
   }
   getListProjectPortfoliyo:any=[]
@@ -5198,7 +5198,7 @@ if(total==0)
 
 }
 
-  
+
   if(this.getListProjectPortfoliyo[i].nonBillablePer==null || this.getListProjectPortfoliyo[i].nonBillablePer=='')
   {
     this.getListProjectPortfoliyo[i].nonBillablePer=0
@@ -5262,7 +5262,7 @@ if(totalnonbillAmount==0)
 this.getListProjectPortfoliyo[i].nonbillablePercentAmount=0
 this.getListProjectPortfoliyo[i].vnonbillablePercentAmount=0
 }
-  
+
 
 if(this.getListProjectPortfoliyo[i].momclose==null || this.getListProjectPortfoliyo[i].momclose=='')
 {
@@ -5286,10 +5286,10 @@ if(totalmom==0)
 this.getListProjectPortfoliyo[i].momclosepercent=0
 this.getListProjectPortfoliyo[i].momopenpercent=0
 }
-  
 
-    
-    
+
+
+
 if(this.getListProjectPortfoliyo[i].openRoadBlock==null || this.getListProjectPortfoliyo[i].openRoadBlock=='')
 {
   this.getListProjectPortfoliyo[i].openRoadBlock=0
@@ -5312,10 +5312,10 @@ if(totalRoad==0)
 this.getListProjectPortfoliyo[i].roadblockclosepercent=0
 this.getListProjectPortfoliyo[i].roadblockopenpercent=0
 }
-  
 
-   
-    
+
+
+
 if(this.getListProjectPortfoliyo[i].timepending==null || this.getListProjectPortfoliyo[i].timepending=='')
 {
   this.getListProjectPortfoliyo[i].timepending=0
@@ -5385,7 +5385,7 @@ this.startDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0
 
 this.endDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].endDate,'yyyy-MM-dd')
 
-    
+
     })
   }
   getListProjectDetailPAndLGridList:any=[]
@@ -5403,7 +5403,7 @@ this.getListProjectDetailPAndLGridList[i].margin=0
       var margintwo=100-Number(this.getListProjectDetailPAndLGridList[i].margin)
       var marginpercent=Number(this.getListProjectDetailPAndLGridList[i].margin)
     }
-    
+
     })
   }
   customerExpenseCurrentYearGrowth:any
@@ -5429,7 +5429,7 @@ customerExpenseCurrentYear:any
 customerExpenseCurrentYearGrowthYoyPercentimg:any
 customerExpensePreviousYearGrowthPercentimg:any
 serviceProviderCurrentYearGrowthPercentimg:any
-   
+
 serviceProviderCurrentYearGrowthYoyPercentimg:any
 serviceProviderPreviousYearGrowthPercentimg:any
 totalExpenseCurrentYear:any
@@ -5486,7 +5486,7 @@ this.customerExpenseCurrentYearGrowthYoy=this.getListExpenseDetailList[0].custom
 else{
   this.customerExpenseCurrentYearGrowthYoyPercentimg=this.upUrl
 }
-    
+
     this.customerExpensePreviousYear=this.getListExpenseDetailList[0].customerExpensePreviousYear
     this.customerExpensePreviousYearGrowth=this.getListExpenseDetailList[0].customerExpensePreviousYearGrowth
    this.customerExpensePreviousYearGrowthPercent=(this.customerExpensePreviousYear-this.customerExpensePreviousYearGrowth)*100/this.customerExpensePreviousYearGrowth
@@ -5494,7 +5494,7 @@ else{
     {
       this.customerExpensePreviousYearGrowthPercent=0
     }
-  
+
    if(this.customerExpensePreviousYearGrowthPercent>=0)
    {
      this.customerExpensePreviousYearGrowthPercentimg=this.downUrl
@@ -5504,9 +5504,9 @@ else{
    }
     this.serviceProviderCurrentYear=this.getListExpenseDetailList[0].serviceProviderCurrentYear
     this.serviceProviderCurrentYearGrowth=this.getListExpenseDetailList[0].serviceProviderCurrentYearGrowth
-  
+
     this.serviceProviderCurrentYearGrowthPercent=(this.serviceProviderCurrentYearGrowth-this.serviceProviderCurrentYearGrowth)*100/this.serviceProviderCurrentYearGrowth
-   
+
     if(this.serviceProviderCurrentYearGrowth==0)
     {
       this.serviceProviderCurrentYearGrowthPercent=0
@@ -5517,8 +5517,8 @@ else{
    }
    else{
      this.serviceProviderCurrentYearGrowthPercentimg=this.upUrl
-   } 
- 
+   }
+
    this.serviceProviderCurrentYearGrowthYoy=this.getListExpenseDetailList[0].serviceProviderCurrentYearGrowthYoy
     this.serviceProviderCurrentYearYoy=this.getListExpenseDetailList[0].serviceProviderCurrentYearYoy
     this.serviceProviderCurrentYearGrowthYoyPercent=(this.serviceProviderCurrentYearYoy-this.serviceProviderCurrentYearGrowthYoy)*100/this.serviceProviderCurrentYearGrowthYoy
@@ -5526,30 +5526,30 @@ else{
     {
       this.serviceProviderCurrentYearGrowthYoyPercent=0
     }
-   
+
     if(this.serviceProviderCurrentYearGrowthYoyPercent>=0)
     {
       this.serviceProviderCurrentYearGrowthYoyPercentimg=this.downUrl
     }
     else{
       this.serviceProviderCurrentYearGrowthYoyPercentimg=this.upUrl
-    } 
+    }
     this.serviceProviderPreviousYear=this.getListExpenseDetailList[0].serviceProviderPreviousYear
-    
+
 this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceProviderPreviousYearGrowth
     this.serviceProviderPreviousYearGrowthPercent=(this.serviceProviderPreviousYear-this.serviceProviderPreviousYearGrowth)*100/this.serviceProviderPreviousYearGrowth
     if(this.serviceProviderPreviousYearGrowth==0)
     {
       this.serviceProviderPreviousYearGrowthPercent=0
     }
-   
+
     if(this.serviceProviderPreviousYearGrowthPercent>=0)
     {
       this.serviceProviderPreviousYearGrowthPercentimg=this.downUrl
     }
     else{
       this.serviceProviderPreviousYearGrowthPercentimg=this.upUrl
-    } 
+    }
 
    this.totalExpenseCurrentYear=this.getListExpenseDetailList[0].totalExpenseCurrentYear
     this.totalExpenseCurrentYearGrowth=this.getListExpenseDetailList[0].totalExpenseCurrentYearGrowth
@@ -5565,7 +5565,7 @@ this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceP
  }
  else{
    this.totalExpenseCurrentYearGrowthPercentimg=this.upUrl
- } 
+ }
 
     this.totalExpensePreviousYear=this.getListExpenseDetailList[0].totalExpensePreviousYear
 this.totalExpensePreviousYearGrowth=this.getListExpenseDetailList[0].totalExpensePreviousYearGrowth
@@ -5581,7 +5581,7 @@ if(this.totalExpensePreviousYearGrowthPercent>=0)
 }
 else{
   this.totalExpensePreviousYearGrowthPercentimg=this.upUrl
-} 
+}
 
 this.totalExpenseCurrentYearYoy=this.getListExpenseDetailList[0].totalExpenseCurrentYearYoy
 this.totalExpenseCurrentYearYoyGrowth=this.getListExpenseDetailList[0].totalExpenseCurrentYearYoyGrowth
@@ -5598,7 +5598,7 @@ if(this.totalExpenseCurrentYearYoyGrowthPercent>=0)
 }
 else{
   this.totalExpenseCurrentYearYoyGrowthPercentimg=this.upUrl
-} 
+}
 
 })
   }
@@ -5612,7 +5612,7 @@ else{
       this.grids.refresh()
       this.grids.refreshColumns()
 //       designationId: 15
-// designationName: 
+// designationName:
 
 
       // this.dataempoyeevsvendor = {
@@ -5631,13 +5631,13 @@ else{
       //   },
       //   "data": this.dataEmployeeVsVendor
       // };
-    
-    
+
+
       })
   }
 
 
-  
+
   getListEmployeeAttrition:any=[]
   dataEmployeeAttrition:any=[]
   dataempoyeeattrition:any
@@ -5653,7 +5653,7 @@ else{
     this.HTTP.etPbiReportEmployeeAttrition(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListEmployeeAttrition=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 var getColor=[]
 
 for(var i=0;i<this.getListEmployeeAttrition.length;i++)
@@ -5713,7 +5713,7 @@ this.dataempoyeeattrition = {
     //  plottooltext: "Employee: $dataValue",
       data:this.dataEmployeeAttrition
     },
-   
+
     {
       seriesname: "Percentage",
       parentyaxis: "S",
@@ -5742,8 +5742,8 @@ this.dataempoyeeattrition = {
     //   },
     //   "data": this.dataEmployeeVsVendor
     // };
-  
-  
+
+
     })
 }
 
@@ -5760,7 +5760,7 @@ this.dataempoyeeattrition = {
       this.HTTP.getPbiReportJobband(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListJobband=  arg.data.table
 //       designationId: 15
-// designationName: 
+// designationName:
 var getColor=[]
 
 for(var i=0;i<this.getListJobband.length;i++)
@@ -5771,7 +5771,7 @@ for(var i=0;i<this.getListJobband.length;i++)
       {
 this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.getListJobband[i].jobandId})
       }
-      
+
       this.datajobband = {
         chart: {
           "numberPrefix": "",
@@ -5789,8 +5789,8 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
         },
         "data": this.dataJobband
       };
-    
-    
+
+
       })
   }
   getListLocation:any=[]
@@ -5811,12 +5811,12 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
         getColor.push(this.setColor[i])
       }
 //       designationId: 15
-// designationName: 
+// designationName:
       for(var i=0;i<this.getListLocation.length;i++)
       {
 this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":this.getListLocation[i].locationid})
       }
-      
+
       this.datalocation = {
         chart: {
           "numberPrefix": "",
@@ -5834,8 +5834,8 @@ this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":thi
         },
         "data": this.dataLocation
       };
-    
-    
+
+
       })
   }
 
@@ -5858,7 +5858,7 @@ this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":thi
         getColor.push(this.setColor[i])
       }
 //       designationId: 15
-// designationName: 
+// designationName:
 var data20=[]
 var data25=[]
 var data30=[]
@@ -5871,7 +5871,7 @@ var data50=[]
         if(Number(this.getListAge[i].age)>20 && Number(this.getListAge[i].age)<=25)
         {
              data20.push(this.getListAge[i].age)
-          
+
          // this.dataAge.push({"label":this.getListAge[i].locationName,"value":this.getListAge[i].locationid})
 
         }
@@ -5924,7 +5924,7 @@ data45.push(this.getListAge[i].age)
 
       }
       )
-      
+
       this.dataage = {
         chart: {
           "numberPrefix": "",
@@ -5942,8 +5942,8 @@ data45.push(this.getListAge[i].age)
         },
         "data": this.totalAgeArray
       };
-    
-    
+
+
       })
   }
 
@@ -6081,7 +6081,7 @@ try {
   this.HTTP.getPbiReportDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 
   this.getListData=  arg.data.table
-  
+
 this.currentAddtionYear=this.getListData[0].currentAddtionYear
 this.currentGrowthAddtionYearPercent=this.getListData[0].currentGrowthAddtionYearPercent
 this.currentGrowthVendorAddtionYearPercent=this.getListData[0].currentGrowthVendorAddtionYearPercent
@@ -6500,7 +6500,7 @@ else{
 
 })
 
-  
+
 } catch (error) {
 
 }
@@ -6587,7 +6587,7 @@ imgbillableResourceTotalPercentGrowth:any
     let year='2022-02-20'
     this.getProjectListData=[]
     this.HTTP.getPbiProjectDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-      
+
   this.getProjectListData=  arg.data.table
  // if(this.getProjectListData>=0)
   //{
@@ -6936,7 +6936,7 @@ this.getpbiExpenseProject()
     type = "overlappedcolumn2d";
     dataFormat = "json";
     ccData:any
-    
+
   getpbiPeopleResources(){
     let cmpcode=1
     let year='2022-02-20'
@@ -6944,7 +6944,7 @@ this.getpbiExpenseProject()
     this.category=[]
     this.deployeeList=[]
     this.employeeList=[]
-    
+
     this.HTTP.getPbiPeopleResources(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getResourcesDetail=arg.data.table
 //       deployeeproject: 10
@@ -6954,22 +6954,22 @@ this.getpbiExpenseProject()
 // yy: 2021
 if(this.getResourcesDetail.length>=0)
 {
-  
+
       for(var i=0;i<this.getResourcesDetail.length;i++)
       {
 this.category.push({'label':this.getResourcesDetail[i].monthNames})
       }
-      
+
       for(var i=0;i<this.getResourcesDetail.length;i++)
       {
 this.deployeeList.push({'value':this.getResourcesDetail[i].deployeeproject})
       }
-      
+
       for(var i=0;i<this.getResourcesDetail.length;i++)
       {
 this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
       }
-    
+
       this.totalData = {
         chart: {
           caption: "",
@@ -6999,21 +6999,21 @@ this.employeeList.push({'value':this.getResourcesDetail[i].totalemployee})
           //   seriesname: "Project",
           //   data: this.deployeeList
           // },
-         
+
           // {
           //   seriesname:'totalEmployee',
           //   data: this.employeeList=[]
           // },
-         
+
         ]
       };
-      
-      
-     
+
+
+
     }
     })
   }
-      
+
 }
 
 
