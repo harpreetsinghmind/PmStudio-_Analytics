@@ -3395,15 +3395,17 @@ else{
       this.getListExpense=  arg.data.table
       var getColor=[]
 
-      for(var i=0;i<this.getListExpense.length;i++)
+      for(var i=0;i<5;i++)
       {
         getColor.push(this.setColor[i])
       }
-      for(var i=0;i<this.getListExpense.length;i++)
+      var sum=0
+      for(var i=0;i<5;i++)
       {
+    sum=this.getListExpense[i].designationId
 this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
       }
-
+this.dataExpenselist.push({"label":'Other','value':100-sum})
       this.dataexpenselist = {
         chart: {
           "numberPrefix": "",
