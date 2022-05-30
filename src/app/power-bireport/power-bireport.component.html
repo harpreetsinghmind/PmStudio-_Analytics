@@ -1649,12 +1649,12 @@
                       <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{valcurrentYear}} |</span><span>{{employeePerviousYearpercentage | number :'1.2-2'}}%</span>
+                        <p><span>{{valcurrentYear | number :'1.2-2'}} |</span><span>{{employeePerviousYearpercentage | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{imgUrl1}}">
 
                         </p>
-                        <p><span>{{totalPrevousYear}} |</span><span>{{employeePercentage | number :'1.2-2'}}%</span>
+                        <p><span>{{totalPrevousYear | number :'1.2-2'}} |</span><span>{{employeePercentage | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <!-- <img src="../../assets/img/down.jpg"> -->
                           <img src="{{imgUrl}}">
@@ -1664,13 +1664,13 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{totalCurrentyoyYear}} |</span><span>{{totalCurrentGrowthyoyPercent | number :'1.2-2'}}%
+                        <p><span>{{totalCurrentyoyYear | number :'1.2-2'}} |</span><span>{{totalCurrentGrowthyoyPercent | number :'1.2-2'}}%
 
                         </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl19}}">
 
                       </p>
-                        <p><span>{{totalyoyYear}} |</span><span>{{employeeyoyprecentage | number :'1.2-2'}}%
+                        <p><span>{{totalyoyYear | number :'1.2-2' }} |</span><span>{{employeeyoyprecentage | number :'1.2-2'}}%
 
                         </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl2}}">
@@ -1688,13 +1688,13 @@
                       <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{currentAddtionYear}} |</span><span>{{employeeAdditionCurrentYearPercentage | number :'1.2-2'}}%
+                        <p><span>{{currentAddtionYear | number :'1.2-2'}} |</span><span>{{employeeAdditionCurrentYearPercentage | number :'1.2-2'}}%
 
                         </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl4}}">
 
                       </p>
-                        <p><span>{{totalAdditionPreviousYear}} |</span><span>{{employeeAdditionPercentage | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{totalAdditionPreviousYear | number :'1.2-2'}} |</span><span>{{employeeAdditionPercentage | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{imgUrl3}}">
 
                         </p>
@@ -1702,13 +1702,13 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{totalCurrentAdditionyoyYear}}|</span><span>{{totalGrowthCurrentAdditionyoyYearPercent | number :'1.2-2'}}%
+                        <p><span>{{totalCurrentAdditionyoyYear | number :'1.2-2'}}|</span><span>{{totalGrowthCurrentAdditionyoyYearPercent | number :'1.2-2'}}%
 
                         </span>
                         <img src="{{imgUrl21}}">
 
                       </p>
-                      <p><span>{{totalAdditionyoyYear}}|</span><span>{{employeeAdditionyoypercentage | number :'1.2-2'}}%
+                      <p><span>{{totalAdditionyoyYear | number :'1.2-2'}}|</span><span>{{employeeAdditionyoypercentage | number :'1.2-2'}}%
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                       <img src="{{imgUrl5}}">
@@ -1724,14 +1724,14 @@
                       <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{currentattritionYear}} |</span><span>
-                          {{employeeAttritionCurrentPercent}}
+                        <p><span>{{currentattritionYear | number :'1.2-2'}} |</span><span>
+                          {{employeeAttritionCurrentPercent | number :'1.2-2'}}
                           %
                         </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl7}}">
 
                       </p>
-                        <p><span>{{totalattritionPerviousYear}} |</span>
+                        <p><span>{{totalattritionPerviousYear | number :'1.2-2'}} |</span>
                           <span>{{employeeAttritionPercentage | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{imgUrl6}}">
@@ -1741,14 +1741,14 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{totalCurrentAttritionyoyYear}}|</span><span>
-                          {{totalCurrentGrowthAttritionyoyYearPercent}}
+                        <p><span>{{totalCurrentAttritionyoyYear | number :'1.2-2'}}|</span><span>
+                          {{totalCurrentGrowthAttritionyoyYearPercent | number :'1.2-2'}}
                           %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{imgUrl23}}">
 
                         </p>
-                        <p><span>{{totalAttritionyoyYear}}|</span><span>
-                          {{employeeAttritionYoyPercentage}}
+                        <p><span>{{totalAttritionyoyYear | number :'1.2-2'}}|</span><span>
+                          {{employeeAttritionYoyPercentage | number :'1.2-2'}}
                           %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{imgUrl8}}">
 
@@ -1766,12 +1766,12 @@
                     <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
                       <p>Month ({{monthName}})</p>
-                      <p><span>{{currentVendorYear}} |</span><span>{{VendorCurrentYearPercentage | number :'1.2-2'}}%</span>
+                      <p><span>{{currentVendorYear | number :'1.2-2'}} |</span><span>{{VendorCurrentYearPercentage | number :'1.2-2'}}%</span>
                         <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl10}}">
 
                       </p>
-                      <p><span>{{totalVendorPrevoisYear}} |</span>
+                      <p><span>{{totalVendorPrevoisYear | number :'1.2-2'}} |</span>
                         <span>{{VendorPreviousPercentage | number :'1.2-2'}}%</span>
                         <img src="{{imgUrl9}}">
 
@@ -1780,12 +1780,12 @@
                     </div>
                     <div>
                       <p>YOY</p>
-                      <p><span>{{totalVendorCurrentyoyYear}} |</span><span>{{totalVendorCurrentGrowthYoyPercent | number :'1.2-2'}}%</span>
+                      <p><span>{{totalVendorCurrentyoyYear | number :'1.2-2'}} |</span><span>{{totalVendorCurrentGrowthYoyPercent | number :'1.2-2'}}%</span>
                         <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl20}}">
 
                       </p>
-                      <p><span>{{totalVendoryoyYear}} |</span><span>{{VendorYoyPercentage | number :'1.2-2'}}%</span>
+                      <p><span>{{totalVendoryoyYear | number :'1.2-2'}} |</span><span>{{VendorYoyPercentage | number :'1.2-2'}}%</span>
                         <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl11}}">
 
@@ -1801,14 +1801,14 @@
                     <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
                       <p>Month ({{monthName}})</p>
-                      <p><span>{{currentVendorAddtionYear}} |</span><span>
-                        {{VendorAddtionCurrentPercentage}}
+                      <p><span>{{currentVendorAddtionYear | number :'1.2-2'}} |</span><span>
+                        {{VendorAddtionCurrentPercentage | number :'1.2-2'}}
                         %
                       </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                       <img src="{{imgUrl13}}">
 
                     </p>
-                      <p><span>{{totalAdditionVendorPreviousYear}}|</span>
+                      <p><span>{{totalAdditionVendorPreviousYear | number :'1.2-2'}}|</span>
                         <span>{{VendorAddtionprevousPercentage | number :'1.2-2'}}%</span>
                         <img src="{{imgUrl12}}">
 
@@ -1818,14 +1818,14 @@
                     </div>
                     <div>
                       <p>YOY</p>
-                      <p><span>{{totalVendorCurrentAdditionyoyYear}} |</span><span>
-                        {{totalVendorGrowthCurrentAdditionyoyYearPercent}}
+                      <p><span>{{totalVendorCurrentAdditionyoyYear | number :'1.2-2'}} |</span><span>
+                        {{totalVendorGrowthCurrentAdditionyoyYearPercent | number :'1.2-2'}}
                         %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl22}}">
 
                       </p>
-                      <p><span>{{totalVendorAdditionyoyYear}} |</span><span>
-                        {{VendorAddtionYoyPercentage}}
+                      <p><span>{{totalVendorAdditionyoyYear | number :'1.2-2'}} |</span><span>
+                        {{VendorAddtionYoyPercentage | number :'1.2-2'}}
                         %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl14}}">
 
@@ -1841,14 +1841,14 @@
                     <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
                       <p>Month ({{monthName}})</p>
-                      <p><span>{{currentVendorAttritionYear}} |</span><span>
-                        {{currentVendorAttritionPercentage}}
+                      <p><span>{{currentVendorAttritionYear | number :'1.2-2'}} |</span><span>
+                        {{currentVendorAttritionPercentage | number :'1.2-2'}}
                         %
                         <img src="{{imgUrl16}}">
 
                       </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                      <p><span>{{totalVendorattritionYear}} |</span><span>
-                        {{VendorAttritionPercentage}}
+                      <p><span>{{totalVendorattritionYear | number :'1.2-2'}} |</span><span>
+                        {{VendorAttritionPercentage | number :'1.2-2'}}
                         %
                         <img src="{{imgUrl15}}">
 
@@ -1857,14 +1857,14 @@
                     </div>
                     <div>
                       <p>YOY</p>
-                      <p><span>{{totalVendorCurrentAttritionyoyYear}} |</span><span>
-                        {{totalVendorCurrentGrowthAttritionyoyYearPercent}}
+                      <p><span>{{totalVendorCurrentAttritionyoyYear | number :'1.2-2'}} |</span><span>
+                        {{totalVendorCurrentGrowthAttritionyoyYearPercent | number :'1.2-2'}}
                         %
                         <img src="{{imgUrl24}}">
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
-                      <p><span>{{totalVendorAttritionyoyYear}} |</span><span>
-                        {{currentVendorAttritionYoyPercentage}}
+                      <p><span>{{totalVendorAttritionyoyYear | number :'1.2-2'}} |</span><span>
+                        {{currentVendorAttritionYoyPercentage | number :'1.2-2'}}
                         %
                         <img src="{{imgUrl17}}">
 
