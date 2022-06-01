@@ -3,6 +3,10 @@ p.context {
     margin-top: 7px;
   }
 
+  .resTable th, .resTable td{ vertical-align: top; border: 1px solid #ddd;}
+  .resTable h6{background: #e9e9e9;
+    padding: 7px;}
+
   .jumbotron {
     padding-top: 0;
   }
@@ -995,9 +999,9 @@ p.context {
     //width: 50px;
     background-color :#ed8f1d;
   }
-  .abc { 
-    background-color: #D3D3D3; 
-       } 
+  .abc {
+    background-color: #D3D3D3;
+       }
   .setBarTime{
     //width: 50px;
     background-color: #e4d353;
@@ -1126,8 +1130,8 @@ p.context {
   visibility: visible;
     opacity: 1;
   }
-  
-  
+
+
   .popup {
     margin: 70px auto;
     padding: 20px;
@@ -1137,7 +1141,7 @@ p.context {
     position: relative;
     transition: all 5s ease-in-out;
   }
-  
+
   .popup h2 {
     margin-top: 0;
     color: #333;
@@ -1161,11 +1165,10 @@ p.context {
     max-height: 30%;
     overflow: auto;
   }
-  
+
   @media screen and (max-width: 700px){
-  
+
     .popup{
       width: 70%;
     }
   }
-  
