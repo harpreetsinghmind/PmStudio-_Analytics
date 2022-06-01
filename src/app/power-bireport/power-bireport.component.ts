@@ -4020,6 +4020,33 @@ this.dataexpenseproject = {
   // ]
 
   // };
+  resourceList:any=[]
+  resouceBillableList:any=[]
+  resouceNonBillableList:any=[]
+  popup:boolean=false
+  getResouceList(projectid)
+  {
+    this.resouceNonBillableList=[]
+    this.resourceList=[]
+  this.resouceBillableList=[]
+
+    this.HTTP.getpbiResourceList(this.setDate,this.CmpCode,projectid,this.departmentId).subscribe(arg => {
+      this.resourceList=  arg.data.table
+      this.popup=true
+      debugger
+      for(var i=0;i<this.resourceList.length;i++)
+      {
+        if(this.resourceList[i].contribution==1)
+        {
+this.resouceBillableList.push({'billid':this.resourceList[i].resourceName})
+        }
+        if(this.resourceList[i].contribution==0)
+        {
+this.resouceNonBillableList.push({'billid':this.resourceList[i].resourceName})
+        }
+      }
+    })
+  }
 
   getListDepartment:any=[]
   dataDepartment:any=[]
