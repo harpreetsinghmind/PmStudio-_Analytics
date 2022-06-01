@@ -3058,10 +3058,10 @@ this.dataProjectProgressList = {
   }
   customiseCell(args)
   {
-   // if (args.column.field === 'resourceName') { 
-      if (args.data['inActive'] ==1) { 
+   // if (args.column.field === 'resourceName') {
+      if (args.data['inActive'] ==1) {
         debugger
-        args.cell.classList.add('abc'); 
+        args.cell.classList.add('abc');
      // }
     }
   }
@@ -3449,7 +3449,7 @@ this.dataExpenselist.push({"label":'Other','value':100-sum})
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
-          "legendPosition": "right",
+
           "defaultCenterLabel": "",
         "centerLabel": " $label: $value",
           "centerLabelBold": "1",
@@ -3741,7 +3741,7 @@ this.dataDesignation.push({"label":'Other','value':sum})
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
-          "legendPosition": "right",
+
           "defaultCenterLabel": "",
         "centerLabel": " $label: $value",
           "centerLabelBold": "1",
@@ -3796,7 +3796,7 @@ this.dataExpenseDepartment.push({"label":this.getListExpenseDepartment[i].depart
       //     "bgColor": "#ffffff",
       //     "startingAngle": "100",
       //     "showLegend": "1",
-      //     "legendPosition": "right",
+      //
       //     "defaultCenterLabel": "",
       //   "centerLabel": " $label: $value",
       //     "centerLabelBold": "1",
@@ -4087,7 +4087,7 @@ sum+=this.getListDepartment[i].departmentId
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
-          "legendPosition": "right",
+
           "defaultCenterLabel": "",
          "centerLabel": "$label: $value",
           "centerLabelBold": "1",
@@ -4143,7 +4143,7 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
           "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
-          "legendPosition": "right",
+
           "showLegend": "1",
           "defaultCenterLabel": "",
           "centerLabel": "$label: $value",
@@ -5866,7 +5866,7 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
           "numberPrefix": "",
           "bgColor": "#ffffff",
           "startingAngle": "100",
-          "legendPosition": "right",
+
           "showLegend": "1",
           "defaultCenterLabel": "",
           "centerLabel": " $label: $value",
@@ -5912,7 +5912,7 @@ this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":thi
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
-          "legendPosition": "right",
+
           "defaultCenterLabel": "",
           "centerLabel": "$label: $value",
           "centerLabelBold": "1",
@@ -6020,7 +6020,7 @@ data45.push(this.getListAge[i].age)
           "bgColor": "#ffffff",
           "startingAngle": "100",
           "showLegend": "1",
-          "legendPosition": "right",
+
           "defaultCenterLabel": "",
           "centerLabel": "$label: $value",
           "centerLabelBold": "1",
