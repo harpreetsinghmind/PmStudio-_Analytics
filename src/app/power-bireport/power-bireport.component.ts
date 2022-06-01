@@ -10,6 +10,8 @@ import { DatePipe } from '@angular/common'
 import { threadId } from 'worker_threads';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Tooltip } from '@syncfusion/ej2-popups';
+import { environment } from 'src/environments/environment';
+
 import { debug } from 'console';
 
 
@@ -2551,6 +2553,7 @@ export class PowerBIReportComponent implements OnInit {
   }
   ngOnInit(): void {
     this.departmentId=0
+    this.setDepartment=0
 this.CmpCode="1"
 //this.departmentList=[{depId:'1',depName:'it'},{depId:'2',depName:'Admin'}]
 let latest_date =this. datepipe. transform(new Date(), 'yyyy-MM-dd');
@@ -2733,10 +2736,10 @@ this.venderNumber.push({"value":this.getListProjectInNumber[i].vendor})
   this.projectDetailNumber = {
     "chart": {
       "theme": "fusion",
-      "subCaption": "Last month",
-      "xAxisName": "Reported Cause",
-      "pYAxisName": "No. of Occurrence",
-      "sYAxisname": "Cumulative Percentage",
+      "subCaption": " ",
+      "xAxisName": " ",
+      "pYAxisName": "  ",
+      "sYAxisname": " ",
       "showValues": "0",
       "showXAxisLine": "1",
       'paletteColors' :'7bb7ed',
@@ -2808,10 +2811,10 @@ this.venderNumberInCost.push({"value":this.getListProjectInNumber[i].vendor})
 this.projectDetailNumberInCost = {
   "chart": {
     "theme": "fusion",
-    "subCaption": "Last month",
-    "xAxisName": "Reported Cause",
-    "pYAxisName": "No. of Occurrence",
-    "sYAxisname": "Cumulative Percentage",
+    "subCaption": "",
+    "xAxisName": "",
+    "pYAxisName": "",
+    "sYAxisname": "",
     "showValues": "0",
     "showXAxisLine": "1",
     'paletteColors' :'7bb7ed',
@@ -2864,7 +2867,7 @@ getListProjectInNumberInCostLeave:any=[]
     this.venderNumberInCostLeave=[]
     this.setProjectNumberListInCostLeave=[]
     this.HTTP.getPbiProjectDetailInNumberInCostLeave(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-
+debugger;
       this.getListProjectInNumberInCostLeave=  arg.data.table
     var getColor=[]
 
@@ -2884,17 +2887,18 @@ this.venderNumberInCostLeave.push({"value":this.getListProjectInNumberInCostLeav
 this.projectDetailNumberInCostLeave = {
   "chart": {
     "theme": "fusion",
-    "subCaption": "Last month",
-    "xAxisName": "Reported Cause",
-    "pYAxisName": "No. of Occurrence",
-    "sYAxisname": "Cumulative Percentage",
+    "subCaption": " ",
+    "xAxisName": " ",
+    "pYAxisName": "  ",
+    "sYAxisname": " ",
     "showValues": "0",
     "showXAxisLine": "1",
     'paletteColors' :'7bb7ed',
     "showLineValues": "1"
   },
-  "data": this.setProjectNumberListInCost
+  "data": this.setProjectNumberListInCostLeave
 };
+debugger
 //  this.projectDetailNumber = {
 //   "chart": {
 //     "theme": "fusion",
@@ -3032,6 +3036,12 @@ this.dataProjectProgressList = {
       var nonBillPercent=Number(this.getListProjectDetailRoadblock[i].nonBillableHour)*100/total
       this.getListProjectDetailRoadblock[i].nonBillPercent=nonBillPercent
       this.getListProjectDetailRoadblock[i].totalHours=total
+      if(total==0)
+      {
+      this.getListProjectDetailRoadblock[i].nonBillPercent=0
+      this.getListProjectDetailRoadblock[i].billPercent=0
+
+      }
 
 
     }
@@ -3041,6 +3051,33 @@ this.dataProjectProgressList = {
     this.gridsFor.dataSource=this.getListProjectDetailRoadblock
 
       })
+  }
+  rows(e:any)
+  {
+
+  }
+  customiseCell(args)
+  {
+   // if (args.column.field === 'resourceName') { 
+      if (args.data['inActive'] ==1) { 
+        debugger
+        args.cell.classList.add('abc'); 
+     // }
+    }
+  }
+  recieptIMg: any
+  userImage(item) {
+    debugger;
+    // <img src="/assets/img/Logo/male.png" style="width: 190px;">
+    //if(data.e)
+      // this.recieptIMg = `${environment.siteUrl}` + "Uploads/Icon/UploadIcons.png";
+      if (item.contribution == 1) {
+        this.recieptIMg = "/assets/img/contribute.png"
+      }
+      else {
+        this.recieptIMg = "/assets/img/non-contribute.png"
+      }
+    return this.recieptIMg
   }
 
   getListProjectDetailDevialtion:any=[]
@@ -4197,10 +4234,11 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
     this.dataProjectEmployee=[]
     this.dataVendorEmployee=[]
     this.HTTP.getPbiProjectEmployeeVsVendor(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-    this.getListProjectVsVendor=  arg.data.table
+   debugger;
+      this.getListProjectVsVendor=  arg.data.table
 //       designationId: 15
 // designationName:
-if(this.getListProjectVsVendor.length>=0)
+if(this.getListProjectVsVendor.length>0)
 {
 
 var getColor=[]
@@ -4253,7 +4291,7 @@ this.dataVendorEmployee.push({'value':this.getListEmployeeVsVendor[i].vendor})
       chart: {
 
         'paletteColors' :'7cb5ec, ed8f1d',
-        numvisibleplot: "12",
+        numvisibleplot: "",
         labeldisplay: "auto",
         theme: "fusion"
       },
@@ -5235,7 +5273,7 @@ if(totalbill==0)
   var totalbillAmount=Number(this.getListProjectPortfoliyo[i].billable)+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
 let billablePercentAmount= Number(this.getListProjectPortfoliyo[i].billable)*100/totalbillAmount
 this.getListProjectPortfoliyo[i].billablePercentAmount=billablePercentAmount
-let vbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].vNonBillable)*100/totalbillAmount
+let vbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].V_BillableAmount)*100/totalbillAmount
 this.getListProjectPortfoliyo[i].vbillablePercentAmount=vbillablePercentAmount
 if(totalbillAmount==0)
 {
@@ -5306,7 +5344,7 @@ var tooltiproadblock='Open RoadBlock:'+Number(this.getListProjectPortfoliyo[i].o
 this.getListProjectPortfoliyo[i].tooltiproadblock=tooltiproadblock
 var totalRoad=Number(this.getListProjectPortfoliyo[i].closeRoadBlock)+Number(this.getListProjectPortfoliyo[i].openRoadBlock)
 let roadblockopenpercent= Number(this.getListProjectPortfoliyo[i].openRoadBlock)*100/totalRoad
-this.getListProjectPortfoliyo[i].roadblockopenpercentroadblockopenpercent=roadblockopenpercent
+this.getListProjectPortfoliyo[i].roadblockopenpercent=roadblockopenpercent
 let roadblockclosepercent= Number(this.getListProjectPortfoliyo[i].closeRoadBlock)*100/totalRoad
 this.getListProjectPortfoliyo[i].roadblockclosepercent=roadblockclosepercent
 if(totalRoad==0)
@@ -5330,16 +5368,16 @@ if(this.getListProjectPortfoliyo[i].timerejected==null || this.getListProjectPor
 {
   this.getListProjectPortfoliyo[i].timerejected=0
 }
-var tooltiptime='Time Pending:'+Number(this.getListProjectPortfoliyo[i].timepending)+'<br/>Time Approved:'+Number(this.getListProjectPortfoliyo[i].timeapproved)+'<br/>Time Rejected:'+Number(this.getListProjectPortfoliyo[i].timerejected)
-
+var total=Number(this.getListProjectPortfoliyo[i].timeapproved)+Number(this.getListProjectPortfoliyo[i].timepending)
+var totaltime=Number(this.getListProjectPortfoliyo[i].timerejected)+Number(this.getListProjectPortfoliyo[i].timepending)+Number(this.getListProjectPortfoliyo[i].timeapproved)
+var tooltiptime='Total:'+total+'<br/>Time Pending:'+Number(this.getListProjectPortfoliyo[i].timepending)+'<br/>Time Approved:'+Number(this.getListProjectPortfoliyo[i].timeapproved)+'<br/>Time Rejected:'+Number(this.getListProjectPortfoliyo[i].timerejected)
 
 this.getListProjectPortfoliyo[i].tooltiptime=tooltiptime
-var totaltime=Number(this.getListProjectPortfoliyo[i].timerejected)+Number(this.getListProjectPortfoliyo[i].timepending)+Number(this.getListProjectPortfoliyo[i].timeapproved)
 let timeopenpercent= Number(this.getListProjectPortfoliyo[i].timepending)*100/totaltime
 this.getListProjectPortfoliyo[i].timeopenpercent=timeopenpercent
 let timeclosepercent= Number(this.getListProjectPortfoliyo[i].timeapproved)*100/totaltime
 this.getListProjectPortfoliyo[i].timeclosepercent=timeclosepercent
-let timerejectedpercent= Number(this.getListProjectPortfoliyo[i].timerejectedpercent)*100/totaltime
+let timerejectedpercent= Number(this.getListProjectPortfoliyo[i].timerejected)*100/totaltime
 this.getListProjectPortfoliyo[i].timerejectedpercent=timerejectedpercent
 if(totaltime==0)
 {
