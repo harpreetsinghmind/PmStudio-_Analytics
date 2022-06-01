@@ -4040,10 +4040,19 @@ for(var i=0;i<this.getListDepartment.length;i++)
   getColor.push(this.setColor[i])
 }
 
-      for(var i=0;i<this.getListDepartment.length;i++)
+      for(var i=0;i<5;i++)
       {
 this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"value":this.getListDepartment[i].departmentId})
       }
+      var sum=0
+      for(var i=0;i<this.getListDepartment.length;i++)
+      {
+        if(i>=5)
+        {
+sum+=this.getListDepartment[i].departmentId
+        }
+      }
+      this.dataDepartment.push({"label":"Other","value":sum})
 
       this.datadepartement = {
         chart: {
