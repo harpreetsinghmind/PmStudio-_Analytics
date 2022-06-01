@@ -4029,10 +4029,10 @@ this.dataexpenseproject = {
     this.resouceNonBillableList=[]
     this.resourceList=[]
   this.resouceBillableList=[]
+  this.popup=true
 
     this.HTTP.getpbiResourceList(this.setDate,this.CmpCode,projectid,this.departmentId).subscribe(arg => {
       this.resourceList=  arg.data.table
-      this.popup=true
       debugger
       for(var i=0;i<this.resourceList.length;i++)
       {
