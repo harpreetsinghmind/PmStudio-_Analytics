@@ -3713,17 +3713,26 @@ this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
       this.getListDesignation=  arg.data.table
       var getColor=[]
 var sum=0
-      for(var i=0;i<5;i++)
+      for(var i=0;i<this.getListDesignation.length;i++)
       {
         getColor.push(this.setColor[i])
       }
+      debugger
       for(var i=0;i<5;i++)
       {
-    sum=this.getListExpense[i].designationId
 
 this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"value":this.getListDesignation[i].designationId})
       }
-this.dataDesignation.push({"label":'Other','value':100-sum})
+      for(var j=0;j<this.getListDesignation.length;j++)
+      {
+        if(j>=5)
+        {
+          sum+=this.getListDesignation[j].designationId
+
+        }
+
+      }
+this.dataDesignation.push({"label":'Other','value':sum})
 
 
       this.datades21 = {
