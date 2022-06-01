@@ -3712,15 +3712,19 @@ this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
       this.HTTP.getPbiReportDesignation(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListDesignation=  arg.data.table
       var getColor=[]
-
-      for(var i=0;i<this.getListDesignation.length;i++)
+var sum=0
+      for(var i=0;i<5;i++)
       {
         getColor.push(this.setColor[i])
       }
-      for(var i=0;i<this.getListDesignation.length;i++)
+      for(var i=0;i<5;i++)
       {
+    sum=this.getListExpense[i].designationId
+
 this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"value":this.getListDesignation[i].designationId})
       }
+this.dataDesignation.push({"label":'Other','value':100-sum})
+
 
       this.datades21 = {
         chart: {
@@ -5174,15 +5178,15 @@ this.getPbiProjectDetailProgressAndCost(data)
 }
 public tooltip: Tooltip;
 headerCellInfo(args) {
-  if (args.cell.column.field != 'CustomerName') {
-      const toolcontent = args.cell.column.headerText;
-      this.tooltip = new Tooltip({
-          position: 'BottomCenter',
-          content: toolcontent,
-          opensOn: 'Click'
-      });
-      this.tooltip.appendTo(args.node);
-  }
+  // if (args.cell.column.field != 'CustomerName') {
+  //     const toolcontent = args.cell.column.headerText;
+  //     this.tooltip = new Tooltip({
+  //         position: 'BottomCenter',
+  //         content: toolcontent,
+  //         opensOn: 'Click'
+  //     });
+  //     this.tooltip.appendTo(args.node);
+  // }
 }
 tooltipfor(args: any){
   // you can also add tooltip based on condition here
