@@ -2708,12 +2708,14 @@ numberProject:any=[]
 venderNumber:any=[]
 projectDetailNumber:any
 setProjectNumberList:any=[]
+
   getPbiProjectInNumber(){
       let cmpcode=1
       let year='2022-02-20'
       this.getListProjectInNumber=[]
       this.month=[]
       this.numberProject=[]
+      this.setProjectNumberList=[]
       this.venderNumber=[]
       this.HTTP.getPbiProjectDetailInNumber(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 
@@ -3711,6 +3713,7 @@ this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
       this.getListDesignation=[]
       this.HTTP.getPbiReportDesignation(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListDesignation=  arg.data.table
+      debugger
       var getColor=[]
 var sum=0
       for(var i=0;i<this.getListDesignation.length;i++)
@@ -3718,7 +3721,9 @@ var sum=0
         getColor.push(this.setColor[i])
       }
       debugger
-      for(var i=0;i<5;i++)
+      if(this.getListDesignation.length>5)
+      {
+        for(var i=0;i<5;i++)
       {
 
 this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"value":this.getListDesignation[i].designationId})
@@ -3733,7 +3738,16 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
 
       }
 this.dataDesignation.push({"label":'Other','value':sum})
+      }
+      
+else
+{
+  for(var i=0;i<this.getListDesignation.length;i++)
+  {
 
+this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"value":this.getListDesignation[i].designationId})
+  }
+}
 
       this.datades21 = {
         chart: {
@@ -4066,20 +4080,30 @@ for(var i=0;i<this.getListDepartment.length;i++)
 {
   getColor.push(this.setColor[i])
 }
+if(this.getListDepartment.length>5)
+{
 
-      for(var i=0;i<5;i++)
-      {
+
+  for(var i=0;i<5;i++)
+  {
 this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"value":this.getListDepartment[i].departmentId})
-      }
-      var sum=0
-      for(var i=0;i<this.getListDepartment.length;i++)
-      {
-        if(i>=5)
-        {
+  }
+  var sum=0
+  for(var i=0;i<this.getListDepartment.length;i++)
+  {
+    if(i>=5)
+    {
 sum+=this.getListDepartment[i].departmentId
-        }
-      }
-      this.dataDepartment.push({"label":"Other","value":sum})
+    }
+  }
+  this.dataDepartment.push({"label":"Other","value":sum})
+}
+else{
+  for(var i=0;i<this.getListDepartment.length;i++)
+  {
+this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"value":this.getListDepartment[i].departmentId})
+  }
+}
 
       this.datadepartement = {
         chart: {
