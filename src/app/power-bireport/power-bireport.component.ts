@@ -3722,7 +3722,7 @@ this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
   }
   getListDesignation:any=[]
   dataDesignation:any=[]
-  datades21:any
+  datades31:any
   getpbiPeopleDesignation(){
       let cmpcode=1
       let year='2022-02-20'
@@ -3768,7 +3768,7 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
   }
 }
 
-      this.datades21 = {
+      this.datades31 = {
         chart: {
           "numberPrefix": "",
           "bgColor": "#ffffff",
@@ -4024,39 +4024,39 @@ this.dataexpenseproject = {
 
       })
   }
-  // datades21 = {
-  //   chart: {
-  //     "numberPrefix": "$",
-  //     "bgColor": "#ffffff",
-  //     "startingAngle": "100",
-  //     "showLegend": "1",
-  //     "defaultCenterLabel": "",
-  //     "centerLabel": "Revenue from $label: $value",
-  //     "centerLabelBold": "1",
-  //     "showTooltip": "0",
-  //     "decimals": "0",
-  //     'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
-  //     "theme": "fusion"
-  //   },
-  //   "data": [{
-  //     "label": "Traffic",
-  //     "value": "5680"
-  //   },
-  //   {
-  //     "label": "Family Engagement",
-  //     "value": "1036"
-  //   },
-  //   {
-  //     "label": "Public Transport",
-  //     "value": "950"
-  //   },
-  //   {
-  //     "label": "Weather",
-  //     "value": "500"
-  //   }
-  // ]
+  datades21 = {
+    chart: {
+      "numberPrefix": "$",
+      "bgColor": "#ffffff",
+      "startingAngle": "100",
+      "showLegend": "1",
+      "defaultCenterLabel": "",
+      "centerLabel": "Revenue from $label: $value",
+      "centerLabelBold": "1",
+      "showTooltip": "0",
+      "decimals": "0",
+      'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
+      "theme": "fusion"
+    },
+    "data": [{
+      "label": "Traffic",
+      "value": "5680"
+    },
+    {
+      "label": "Family Engagement",
+      "value": "1036"
+    },
+    {
+      "label": "Public Transport",
+      "value": "950"
+    },
+    {
+      "label": "Weather",
+      "value": "500"
+    }
+  ]
 
-  // };
+  };
   resourceList:any=[]
   resouceBillableList:any=[]
   resouceNonBillableList:any=[]
@@ -7071,6 +7071,10 @@ let getdate = new Date(date); // 2020-06-21.
 let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
 this.monthName=shortMonth
 this.getpbiPeopleDetailList()
+this.getpbiPeopleTenureWiseEmployee()
+this.getpbiPeopleResources()
+this.getpbiPeopleEmployeeVsVendor()
+
 this.getpbiPeopleDesignation()
 this.getpbiExpenseDepartment()
 this.getpbiExpense()
@@ -7080,11 +7084,9 @@ this.getpbiPeopleLocation()
 this.getpbiPeopleAge()
 this.getpbiPeopleJoband()
 this.getpbiPeopleGender()
-this.getpbiPeopleEmployeeVsVendor()
 this.getpbiPeopleEmployeeAddition()
 this.getpbiPeopleEmployeeAttrition()
 this.getpbiPeopleEmployeePerformance()
-this.getpbiPeopleTenureWiseEmployee()
 this.getpbiProjectDetailList()
 this.getpbiPeopleResources()
 this.getpbiProjectEmployeeVsVendor()
