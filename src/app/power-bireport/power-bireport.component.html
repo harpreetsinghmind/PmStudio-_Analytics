@@ -1,5 +1,10 @@
 
-
+<div class="bg-overlady" *ngIf="Loader">
+  <div class="loader-position">
+    <div class="loader"></div>
+    <h2>Loading....</h2>
+  </div>
+</div>
 
 
 
@@ -3006,7 +3011,7 @@
 
                       <ul class="nav nav-tabs" style="height: 33px; margin-top: 30px;">
                         <li class="active"><a data-target="#deviation" data-toggle="tab">Deviation</a></li>
-                        <li><a data-target="#tab2" data-toggle="tab">All Task</a></li>
+                        <li><a data-target="#tab21" data-toggle="tab">All Task</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="deviation" class="tab-pane active">
@@ -3049,7 +3054,7 @@
                        </ejs-grid>
 
                         </div>
-                        <div id="tab2" class="tab-pane">
+                        <div id="tab21" class="tab-pane">
                           <h3 style="margin-top: 0; font-size: 20px; color: #000;">All Task</h3>
                           <ejs-grid #overviewgrid [dataSource]="getListProjectDetailAllTaskList" [allowResizing]="true"  height='450'
                           [allowFiltering]='true'  [allowPaging]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
