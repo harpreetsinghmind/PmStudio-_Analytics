@@ -3057,10 +3057,14 @@ this.dataProjectProgressList = {
 
 
     }
-
-      this.gridsFor.refresh()
+  if(this.getListProjectDetailRoadblock.length>0)
+  {
+    this.gridsFor.refresh()
     this.gridsFor.refreshColumns()
     this.gridsFor.dataSource=this.getListProjectDetailRoadblock
+
+  }
+
 
       })
   }
@@ -4216,7 +4220,7 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
 
   getListEmployeeVsVendor:any=[]
   dataEmployeeVsVendor:any=[]
-  dataempoyeevsvendor:any
+  dataempoyeevsvendor:object
   dataEmployee:any=[]
   dataVendor:any=[]
   getpbiPeopleEmployeeVsVendor(){
@@ -4253,6 +4257,7 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
 
 
       }
+      
        this.dataempoyeevsvendor = {
         chart: {
           'paletteColors':getColor.toString(),
@@ -5318,9 +5323,9 @@ tooltipfor(args: any){
     this.getListEmployeePerformance=[]
     this.Loader=true
     this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-    this.getListEmployeePerformance=  arg.data.
+    this.getListEmployeePerformance=  arg.data.table
     this.Loader=false
-    if(this.getListEmployeePerformance.length>=0)
+    if(this.getListEmployeePerformance.length>0)
     {
 
       this.grids.refresh()
@@ -5782,9 +5787,13 @@ else{
       this.Loader=true
       this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListEmployeePerformance=  arg.data.table
-      this.Loader=false
-      this.grids.refresh()
-      this.grids.refreshColumns()
+      if(this.getListEmployeePerformance.length>0)
+      {
+        this.Loader=false
+        this.grids.refresh()
+        this.grids.refreshColumns()
+
+      }
 //       designationId: 15
 // designationName:
 
