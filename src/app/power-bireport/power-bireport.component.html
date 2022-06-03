@@ -2461,7 +2461,7 @@
                           <fusioncharts
                           width="100%"
                           height="400"
-                          type="pareto2d"
+                          type="scrollcombidy2d"
                           dataFormat="json"
                           [dataSource]="projectDetailNumber">
                       </fusioncharts>
@@ -2508,7 +2508,7 @@
                           <fusioncharts
                   width="100%"
                   height="400"
-                  type="pareto2d"
+                  type="scrollcombidy2d"
                   dataFormat="json"
                   [dataSource]="projectDetailNumberInCost">
                 </fusioncharts>
@@ -2547,7 +2547,7 @@
                           <fusioncharts
                           width="100%"
                           height="400"
-                          type="pareto2d"
+                          type="scrollcombidy2d"
                           dataFormat="json"
                           [dataSource]="projectDetailNumberInCostLeave">
                       </fusioncharts>
@@ -3439,32 +3439,32 @@
                 <div class="CurrentYearBox">
                   <div>
                     <h5>Total Reports</h5>
-                    <h5>₹​ {{totalReports}} <span>({{totalReportsLeft}})</span></h5>
+                    <h5>₹​ {{totalReports | number :'1.2-2'}} <span>({{totalReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Unsubmitted Report</h5>
-                    <h5>₹​ {{unsubmittedReports}} <span>({{unsubmittedReportsLeft}})</span></h5>
+                    <h5>₹​ {{unsubmittedReports | number :'1.2-2'}} <span>({{unsubmittedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Pending Report</h5>
-                    <h5>₹​  {{pendingReports}}<span>({{pendingReportsLeft}})</span></h5>
+                    <h5>₹​  {{pendingReports | number :'1.2-2'}}<span>({{pendingReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Approved Report</h5>
-                    <h5>₹​ {{approvedReports}} <span>({{approvedReportsLeft}})</span></h5>
+                    <h5>₹​ {{approvedReports | number :'1.2-2'}} <span>({{approvedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Reimbursed</h5>
-                    <h5>₹​ {{reimbursed}} <span>({{reimbursedLeft}})</span></h5>
+                    <h5>₹​ {{reimbursed | number :'1.2-2'}} <span>({{reimbursedLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Inprocess</h5>
-                    <h5>₹​ {{inprocess}} <span>({{inprocessLeft}})</span></h5>
+                    <h5>₹​ {{inprocess | number :'1.2-2'}} <span>({{inprocessLeft}})</span></h5>
                   </div>
 
                 </div>

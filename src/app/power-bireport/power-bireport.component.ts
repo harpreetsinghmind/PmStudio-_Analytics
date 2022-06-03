@@ -2701,6 +2701,8 @@ this.getDepartmentListDropdown()
     this.HTTP.getpbiDepartmentList(this.setDate,this.CmpCode).subscribe(arg => {
 
       this.departmentList=  arg.data.table
+  console.log('departmentList',arg.data.table)
+
       this.Loader=false
     })
   }
@@ -2723,6 +2725,8 @@ setProjectNumberList:any=[]
       this.HTTP.getPbiProjectDetailInNumber(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
         this.getListProjectInNumber=  arg.data.table
+  console.log('departmentList',arg.data.table)
+
       var getColor=[]
 
       for(var i=0;i<this.getListProjectInNumber.length;i++)
@@ -2737,21 +2741,56 @@ this.venderNumber.push({"value":this.getListProjectInNumber[i].vendor})
 //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
     this.setProjectNumberList.push({"label":this.getListProjectInNumber[i].monthNames,"value":this.getListProjectInNumber[i].employee})
 }
-
-  this.projectDetailNumber = {
-    "chart": {
-      "theme": "fusion",
-      "subCaption": " ",
-      "xAxisName": " ",
-      "pYAxisName": "  ",
-      "sYAxisname": " ",
-      "showValues": "0",
-      "showXAxisLine": "1",
-      'paletteColors' :'7bb7ed',
-      "showLineValues": "1"
+this.projectDetailNumber = {
+  chart: {
+    //caption: "Analysing Subsidies by Youth Population",
+    //subcaption: "By province",
+    yaxisname: "",
+    syaxisname: "",
+    labeldisplay: "rotate",
+    snumbersuffix: "",
+    scrollheight: "10",
+    numvisibleplot: "10",
+    drawcrossline: "1",
+    theme: "fusion",
+plottooltext:     " $label: <b>$dataValue</b>",
+  },
+  categories: [
+    {
+      category:this.month
+    }
+  ],
+  dataset: [
+    {
+      seriesname: "Projects",
+    //  plottooltext: "Employee: $dataValue",
+      data:this.numberProject
     },
-    "data": this.setProjectNumberList
-  };
+
+    {
+      seriesname: "Percentage",
+      parentyaxis: "S",
+      renderas: "line",
+     // plottooltext: "$dataValue subsidies received",
+      //showvalues: "0",
+      data: this.numberProject
+    }
+  ]
+};
+  // this.projectDetailNumber = {
+  //   "chart": {
+  //     "theme": "fusion",
+  //     "subCaption": " ",
+  //     "xAxisName": " ",
+  //     "pYAxisName": "  ",
+  //     "sYAxisname": " ",
+  //     "showValues": "0",
+  //     "showXAxisLine": "1",
+  //     'paletteColors' :'7bb7ed',
+  //     "showLineValues": "1"
+  //   },
+  //   "data": this.setProjectNumberList
+  // };
   //  this.projectDetailNumber = {
   //   "chart": {
   //     "theme": "fusion",
@@ -2799,6 +2838,8 @@ this.venderNumber.push({"value":this.getListProjectInNumber[i].vendor})
     this.HTTP.getPbiProjectDetailInNumberInCost(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
       this.getListProjectInNumberInCost=  arg.data.table
+  console.log('getListProjectInNumberInCost',arg.data.table)
+
     var getColor=[]
 
     for(var i=0;i<this.getListProjectInNumberInCost.length;i++)
@@ -2815,19 +2856,55 @@ this.venderNumberInCost.push({"value":this.getListProjectInNumber[i].vendor})
 }
 
 this.projectDetailNumberInCost = {
-  "chart": {
-    "theme": "fusion",
-    "subCaption": "",
-    "xAxisName": "",
-    "pYAxisName": "",
-    "sYAxisname": "",
-    "showValues": "0",
-    "showXAxisLine": "1",
-    'paletteColors' :'7bb7ed',
-    "showLineValues": "1"
+  chart: {
+    //caption: "Analysing Subsidies by Youth Population",
+    //subcaption: "By province",
+    yaxisname: "",
+    syaxisname: "",
+    labeldisplay: "rotate",
+    snumbersuffix: "",
+    scrollheight: "10",
+    numvisibleplot: "10",
+    drawcrossline: "1",
+    theme: "fusion",
+plottooltext:     " $label: <b>$dataValue</b>",
   },
-  "data": this.setProjectNumberListInCost
+  categories: [
+    {
+      category:this.monthInCost
+    }
+  ],
+  dataset: [
+    {
+      seriesname: "Projects",
+    //  plottooltext: "Employee: $dataValue",
+      data:this.numberProjectInCost
+    },
+
+    {
+      seriesname: "Percentage",
+      parentyaxis: "S",
+      renderas: "line",
+     // plottooltext: "$dataValue subsidies received",
+      //showvalues: "0",
+      data: this.numberProjectInCost
+    }
+  ]
 };
+// this.projectDetailNumberInCost = {
+//   "chart": {
+//     "theme": "fusion",
+//     "subCaption": "",
+//     "xAxisName": "",
+//     "pYAxisName": "",
+//     "sYAxisname": "",
+//     "showValues": "0",
+//     "showXAxisLine": "1",
+//     'paletteColors' :'7bb7ed',
+//     "showLineValues": "1"
+//   },
+//   "data": this.setProjectNumberListInCost
+// };
 //  this.projectDetailNumber = {
 //   "chart": {
 //     "theme": "fusion",
@@ -2877,6 +2954,8 @@ getListProjectInNumberInCostLeave:any=[]
 debugger;
 this.Loader=false
       this.getListProjectInNumberInCostLeave=  arg.data.table
+  console.log('getListProjectInNumberInCostLeave',arg.data.table)
+
     var getColor=[]
 
     for(var i=0;i<this.getListProjectInNumberInCostLeave.length;i++)
@@ -2891,21 +2970,56 @@ this.venderNumberInCostLeave.push({"value":this.getListProjectInNumberInCostLeav
 //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
   this.setProjectNumberListInCostLeave.push({"label":this.getListProjectInNumberInCostLeave[i].monthNames,"value":this.getListProjectInNumberInCostLeave[i].employee})
 }
-
 this.projectDetailNumberInCostLeave = {
-  "chart": {
-    "theme": "fusion",
-    "subCaption": " ",
-    "xAxisName": " ",
-    "pYAxisName": "  ",
-    "sYAxisname": " ",
-    "showValues": "0",
-    "showXAxisLine": "1",
-    'paletteColors' :'7bb7ed',
-    "showLineValues": "1"
+  chart: {
+    //caption: "Analysing Subsidies by Youth Population",
+    //subcaption: "By province",
+    yaxisname: "",
+    syaxisname: "",
+    labeldisplay: "rotate",
+    snumbersuffix: "",
+    scrollheight: "10",
+    numvisibleplot: "10",
+    drawcrossline: "1",
+    theme: "fusion",
+plottooltext:     " $label: <b>$dataValue</b>",
   },
-  "data": this.setProjectNumberListInCostLeave
+  categories: [
+    {
+      category:this.monthInCostLeave
+    }
+  ],
+  dataset: [
+    {
+      seriesname: "Projects",
+    //  plottooltext: "Employee: $dataValue",
+      data:this.numberProjectInCostLeave
+    },
+
+    {
+      seriesname: "Percentage",
+      parentyaxis: "S",
+      renderas: "line",
+     // plottooltext: "$dataValue subsidies received",
+      //showvalues: "0",
+      data: this.numberProjectInCostLeave
+    }
+  ]
 };
+// this.projectDetailNumberInCostLeave = {
+//   "chart": {
+//     "theme": "fusion",
+//     "subCaption": " ",
+//     "xAxisName": " ",
+//     "pYAxisName": "  ",
+//     "sYAxisname": " ",
+//     "showValues": "0",
+//     "showXAxisLine": "1",
+//     'paletteColors' :'7bb7ed',
+//     "showLineValues": "1"
+//   },
+//   "data": this.setProjectNumberListInCostLeave
+// };
 debugger
 //  this.projectDetailNumber = {
 //   "chart": {
@@ -2954,6 +3068,8 @@ debugger
       this.Loader=true
       this.HTTP.getPbiProjectDetailProgressAndCost(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
       this.getListProgress=  arg.data.table
+  console.log('getListProgress',arg.data.table)
+
       this.Loader=false
       var getColor=[]
 
@@ -3027,6 +3143,8 @@ this.dataProjectProgressList = {
       this.Loader=true
       this.HTTP.getPbiProjectDetailRoadBlockList(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
       this.getListProjectDetailRoadblock=  arg.data.table
+  console.log('getListProjectDetailRoadblock',arg.data.table)
+
       this.Loader=false
       for(var i=0;i<this.getListProjectDetailRoadblock.length;i++)
       {
@@ -3104,6 +3222,8 @@ this.dataProjectProgressList = {
       this.Loader=true
       this.HTTP.getPbiProjectDetailDeviationList(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
       this.getListProjectDetailDevialtion=  arg.data.table
+  console.log('getListProjectDetailDevialtion',arg.data.table)
+
 this.Loader=false
       })
   }
@@ -3116,6 +3236,8 @@ this.Loader=false
       this.Loader=true
       this.HTTP.getPbiProjectDetailAllTask(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
       this.getListProjectDetailAllTaskList=  arg.data.table
+  console.log('getListProjectDetailAllTaskList',arg.data.table)
+
 this.Loader=false
       })
   }
@@ -3192,6 +3314,8 @@ totalCostPreviouYearGrowthPercentimg:any
       this.Loader=true
       this.HTTP.getPbiProjectDetailPAndLList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getprojectDetailPAndLList=  arg.data.table
+  console.log('getprojectDetailPAndLList',arg.data.table)
+
       this.Loader=false
 this.plcurrentYear= this.getprojectDetailPAndLList[0].plcurrentYear
 this.plpreviousYear= this.getprojectDetailPAndLList[0].plpreviousYear
@@ -3451,6 +3575,8 @@ else{
       this.Loader=true
       this.HTTP.getpbiExpenseListData(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListExpense=  arg.data.table
+  console.log('getListExpense',arg.data.table)
+
       this.Loader=false
       var getColor=[]
 
@@ -3503,6 +3629,8 @@ this.dataExpenselist.push({"label":'Other','value':100-sum})
       this.HTTP.getPbiExpenseSpenderWise(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
         this.getListSpenderWise=  arg.data.table
+  console.log('getListSpenderWise',arg.data.table)
+
       var getColor=[]
 
       for(var i=0;i<this.getListSpenderWise.length;i++)
@@ -3735,6 +3863,8 @@ this.rowList.push({"id":this.getListSpenderWise[i].rowid,"label":""})
       this.Loader=true
       this.HTTP.getPbiReportDesignation(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListDesignation=  arg.data.table
+  console.log('getListDesignation',arg.data.table)
+
       debugger
       this.Loader=false
       var getColor=[]
@@ -3805,6 +3935,8 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
       this.Loader=true
       this.HTTP.getPbiExpenseDepartment(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListExpenseDepartment=  arg.data.table
+  console.log('getListExpenseDepartment',arg.data.table)
+
       this.Loader=false
       var getColor=[]
 
@@ -3867,6 +3999,8 @@ this.dataExpenseDepartment.push({"label":this.getListExpenseDepartment[i].depart
       this.Loader=true
       this.HTTP.getPbiExpenseProject(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListExpenseProject=  arg.data.table
+  console.log('getListExpenseProject',arg.data.table)
+
       this.Loader=false
       var getColor=[]
 
@@ -4074,6 +4208,8 @@ this.dataexpenseproject = {
 this.Loader=true
     this.HTTP.getpbiResourceList(this.setDate,this.CmpCode,projectid,this.departmentId).subscribe(arg => {
       this.resourceList=  arg.data.table
+  console.log('resourceList',arg.data.table)
+
       debugger
       this.Loader=false
       for(var i=0;i<this.resourceList.length;i++)
@@ -4102,6 +4238,8 @@ this.resouceNonBillableList.push({'billid':this.resourceList[i].resourceName})
      this.Loader=true
       this.HTTP.getPbiReportDepartment(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListDepartment=  arg.data.table
+  console.log('getListDepartment',arg.data.table)
+
       this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4169,6 +4307,8 @@ this.dataDepartment.push({"label":this.getListDepartment[i].departmentName,"valu
       this.Loader=true
       this.HTTP.getPbiReportGender(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListGender=  arg.data.table
+  console.log('getListGender',arg.data.table)
+
       this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4233,6 +4373,8 @@ this.dataGender.push({"label":'Male',"value":male.length},{"label":'Female',"val
       this.Loader=true
       this.HTTP.etPbiReportEmployeeVsVendor(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListEmployeeVsVendor=  arg.data.table
+  console.log('getListEmployeeVsVendor',arg.data.table)
+
       this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4346,6 +4488,8 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
     this.HTTP.getPbiProjectEmployeeVsVendor(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
    debugger;
       this.getListProjectVsVendor=  arg.data.table
+  console.log('getListProjectVsVendor',arg.data.table)
+
       this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4460,6 +4604,8 @@ getpbiProjecDeployeeVsBench(){
   this.Loader=true
   this.HTTP.getPbiProjectDeployeeVsBench(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
   this.getListProjectVsBench=  arg.data.table
+  console.log('getListProjectVsBench',arg.data.table)
+
   this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4555,6 +4701,8 @@ getpbiExpenseReportList(){
   this.Loader=true
   this.HTTP.getPbiExpenseReportList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.dataExpenseReportList=  arg.data.table
+  console.log('dataExpenseReportList',arg.data.table)
+
     this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4591,6 +4739,8 @@ getpbiProjecDeployeeVsBenchBill(){
   this.Loader=true
   this.HTTP.getPbiProjectDetailBillableVsNonBillable(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBill=  arg.data.table
+  console.log('getListProjectVsBenchBill',arg.data.table)
+
     this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4635,11 +4785,11 @@ this.dataVendorBenchBill.push({'value':this.getListProjectVsBenchBill[i].vendor}
     ],
     dataset: [
       {
-        seriesname: "Deployee",
+        seriesname:"Billable",
         data:this.dataProjectdeployeeBill
       },
       {
-        seriesname: "On Bench",
+        seriesname: "Non-Billable",
         data:this.dataVendorBenchBill
       },
 
@@ -4682,10 +4832,12 @@ getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense(){
   this.Loader=true
   this.HTTP.getPbiProjectDetailBillableVsNonBillablegetPbiProjectDetailBillableVsNonBillable(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillEmployeeCountVsExpense=  arg.data.table
+  console.log('getListProjectVsBenchBillEmployeeCountVsExpense',arg.data.table)
+
     this.Loader=false
 //       designationId: 15
 // designationName:
-if(this.getListProjectVsBenchBillEmployeeCountVsExpense.length>=0)
+if(this.getListProjectVsBenchBillEmployeeCountVsExpense.length>0)
 {
 
 var getColor=[]
@@ -4773,6 +4925,8 @@ getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(){
   this.Loader=true
   this.HTTP.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillProjectCountVsExpense=  arg.data.table
+  console.log('getListProjectVsBenchBillProjectCountVsExpense',arg.data.table)
+
     this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4866,6 +5020,8 @@ getpbiProjecDeployeeVsBenchBillCustomerVsService(){
   this.Loader=true
   this.HTTP.getpbiProjecDeployeeVsBenchBillCustomerVsService(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillCustomerVsService=  arg.data.table
+  console.log('getListProjectVsBenchBillCustomerVsService',arg.data.table)
+
     this.Loader=false
 //       designationId: 15
 // designationName:
@@ -4960,6 +5116,8 @@ public format = {type:'date', format:'dd/MM/yyyy'}
       this.Loader=true
       this.HTTP.etPbiReportEmployeeAddition(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListEmployeeAddition=  arg.data.table
+  console.log('getListEmployeeAddition',arg.data.table)
+
       this.Loader=false
 //       designationId: 15
 // designationName:
@@ -5078,6 +5236,8 @@ newList:any=[]
       this.Loader=true
       this.HTTP.getPbiReportEmployeeTenureWiseEmployeeDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListTenureWiseEmployee=  arg.data.table
+  console.log('getListTenureWiseEmployee',arg.data.table)
+
       this.Loader=false
       this.getListTenureWiseEmployeeAvg=arg.data.table1
  this.avgMin=[]
@@ -5325,6 +5485,7 @@ tooltipfor(args: any){
     this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListEmployeePerformance=  arg.data.table
     this.Loader=false
+    console.log('performance',arg.data.table)
     if(this.getListEmployeePerformance.length>0)
     {
 
@@ -5338,10 +5499,12 @@ tooltipfor(args: any){
   getListProjectPortfoliyo:any=[]
   getProjectPortFoliyo()
   {
-    this.getListEmployeePerformance=[]
+    this.getListProjectPortfoliyo=[]
     this.Loader=true
     this.HTTP.getPbiProjectPortfoliyo(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectPortfoliyo=  arg.data.table
+    console.log('getListProjectPortfoliyo',arg.data.table)
+
     this.Loader=false
     for(var i=0;i<this.getListProjectPortfoliyo.length;i++)
     {
@@ -5543,6 +5706,7 @@ if(this.getListProjectPortfoliyo[i].progress==null)
     this.Loader=true
     this.HTTP.getProjectProjectDetailRevnueAndCost(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
     this.getListProjectDetailRevnureAndCost=  arg.data.table
+    console.log('getListProjectDetailRevnureAndCost',arg.data.table)
     this.Loader=false
     this.costFirst=this.getListProjectDetailRevnureAndCost[0].cost
 this.costSecond=this.getListProjectDetailRevnureAndCost[0].projectType
@@ -5568,6 +5732,8 @@ this.endDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].
     this.Loader=true
     this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectDetailPAndLGridList=  arg.data.table
+    console.log('getListProjectDetailPAndLGridList',arg.data.table)
+
     this.Loader=false
     for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++)
     {
@@ -5628,6 +5794,8 @@ totalExpenseCurrentYearGrowthPercentimg:any
     this.Loader=true
     this.HTTP.getPbiExpenseDetailList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListExpenseDetailList=  arg.data.table
+    console.log('getListExpenseDetailList',arg.data.table)
+
     this.Loader=false
    this.expenseCurrentYear=this.getListExpenseDetailList[0].expenseCurrentYear
      this.expensePreviousYear=this.getListExpenseDetailList[0].expensePreviousYear
@@ -5787,6 +5955,8 @@ else{
       this.Loader=true
       this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListEmployeePerformance=  arg.data.table
+    console.log('getListEmployeePerformance',arg.data.table)
+
       if(this.getListEmployeePerformance.length>0)
       {
         this.Loader=false
@@ -5836,6 +6006,8 @@ else{
     this.Loader=true
     this.HTTP.etPbiReportEmployeeAttrition(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListEmployeeAttrition=  arg.data.table
+    console.log('getListEmployeeAttrition',arg.data.table)
+
     this.Loader=false
 //       designationId: 15
 // designationName:
@@ -5945,6 +6117,8 @@ this.dataempoyeeattrition = {
       this.Loader=true
       this.HTTP.getPbiReportJobband(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListJobband=  arg.data.table
+    console.log('getListJobband',arg.data.table)
+
       this.Loader=false
 //       designationId: 15
 // designationName:
@@ -5992,6 +6166,8 @@ this.dataJobband.push({"label":this.getListJobband[i].jobandName,"value":this.ge
       this.Loader=true
       this.HTTP.getPbiReportLocation(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListLocation=  arg.data.table
+    console.log('getListLocation',arg.data.table)
+
       this.Loader=false
       var getColor=[]
 
@@ -6041,6 +6217,8 @@ this.dataLocation.push({"label":this.getListLocation[i].locationName,"value":thi
       this.Loader=true
       this.HTTP.getPbiReportAge(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListAge=  arg.data.table
+    console.log('getListAge',arg.data.table)
+
       this.Loader=false
       var getColor=[]
 
@@ -6273,6 +6451,8 @@ try {
   this.HTTP.getPbiReportDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
   this.getListData=  arg.data.table
+  console.log('getListData',arg.data.table)
+
 
 this.currentAddtionYear=this.getListData[0].currentAddtionYear
 this.currentGrowthAddtionYearPercent=this.getListData[0].currentGrowthAddtionYearPercent
@@ -6782,6 +6962,8 @@ imgbillableResourceTotalPercentGrowth:any
     this.HTTP.getPbiProjectDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
   this.getProjectListData=  arg.data.table
+  console.log('getProjectListData',arg.data.table)
+
  // if(this.getProjectListData>=0)
   //{
 
@@ -7136,19 +7318,23 @@ this.getpbiExpenseProject()
     let cmpcode=1
     let year='2022-02-20'
     this.getResourcesDetail=[]
-    this.category=[]
-    this.deployeeList=[]
-    this.employeeList=[]
+  
+
 this.Loader=true
     this.HTTP.getPbiPeopleResources(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getResourcesDetail=arg.data.table
+      debugger
+  console.log('getResourcesDetail',arg.data.table)
+  this.category=[]
+    this.deployeeList=[]
+    this.employeeList=[]
       this.Loader=false
 //       deployeeproject: 10
 // mm: 9
 // monthNames: "September"
 // totalemployee: 60
 // yy: 2021
-if(this.getResourcesDetail.length>=0)
+if(this.getResourcesDetail.length>0)
 {
 
       for(var i=0;i<this.getResourcesDetail.length;i++)
