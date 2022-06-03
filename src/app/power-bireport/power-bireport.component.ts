@@ -2846,11 +2846,11 @@ this.Loader=false
     {
       getColor.push(this.setColor[i])
     }
-    for(var i=0;i<this.getListProjectInNumber.length;i++)
+    for(var i=0;i<this.getListProjectInNumberInCost.length;i++)
     {
-this.monthInCost.push({"label":this.getListProjectInNumber[i].monthNames})
-this.numberProjectInCost.push({"value":this.getListProjectInNumber[i].employee})
-this.venderNumberInCost.push({"value":this.getListProjectInNumber[i].vendor})
+this.monthInCost.push({"label":this.getListProjectInNumberInCost[i].monthNames})
+this.numberProjectInCost.push({"value":this.getListProjectInNumberInCost[i].employee})
+this.venderNumberInCost.push({"value":this.getListProjectInNumberInCost[i].vendor})
 //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
   this.setProjectNumberListInCost.push({"label":this.getListProjectInNumberInCost[i].monthNames,"value":this.getListProjectInNumberInCost[i].employee})
 }
