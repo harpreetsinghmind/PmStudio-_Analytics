@@ -818,7 +818,7 @@ p.context {
 
       table.oulierTable th span, table.oulierTable td span { width: 100%; display: inline-block;}
       ul.mandateItem{ padding: 0; list-style: none; display: flex;}
-      ul.mandateItem li{ margin: 0 20px; display: flex; align-items: center;}
+      ul.mandateItem li{ margin: 0 20px; display: flex; align-items: center; font-size: 14px;}
       ul.mandateItem li span{    display: inline-block;
         width: 30px;
         height: 30px;
@@ -835,9 +835,9 @@ p.context {
         #projectportfolio ul.mandateItem li span{ background: transparent;}
 
         ul.mandateItem li span::before{    display: inline-block;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%; top: 5px; left: 5px;background: #827e7e;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%; top: 7px; left: 13px;background: #827e7e;
           position: absolute;
           content: " ";}
 

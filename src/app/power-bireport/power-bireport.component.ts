@@ -49,6 +49,13 @@ export class PowerBIReportComponent implements OnInit {
     { text: 'Root', id: 6, groupId: 3, color: '#00bdae' }
   ];
   public allowMultiple = true;
+  display = "none";
+  openModal() {
+    this.display = "block";
+  }
+  onCloseHandled() {
+    this.display = "none";
+  }
   newdata = [
     {
       Id: 61,
@@ -3702,7 +3709,7 @@ this.testList= {
     ]
   },
   chart: {
-    
+
     "caption": "",
     "subcaption": "",
     "animation": "0",
@@ -3976,7 +3983,7 @@ this.testList= {
       "label": "Manufacturers",
       "value":0,
       "fillcolor": "#999999",
-      
+
         "data": this.dataspenderwise
     }],
     "colorrange": {
@@ -3996,7 +4003,7 @@ this.testList= {
       }]
     }
   }
-  
+
 
 
 
@@ -4045,7 +4052,7 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
       }
 this.dataDesignation.push({"label":'Other','value':sum})
       }
-      
+
 else
 {
   for(var i=0;i<this.getListDesignation.length;i++)
@@ -4552,7 +4559,7 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
 
 
       }
-      
+
        this.dataempoyeevsvendor = {
         chart: {
           'paletteColors':getColor.toString(),
@@ -7472,7 +7479,7 @@ this.getpbiExpenseProject()
     let cmpcode=1
     let year='2022-02-20'
     this.getResourcesDetail=[]
-  
+
 
 this.Loader=true
     this.HTTP.getPbiPeopleResources(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
