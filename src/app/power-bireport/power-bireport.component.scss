@@ -972,6 +972,23 @@ p.context {
     position: relative;
     width: 8em;
   }
+.top1{
+  background-color: yellow;
+  height: 300px;
+}
+.top2{
+  background-color: red;
+}.top3{
+  background-color: blue;
+}.top4{
+  background-color: green;
+}
+  .progressFor {
+    background-color: #e5e9eb;
+    height: 1.5em;
+    position: relative;
+    width: 8em;
+  }
   .progress-bar {
     animation-duration: 3s;
     animation-name: width;
@@ -1040,7 +1057,21 @@ p.context {
   background-color :#81b4e1;
 }
 
+.setBarTop{
+  background-color :red;
+}
+.getBarTop{
+  background-color :blue;
 
+}
+.vop{
+  height:30px;
+  width:40
+}
+.petBarTop{
+  background-color :green;
+
+}
   .setBarMargin{
     //width: 50px;
     background-color: red;
