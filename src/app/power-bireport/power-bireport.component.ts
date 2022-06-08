@@ -5,6 +5,8 @@ import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
 import { dataBinding, GroupModel } from '@syncfusion/ej2-angular-schedule';
 import { ToasterService } from '../toaster/toaster.service';
 import { GlobalServiceService } from '../global-service.service';
+import { AuthServiceService } from '../auth-service.service';
+
 import { min } from 'moment';
 import { DatePipe } from '@angular/common'
 import { threadId } from 'worker_threads';
@@ -2510,7 +2512,8 @@ export class PowerBIReportComponent implements OnInit {
 
   constructor(
    private  HTTP: GlobalServiceService,
-   private datepipe:DatePipe
+   private datepipe:DatePipe,
+   private authServiceService:AuthServiceService
 
   ) { }
   setDepartment:any
@@ -4182,7 +4185,7 @@ this.dataexpenseproject = {
     caption: "",
     subcaption: "",
     yaxisname: "",
-    palettecolors: "#7cb5ec, #ed8f1d",
+    palettecolors:  "#ed8f1d,#7cb5ec",
     plotgradientcolor: " ",
     theme: "fusion",
     yaxismaxvalue: "30",
@@ -4200,11 +4203,11 @@ this.dataexpenseproject = {
   ],
   dataset: [
     {
-      seriesname: "Previous Year",
+      seriesname: "Customer",
       data: this.dataExpensePreviousProject
     },
     {
-      seriesname: "Current Year",
+      seriesname: "Service Provider",
       data: this.dataExpenseCurrentProject
     }
   ]
@@ -5946,9 +5949,22 @@ totalExpensePreviousYearGrowthPercent:any
 totalExpenseCurrentYearGrowthPercent:any
 totalExpenseCurrentYearYoyGrowthPercentimg:any
 totalExpensePreviousYearGrowthPercentimg:any
-expenseCurrentYear
-expensePreviousYear
+expenseCurrentYear:any
+expensePreviousYear:any
 totalExpenseCurrentYearGrowthPercentimg:any
+serviceProviderPreviousYearGrowthYoy:any
+serviceProviderPreviousYearYoy:any
+serviceProviderPreviousYearGrowthYoyPercent:any
+serviceProviderPreviousYearGrowthYoyPercentimg:any
+
+totalExpensePreviousYearYoy:any
+totalExpensePreviousYearYoyGrowth:any
+totalExpensePreviousYearYoyGrowthPercent:any
+totalExpensePreviousYearYoyGrowthPercentimg:any
+customerExpensePreviousYearGrowthYoyPercent:any
+customerExpensePreviousYearGrowthYoy:any
+customerExpensePreviousYearYoy:any
+customerExpensePreviousYearGrowthYoyPercentimg:any
   getProjectExpenseDetailList()
   {
     this.getListExpenseDetailList=[]
@@ -5992,6 +6008,25 @@ this.customerExpenseCurrentYearGrowthYoy=this.getListExpenseDetailList[0].custom
 else{
   this.customerExpenseCurrentYearGrowthYoyPercentimg=this.upUrl
 }
+
+
+this.customerExpensePreviousYearGrowthYoy=this.getListExpenseDetailList[0].customerExpensePreviousYearGrowthYoy
+
+    this.customerExpensePreviousYearYoy=this.getListExpenseDetailList[0].customerExpensePreviousYearYoy
+    this.customerExpensePreviousYearGrowthYoyPercent=(this.customerExpensePreviousYearYoy-this.customerExpensePreviousYearGrowthYoy)*100/this.customerExpensePreviousYearGrowthYoy
+    if(this.customerExpenseCurrentYearGrowthYoy==0)
+    {
+      this.customerExpensePreviousYearGrowthYoyPercent=0
+    }
+    if(this.customerExpensePreviousYearGrowthYoyPercent>=0)
+{
+  this.customerExpensePreviousYearGrowthYoyPercentimg=this.downUrl
+}
+else{
+  this.customerExpensePreviousYearGrowthYoyPercentimg=this.upUrl
+}
+
+
 
     this.customerExpensePreviousYear=this.getListExpenseDetailList[0].customerExpensePreviousYear
     this.customerExpensePreviousYearGrowth=this.getListExpenseDetailList[0].customerExpensePreviousYearGrowth
@@ -6040,6 +6075,23 @@ else{
     else{
       this.serviceProviderCurrentYearGrowthYoyPercentimg=this.upUrl
     }
+    this.serviceProviderPreviousYearGrowthYoy=this.getListExpenseDetailList[0].serviceProviderPreviousYearGrowthYoy
+  
+    this.serviceProviderPreviousYearYoy=this.getListExpenseDetailList[0].serviceProviderPreviousYearYoy
+    this.serviceProviderPreviousYearGrowthYoyPercent=(this.serviceProviderPreviousYearYoy-this.serviceProviderPreviousYearGrowthYoy)*100/this.serviceProviderPreviousYearGrowthYoy
+    if(this.serviceProviderPreviousYearGrowthYoy==0)
+    {
+      this.serviceProviderPreviousYearGrowthYoyPercent=0
+    }
+
+    if(this.serviceProviderPreviousYearGrowthYoyPercent>=0)
+    {
+      this.serviceProviderPreviousYearGrowthYoyPercentimg=this.downUrl
+    }
+    else{
+      this.serviceProviderPreviousYearGrowthYoyPercentimg=this.upUrl
+    }
+
     this.serviceProviderPreviousYear=this.getListExpenseDetailList[0].serviceProviderPreviousYear
 
 this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceProviderPreviousYearGrowth
@@ -6105,6 +6157,23 @@ if(this.totalExpenseCurrentYearYoyGrowthPercent>=0)
 else{
   this.totalExpenseCurrentYearYoyGrowthPercentimg=this.upUrl
 }
+this.totalExpensePreviousYearYoy=this.getListExpenseDetailList[0].totalExpensePreviousYearYoy
+this.totalExpensePreviousYearYoyGrowth=this.getListExpenseDetailList[0].totalExpensePreviousYearYoyGrowth
+this.totalExpensePreviousYearYoyGrowthPercent=(this.totalExpensePreviousYearYoy-this.totalExpensePreviousYearYoyGrowth)*100/this.totalExpensePreviousYearYoyGrowth
+
+if(this.totalExpensePreviousYearYoyGrowth==0)
+{
+  this.totalExpensePreviousYearYoyGrowthPercent=0
+}
+
+if(this.totalExpensePreviousYearYoyGrowthPercent>=0)
+{
+  this.totalExpensePreviousYearYoyGrowthPercentimg=this.downUrl
+}
+else{
+  this.totalExpensePreviousYearYoyGrowthPercentimg=this.upUrl
+}
+
 
 })
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { DatePipe ,DecimalPipe} from '@angular/common'
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,11 @@ export class AuthServiceService {
   public currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any> ;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient ,private datePipe:DatePipe,private decimalpipe:DecimalPipe) {
+
+    this.DateFormat= this.getdateFormat();
+    this.Decimalformat = this.getdecimalFormat();
+   }
  
 
   public get currentUserValue(): any {
@@ -28,7 +33,12 @@ export class AuthServiceService {
     un = un === null ? un : atob(un);
     return un;
   }
-
+  setdecimalFormat(decimalFormat: any){
+    localStorage.setItem(btoa("decimalFormat"), btoa(decimalFormat));
+  }
+  setdateFormat(dateFormat: any){
+    localStorage.setItem(btoa("dateFormat"), btoa(dateFormat));
+  }
   getForgotPasswordToken(email: string): Observable<any> {
     debugger;
     var userData = "email=" + email;
@@ -88,4 +98,146 @@ export class AuthServiceService {
   //   localStorage.setItem(btoa("LoggedInUser"), btoa(token));
   //   localStorage.setItem(btoa("tokenExpiry"), btoa(expiry));
   // }
+  getdateFormat() {
+    let ut = localStorage.getItem(btoa("dateFormat"));
+    ut = ut === null ? ut : atob(ut);
+    return ut;
+  }
+  getdecimalFormat() {
+    let ut = localStorage.getItem(btoa("decimalFormat"));
+    ut = ut === null ? ut : atob(ut);
+    return ut;
+  }
+  DateFormat:any
+  Dateformat(datas:string){
+    this.DateFormat= this.getdateFormat();
+    if (this.DateFormat=='1')
+    {
+      return this.datePipe.transform(datas, 'MM/dd/yyyy')   
+    }
+    if(this.DateFormat=='2')
+    {
+      return this.datePipe.transform(datas, 'dd/MM/yyyy')
+    }
+    if(this.DateFormat== '3')
+    {
+      return this.datePipe.transform(datas, 'yyyy/MM/dd')
+    } 
+  }
+
+  Decimalformat:any;
+  DecimalFormat(datas:string) {
+    this.Decimalformat = this.getdecimalFormat();
+    if (this.Decimalformat=='0')
+    {return this.decimalpipe.transform(datas, '1.0-0')}
+    if (this.Decimalformat=='1')
+    {return this.decimalpipe.transform(datas, '.1-1')}
+    if (this.Decimalformat=='2')
+    {return this.decimalpipe.transform(datas, '.2-2')}
+  }
+
+ 
+  CurrencySymbols(data: any){
+    switch (data) {
+      case 'USD':
+        return "assets/img/CURRENCY-SYMBOLS/USD.png";
+        break;
+      case 'AUD':
+        return "assets/img/CURRENCY-SYMBOLS/AUD.png";
+        break;
+      case 'BGN':
+        return "assets/img/CURRENCY-SYMBOLS/BGN.png";
+        break;
+      case 'BRL':
+        return "assets/img/CURRENCY-SYMBOLS/BRL.png";
+        break;
+      case 'CAD':
+        return "assets/img/CURRENCY-SYMBOLS/CAD.png";
+        break;
+      case 'CHF':
+        return "assets/img/CURRENCY-SYMBOLS/CHF.png";
+        break;
+      case 'CNY':
+        return "assets/img/CURRENCY-SYMBOLS/CNY.png";
+        break;
+      case 'CZK':
+        return "assets/img/CURRENCY-SYMBOLS/CZK.png";
+        break;
+      case 'DKK':
+        return "assets/img/CURRENCY-SYMBOLS/DKK.png";
+        break;
+      case 'GBP':
+        return "assets/img/CURRENCY-SYMBOLS/GBP.png";
+        break;
+      case 'HKD':
+        return "assets/img/CURRENCY-SYMBOLS/HKD.png";
+        break;
+      case 'HRK':
+        return "assets/img/CURRENCY-SYMBOLS/HRK.png";
+        break;
+      case 'HUF':
+        return "assets/img/CURRENCY-SYMBOLS/HUF.png";
+        break;
+      case 'IDR':
+        return "assets/img/CURRENCY-SYMBOLS/IDR.png";
+        break;
+      case 'ILS':
+        return "assets/img/CURRENCY-SYMBOLS/ILS.png";
+        break;
+      case 'INR':
+        return "assets/img/CURRENCY-SYMBOLS/INR.png";
+        break;
+      case 'ISK':
+        return "assets/img/CURRENCY-SYMBOLS/ISK.png";
+        break;
+      case 'JPY':
+        return "assets/img/CURRENCY-SYMBOLS/JPY.png";
+        break;
+      case 'KRW':
+        return "assets/img/CURRENCY-SYMBOLS/KRW.png";
+        break;
+      case 'MXN':
+        return "assets/img/CURRENCY-SYMBOLS/MXN.png";
+        break;
+      case 'MYR':
+        return "assets/img/CURRENCY-SYMBOLS/MYR.png";
+        break;
+      case 'NOK':
+        return "assets/img/CURRENCY-SYMBOLS/NOK.png";
+        break;
+      case 'NZD':
+        return "assets/img/CURRENCY-SYMBOLS/NZD.png";
+        break;
+      case 'PHP':
+        return "assets/img/CURRENCY-SYMBOLS/PHP.png";
+        break;
+      case 'PLN':
+        return "assets/img/CURRENCY-SYMBOLS/PLN.png";
+        break;
+      case 'RON':
+        return "assets/img/CURRENCY-SYMBOLS/RON.png";
+        break;
+      case 'RUB':
+        return "assets/img/CURRENCY-SYMBOLS/RUB.png";
+        break;
+      case 'SEK':
+        return "assets/img/CURRENCY-SYMBOLS/SEK.png";
+        break;
+      case 'SGD':
+        return "assets/img/CURRENCY-SYMBOLS/SGD.png";
+        break;
+      case 'THB':
+        return "assets/img/CURRENCY-SYMBOLS/THB.png";
+        break;
+      case 'TRY':
+        return "assets/img/CURRENCY-SYMBOLS/TRY.png";
+        break;
+      case 'ZAR':
+        return "assets/img/CURRENCY-SYMBOLS/ZAR.png";
+        break;
+      default:
+        break;
+    }
+  }
+
 }

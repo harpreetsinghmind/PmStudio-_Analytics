@@ -43,7 +43,7 @@ import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 
-
+import {DecimalPipe} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { PowerBIReportComponent } from './power-bireport/power-bireport.component';
 FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme,PowerCharts,TreeMap,Overlappedcolumn2d);
@@ -96,6 +96,7 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme,PowerCharts,TreeMap,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AuthGuard,
     DatePipe,
+    DecimalPipe
 
   ],
 
