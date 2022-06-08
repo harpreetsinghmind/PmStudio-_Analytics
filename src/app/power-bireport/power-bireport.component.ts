@@ -4200,11 +4200,11 @@ this.dataexpenseproject = {
   ],
   dataset: [
     {
-      seriesname: "2016",
+      seriesname: "Previous Year",
       data: this.dataExpensePreviousProject
     },
     {
-      seriesname: "2017",
+      seriesname: "Current Year",
       data: this.dataExpenseCurrentProject
     }
   ]
