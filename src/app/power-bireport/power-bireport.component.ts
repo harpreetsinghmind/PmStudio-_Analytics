@@ -7115,6 +7115,33 @@ imgonBenchTotalYoyPercentGrowth:any
 
 imgonBenchTotalResourcePercentGrowth:any
 imgbillableResourceTotalPercentGrowth:any
+costYoyYearPercent:any
+nonBillableYoyYearPercent:any
+nonBillableYoyYear:any
+avgLeaveYoyYearPercent:any
+avgLeaveYoyYear:any
+closeYoyYear:any
+costYoyYear:any
+venderYoyYearPercent:any
+venderYoyYear:any
+onBenchYoyYearPercent:any
+closeYoyYearPercent:any
+closeYoyYearPercentGrowth:any
+onBenchYoyYear:any
+nonBillableYoyYearPercentGrowth:any
+avgLeaveYoyYearPercentGrowth:any
+costYoyYearPercentGrowth:any
+venderYoyYearPercentGrowt:any
+onBenchYoyYearPercentGrowth:any
+venderYoyYearPercentGrowth:any
+
+
+imgnonBillableYoyYearPercentGrowth:any
+ imgavgLeaveYoyYearPercentGrowth:any
+ imgcostYoyYearPercentGrowth:any
+ imgonBenchYoyYearPercentGrowth:any
+ imgvenderYoyYearPercentGrowth:any
+ imgcloseYoyYearPercentGrowth:any
   getpbiProjectDetailList(){
     let cmpcode=1
     let year='2022-02-20'
@@ -7122,6 +7149,7 @@ imgbillableResourceTotalPercentGrowth:any
     this.Loader=true
     this.HTTP.getPbiProjectDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
+debugger
   this.getProjectListData=  arg.data.table
   console.log('getProjectListData',arg.data.table)
 
@@ -7145,6 +7173,115 @@ else{
   this.imgavgLeaveTotalPercentage=this.upUrl
 }
 
+this.closeYoyYear=this.getProjectListData[0].closeYoyYear
+this.closeYoyYearPercent=this.getProjectListData[0].closeYoyYearPercent
+this.closeYoyYearPercentGrowth=(this.closeYoyYear-this.closeYoyYearPercent)*100/this.closeYoyYearPercent
+if(this.closeYoyYearPercent==0)
+{
+this.closeYoyYearPercentGrowth=0
+}
+
+
+if(this.closeYoyYearPercentGrowth>=0)
+{
+  this.imgcloseYoyYearPercentGrowth=this.downUrl
+}
+else{
+  this.imgcloseYoyYearPercentGrowth=this.upUrl
+}
+this.onBenchYoyYear=this.getProjectListData[0].onBenchYoyYear
+ this.onBenchYoyYearPercent=this.getProjectListData[0].onBenchYoyYearPercent
+ this.onBenchYoyYearPercentGrowth=(this.onBenchYoyYear-this.onBenchYoyYearPercent)*100/this.onBenchYoyYearPercent
+
+ if(this.onBenchYoyYearPercent==0)
+ {
+ this.onBenchYoyYearPercentGrowth=0
+ }
+ 
+ 
+ if(this.onBenchYoyYearPercentGrowth>=0)
+ {
+   this.imgonBenchYoyYearPercentGrowth=this.downUrl
+ }
+ else{
+   this.imgonBenchYoyYearPercentGrowth=this.upUrl
+ }
+ 
+ this.venderYoyYear=this.getProjectListData[0].venderYoyYear
+
+ this.venderYoyYearPercent=this.getProjectListData[0].venderYoyYearPercent
+ this.venderYoyYearPercentGrowth=(this.venderYoyYear-this.venderYoyYearPercent)*100/this.venderYoyYearPercent
+
+
+ if(this.venderYoyYearPercent==0)
+ {
+ this.venderYoyYearPercentGrowth=0
+ }
+ 
+ 
+ if(this.venderYoyYearPercentGrowth>=0)
+ {
+   this.imgvenderYoyYearPercentGrowth=this.downUrl
+ }
+ else{
+   this.imgvenderYoyYearPercentGrowth=this.upUrl
+ }
+
+ this.costYoyYear=this.getProjectListData[0].costYoyYear
+this.costYoyYearPercent=this.getProjectListData[0].costYoyYearPercent
+this.costYoyYearPercentGrowth=(this.costYoyYear-this.costYoyYearPercent)*100/this.costYoyYearPercent
+if(this.costYoyYearPercent==0)
+{
+this.costYoyYearPercentGrowth=0
+}
+
+
+if(this.costYoyYearPercentGrowth>=0)
+{
+  this.imgcostYoyYearPercentGrowth=this.downUrl
+}
+else{
+  this.imgcostYoyYearPercentGrowth=this.upUrl
+}
+
+
+
+this.avgLeaveYoyYear=this.getProjectListData[0].avgLeaveYoyYear
+this.avgLeaveYoyYearPercent=this.getProjectListData[0].avgLeaveYoyYearPercent
+this.avgLeaveYoyYearPercentGrowth=(this.avgLeaveYoyYear-this.avgLeaveYoyYearPercent)*100/this.avgLeaveYoyYearPercent
+if(this.avgLeaveYoyYearPercent==0)
+{
+this.avgLeaveYoyYearPercentGrowth=0
+}
+
+
+if(this.avgLeaveYoyYearPercentGrowth>=0)
+{
+  this.imgavgLeaveYoyYearPercentGrowth=this.downUrl
+}
+else{
+  this.imgavgLeaveYoyYearPercentGrowth=this.upUrl
+}
+
+
+
+
+this.nonBillableYoyYear=this.getProjectListData[0].nonBillableYoyYear
+this.nonBillableYoyYearPercent=this.getProjectListData[0].nonBillableYoyYearPercent
+this.nonBillableYoyYearPercentGrowth=(this.nonBillableYoyYear-this.nonBillableYoyYearPercent)*100/this.nonBillableYoyYearPercent
+if(this.nonBillableYoyYearPercent==0)
+{
+this.nonBillableYoyYearPercentGrowth=0
+}
+
+
+if(this.nonBillableYoyYearPercentGrowth>=0)
+{
+  this.imgnonBillableYoyYearPercentGrowth=this.downUrl
+}
+else{
+  this.imgnonBillableYoyYearPercentGrowth=this.upUrl
+}
 this.cost =this.getProjectListData[0].cost
 this.costPercentageGrowth=this.getProjectListData[0].costPercentageGrowth
 this.costPercentageGrowthValue=(this.cost-this.costPercentageGrowth)*100/this.costPercentageGrowth
