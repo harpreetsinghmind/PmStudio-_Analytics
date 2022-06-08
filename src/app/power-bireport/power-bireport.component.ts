@@ -2526,6 +2526,7 @@ export class PowerBIReportComponent implements OnInit {
     this.getpbiExpenseDepartment()
     this.getpbiExpense()
     this.getpbiSpenderWise()
+    this.getpbiCustomerWise()
     this.getpbiPeopleDepartment()
     this.getpbiPeopleLocation()
     this.getpbiPeopleAge()
@@ -2667,6 +2668,7 @@ this.getpbiPeopleDesignation()
 this.getpbiExpenseDepartment()
 this.getpbiExpense()
 this.getpbiSpenderWise()
+this.getpbiCustomerWise()
 this.getpbiPeopleDepartment()
 this.getpbiPeopleLocation()
 this.getpbiPeopleAge()
@@ -3635,386 +3637,457 @@ this.dataExpenselist.push({"label":'Other','value':100-sum})
   top:any
 testList:any=[]
 checkAny:any=[]
+  
   getpbiSpenderWise(){
-      let cmpcode=1
-      let year='2022-02-20'
-      this.getListSpenderWise=[]
-      this.dataSpenderWise=[]
-      this.columnList=[]
-      this.rowList=[]
-      this.Loader=true
-      this.HTTP.getPbiExpenseSpenderWise(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+    let cmpcode=1
+    let year='2022-02-20'
+    this.getListSpenderWise=[]
+    this.dataSpenderWise=[]
+    this.columnList=[]
+    this.rowList=[]
+    this.Loader=true
+    this.HTTP.getPbiExpenseSpenderWise(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
-        this.getListSpenderWise=  arg.data.table
-  console.log('getListSpenderWise',arg.data.table)
+      this.getListSpenderWise=  arg.data.table
+console.log('getListSpenderWise',arg.data.table)
 
-      var getColor=[]
+    var getColor=[]
 
-      for(var i=0;i<this.getListSpenderWise.length;i++)
-      {
-        getColor.push(this.setColor[i])
-      }
-      var sum=0
-      for(var i=0;i<this.getListSpenderWise.length;i++)
-      {
-        debugger
-        var a1
-        a1=this.getListSpenderWise[0].amount
-      var b1=this.getListSpenderWise[1].amount
-        var c1=this.getListSpenderWise[2].amount
-        this.top1=a1/a1+b1+c1
-        this.top2=b1/a1+b1+c1
-        this.top3=c1/a1+b1+c1
+    for(var i=0;i<this.getListSpenderWise.length;i++)
+    {
+      getColor.push(this.setColor[i])
+    }
+    var sum=0
+    for(var i=0;i<this.getListSpenderWise.length;i++)
+    {
+      debugger
+      var a1
+      a1=this.getListSpenderWise[0].amount
+    var b1=this.getListSpenderWise[1].amount
+      var c1=this.getListSpenderWise[2].amount
+      this.top1=a1/a1+b1+c1
+      this.top2=b1/a1+b1+c1
+      this.top3=c1/a1+b1+c1
 
-        //this.top4=this.getListSpenderWise[3].amount
+      //this.top4=this.getListSpenderWise[3].amount
 
 
 
-this.dataSpenderWise.push({"label":this.getListSpenderWise[i].firstname+'<br/>'+this.getListSpenderWise[i].amount+'<br/>'+this.getListSpenderWise[i].percentage+'%',
-"svalue":this.getListSpenderWise[i].percentage,
-"value":this.getListSpenderWise[i].amount})
+this.dataSpenderWise.push({"label":this.getListSpenderWise[i].firstname+'<br/>'+this.getListSpenderWise[i].amount.toFixed(2)+'<br/>'+this.getListSpenderWise[i].percentage.toFixed(2)+'%',
+"svalue":this.getListSpenderWise[i].percentage.toFixed(2),
+"value":this.getListSpenderWise[i].amount.toFixed(2)})
 sum+=this.getListSpenderWise[i].amount
 this.columnList.push({"id":this.getListSpenderWise[i].percentage,"label":this.getListSpenderWise[i].percentage})
 this.rowList.push({"id":this.getListSpenderWise[i].firstname,"label":""})
 
 }
 this.testList= {
-  data: [
+data: [
+  {
+    label: "",
+    value: sum+sum+sum,
+    data: [
+      {
+        label: "",
+        value:sum,
+        data:this.dataSpenderWise
+      }
+    ]
+  }
+],
+colorrange: {
+  mapbypercent: "0",
+  gradient: "1",
+  minvalue: "0",
+  code: "#62B58F",
+  startlabel: "Ideal",
+  endlabel: "Threshold",
+  color: [
     {
-      label: "",
-      value: sum+sum+sum,
+      code: "#FFC533",
+      maxvalue: "50"
+    },
+    {
+      code: "#F2726F",
+      maxvalue: "100",
+      label: "Threshold"
+    }
+  ]
+},
+chart: {
+
+  "caption": "",
+  "subcaption": "",
+  "animation": "0",
+  "plotToolText": "<div><b>$label</b><br/></div>",
+  //<b>Percentage: </b>$svalue%</div>",
+  "horizontalPadding": "0",
+  "verticalPadding": "0",
+  "plotborderthickness": ".5",
+  "plotbordercolor": "b3b3b3",
+  "chartBottomMargin": "0",
+  "labelGlow": "0",
+  "showLegend": "1",
+  "legendpadding": "0",
+  "legenditemfontcolor": "4b4b4b",
+  "legendScaleLineThickness": "0",
+  "legendCaptionFontSize": "10",
+  "legendCaptionFontBold": "1",
+  "legendspreadfactor": ".7",
+  "legendaxisbordercolor": "bfbfbf",
+  "labelFontColor": "000000",
+  "labelFontSize": "9",
+  "showchildlabels": "1",
+  "algorithm": "sliceanddice",
+  "slicingmode": "alternate",
+  "theme": "fusion",
+  "legendCaption": ""
+  // algorithm: "",
+  // caption: "",
+  // subcaption: "",
+  // theme: "fusion",
+  // legendcaption: "",
+  // plottooltext:
+  //   "<b>$label</b><br>Percentage: <b>$sValue %</b><br>Amount<b>$dataValue rs</b>"
+}
+};
+
+
+
+this.dataspenderwise = {
+  colorrange: {
+    gradient: "1",
+    minvalue: "0",
+    startlabel: "Poor",
+    palettecolors: "#002d57, #59748f",
+    'paletteColors' :'002d57, 59748f',
+    endlabel: "Outstanding"
+  },
+  dataset: [
+    {
+      data: this.dataSpenderWise
+    }
+  ],
+  columns: {
+    column: this.columnList
+  },
+  rows: {
+    row: this.rowList
+  },
+  chart: {
+    theme: "fusion",
+    caption: "",
+    subcaption: "",
+    xaxisname: "",
+    yaxisname: "",
+    showvalues: "1",
+    valuefontcolor: "#ffffff",
+    plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>"
+  }
+};
+
+this.dataExact = {
+  colorrange: {
+    gradient: "1",
+    minvalue: "0",
+    startlabel: "Poor",
+    palettecolors: "#002d57, #59748f",
+    'paletteColors' :'002d57, 59748f',
+    endlabel: "Outstanding"
+  },
+  dataset: [
+    {
       data: [
         {
-          label: "",
-          value:sum,
-          data:this.dataSpenderWise
+          rowid: "JA",
+          columnid: "EN",
+          value: "3.7"
+        },
+        {
+          rowid: "JA",
+          columnid: "PY",
+          value: "4.3"
+        },
+        {
+          rowid: "JA",
+          columnid: "MT",
+          value: "4.0"
+        },
+        {
+          rowid: "JA",
+          columnid: "HS",
+          value: "3.3"
+        },
+        {
+          rowid: "JA",
+          columnid: "EC",
+          value: "3.1"
+        },
+        {
+          rowid: "EM",
+          columnid: "EN",
+          value: "3.6"
+        },
+        {
+          rowid: "EM",
+          columnid: "PY",
+          value: "4.0"
+        },
+        {
+          rowid: "EM",
+          columnid: "MT",
+          value: "3.2"
+        },
+        {
+          rowid: "EM",
+          columnid: "HS",
+          value: "2.6"
+        },
+        {
+          rowid: "EM",
+          columnid: "EC",
+          value: "3.2"
+        },
+        {
+          rowid: "JY",
+          columnid: "EN",
+          value: "3.8"
+        },
+        {
+          rowid: "JY",
+          columnid: "PY",
+          value: "4.1"
+        },
+        {
+          rowid: "JY",
+          columnid: "MT",
+          value: "3.9"
+        },
+        {
+          rowid: "JY",
+          columnid: "HS",
+          value: "2.6"
+        },
+        {
+          rowid: "JY",
+          columnid: "EC",
+          value: "2"
+        },
+        {
+          rowid: "WL",
+          columnid: "EN",
+          value: "3.4"
+        },
+        {
+          rowid: "WL",
+          columnid: "PY",
+          value: "3.2"
+        },
+        {
+          rowid: "WL",
+          columnid: "MT",
+          value: "4"
+        },
+        {
+          rowid: "WL",
+          columnid: "HS",
+          value: "2.5"
+        },
+        {
+          rowid: "WL",
+          columnid: "EC",
+          value: "3.1"
         }
       ]
     }
   ],
-  colorrange: {
-    mapbypercent: "0",
-    gradient: "1",
-    minvalue: "0",
-    code: "#62B58F",
-    startlabel: "Ideal",
-    endlabel: "Threshold",
-    color: [
+  columns: {
+    column: [
       {
-        code: "#FFC533",
-        maxvalue: "50"
+        id: "EN",
+        label: "English"
       },
       {
-        code: "#F2726F",
-        maxvalue: "100",
-        label: "Threshold"
+        id: "MT",
+        label: "Maths"
+      },
+      {
+        id: "PY",
+        label: "Physics"
+      },
+      {
+        id: "HS",
+        label: "History"
+      },
+      {
+        id: "EC",
+        label: "Economics"
+      }
+    ]
+  },
+  rows: {
+    row: [
+      {
+        id: "JA",
+        label: ""
+      },
+      {
+        id: "EM",
+        label: ""
+      },
+      {
+        id: "JY",
+        label: ""
+      },
+      {
+        id: "WL",
+        label: ""
       }
     ]
   },
   chart: {
-
-    "caption": "",
-    "subcaption": "",
-    "animation": "0",
-    "plotToolText": "<div><b>$label</b><br/></div>",
-    //<b>Percentage: </b>$svalue%</div>",
-    "horizontalPadding": "0",
-    "verticalPadding": "0",
-    "plotborderthickness": ".5",
-    "plotbordercolor": "b3b3b3",
-    "chartBottomMargin": "0",
-    "labelGlow": "0",
-    "showLegend": "1",
-    "legendpadding": "0",
-    "legenditemfontcolor": "4b4b4b",
-    "legendScaleLineThickness": "0",
-    "legendCaptionFontSize": "10",
-    "legendCaptionFontBold": "1",
-    "legendspreadfactor": ".7",
-    "legendaxisbordercolor": "bfbfbf",
-    "labelFontColor": "000000",
-    "labelFontSize": "9",
-    "showchildlabels": "1",
-    "algorithm": "sliceanddice",
-    "slicingmode": "alternate",
-    "theme": "fusion",
-    "legendCaption": ""
-    // algorithm: "",
-    // caption: "",
-    // subcaption: "",
-    // theme: "fusion",
-    // legendcaption: "",
-    // plottooltext:
-    //   "<b>$label</b><br>Percentage: <b>$sValue %</b><br>Amount<b>$dataValue rs</b>"
+    theme: "fusion",
+    caption: "",
+    subcaption: "",
+    xaxisname: "",
+    yaxisname: "",
+    showvalues: "1",
+    valuefontcolor: "#ffffff",
+    plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>"
   }
 };
 
 
 
-  this.dataspenderwise = {
-    colorrange: {
-      gradient: "1",
-      minvalue: "0",
-      startlabel: "Poor",
-      palettecolors: "#002d57, #59748f",
-      'paletteColors' :'002d57, 59748f',
-      endlabel: "Outstanding"
-    },
-    dataset: [
-      {
-        data: this.dataSpenderWise
-      }
-    ],
-    columns: {
-      column: this.columnList
-    },
-    rows: {
-      row: this.rowList
-    },
-    chart: {
-      theme: "fusion",
-      caption: "",
-      subcaption: "",
-      xaxisname: "",
-      yaxisname: "",
-      showvalues: "1",
-      valuefontcolor: "#ffffff",
-      plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>"
-    }
-  };
 
-  this.dataExact = {
-    colorrange: {
-      gradient: "1",
-      minvalue: "0",
-      startlabel: "Poor",
-      palettecolors: "#002d57, #59748f",
-      'paletteColors' :'002d57, 59748f',
-      endlabel: "Outstanding"
-    },
-    dataset: [
-      {
-        data: [
-          {
-            rowid: "JA",
-            columnid: "EN",
-            value: "3.7"
-          },
-          {
-            rowid: "JA",
-            columnid: "PY",
-            value: "4.3"
-          },
-          {
-            rowid: "JA",
-            columnid: "MT",
-            value: "4.0"
-          },
-          {
-            rowid: "JA",
-            columnid: "HS",
-            value: "3.3"
-          },
-          {
-            rowid: "JA",
-            columnid: "EC",
-            value: "3.1"
-          },
-          {
-            rowid: "EM",
-            columnid: "EN",
-            value: "3.6"
-          },
-          {
-            rowid: "EM",
-            columnid: "PY",
-            value: "4.0"
-          },
-          {
-            rowid: "EM",
-            columnid: "MT",
-            value: "3.2"
-          },
-          {
-            rowid: "EM",
-            columnid: "HS",
-            value: "2.6"
-          },
-          {
-            rowid: "EM",
-            columnid: "EC",
-            value: "3.2"
-          },
-          {
-            rowid: "JY",
-            columnid: "EN",
-            value: "3.8"
-          },
-          {
-            rowid: "JY",
-            columnid: "PY",
-            value: "4.1"
-          },
-          {
-            rowid: "JY",
-            columnid: "MT",
-            value: "3.9"
-          },
-          {
-            rowid: "JY",
-            columnid: "HS",
-            value: "2.6"
-          },
-          {
-            rowid: "JY",
-            columnid: "EC",
-            value: "2"
-          },
-          {
-            rowid: "WL",
-            columnid: "EN",
-            value: "3.4"
-          },
-          {
-            rowid: "WL",
-            columnid: "PY",
-            value: "3.2"
-          },
-          {
-            rowid: "WL",
-            columnid: "MT",
-            value: "4"
-          },
-          {
-            rowid: "WL",
-            columnid: "HS",
-            value: "2.5"
-          },
-          {
-            rowid: "WL",
-            columnid: "EC",
-            value: "3.1"
-          }
-        ]
-      }
-    ],
-    columns: {
-      column: [
-        {
-          id: "EN",
-          label: "English"
-        },
-        {
-          id: "MT",
-          label: "Maths"
-        },
-        {
-          id: "PY",
-          label: "Physics"
-        },
-        {
-          id: "HS",
-          label: "History"
-        },
-        {
-          id: "EC",
-          label: "Economics"
-        }
-      ]
-    },
-    rows: {
-      row: [
-        {
-          id: "JA",
-          label: ""
-        },
-        {
-          id: "EM",
-          label: ""
-        },
-        {
-          id: "JY",
-          label: ""
-        },
-        {
-          id: "WL",
-          label: ""
-        }
-      ]
-    },
-    chart: {
-      theme: "fusion",
-      caption: "",
-      subcaption: "",
-      xaxisname: "",
-      yaxisname: "",
-      showvalues: "1",
-      valuefontcolor: "#ffffff",
-      plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>"
-    }
-  };
 
-  this.checkAny= {
-    "chart": {
-      "caption": "Top-selling car manufacturers",
-      "subcaption": "Europe - 2015",
-      "animation": "0",
-      "plotToolText": "<div><b>$label</b><br/><b>Cars Sold: </b>$datavalue<br/><b>Growth: </b>$svalue%</div>",
-      "horizontalPadding": "0",
-      "verticalPadding": "0",
-      "plotborderthickness": ".5",
-      "plotbordercolor": "b3b3b3",
-      "chartBottomMargin": "0",
-      "labelGlow": "0",
-      "showLegend": "1",
-      "legendpadding": "0",
-      "legenditemfontcolor": "4b4b4b",
-      "legendScaleLineThickness": "0",
-      "legendCaptionFontSize": "10",
-      "legendCaptionFontBold": "1",
-      "legendspreadfactor": ".7",
-      "legendaxisbordercolor": "bfbfbf",
-      "labelFontColor": "000000",
-      "labelFontSize": "9",
-      "showchildlabels": "1",
-      "algorithm": "sliceanddice",
-      "slicingmode": "alternate",
-      "theme": "fusion",
-      "legendCaption": "Growth in sales - Compared to previous year"
-    },
-    "data": [{
-      "label": "Manufacturers",
-      "value":0,
-      "fillcolor": "#999999",
 
-        "data": this.dataspenderwise
-    }],
-    "colorrange": {
-      "mapbypercent": "1",
-      "gradient": "1",
-      "minvalue": "-30",
-      "code": "dc0018",
-      "startlabel": "Decline",
-      "endlabel": "Rise",
-      "color": [{
-        "code": "ffffff",
-        "maxvalue": "0",
-        "label": "Static"
-      }, {
-        "code": "6fcd00",
-        "maxvalue": "100"
-      }]
-    }
+
+
+
+})
+}
+
+getListComerWise:any=[]
+dataCustomerWise:any=[]
+getpbiCustomerWise(){
+  let cmpcode=1
+  let year='2022-02-20'
+  this.getListComerWise=[]
+  this.dataCustomerWise=[]
+  this.columnList=[]
+  this.rowList=[]
+  this.Loader=true
+  this.HTTP.getPbiExpenseCustomerWise(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+this.Loader=false
+debugger
+    this.getListComerWise=  arg.data.table
+console.log('getListSpenderWise',arg.data.table)
+
+  var getColor=[]
+
+  for(var i=0;i<this.getListComerWise.length;i++)
+  {
+    getColor.push(this.setColor[i])
   }
+  var sum=0
+  for(var i=0;i<this.getListComerWise.length;i++)
+  {
 
+this.dataCustomerWise.push({"label":this.getListComerWise[i].firstname+'<br/>'+this.getListComerWise[i].amount.toFixed(2)+'<br/>'+this.getListComerWise[i].percentage.toFixed(2)+'%',
+"svalue":this.getListComerWise[i].percentage.toFixed(2),
+"value":this.getListComerWise[i].amount.toFixed(2)})
+sum+=this.getListComerWise[i].amount.toFixed(2)
 
-
-
-
-
-
-  })
+}
+this.checkAny= {
+data: [
+{
+  label: "",
+  value: sum+sum+sum,
+  data: [
+    {
+      label: "",
+      value:sum,
+      data:this.dataCustomerWise
+    }
+  ]
+}
+],
+colorrange: {
+mapbypercent: "0",
+gradient: "1",
+minvalue: "0",
+code: "#62B58F",
+startlabel: "Ideal",
+endlabel: "Threshold",
+color: [
+  {
+    code: "#FFC533",
+    maxvalue: "50"
+  },
+  {
+    code: "#F2726F",
+    maxvalue: "100",
+    label: "Threshold"
   }
+]
+},
+chart: {
+
+"caption": "",
+"subcaption": "",
+"animation": "0",
+"plotToolText": "<div><b>$label</b><br/></div>",
+//<b>Percentage: </b>$svalue%</div>",
+"horizontalPadding": "0",
+"verticalPadding": "0",
+"plotborderthickness": ".5",
+"plotbordercolor": "b3b3b3",
+"chartBottomMargin": "0",
+"labelGlow": "0",
+"showLegend": "1",
+"legendpadding": "0",
+"legenditemfontcolor": "4b4b4b",
+"legendScaleLineThickness": "0",
+"legendCaptionFontSize": "10",
+"legendCaptionFontBold": "1",
+"legendspreadfactor": ".7",
+"legendaxisbordercolor": "bfbfbf",
+"labelFontColor": "000000",
+"labelFontSize": "9",
+"showchildlabels": "1",
+"algorithm": "sliceanddice",
+"slicingmode": "alternate",
+"theme": "fusion",
+"legendCaption": ""
+// algorithm: "",
+// caption: "",
+// subcaption: "",
+// theme: "fusion",
+// legendcaption: "",
+// plottooltext:
+//   "<b>$label</b><br>Percentage: <b>$sValue %</b><br>Amount<b>$dataValue rs</b>"
+}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+}
+
   getListDesignation:any=[]
   dataDesignation:any=[]
   datades31:any
@@ -5023,14 +5096,28 @@ this.dataVendorBenchBillEmployeeCountVsExpense.push({'value':this.getListProject
    this.dataprojectDeployeeVsBenchBillEmployeeCountVsExpense = {
     chart: {
       'paletteColors':getColor.toString(),
-      caption: "",
-      yaxisname: "",
-      subcaption: "",
-      showhovereffect: "1",
-      numbersuffix: "",
-      drawcrossline: "1",
-      //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
-      theme: "fusion",
+      // caption: "",
+      // yaxisname: "",
+      // subcaption: "",
+      // showhovereffect: "1",
+      // numbersuffix: "",
+      // drawcrossline: "1",
+      // //plottooltext: "<b>$dataValue</b> of youth were on $seriesName",
+      // theme: "fusion",
+
+
+      "caption": "",
+        "subCaption": "",
+        "pYAxisName": "",
+        "sYAxisName": " ",
+        "numberPrefix": "",
+        "sNumberSuffix": "",
+        "sYAxisMaxValue": "50",
+        "showValues": "1",
+        "numVisiblePlot": "12",
+        "flatScrollBars": "1",
+        "scrollheight": "20",
+        "theme": "fusion"
 
 
     },
@@ -7637,6 +7724,7 @@ this.getpbiPeopleDesignation()
 this.getpbiExpenseDepartment()
 this.getpbiExpense()
 this.getpbiSpenderWise()
+this.getpbiCustomerWise()
 this.getpbiPeopleDepartment()
 this.getpbiPeopleLocation()
 this.getpbiPeopleAge()
