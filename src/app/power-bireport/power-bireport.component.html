@@ -3865,12 +3865,12 @@
       </ejs-schedule> -->
           
     
-      <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList' rowHeight='38' [allowSelection]='true'
+      <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList'  [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
-                  <e-column field='employeeName' width="100px" [disableHtmlEncode]="false" headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='employeeName' width="200px" [disableHtmlEncode]="false" headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                   </e-column>
                   <!-- <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip'>
@@ -3884,38 +3884,39 @@
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
                     </ng-template>
                   </e-column> -->
-                    <e-column field='1'  width="100px"  headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='2'  width="100px"  headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='1' height="38px" width="100px"  headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='2' height="38px"  width="100px"  headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                    <e-column field='3'  width="100px"  headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='4' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='5' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='6' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='7' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='8' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='9' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='10' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='11' headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='12' headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='13' headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='14' headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='15' headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='16' headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='17' headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='18' headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='19' headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='20' headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='21' headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='22' headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='23' headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='24' headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column> 
-                    <e-column field='25' headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='26' headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='27' headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='28' headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='29' headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='30' headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='31' headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='3' height="38px" width="100px"  headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='4' width="100px"  headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='5' height="38px" width="100px"  headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='6' height="38px" width="100px"  headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='7' height="38px" width="100px"  headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='8' height="38px" width="100px"  headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='9' height="38px" width="100px"  headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='10' height="38px" width="100px"  width="100px"  headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='11' height="38px" width="100px"  headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='12' height="38px" width="100px"  headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='13' height="38px" width="100px"  headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='14'height="38px" width="100px"  headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='15' height="38px" width="100px" headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='16'height="38px" width="100px" headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='17'height="38px" width="100px" headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='18'height="38px" width="100px" headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    
+                    <e-column field='19' height="38px" height="38px" width="100px"  headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='20' height="38px" width="100px"  headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='21' height="38px" width="100px"  headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='22' height="38px" width="100px"  headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='23' height="38px" width="100px"  headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='24' height="38px" width="100px"  headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column> 
+                    <e-column field='25' height="38px" width="100px"  headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='26' height="38px" width="100px"  headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='27' height="38px" width="100px"  headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='28' height="38px" width="100px"  headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='29' height="38px" width="100px"  headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='30' height="38px" width="100px"  headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='31' height="38px" width="100px" height="100px" headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
                 </e-columns>
 
 
