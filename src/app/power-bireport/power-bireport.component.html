@@ -3397,7 +3397,7 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{serviceProviderCurrentYearYoy | number :'1.2-2'}} |
+                        <p><span>{{serviceProviderPreviousYearYoy | number :'1.2-2'}} |
 
                         </span><span>{{serviceProviderPreviousYearGrowthYoyPercent | number :'1.2-2'}}%
 
@@ -3408,7 +3408,7 @@
                         <img src="{{serviceProviderCurrentYearGrowthYoyPercentimg}}">
 
                       </p>
-                      <p><span>{{serviceProviderPreviousYearYoy | number :'1.2-2'
+                      <p><span>{{serviceProviderPreviousYearYoy | number :'1.2-2'}}
                       </span><span>{{serviceProviderPreviousYearGrowthYoyPercent | number :'1.2-2'}}%
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth">
@@ -3870,7 +3870,7 @@
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
-                  <e-column field='EmployeeName' [disableHtmlEncode]="false" headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='employeeName' width="100px" [disableHtmlEncode]="false" headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                   </e-column>
                   <!-- <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip'>
@@ -3884,10 +3884,10 @@
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
                     </ng-template>
                   </e-column> -->
-                    <e-column field='1' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='2' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='1'  width="100px"  headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='2'  width="100px"  headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                    <e-column field='3' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='3'  width="100px"  headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
                     <e-column field='4' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
                     <e-column field='5' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
                     <e-column field='6' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
