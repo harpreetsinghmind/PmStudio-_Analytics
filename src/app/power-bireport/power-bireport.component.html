@@ -3343,13 +3343,13 @@
                       <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{totalExpenseCurrentYear}} |</span><span>{{totalExpenseCurrentYearGrowthPercent}}%</span>
+                        <p><span>{{totalExpenseCurrentYear | number :'1.2-2'}} |</span><span>{{totalExpenseCurrentYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{totalExpenseCurrentYearGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{totalExpensePreviousYear}} |</span><span>
-                          {{totalExpensePreviousYearGrowthPercent}}%</span>
+                        <p><span>{{totalExpensePreviousYear | number :'1.2-2'}}|</span><span>
+                          {{totalExpensePreviousYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{totalExpensePreviousYearGrowthPercentimg}}">
 
@@ -3357,14 +3357,14 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{totalExpenseCurrentYearYoy}} |</span>
-                          <span>{{totalExpenseCurrentYearYoyGrowthPercent}}%</span>
+                        <p><span>{{totalExpenseCurrentYearYoy | number :'1.2-2'}} |</span>
+                          <span>{{totalExpenseCurrentYearYoyGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalExpenseCurrentYearYoyGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{totalExpensePreviousYearYoy}} |</span>
-                          <span>{{totalExpensePreviousYearYoyGrowthPercent}}%</span>
+                        <p><span>{{totalExpensePreviousYearYoy | number :'1.2-2'}} |</span>
+                          <span>{{totalExpensePreviousYearYoyGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalExpensePreviousYearYoyGrowthPercentimg}}">
 
@@ -3381,14 +3381,14 @@
                         <p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{serviceProviderCurrentYear}} |</span>
-                          <span>{{serviceProviderCurrentYearGrowthPercent}}%</span>
+                        <p><span>{{serviceProviderCurrentYear | number :'1.2-2'}} |</span>
+                          <span>{{serviceProviderCurrentYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{serviceProviderCurrentYearGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{serviceProviderPreviousYear}} |</span>
-                          <span>{{serviceProviderPreviousYearGrowthPercent}}%</span>
+                        <p><span>{{serviceProviderPreviousYear | number :'1.2-2'}} |</span>
+                          <span>{{serviceProviderPreviousYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
 
@@ -3397,9 +3397,9 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{serviceProviderCurrentYearYoy}} |
+                        <p><span>{{serviceProviderCurrentYearYoy | number :'1.2-2'}} |
 
-                        </span><span>{{serviceProviderPreviousYearGrowthYoyPercent}}%
+                        </span><span>{{serviceProviderPreviousYearGrowthYoyPercent | number :'1.2-2'}}%
 
                         </span><span class="glyphicon glyphicon-arrow-down downgrowth">
 
@@ -3408,9 +3408,8 @@
                         <img src="{{serviceProviderCurrentYearGrowthYoyPercentimg}}">
 
                       </p>
-                      <p><span>{{serviceProviderPreviousYearYoy}} |
-
-                      </span><span>{{serviceProviderPreviousYearGrowthYoyPercent}}%
+                      <p><span>{{serviceProviderPreviousYearYoy | number :'1.2-2'
+                      </span><span>{{serviceProviderPreviousYearGrowthYoyPercent | number :'1.2-2'}}%
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth">
 
@@ -3430,9 +3429,9 @@
                       <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{customerExpenseCurrentYear}} |
+                        <p><span>{{customerExpenseCurrentYear | number :'1.2-2'}} |
 
-                        </span><span>{{customerExpenseCurrentYearGrowth}}%
+                        </span><span>{{customerExpenseCurrentYearGrowth | number :'1.2-2'}}%
 
                         </span><span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3440,8 +3439,8 @@
                         <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
 
                       </p>
-                        <p><span>{{customerExpensePreviousYear}} |</span>
-                          <span>{{customerExpensePreviousYearGrowthPercent}}%</span>
+                        <p><span>{{customerExpensePreviousYear | number :'1.2-2'}} |</span>
+                          <span>{{customerExpensePreviousYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{customerExpensePreviousYearGrowthPercentimg}}">
 
@@ -3449,15 +3448,15 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{customerExpenseCurrentYearYoy}} |</span>
-                          <span>{{customerExpenseCurrentYearGrowthYoyPercent}}%
+                        <p><span>{{customerExpenseCurrentYearYoy | number :'1.2-2'}} |</span>
+                          <span>{{customerExpenseCurrentYearGrowthYoyPercent | number :'1.2-2'}}%
 
                           </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{customerExpenseCurrentYearGrowthYoyPercentimg}}">
 
                         </p>
-                        <p><span>{{customerExpensePreviousYearYoy}} |</span>
-                          <span>{{customerExpensePreviousYearGrowthYoyPercent}}%
+                        <p><span>{{customerExpensePreviousYearYoy | number :'1.2-2'}} |</span>
+                          <span>{{customerExpensePreviousYearGrowthYoyPercent | number :'1.2-2'}}%
 
                           </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{customerExpensePreviousYearGrowthYoyPercentimg}}">
@@ -3768,38 +3767,57 @@
               </div>
 
               <div class="table-responsive">
-                <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+                <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='actionableTimeSheetList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
-                  <e-column field='uSername' [disableHtmlEncode]="false" headerText='Name <br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                   </e-column>
-                  <e-column field='reportname' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip'>
                     <ng-template>
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
                     </ng-template>
 
                   </e-column>
-                  <e-column field='receiptdate' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                    <ng-template>
+                  <e-column field='email' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                    <!-- <ng-template>
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
-                    </ng-template>
+                    </ng-template> -->
                   </e-column>
-                    <e-column field='receiptNo' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='category' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='one' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='two' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                    <e-column field='amount' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-
-
+                    <e-column field='three' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='four' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='five' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='six' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='seven' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='eight' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='nine' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='ten' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='eleven' headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twelve' headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='threeten' headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='fourteen' headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='fifteen' headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='sixteen' headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='seventeen' headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='eighteen' headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='nineteen' headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twenty' headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentyone' headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentytwo' headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentythree' headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentyfour' headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column> 
+                    <e-column field='twentyfive' headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentysix' headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentyseven' headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentyeight' headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='twentynine' headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='thirty' headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='thirtyone' headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
                 </e-columns>
 
 
@@ -3827,10 +3845,10 @@
           </div>
 
           <div class="table-responsive" style="margin-top: 12px;">
-            <ejs-schedule #scheduleObj width='100%' cssClass='timeline-resource-grouping' height='650px'
+            <!-- <ejs-schedule #scheduleObj width='100%' cssClass='timeline-resource-grouping' height='650px'
         [selectedDate]="selectedDate" [group]="group" [workDays]="workDays">
         <e-resources>
-          <e-resource field='ProjectId' title='Choose Project' [dataSource]='newdata'
+          <e-resource field='ProjectId' title='Choose Project' [dataSource]='actionableCheckInCheckOutList'
             [allowMultiple]='allowMultiple' name='Projects' textField='text' idField='id' colorField='color'>
           </e-resource>
           <e-resource field='TaskId' title='Category' [dataSource]='newdata' [allowMultiple]='allowMultiple'
@@ -3844,8 +3862,66 @@
           <e-view option="TimelineMonth"></e-view>
           <e-view option="Agenda"></e-view>
         </e-views>
-      </ejs-schedule>
-          </div>
+      </ejs-schedule> -->
+          
+    
+      <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList' rowHeight='38' [allowSelection]='true'
+                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                 [allowPaging]='true' [allowExcelExport]='true' >
+                <e-columns>
+                  <e-column field='EmployeeName' [disableHtmlEncode]="false" headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
+
+                  </e-column>
+                  <!-- <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                    <ng-template>
+                      <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
+                    </ng-template>
+
+                  </e-column> -->
+                  <!-- <e-column field='email' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                    <ng-template>
+                      <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
+                    </ng-template>
+                  </e-column> -->
+                    <e-column field='1' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='2' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+
+                    <e-column field='3' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='4' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='5' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='6' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='7' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='8' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='9' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='10' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='11' headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='12' headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='13' headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='14' headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='15' headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='16' headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='17' headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='18' headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='19' headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='20' headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='21' headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='22' headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='23' headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='24' headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column> 
+                    <e-column field='25' headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='26' headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='27' headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='28' headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='29' headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='30' headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='31' headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                </e-columns>
+
+
+              </ejs-grid>
+    
+    </div>
         </div>
 
       </div>

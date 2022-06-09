@@ -2560,7 +2560,8 @@ export class PowerBIReportComponent implements OnInit {
     this.getPbiProjectInNumberInCost()
     this.getPbiProjectInNumberInCostLeave()
     this.getpbiExpenseProject()
-
+   this.pbiActionableTimesheetList()
+   this.pbiActionableCheckInCheckOutList()
   }
   ngOnInit(): void {
     this.departmentId=0
@@ -2703,8 +2704,37 @@ this.getPbiProjectInNumberInCost()
 this.getPbiProjectInNumberInCostLeave()
 this.getpbiExpenseProject()
 this.getDepartmentListDropdown()
+this.pbiActionableTimesheetList()
+this.pbiActionableCheckInCheckOutList()
 
   }
+actionableTimeSheetList:any=[]
+pbiActionableTimesheetList()
+{
+  this.Loader=true
+  this.HTTP.getpbiActionableTimeSheetList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+
+    this.actionableTimeSheetList=  arg.data.table
+console.log('actionableTimeSheetList',arg.data.table)
+
+
+    this.Loader=false
+  })
+}
+actionableCheckInCheckOutList:any=[]
+pbiActionableCheckInCheckOutList()
+{
+  this.Loader=true
+  this.actionableCheckInCheckOutList=[]
+  this.HTTP.getpbiActionableCheckInCheckOutList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+debugger
+    this.actionableCheckInCheckOutList=  arg.data.table
+console.log('actionableTimeSheetList',arg.data.table)
+
+
+    this.Loader=false
+  })
+}
 
   getDepartmentListDropdown()
   {
@@ -7756,6 +7786,8 @@ this.getPbiProjectInNumber()
 this.getPbiProjectInNumberInCost()
 this.getPbiProjectInNumberInCostLeave()
 this.getpbiExpenseProject()
+this.pbiActionableTimesheetList()
+this.pbiActionableCheckInCheckOutList()
 
   }
   getResourcesDetail:any=[]
