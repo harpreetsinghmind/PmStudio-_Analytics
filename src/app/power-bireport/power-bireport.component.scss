@@ -1199,6 +1199,9 @@ p.context {
     overflow: auto;
   }
 
+
+  .monthCheckStatus button{ border: none; border-radius: 5px; font-weight: 500;}
+
   @media screen and (max-width: 700px){
 
     .popup{
