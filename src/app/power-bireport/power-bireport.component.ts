@@ -58,8 +58,16 @@ export class PowerBIReportComponent implements OnInit {
   openModal() {
     this.display = "block";
   }
+  displayFilter = "none";
+  openModalFilter() {
+    this.displayFilter = "block";
+  }
+
+
+
   onCloseHandled() {
     this.display = "none";
+    this.displayFilter = "none";
   }
   newdata = [
     {
@@ -3679,7 +3687,7 @@ this.dataExpenselist.push({"label":'Other','value':100-sum})
   top:any
 testList:any=[]
 checkAny:any=[]
-  
+
   getpbiSpenderWise(){
     let cmpcode=1
     let year='2022-02-20'
@@ -6320,7 +6328,7 @@ else{
       this.serviceProviderCurrentYearGrowthYoyPercentimg=this.upUrl
     }
     this.serviceProviderPreviousYearGrowthYoy=this.getListExpenseDetailList[0].serviceProviderPreviousYearGrowthYoy
-  
+
     this.serviceProviderPreviousYearYoy=this.getListExpenseDetailList[0].serviceProviderPreviousYearYoy
     this.serviceProviderPreviousYearGrowthYoyPercent=(this.serviceProviderPreviousYearYoy-this.serviceProviderPreviousYearGrowthYoy)*100/this.serviceProviderPreviousYearGrowthYoy
     if(this.serviceProviderPreviousYearGrowthYoy==0)
@@ -7510,8 +7518,8 @@ this.onBenchYoyYear=this.getProjectListData[0].onBenchYoyYear
  {
  this.onBenchYoyYearPercentGrowth=0
  }
- 
- 
+
+
  if(this.onBenchYoyYearPercentGrowth>=0)
  {
    this.imgonBenchYoyYearPercentGrowth=this.downUrl
@@ -7519,7 +7527,7 @@ this.onBenchYoyYear=this.getProjectListData[0].onBenchYoyYear
  else{
    this.imgonBenchYoyYearPercentGrowth=this.upUrl
  }
- 
+
  this.venderYoyYear=this.getProjectListData[0].venderYoyYear
 
  this.venderYoyYearPercent=this.getProjectListData[0].venderYoyYearPercent
@@ -7530,8 +7538,8 @@ this.onBenchYoyYear=this.getProjectListData[0].onBenchYoyYear
  {
  this.venderYoyYearPercentGrowth=0
  }
- 
- 
+
+
  if(this.venderYoyYearPercentGrowth>=0)
  {
    this.imgvenderYoyYearPercentGrowth=this.downUrl
