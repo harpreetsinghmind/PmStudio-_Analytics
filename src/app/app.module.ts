@@ -15,7 +15,7 @@ import { UpdatePasswordComponent } from './updatepassword/updatepassword.compone
 import { ForgotPasswordComponent } from './forgotpassword/forgotpassword.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { DatePickerModule,CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
@@ -81,6 +81,7 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme,PowerCharts,TreeMap,
     DatePickerModule,
     ScheduleAllModule,
     FormsModule,
+    CalendarModule,
     GridAllModule,
     ProgressBarModule,
     PagerModule,

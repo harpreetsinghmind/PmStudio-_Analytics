@@ -946,10 +946,10 @@ getpbiActionableTimeSheetList(year,cmpcode,depid): Observable<any> {
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-//const URL=`${environment.apiUrl}pbiPeople/getActionableTimeSheetList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+const URL=`${environment.apiUrl}pbiPeople/getActionableTimeSheetList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getActionableTimeSheetList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
-const URL ="http://localhost:63000/api/pbiPeople/getActionableTimeSheetList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+//const URL ="http://localhost:63000/api/pbiPeople/getActionableTimeSheetList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
  
   return this.httpClient.get(URL,{headers:headers})
  
@@ -961,10 +961,10 @@ getpbiActionableCheckInCheckOutList(year,cmpcode,depid): Observable<any> {
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-//const URL=`${environment.apiUrl}pbiPeople/getActionableCheckInCheckOutList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+const URL=`${environment.apiUrl}pbiPeople/getActionableCheckInCheckOutList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
-const URL ="http://localhost:63000/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+//const URL ="http://localhost:63000/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
  
   return this.httpClient.get(URL,{headers:headers})
  

@@ -6,6 +6,7 @@ import { dataBinding, GroupModel } from '@syncfusion/ej2-angular-schedule';
 import { ToasterService } from '../toaster/toaster.service';
 import { GlobalServiceService } from '../global-service.service';
 import { AuthServiceService } from '../auth-service.service';
+import { CalendarComponent } from "@syncfusion/ej2-angular-calendars";
 
 import { min } from 'moment';
 import { DatePipe } from '@angular/common'
@@ -31,6 +32,8 @@ export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
   @ViewChild('overviewgrid')
   public grids: GridComponent;
+  @ViewChild("calendarObj")
+  public calendarobj: CalendarComponent;
   @ViewChild('getid')
   public gridsFor: GridComponent;
   public workDays: number[] = [0, 1, 2, 3, 4, 5];
@@ -2706,7 +2709,6 @@ this.getpbiExpenseProject()
 this.getDepartmentListDropdown()
 this.pbiActionableTimesheetList()
 this.pbiActionableCheckInCheckOutList()
-
   }
 actionableTimeSheetList:any=[]
 pbiActionableTimesheetList()
@@ -2726,13 +2728,23 @@ pbiActionableCheckInCheckOutList()
 {
   this.Loader=true
   this.actionableCheckInCheckOutList=[]
+  if(this.checkDate==0)
+  {
+  var date=this.setDate
+  }
+  else
+  {
+    date=this.isDate
+  }
   this.HTTP.getpbiActionableCheckInCheckOutList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 debugger
+this.Loader=false
+this.checkDate=0
+
     this.actionableCheckInCheckOutList=  arg.data.table
 console.log('actionableTimeSheetList',arg.data.table)
 
 
-    this.Loader=false
   })
 }
 
@@ -6005,6 +6017,121 @@ this.endDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].
 
 
     })
+  }
+
+  previouslySelectedValue:any
+  checkDate:any=0
+  calendarName: any = "Show Calendar"
+  months: any = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  onValueChange(args: any): void {
+debugger;
+    //this.utilizationReportList = []
+
+    //this.utilizationReportListsSecond = []
+    this.previouslySelectedValue = args.value;
+    var mon = new Date(this.previouslySelectedValue)
+    var monthName = this.months[mon.getMonth()];
+    this.calendarName = monthName
+    this.currentDate = this.datepipe.transform(new Date(this.previouslySelectedValue), 'yyyy-MM-dd');
+    this.isDate = this.currentDate
+    this.checkDate=1
+
+
+   // this.getResourceUtilizationReportList();
+   this.pbiActionableCheckInCheckOutList()
+    this.show = false
+  }
+  show: boolean = false
+  showCalendar() {
+    debugger
+    this.show = true
+
+  }
+  public dateValue: Object = new Date();
+
+  currentDate: any;
+  isDate:any
+  clickme(x) {
+    if (x == 'add') {
+      debugger;
+      var dateValue = new Date(this.currentDate);
+
+      var dateAfterChange = dateValue.setDate(dateValue.getDate() + 1);
+      var mon = new Date(dateAfterChange)
+      var monthName = this.months[mon.getMonth()];
+      this.calendarName = monthName
+      this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
+      this.isDate = this.currentDate
+    this.checkDate=1
+
+      this.pbiActionableCheckInCheckOutList()
+
+     // this.getResourceUtilizationReportList();
+
+
+    }
+    if (x == 'remove') {
+      var dateValue = new Date(this.currentDate);
+
+      var dateAfterChange = dateValue.setDate(dateValue.getDate() - 1);
+      var mon = new Date(dateAfterChange)
+      var monthName = this.months[mon.getMonth()];
+      this.calendarName = monthName
+      this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
+      this.isDate = this.currentDate
+    this.checkDate=1
+
+      this.pbiActionableCheckInCheckOutList()
+
+     // this.getResourceUtilizationReportList();
+
+
+    }
+
+    if (x == 'addweek') {
+
+
+      var dateValue = new Date(this.currentDate);
+      //d.setMonth(d.getMonth() - 3);
+
+      var dateAfterChange = dateValue.setMonth(dateValue.getMonth() + 1);
+      var mon = new Date(dateAfterChange)
+      var monthName = this.months[mon.getMonth()];
+      this.calendarName = monthName
+      this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
+      this.isDate = this.currentDate
+      this.checkDate=1
+
+      //this.getResourceUtilizationReportList();
+      this.pbiActionableCheckInCheckOutList()
+
+
+
+    }
+
+    if (x == 'removeweek') {
+
+     // this.utilizationReportList = []
+
+      //this.utilizationReportListsSecond = []
+      var dateValue = new Date(this.currentDate);
+
+
+
+      var dateAfterChange = dateValue.setMonth(dateValue.getMonth() - 1);
+      var mon = new Date(dateAfterChange)
+      var monthName = this.months[mon.getMonth()];
+      this.calendarName = monthName
+      this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
+      this.isDate = this.currentDate
+      this.checkDate=1
+
+    ///  this.getResourceUtilizationReportList();
+
+    this.pbiActionableCheckInCheckOutList()
+
+
+    }
   }
   getListProjectDetailPAndLGridList:any=[]
   getProjectProjectDetailPAndLGridList()

@@ -22,11 +22,11 @@
     "strict": true,
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
-    "target": "es5",
+    "target": "es2020",
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
     ],"typeRoots": [
       "node_modules/@types",

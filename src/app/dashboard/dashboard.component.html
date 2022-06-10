@@ -6,6 +6,7 @@
         </div>
 
         <div class="col-md-2 datefilter">
+          <!-- <ejs-calendar></ejs-calendar> -->
             <select #productvalue (change)="changedropdown(productvalue.value,'productname')" class="form-control">
                 <option value="">Select Product</option>
                 <option *ngFor="let item of obu" [value]="item">{{item}} </option>
