@@ -5538,11 +5538,11 @@ this.dataVendorBenchBillCustomerVsService.push({'value':this.getListProjectVsBen
     ],
     dataset: [
       {
-        seriesname: "Employee Count",
+        seriesname: "Customer",
         data:this.dataProjectdeployeeBillCustomerVsService
       },
       {
-        seriesname: "Expense",
+        seriesname: "Service Provider",
         data:this.dataVendorBenchBillCustomerVsService
       },
 
