@@ -32,7 +32,8 @@ export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
   @ViewChild('overviewgrid')
   public grids: GridComponent;
-  
+  @ViewChild('overviewgridInsight')
+  public gridsInsight: GridComponent;
   @ViewChild('overviewgridcheck')
   public gridcheck: GridComponent;
   @ViewChild('overviewgridset')
@@ -68,8 +69,24 @@ export class PowerBIReportComponent implements OnInit {
     this.displayFilter = "block";
   }
 
+  timeSheetValue:any
+  checkInValue:any
+  filterValue()
+  {
+this.pbiActionableCheckInCheckOutList()
+  }
+  timeSheetCondition:any
+  checkInCondition:any
+  checkInChangeValue(e)
+{
+  this.checkInCondition=e.target.value
 
+}
+timeSheetChangeValue(e)
+{
+  this.timeSheetCondition=e.target.value
 
+}
   onCloseHandled() {
     this.display = "none";
     this.displayFilter = "none";
@@ -2578,6 +2595,7 @@ export class PowerBIReportComponent implements OnInit {
     this.getpbiExpenseProject()
    this.pbiActionableTimesheetList()
    this.pbiActionableCheckInCheckOutList()
+   this.pbiActionableInsightList()
   }
   ngOnInit(): void {
     this.departmentId=0
@@ -2590,6 +2608,8 @@ let getdate = new Date(); // 2020-06-21.
 this.getDate=latest_date
 let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
 this.monthName=shortMonth
+this.calendarName=this.monthName
+
     this.filterSettings = { type: "Menu" };
     this.filter = { type: "CheckBox" };
     this.Planwk1 = [
@@ -2722,6 +2742,7 @@ this.getpbiExpenseProject()
 this.getDepartmentListDropdown()
 this.pbiActionableTimesheetList()
 this.pbiActionableCheckInCheckOutList()
+this.pbiActionableInsightList()
   }
   actionComplete(args: any) {
     debugger
@@ -2856,28 +2877,129 @@ this.pbiActionableCheckInCheckOutList()
 
   }
   onGridDataBound(args) {
+    debugger
     // alert(args);
-    // for (const col of this.gridcheck.columns) {
-    //   debugger;
-    //   switch((col as any).field) {
-    //     case 'idTipoFinanciacion':
-    //     case 'tin':
-    //     case 'tae':
-    //     case 'porcentajeGastosApertura':
-    //     case 'gastosApertura':
-    //     case 'cuota':
-    //     case 'primeraCuota':
-    //        (col as any).visible = false;
-    //       break;
-    //   }
-    // }
+  if(this.refreshGrid==true)
+  {
+    var date = new Date(this.isDate)
+    var aa = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    var d = aa.getDate()
+    var monthNumber = aa.getDate() + 1 //29
+    var monthNumbers = aa.getDate() + 2 //30
+    var monthNumbert = aa.getDate() + 3 //31
+    this.gridcheck.getColumnByField('29').visible = true;
 
-    this.gridcheck.refreshColumns();
+    this.gridcheck.getColumnByField('30').visible = true;
+    this.gridcheck.getColumnByField('31').visible = true;
+    //var node=document.getElementById("overviewgrid")
+    if (d == 28) {
+       // node.getAttributeNames('')
+       for (const col of this.gridcheck.columns) {
+        switch((col as any).field) {
+          case '29':
+          case '30':
+          case '31':
+          // case 'porcentajeGastosApertura':
+          // case 'gastosApertura':
+          // case 'cuota':
+          // case 'primeraCuota':
+             (col as any).visible = false;
+            break;
+        }
+      }
+      // var number = monthNumber.toString()
+      // var number1 = monthNumbers.toString()
+      // var number2 = monthNumbert.toString()
+      // this.gridcheck.getColumnByField('29').visible = false;
+
+      // this.gridcheck.getColumnByField('30').visible = false;
+      // this.gridcheck.getColumnByField('31').visible = false;
+
+
+
+      //this.gridset.getColumnByField(number1).visible = false;
+
+      //this.gridset.getColumnByField(number2).visible = false;
+    //  this.grids.hideColumns([number, number1,number2]); 
+      //this.grids.folu
+      // this.gridcheck.refreshColumns();
+      // this.gridcheck.refresh()
+
+    }
+    if (d == 29) {
+      var number = monthNumber.toString()
+      var number1 = monthNumbers.toString()
+      for (const col of this.gridcheck.columns) {
+        switch((col as any).field) {
+          case '30':
+          case '31':
+          // case 'tae':
+          // case 'porcentajeGastosApertura':
+          // case 'gastosApertura':
+          // case 'cuota':
+          // case 'primeraCuota':
+             (col as any).visible = false;
+            break;
+        }
+      }
+      // this.gridcheck.getColumnByField('30').visible = false;
+
+      // this.gridcheck.getColumnByField('31').visible = false;
+      // this.gridcheck.refreshColumns();
+      // this.gridcheck.refresh()
+
+
+    }
+    if (d == 30) {
+      
+    for (const col of this.gridcheck.columns) {
+      switch((col as any).field) {
+        case '31':
+        // case 'tin':
+        // case 'tae':
+        // case 'porcentajeGastosApertura':
+        // case 'gastosApertura':
+        // case 'cuota':
+        // case 'primeraCuota':
+           (col as any).visible = false;
+          break;
+      }
+
+    }
+      var number = monthNumber.toString()
+     // this.gridcheck.getColumnByField('31').visible = false;
+
+      // this.gridcheck.refreshColumns();
+      // this.gridcheck.refresh()
+
+
+
+    }
+    if(d==31)
+    {
+      this.gridcheck.getColumnByField('29').visible = true;
+
+      this.gridcheck.getColumnByField('30').visible = true;
+      this.gridcheck.getColumnByField('31').visible = true;
+      this.gridcheck.refreshColumns();
+
+    }
+
+this.refreshGrid=false
+
+   this.gridcheck.refreshColumns();
+   this.gridcheck.refresh()
+
+  }
+  else{
+    
+  }
+  
   }
   checkinCheciOut()
   {
     this.show=false
-    this.calendarName="Show Calendar"
+    this.calendarName=this.monthName
   }
 actionableTimeSheetList:any=[]
 pbiActionableTimesheetList()
@@ -2899,9 +3021,11 @@ this.checkDate=0
 
   })
 }
+refreshGrid:boolean=false
 actionableCheckInCheckOutList:any=[]
 pbiActionableCheckInCheckOutList()
 {
+  debugger
   this.Loader=true
   this.actionableCheckInCheckOutList=[]
   if(this.checkDate==0)
@@ -2912,13 +3036,110 @@ pbiActionableCheckInCheckOutList()
   {
     date=this.isDate
   }
-  this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId).subscribe(arg => {
+  if(this.checkInValue==undefined ||this.checkInValue==null||this.checkInValue=="")
+  {
+var chValue=0
+  }
+  else{
+chValue=this.checkInValue
+  }
+  if(this.timeSheetValue==undefined||this.timeSheetValue==null||this.timeSheetValue=="")
+  {
+var tmValue=0
+  }
+  else{
+tmValue=this.timeSheetValue
+  }
+  if(this.timeSheetCondition==undefined ||this.timeSheetCondition==null||this.timeSheetCondition==""||this.timeSheetCondition=="0"||this.timeSheetCondition==0)
+  
+  {
+var tmSheetCondition="null"
+  }
+  else{
+     tmSheetCondition=this.timeSheetCondition
+
+  }
+  if(this.checkInCondition==undefined ||this.checkInCondition==null||this.checkInCondition==""||this.checkInCondition=="0"||this.checkInCondition==0)
+{
+var chInCondtion="null"
+}
+else
+{
+   chInCondtion=this.checkInCondition
+
+}
+  this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId,chValue,chInCondtion,tmValue,tmSheetCondition).subscribe(arg => {
 debugger
 this.Loader=false
 this.checkDate=0
-
+this.refreshGrid=true
     this.actionableCheckInCheckOutList=  arg.data.table
 console.log('actionableTimeSheetList',arg.data.table)
+
+
+  })
+}
+actionableInsightList:any=[]
+actionableType:any
+pbiActionableInsightList()
+{
+  debugger
+  this.Loader=true
+  this.actionableInsightList=[]
+  if(this.checkDate==0)
+  {
+  var date=this.setDate
+  }
+  else
+  {
+    date=this.isDate
+  }
+  if(this.actionableType==""||this.actionableType==undefined||this.actionableType==null)
+  {
+var type=null
+  }
+  else{
+    var type=this.actionableType
+  }
+//   if(this.checkInValue==undefined ||this.checkInValue==null||this.checkInValue=="")
+//   {
+// var chValue=0
+//   }
+//   else{
+// chValue=this.checkInValue
+//   }
+//   if(this.timeSheetValue==undefined||this.timeSheetValue==null||this.timeSheetValue=="")
+//   {
+// var tmValue=0
+//   }
+//   else{
+// tmValue=this.timeSheetValue
+//   }
+//   if(this.timeSheetCondition==undefined ||this.timeSheetCondition==null||this.timeSheetCondition==""||this.timeSheetCondition=="0"||this.timeSheetCondition==0)
+  
+//   {
+// var tmSheetCondition="null"
+//   }
+//   else{
+//      tmSheetCondition=this.timeSheetCondition
+
+//   }
+//   if(this.checkInCondition==undefined ||this.checkInCondition==null||this.checkInCondition==""||this.checkInCondition=="0"||this.checkInCondition==0)
+// {
+// var chInCondtion="null"
+// }
+// else
+// {
+//    chInCondtion=this.checkInCondition
+
+// }
+  this.HTTP.getpbiActionableInsightList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
+debugger
+this.Loader=false
+this.checkDate=0
+//this.refreshGrid=true
+    this.actionableInsightList=  arg.data.table
+console.log('actionableInsightList',arg.data.table)
 
 
   })
@@ -5349,13 +5570,17 @@ this.dataVendorBenchBillEmployeeCountVsExpense.push({'value':this.getListProject
     ],
     dataset: [
       {
-        seriesname: "Employee Count",
-        data:this.dataProjectdeployeeBillEmployeeCountVsExpense
-      },
-      {
+        parentyaxis: "S",
+
         seriesname: "Expense",
         data:this.dataVendorBenchBillEmployeeCountVsExpense
       },
+      {
+
+        seriesname: "Employee Count",
+        data:this.dataProjectdeployeeBillEmployeeCountVsExpense
+      }
+     
 
 
     ]
@@ -5447,6 +5672,7 @@ this.dataVendorBenchBillProjectCountVsExpense.push({'value':this.getListProjectV
         data:this.dataProjectdeployeeBillProjectCountVsExpense
       },
       {
+        parentyaxis: "S",
         seriesname: "Expense",
         data:this.dataVendorBenchBillProjectCountVsExpense
       },
@@ -5542,6 +5768,7 @@ this.dataVendorBenchBillCustomerVsService.push({'value':this.getListProjectVsBen
         data:this.dataProjectdeployeeBillCustomerVsService
       },
       {
+        parentyaxis: "S",
         seriesname: "Service Provider",
         data:this.dataVendorBenchBillCustomerVsService
       },
@@ -8136,6 +8363,7 @@ this.getPbiProjectInNumberInCostLeave()
 this.getpbiExpenseProject()
 this.pbiActionableTimesheetList()
 this.pbiActionableCheckInCheckOutList()
+this.pbiActionableInsightList()
 
   }
   getResourcesDetail:any=[]

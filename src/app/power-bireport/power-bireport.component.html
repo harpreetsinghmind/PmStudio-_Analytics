@@ -3544,7 +3544,7 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="scrollcolumn2d"
+                    type="scrollcombidy2d"
                     dataFormat="json"
                     [dataSource]="dataprojectDeployeeVsBenchBillProjectCountVsExpense">
                 </fusioncharts>
@@ -3566,7 +3566,7 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="scrollcolumn2d"
+                    type="scrollcombidy2d"
                     dataFormat="json"
                     [dataSource]="dataprojectDeployeeVsBenchBillCustomerVsService">
                 </fusioncharts>
@@ -4020,31 +4020,53 @@
       </div>
 
       <div class="table-responsive" style="margin-top: 12px;">
-        <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='ExpenseReportList' rowHeight='38' [allowSelection]='true'
+        <ejs-grid #overviewgridInsight id='overviewgridInsight' [allowTextWrap]="true" [dataSource]='actionableInsightList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
-                  <e-column field='uSername' [disableHtmlEncode]="false" headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='customerName' width="150px" [disableHtmlEncode]="false" headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                   </e-column>
-                  <e-column field='reportname' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='projectName' width="150px" headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
                   </e-column>
 
-                    <e-column field='receiptNo' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='category' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='1' width="50" headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='2'  width="50" headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                    <e-column field='amount' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='amount' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='3' width="50" headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='4'  width="50" headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='5' width="50" headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='6' width="50" headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='7'  width="50"headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='8' width="50" headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='9' width="50" headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='10'  width="50" headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
+                    <e-column field='11' width="50" headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='12' width="50" headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='13' width="50" headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='14' width="50" headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>  
+                    <e-column field='15' width="50" headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='16' width="50" headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='17' width="50" headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='18' width="50" headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column> 
+                     <e-column field='19' width="50" headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='20' width="50" headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='21' width="50" headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='22' width="50" headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
-                </e-columns>
+                <e-column field='23' width="50" headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+              <e-column field='24' width="50" headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+            <e-column field='25'  width="50" headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+          <e-column field='26'  width="50" headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+        <e-column field='27' width="50" headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+     
+    <e-column field='28' width="50" headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+  <e-column field='29' width="50"  headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+<e-column field='30' width="50" headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+<e-column field='31' width="50" headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+</e-columns>
 
 
               </ejs-grid>
@@ -4315,29 +4337,32 @@
                         <label class="form-control">
                           CheckIn-CheckOut
                         </label>
-                        <select class="form-control spaceCol">
-                          <option>Equal</option>
-                          <option>Not Equal</option>
-                          <option>Greater Than</option>
-                          <option>Less Than</option>
+                        <select (change)="checkInChangeValue($event)" class="form-control spaceCol">
+                          <option value="0">Select</option>
+                          <option value="Equal">Equal</option>
+                          <option value="NotEqual">Not Equal</option>
+                          <option value="GreaterThan">Greater Than</option>
+                          <option value="LessThan">Less Than</option>
                         </select>
-                        <input type="text" class="form-control">
+                        <input type="text" [(ngModel)]="checkInValue" class="form-control">
                       </div>
 
                       <div class="checkFilterRow">
                         <label class="form-control">
                           Timesheet
                         </label>
-                        <select class="form-control spaceCol">
-                          <option>Equal</option>
-                          <option>Not Equal</option>
-                          <option>Greater Than</option>
-                          <option>Less Than</option>
+                        <select (change)="timeSheetChangeValue($event)" class="form-control spaceCol">
+                          <option value="0">Select</option>
+
+                          <option value="Equal">Equal</option>
+                          <option value="NotEqual">Not Equal</option>
+                          <option value="GreaterThan">Greater Than</option>
+                          <option value="LessThan">Less Than</option>
                         </select>
-                        <input type="text" class="form-control">
+                        <input type="text"  [(ngModel)]="timeSheetValue" class="form-control">
                       </div>
 
-                      <div class="FilterBtn"><button class="btn btn-primary">Save</button></div>
+                      <div class="FilterBtn"><button (click)="filterValue()" class="btn btn-primary">Save</button></div>
 
                     </div>
 

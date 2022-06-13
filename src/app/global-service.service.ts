@@ -956,18 +956,32 @@ const URL=`${environment.apiUrl}pbiPeople/getActionableTimeSheetList?year=`+year
  }
 
  
-getpbiActionableCheckInCheckOutList(year,cmpcode,depid): Observable<any> {
+getpbiActionableCheckInCheckOutList(year,cmpcode,depid,chValue,chInCondition,tmSheetValue,tmSheetCondition): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-const URL=`${environment.apiUrl}pbiPeople/getActionableCheckInCheckOutList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+//const URL=`${environment.apiUrl}pbiPeople/getActionableCheckInCheckOutList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&checkInValue="+chValue+"&checkInCondition="+chInCondition+"&timeSheetValue="+tmSheetValue+"&timeSheetCondition="+tmSheetCondition
  
- // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
-//const URL ="http://localhost:63000/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid   
+const URL ="http://localhost:63000/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&checkInValue="+chValue+"&checkInCondition="+chInCondition+"&timeSheetValue="+tmSheetValue+"&timeSheetCondition="+tmSheetCondition
  
   return this.httpClient.get(URL,{headers:headers})
  
  }
+ getpbiActionableInsightList(year,cmpcode,depid,type): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+//const URL=`${environment.apiUrl}pbiPeople/getActionableTimeSheetList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getActionableTimeSheetList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+const URL ="http://localhost:63000/api/pbiPeople/getpbiActionableInsightList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+
 }
 
