@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ExcelExportProperties, GridComponent } from '@syncfusion/ej2-angular-grids';
+import { ExcelExportProperties,SaveEventArgs, GridComponent } from '@syncfusion/ej2-angular-grids';
 import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
 import { dataBinding, GroupModel } from '@syncfusion/ej2-angular-schedule';
 import { ToasterService } from '../toaster/toaster.service';
@@ -32,6 +32,8 @@ export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
   @ViewChild('overviewgrid')
   public grids: GridComponent;
+  @ViewChild('overviewgridset')
+  public gridset: GridComponent;
   @ViewChild("calendarObj")
   public calendarobj: CalendarComponent;
   @ViewChild('getid')
@@ -2718,17 +2720,95 @@ this.getDepartmentListDropdown()
 this.pbiActionableTimesheetList()
 this.pbiActionableCheckInCheckOutList()
   }
+  actionComplete(args: any) {
+    debugger
+    if (args.name== "actionComplete") {
+      var date = new Date(this.isDate)
+      var aa = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+      var d = aa.getDate()
+      var monthNumber = aa.getDate() + 1 //29
+      var monthNumbers = aa.getDate() + 2 //30
+      var monthNumbert = aa.getDate() + 3 //31
+      this.gridset.getColumnByField('thirtyone').visible = true;
+
+      this.gridset.getColumnByField('thirty').visible = true;
+      this.gridset.getColumnByField('twentynine').visible = true;
+      //var node=document.getElementById("overviewgrid")
+      if (d == 28) {
+         // node.getAttributeNames('')
+        var number = monthNumber.toString()
+        var number1 = monthNumbers.toString()
+        var number2 = monthNumbert.toString()
+        this.gridset.getColumnByField('thirtyone').visible = false;
+
+        this.gridset.getColumnByField('thirty').visible = false;
+        this.gridset.getColumnByField('twentynine').visible = false;
+
+
+
+        //this.gridset.getColumnByField(number1).visible = false;
+
+        //this.gridset.getColumnByField(number2).visible = false;
+      //  this.grids.hideColumns([number, number1,number2]); 
+        //this.grids.folu
+        this.gridset.refreshColumns();
+        this.gridset.refresh()
+
+      }
+      if (d == 29) {
+        var number = monthNumber.toString()
+        var number1 = monthNumbers.toString()
+        this.gridset.getColumnByField('thirty').visible = false;
+
+        this.gridset.getColumnByField('thirtyone').visible = false;
+        this.gridset.refreshColumns();
+        this.gridset.refresh()
+
+
+      }
+      if (d == 30) {
+        var number = monthNumber.toString()
+        this.gridset.getColumnByField('thirtyone').visible = false;
+
+        this.gridset.refreshColumns();
+        this.gridset.refresh()
+
+
+
+      }
+      if(d==31)
+      {
+        this.gridset.refreshColumns();
+        this.gridset.refresh()
+
+      }
+    }
+
+
+  }
+  checkinCheciOut()
+  {
+    this.show=false
+    this.calendarName="Show Calendar"
+  }
 actionableTimeSheetList:any=[]
 pbiActionableTimesheetList()
 {
   this.Loader=true
-  this.HTTP.getpbiActionableTimeSheetList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-
+  if(this.checkDate==0)
+  {
+  var date=this.setDate
+  }
+  else
+  {
+    date=this.isDate
+  }
+  this.HTTP.getpbiActionableTimeSheetList(date,this.CmpCode,this.departmentId).subscribe(arg => {
     this.actionableTimeSheetList=  arg.data.table
-console.log('actionableTimeSheetList',arg.data.table)
-
-
+     console.log('actionableTimeSheetList',arg.data.table)
     this.Loader=false
+this.checkDate=0
+
   })
 }
 actionableCheckInCheckOutList:any=[]
@@ -2744,7 +2824,7 @@ pbiActionableCheckInCheckOutList()
   {
     date=this.isDate
   }
-  this.HTTP.getpbiActionableCheckInCheckOutList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+  this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId).subscribe(arg => {
 debugger
 this.Loader=false
 this.checkDate=0
@@ -4281,7 +4361,10 @@ this.dataExpenseDepartment.push({"label":this.getListExpenseDepartment[i].depart
       let cmpcode=1
       let year='2022-02-20'
       this.getListExpenseProject=[]
-      this.dataExpenseDepartment=[]
+      //this.dataExpenseDepartment=[]
+      this.dataExpenseCatProject=[]
+      this.dataExpenseCurrentProject=[]
+      this.dataExpensePreviousProject=[]
       this.Loader=true
       this.HTTP.getPbiExpenseProject(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListExpenseProject=  arg.data.table
@@ -6031,7 +6114,7 @@ this.endDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].
   checkDate:any=0
   calendarName: any = "Show Calendar"
   months: any = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  onValueChange(args: any): void {
+  onValueChange(args: any,y): void {
 debugger;
     //this.utilizationReportList = []
 
@@ -6044,10 +6127,19 @@ debugger;
     this.isDate = this.currentDate
     this.checkDate=1
 
+if(y=='one')
+{
+  this.pbiActionableTimesheetList()
+  this.show = false
 
+}
+else if(y=='two')
+{
+  this.pbiActionableCheckInCheckOutList()
+  this.show = false
+
+}
    // this.getResourceUtilizationReportList();
-   this.pbiActionableCheckInCheckOutList()
-    this.show = false
   }
   show: boolean = false
   showCalendar() {
@@ -6059,7 +6151,8 @@ debugger;
 
   currentDate: any;
   isDate:any
-  clickme(x) {
+  clickme(x,y) {
+
     if (x == 'add') {
       debugger;
       var dateValue = new Date(this.currentDate);
@@ -6071,8 +6164,16 @@ debugger;
       this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
       this.isDate = this.currentDate
     this.checkDate=1
+if(y=='one')
+{
+  this.pbiActionableTimesheetList()
 
-      this.pbiActionableCheckInCheckOutList()
+}
+else if(y=='two')
+{
+  this.pbiActionableCheckInCheckOutList()
+  
+}
 
      // this.getResourceUtilizationReportList();
 
@@ -6089,10 +6190,18 @@ debugger;
       this.isDate = this.currentDate
     this.checkDate=1
 
-      this.pbiActionableCheckInCheckOutList()
 
      // this.getResourceUtilizationReportList();
-
+     if(y=='one')
+     {
+  this.pbiActionableTimesheetList()
+     
+     }
+     else if(y=='two')
+     {
+      this.pbiActionableCheckInCheckOutList()
+       
+     }
 
     }
 
@@ -6111,10 +6220,18 @@ debugger;
       this.checkDate=1
 
       //this.getResourceUtilizationReportList();
+
+
+      if(y=='one')
+      {
+  this.pbiActionableTimesheetList()
+      
+      }
+      else if(y=='two')
+      {
       this.pbiActionableCheckInCheckOutList()
-
-
-
+        
+      }
     }
 
     if (x == 'removeweek') {
@@ -6136,8 +6253,16 @@ debugger;
 
     ///  this.getResourceUtilizationReportList();
 
+    if(y=='one')
+    {
+  this.pbiActionableTimesheetList()
+    
+    }
+    else if(y=='two')
+    {
     this.pbiActionableCheckInCheckOutList()
-
+      
+    }
 
     }
   }

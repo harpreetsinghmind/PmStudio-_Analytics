@@ -3750,7 +3750,7 @@
                 <a class="nav-link active" data-toggle="tab" href="#timesheetout" role="tab">Time sheet Outlier</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#checkinout" role="tab">Check in check out</a>
+                <a class="nav-link" data-toggle="tab" (click)="checkinCheciOut()" href="#checkinout" role="tab">Check in check out</a>
               </li>
 
               <li class="nav-item">
@@ -3766,7 +3766,27 @@
             <div class="OutlierSection">
               <div class="OutlierHead">
                 <div><h3>Time sheet Outlier</h3></div>
+                <div class="form-group monthCheckStatus" style="margin-bottom: 0; display: inline-flex;margin-top: -5px;">
 
+                  <button title="Month" (click)="clickme('removeweek','one');" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                  </svg></button>
+                  <!-- <input type="date" class="e-input txtclass1" style="margin: 5px;"
+                      name="subPhaseName"  [(ngModel)]="currentDate" req="1" start='Year' depth='Year' (change)="changeDate(currentDate)">
+                -->
+                <div *ngIf="show" style="position: absolute; z-index: 999;">
+                  <ejs-calendar #ejCalendar  (change)="onValueChange($event,'one')" [value]='dateValue' start='Year' depth='Year'></ejs-calendar>
+                  <!-- <ejs-calendar></ejs-calendar> -->
+                </div>
+    
+                      <button id="button" (click)="showCalendar()" style="min-width: 100px;">{{calendarName}}</button>
+                      <!-- <ejs-calendar></ejs-calendar> -->
+                  <button title="Month" (click)="clickme('addweek','one');" class="btn" style="margin-left: 5px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                  </svg></button>
+    
+    
+                </div>
 
                 <div>
                   <ul class="mandateItem">
@@ -3777,9 +3797,9 @@
               </div>
 
               <div class="table-responsive">
-                <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='actionableTimeSheetList' rowHeight='38' [allowSelection]='true'
+                <ejs-grid #overviewgridset id='overviewgridset' [allowTextWrap]="true" [dataSource]='actionableTimeSheetList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
-                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                [filterSettings]='filterSettings' (actionComplete)="actionComplete($event)"[allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
                   <e-column field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
@@ -3796,7 +3816,13 @@
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
                     </ng-template> -->
                   </e-column>
-                    <e-column field='one' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='one' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'>
+
+                      <ng-template #template let-data>
+                        <img *ngIf="data.one" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
+                        <img *ngIf="data.one === 0" src="../../assets/img/logo/green-signal.png" style="width: 22px;">
+                      </ng-template>
+                    </e-column>
                     <e-column field='two' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
                     <e-column field='three' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
@@ -3844,24 +3870,24 @@
 
         <div class="OutlierSection">
           <div class="OutlierHead">
-            <div><h3>Check in check out</h3></div>
+            <div ><h3>Check in check out</h3></div>
 
             <div class="form-group monthCheckStatus" style="margin-bottom: 0; display: inline-flex;margin-top: -5px;">
 
-              <button title="Month" (click)="clickme('removeweek');" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+              <button title="Month" (click)="clickme('removeweek','two');" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
                 <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
               </svg></button>
               <!-- <input type="date" class="e-input txtclass1" style="margin: 5px;"
                   name="subPhaseName"  [(ngModel)]="currentDate" req="1" start='Year' depth='Year' (change)="changeDate(currentDate)">
             -->
             <div *ngIf="show" style="position: absolute; z-index: 999;">
-              <ejs-calendar #ejCalendar  (change)="onValueChange($event)" [value]='dateValue' start='Year' depth='Year'></ejs-calendar>
+              <ejs-calendar #ejCalendar  (change)="onValueChange($event,'two')" [value]='dateValue' start='Year' depth='Year'></ejs-calendar>
               <!-- <ejs-calendar></ejs-calendar> -->
             </div>
 
                   <button id="button" (click)="showCalendar()" style="min-width: 100px;">{{calendarName}}</button>
                   <!-- <ejs-calendar></ejs-calendar> -->
-              <button title="Month" (click)="clickme('addweek');" class="btn" style="margin-left: 5px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+              <button title="Month" (click)="clickme('addweek','two');" class="btn" style="margin-left: 5px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
                 <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
               </svg></button>
 
@@ -3898,7 +3924,7 @@
 
       <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList'  [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
-                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'  (actionComplete)="actionComplete($event)"
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
                   <e-column field='employeeName' width="200px" [disableHtmlEncode]="false" headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
