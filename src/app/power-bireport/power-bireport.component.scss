@@ -17,9 +17,13 @@ p.context {
 
   }
 
+  span.projectStatusbar{ background: #50cb9e; display: inline-block; width: 14px; height: 14px; border-radius: 50%; position: relative;
+    margin-right: 6px; top: 3px;}
+
   li.nav-item.active {
     background: #f5f5f5 !important;
 }
+.projectDetailsTable .e-content table tr{ height: 43px; }
 
 ul.subtabs li.nav-item.active { background: transparent !important;}
 
@@ -217,9 +221,9 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     border: 1px solid #ddd;
     border-bottom: 0;
     background-color: #fff;
-    padding: 10px 5px;
+    padding: 10px 25px;
     min-width: 120px;
-    text-align: center;
+    text-align: center; cursor: pointer;
   }
   .nav-item.active a {
 
@@ -817,7 +821,8 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     display: inline-block;
     width: 100%;
   }
-  .OutlierHead{ display: flex; align-items: center; justify-content: space-between;}
+  .projectBar{display: flex; align-items: center; justify-content: end;  width: 100%;}
+  .OutlierHead{ display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;}
   .OutlierHead h3{    margin: 0; color: #000; font-size: 21px;}
   .oulierTable th{     background: #f5f7f6; border-bottom: 2px solid #d1d3d4;border-top: 3px solid #d1d3d4;}
   table.oulierTable tr:nth-child(even) {background: #fff}
@@ -825,7 +830,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
       table.oulierTable th span, table.oulierTable td span { width: 100%; display: inline-block;}
       ul.mandateItem{ padding: 0; list-style: none; display: flex; margin: 0;}
-      ul.mandateItem li{ margin: 0 20px; display: flex; align-items: center; font-size: 14px;}
+      ul.mandateItem li{ margin: 0 10px; display: flex; align-items: center; font-size: 14px;}
       ul.mandateItem li span{    display: inline-block;
         width: 30px;
         height: 30px;
@@ -914,7 +919,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
       min-height: 253px;
       margin-bottom: 10px;}
 
-      .circle1::before{ background-color: #d6d5d4 !important;}
+      .circle1::before{ background-color: #2ec4b6 !important;}
       .circle2::before{ background-color: #8083bf !important;}
       .circle3::before{ background-color: #e4d353 !important;}
       .circle4::before{ background-color: #9cce79 !important;}
@@ -1110,7 +1115,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   }
   .getBarBill{
     //width: 50px;
-    background-color: #d6d5d4;
+    background-color: #2ec4b6;
 
   }
   .tab {
@@ -1210,6 +1215,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     max-height: 30%;
     overflow: auto;
   }
+  .empListResource{ margin: 3px 0;}
   .checkFilterRow{ display: flex; justify-content: space-between; margin: 5px 0;}
   .spaceCol{ margin: 0 10px;}
   .checkFilterRow .form-control{ border-radius: 0;}
@@ -1217,6 +1223,12 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
   .monthCheckStatus button{ border: none; border-radius: 5px; font-weight: 500;background: #ececec;}
   .monthCheckStatus svg{color: #000;  opacity: 1;  margin: 0;  width: 18px; height: 18px;}
+  .resPopup{ display: flex; align-items: center; justify-content: space-between;}
+  .activeEmp{ margin-right: 10px; margin-top: -5px;}
+  .activeEmp .mandateItem span{ background: #ffffff;}
+  .activePerson{background: #9cce79; width: 13px;height: 13px; display: inline-block; border-radius: 50%; position: relative; top:1px;
+    margin-right: 5px;}
+    .circleInActive::before{ background-color: #c1c1c1 !important;}
 
   @media screen and (max-width: 700px){
 
