@@ -2212,7 +2212,7 @@
              <div class="tab-pane active" id="projectoverview" role="tabpanel">
               <div class="card-body">
                 <div class="col-md-12 rateRow project no-padding">
-                  <div class="col-md-4 no-padding" style="margin-right: 10px;">
+                  <div class="col-md-4 no-padding" style="padding-right: 10px;">
                     <div class="col-md-12 no-padding">
                       <div class="boxExpense">
                         <h4># Projects</h4>
@@ -2598,18 +2598,21 @@
                   <div class="card-body">
                     <div class="OutlierSection">
                       <div class="OutlierHead">
-                        <div><h3>Project Portfolio</h3></div>
+                        <div><h3 style="width: 250px;">Project Portfolio</h3></div>
 
-                        <div>
+
+
+
+                        <div class="projectBar">
+                          <select class="form-control" style="width: 150px;">
+                            <option>Select Status</option>
+                            <option>All</option>
+                            <option>Open</option>
+                            <option>Closed</option>
+                          </select>
                           <ul class="mandateItem">
                             <li><span class="circle1"></span>Vendor</li>
                             <li><span class="circle2"></span>Service Provider</li>
-                          </ul>
-                        </div>
-
-
-                        <div>
-                          <ul class="mandateItem">
                             <li><span class="circle3"></span>Total</li>
                             <li><span class="circle4"></span>Approved</li>
                             <li><span class="circle5"></span>Pending</li>
@@ -2940,7 +2943,7 @@
 
 
                       </div>
-                    <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
+                    <div class="col-md-12 no-padding mobscroll projectDetailsTable" style="margin-top:15px">
                       <ejs-grid #getid id="getid"  [frozenRows]='0' [frozenColumns]='1' [dataSource]="getListProjectDetailRoadblock" [allowResizing]="true"  height='450'
                       (rowDataBound)='rows($event)'
                       (rowDataBound)= "rows($event)"
@@ -2948,13 +2951,13 @@
                       (queryCellInfo)='tooltipfor($event)'  [allowFiltering]='true'  [allowPaging]='true' [filterSettings]='filterSettings'  [allowExcelExport]='true'
                        >
                        <e-columns>
-                         <e-column field='resourceName' textAlign="Center" headerText='Resource Name' class="des" clipMode='EllipsisWithTooltip' >
+                         <e-column field='resourceName' textAlign="Left" headerText='Resource Name' class="des" clipMode='EllipsisWithTooltip' >
                           <ng-template #template let-data>
-                            <span>
-
+                            <div>
                               <img src="{{userImage(data)}}" style="width: 28px;margin-right: 5px; border-radius: 50%;">
-                              {{data.resourceName}}
-                            </span>
+                              <span class="projectStatusbar"></span>
+                              <span>{{data.resourceName}}</span>
+                            </div>
                           </ng-template>
                          </e-column>
                          <e-column field='assignDate' textAlign="Center" type='date'  [format]="format" headerText='Assign Date' clipMode='EllipsisWithTooltip'>
@@ -3778,14 +3781,14 @@
                   <ejs-calendar #ejCalendar  (change)="onValueChange($event,'one')" [value]='dateValue' start='Year' depth='Year'></ejs-calendar>
                   <!-- <ejs-calendar></ejs-calendar> -->
                 </div>
-    
+
                       <button id="button" (click)="showCalendar()" style="min-width: 100px;">{{calendarName}}</button>
                       <!-- <ejs-calendar></ejs-calendar> -->
                   <button title="Month" (click)="clickme('addweek','one');" class="btn" style="margin-left: 5px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
                     <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                   </svg></button>
-    
-    
+
+
                 </div>
 
                 <div>
@@ -3802,58 +3805,58 @@
                 [filterSettings]='filterSettings' (actionComplete)="actionComplete($event)"[allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
-                  <e-column field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column width='120' field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                   </e-column>
-                  <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip' width='100'>
                     <ng-template>
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
                     </ng-template>
 
                   </e-column>
-                  <e-column field='email' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='email' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip' width='150'>
                     <!-- <ng-template>
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
                     </ng-template> -->
                   </e-column>
-                    <e-column field='one' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                    <e-column field='one' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
 
                       <ng-template #template let-data>
                         <img *ngIf="data.one" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
                         <img *ngIf="data.one === 0" src="../../assets/img/logo/green-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='two' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='two' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
 
-                    <e-column field='three' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='four' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='five' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='six' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='seven' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='eight' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='nine' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='ten' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='eleven' headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twelve' headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='threeten' headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='fourteen' headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='fifteen' headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='sixteen' headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='seventeen' headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='eighteen' headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='nineteen' headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twenty' headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentyone' headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentytwo' headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentythree' headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentyfour' headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentyfive' headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentysix' headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentyseven' headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentyeight' headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='twentynine' headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='thirty' headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
-                    <e-column field='thirtyone' headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                    <e-column field='three' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='four' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='five' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='six' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='seven' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='eight' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='nine' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='ten' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='eleven' headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twelve' headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='threeten' headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='fourteen' headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='fifteen' headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='sixteen' headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='seventeen' headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='eighteen' headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='nineteen' headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twenty' headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentyone' headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentytwo' headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentythree' headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentyfour' headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentyfive' headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentysix' headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentyseven' headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentyeight' headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='twentynine' headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='thirty' headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
+                    <e-column field='thirtyone' headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'></e-column>
                 </e-columns>
 
 
@@ -4234,8 +4237,16 @@
 
   <div class="overlay" *ngIf="popup">
     <div class="popup">
+      <div class="modal-heading resPopup">
         <h4>Resources</h4>
-        <a class="close" (click)="popup = false" style="top: 10px;">&times;</a>
+        <div class="activeEmp">
+          <ul class="mandateItem">
+            <li><span class="circle4"></span>Active</li>
+            <li><span class="circleInActive"></span>In-Active</li>
+          </ul>
+        </div>
+        <a class="close" (click)="popup = false" style="top: 10px;right: 20px;">&times;</a>
+      </div>
         <div class="content">
           <table class="resTable">
             <tr>
@@ -4243,8 +4254,8 @@
                 <h6>
                   Billable
                 </h6>
-                <div *ngFor="let data of resouceBillableList">
-                  {{data.billid}}
+                <div *ngFor="let data of resouceBillableList" class="empListResource">
+                  <span class="activePerson"></span> {{data.billid}}
                      </div>
 
               </td>
@@ -4252,8 +4263,8 @@
                 <h6>
                   Non-Billable
                 </h6>
-                <div *ngFor="let datadb of resouceNonBillableList">
-                  {{datadb.billid}}
+                <div *ngFor="let datadb of resouceNonBillableList" class="empListResource">
+                  <span class="activePerson"></span> {{datadb.billid}}
                      </div>
 
               </td>
