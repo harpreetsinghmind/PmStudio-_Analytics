@@ -32,6 +32,9 @@ export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
   @ViewChild('overviewgrid')
   public grids: GridComponent;
+  
+  @ViewChild('overviewgridcheck')
+  public gridcheck: GridComponent;
   @ViewChild('overviewgridset')
   public gridset: GridComponent;
   @ViewChild("calendarObj")
@@ -2786,6 +2789,91 @@ this.pbiActionableCheckInCheckOutList()
 
 
   }
+  actionCompletecheck(args: any) {
+    debugger
+    if (args.name== "actionComplete") {
+      var date = new Date(this.isDate)
+      var aa = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+      var d = aa.getDate()
+      var monthNumber = aa.getDate() + 1 //29
+      var monthNumbers = aa.getDate() + 2 //30
+      var monthNumbert = aa.getDate() + 3 //31
+      this.gridcheck.getColumnByField('29').visible = true;
+
+      this.gridcheck.getColumnByField('30').visible = true;
+      this.gridcheck.getColumnByField('31').visible = true;
+      //var node=document.getElementById("overviewgrid")
+      if (d == 28) {
+         // node.getAttributeNames('')
+        var number = monthNumber.toString()
+        var number1 = monthNumbers.toString()
+        var number2 = monthNumbert.toString()
+        this.gridcheck.getColumnByField('29').visible = false;
+
+        this.gridcheck.getColumnByField('30').visible = false;
+        this.gridcheck.getColumnByField('31').visible = false;
+
+
+
+        //this.gridset.getColumnByField(number1).visible = false;
+
+        //this.gridset.getColumnByField(number2).visible = false;
+      //  this.grids.hideColumns([number, number1,number2]); 
+        //this.grids.folu
+        this.gridcheck.refreshColumns();
+        this.gridcheck.refresh()
+
+      }
+      if (d == 29) {
+        var number = monthNumber.toString()
+        var number1 = monthNumbers.toString()
+        this.gridcheck.getColumnByField('30').visible = false;
+
+        this.gridcheck.getColumnByField('31').visible = false;
+        this.gridcheck.refreshColumns();
+        this.gridcheck.refresh()
+
+
+      }
+      if (d == 30) {
+        var number = monthNumber.toString()
+        this.gridcheck.getColumnByField('31').visible = false;
+
+        this.gridcheck.refreshColumns();
+        this.gridcheck.refresh()
+
+
+
+      }
+      if(d==31)
+      {
+        this.gridcheck.refreshColumns();
+        this.gridcheck.refresh()
+
+      }
+    }
+
+
+  }
+  onGridDataBound(args) {
+    // alert(args);
+    // for (const col of this.gridcheck.columns) {
+    //   debugger;
+    //   switch((col as any).field) {
+    //     case 'idTipoFinanciacion':
+    //     case 'tin':
+    //     case 'tae':
+    //     case 'porcentajeGastosApertura':
+    //     case 'gastosApertura':
+    //     case 'cuota':
+    //     case 'primeraCuota':
+    //        (col as any).visible = false;
+    //       break;
+    //   }
+    // }
+
+    this.gridcheck.refreshColumns();
+  }
   checkinCheciOut()
   {
     this.show=false
@@ -5398,9 +5486,9 @@ getpbiProjecDeployeeVsBenchBillCustomerVsService(){
   let cmpcode=1
   let year='2022-02-20'
   this.dataProjectVsDeployeeBillCustomerVsService=[]
+  this.dataProjectdeployeeBillCustomerVsService=[]
+  this.dataVendorBenchBillCustomerVsService=[]
   this.getListProjectVsBenchBillCustomerVsService=[]
-  this.dataProjectdeployeeBillProjectCountVsExpense=[]
-  this.dataVendorBenchBillProjectCountVsExpense=[]
   this.Loader=true
   this.HTTP.getpbiProjecDeployeeVsBenchBillCustomerVsService(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillCustomerVsService=  arg.data.table

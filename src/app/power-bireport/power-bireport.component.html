@@ -3922,9 +3922,10 @@
       </ejs-schedule> -->
 
 
-      <ejs-grid #overviewgrid id='overviewgrid' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList'  [allowSelection]='true'
+      <ejs-grid #overviewgridcheck id='overviewgridcheck' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList'  [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
-                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'  (actionComplete)="actionComplete($event)"
+                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false' 
+                (dataBound)="onGridDataBound($event)"
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
                   <e-column field='employeeName' width="200px" [disableHtmlEncode]="false" headerText='Name' [filter]='filter' clipMode='EllipsisWithTooltip'>
