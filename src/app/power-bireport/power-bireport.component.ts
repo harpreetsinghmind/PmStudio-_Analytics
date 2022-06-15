@@ -2557,6 +2557,9 @@ timeSheetChangeValue(e)
     this.onCloseHandled()
     this.getpbiPeopleDetailList()
     this.getpbiPeopleDesignation()
+    this.getpbiExpenseProjectCategory()
+    this.getpbiExpenseDeployee()
+    this.getpbiExpenseBreackUp()
     this.getpbiExpenseDepartment()
     this.getpbiExpense()
     this.getpbiSpenderWise()
@@ -2706,6 +2709,9 @@ this.calendarName=this.monthName
     ];
     this.getpbiPeopleDetailList()
 this.getpbiPeopleDesignation()
+this.getpbiExpenseProjectCategory()
+this.getpbiExpenseDeployee()
+this.getpbiExpenseBreackUp()
 this.getpbiExpenseDepartment()
 this.getpbiExpense()
 this.getpbiSpenderWise()
@@ -4713,6 +4719,227 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
 
       })
   }
+  dataCategory:any=[]
+  getListCategory:any=[]
+  dataprojectCategory:any
+  getpbiExpenseProjectCategory(){
+    let cmpcode=1
+    let year='2022-02-20'
+    this.dataCategory=[]
+    this.getListCategory=[]
+    this.Loader=true
+    this.HTTP.getPbiBuisnessCategoryList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+    this.getListCategory=  arg.data.table
+console.log('getListDesignation',arg.data.table)
+
+    debugger
+    this.Loader=false
+    var getColor=[]
+var sum=0
+    for(var i=0;i<this.getListCategory.length;i++)
+    {
+      getColor.push(this.setColor[i])
+    }
+    debugger
+    if(this.getListCategory.length>5)
+    {
+      for(var i=0;i<5;i++)
+    {
+
+this.dataCategory.push({"label":this.getListCategory[i].categoryName,"value":this.getListDesignation[i].categoryId})
+    }
+    for(var j=0;j<this.getListCategory.length;j++)
+    {
+      if(j>=5)
+      {
+        sum+=this.getListCategory[j].categoryId
+
+      }
+
+    }
+this.dataCategory.push({"label":'Other','value':sum})
+    }
+
+else
+{
+for(var i=0;i<this.getListCategory.length;i++)
+{
+  this.dataCategory.push({"label":this.getListCategory[i].categoryName,"value":this.getListDesignation[i].categoryId})
+
+}
+}
+
+    this.dataprojectCategory = {
+      chart: {
+        "numberPrefix": "",
+        "bgColor": "#ffffff",
+        "startingAngle": "100",
+        "showLegend": "1",
+
+        "defaultCenterLabel": "",
+      "centerLabel": " $label: $value",
+        "centerLabelBold": "1",
+        "showTooltip": "0",
+        "decimals": "0",
+        'paletteColors' :getColor.toString(),
+        "theme": "fusion"
+      },
+      "data": this.dataCategory
+    };
+
+
+
+    })
+}
+dataDeployee:any=[]
+getListDeployee:any=[]
+dataExpenseDeployee:any
+getpbiExpenseDeployee(){
+  let cmpcode=1
+  let year='2022-02-20'
+  this.dataDeployee=[]
+  this.getListDeployee=[]
+  this.Loader=true
+  this.HTTP.getPbiBuisnessDeployeeList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+  this.getListDeployee=  arg.data.table
+console.log('getListDeployee',arg.data.table)
+
+  debugger
+  this.Loader=false
+  var getColor=[]
+var sum=0
+  for(var i=0;i<this.getListDeployee.length;i++)
+  {
+    getColor.push(this.setColor[i])
+  }
+  debugger
+  if(this.getListDeployee.length>5)
+  {
+    for(var i=0;i<5;i++)
+  {
+
+this.dataDeployee.push({"label":this.getListDeployee[i].deployeeName,"value":this.getListDeployee[i].deployeeId})
+  }
+  for(var j=0;j<this.getListDeployee.length;j++)
+  {
+    if(j>=5)
+    {
+      sum+=this.getListDeployee[j].deployeeId
+
+    }
+
+  }
+this.dataDeployee.push({"label":'Other','value':sum})
+  }
+
+else
+{
+for(var i=0;i<this.getListDeployee.length;i++)
+{
+this.dataDeployee.push({"label":this.getListDeployee[i].deployeeName,"value":this.getListDeployee[i].deployeeId})
+
+
+}
+}
+
+  this.dataExpenseDeployee = {
+    chart: {
+      "numberPrefix": "",
+      "bgColor": "#ffffff",
+      "startingAngle": "100",
+      "showLegend": "1",
+
+      "defaultCenterLabel": "",
+    "centerLabel": " $label: $value",
+      "centerLabelBold": "1",
+      "showTooltip": "0",
+      "decimals": "0",
+      'paletteColors' :getColor.toString(),
+      "theme": "fusion"
+    },
+    "data": this.dataDeployee
+  };
+
+
+
+  })
+}
+
+dataBreackUp:any=[]
+dataExpenseBreackUp:any
+getListBreackUp:any=[]
+getpbiExpenseBreackUp(){
+  let cmpcode=1
+  let year='2022-02-20'
+  this.dataBreackUp=[]
+  this.getListBreackUp=[]
+  this.Loader=true
+  this.HTTP.getPbiBuisnessBreackUpList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+  this.getListBreackUp=  arg.data.table
+console.log('getListBreackUp',arg.data.table)
+
+  debugger
+  this.Loader=false
+  var getColor=[]
+var sum=0
+  for(var i=0;i<this.getListBreackUp.length;i++)
+  {
+    getColor.push(this.setColor[i])
+  }
+  debugger
+  if(this.getListBreackUp.length>5)
+  {
+    for(var i=0;i<5;i++)
+  {
+
+this.dataBreackUp.push({"label":this.getListBreackUp[i].breackupName,"value":this.getListBreackUp[i].breackupId})
+  }
+  for(var j=0;j<this.getListBreackUp.length;j++)
+  {
+    if(j>=5)
+    {
+      sum+=this.getListBreackUp[j].deployeeId
+
+    }
+
+  }
+this.dataBreackUp.push({"label":'Other','value':sum})
+  }
+
+else
+{
+for(var i=0;i<this.getListBreackUp.length;i++)
+{
+this.dataBreackUp.push({"label":this.getListBreackUp[i].breackupName,"value":this.getListBreackUp[i].breackupId})
+
+
+
+}
+}
+
+  this.dataExpenseBreackUp = {
+    chart: {
+      "numberPrefix": "",
+      "bgColor": "#ffffff",
+      "startingAngle": "100",
+      "showLegend": "1",
+
+      "defaultCenterLabel": "",
+    "centerLabel": " $label: $value",
+      "centerLabelBold": "1",
+      "showTooltip": "0",
+      "decimals": "0",
+      'paletteColors' :getColor.toString(),
+      "theme": "fusion"
+    },
+    "data": this.dataBreackUp
+  };
+
+
+
+  })
+}
+
   getListExpenseDepartment:any=[]
   dataExpenseDepartment:any=[]
   dataexpensedepartement:any
@@ -8740,6 +8967,9 @@ this.getpbiPeopleResources()
 this.getpbiPeopleEmployeeVsVendor()
 
 this.getpbiPeopleDesignation()
+this.getpbiExpenseProjectCategory()
+this.getpbiExpenseDeployee()
+this.getpbiExpenseBreackUp()
 this.getpbiExpenseDepartment()
 this.getpbiExpense()
 this.getpbiSpenderWise()

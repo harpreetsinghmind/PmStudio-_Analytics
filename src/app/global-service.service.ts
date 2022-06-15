@@ -1022,5 +1022,45 @@ const URL ="http://localhost:63000/api/pbiPeople/getpbiBuisnessExpenseList?year=
   return this.httpClient.get(URL,{headers:headers})
  
  }
+ 
+ getPbiBuisnessDeployeeList(year,cmpcode,depid): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  //const URL=`${environment.apiUrl}pbiPeople/getpbiBuisnessDeployeeList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getpbiBuisnessDeployeeList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+const URL ="http://localhost:63000/api/pbiPeople/getpbiBuisnessDeployeeList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiBuisnessCategoryList(year,cmpcode,depid): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  //const URL=`${environment.apiUrl}pbiPeople/getpbiBuisnessCategoryList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getpbiBuisnessCategoryList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+const URL ="http://localhost:63000/api/pbiPeople/getpbiBuisnessCategoryList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+ getPbiBuisnessBreackUpList(year,cmpcode,depid): Observable<any> {
+  const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
+  // headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  //const URL=`${environment.apiUrl}pbiPeople/getpbiBuisnessBreackUpList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ 
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getpbiBuisnessBreackUpList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+const URL ="http://localhost:63000/api/pbiPeople/getpbiBuisnessBreackUpList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
 }
 
