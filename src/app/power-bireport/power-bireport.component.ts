@@ -2554,6 +2554,7 @@ timeSheetChangeValue(e)
   onChange(e)
   {
     this.departmentId=e.target.value
+    this.onCloseHandled()
     this.getpbiPeopleDetailList()
     this.getpbiPeopleDesignation()
     this.getpbiExpenseDepartment()
@@ -2589,6 +2590,9 @@ timeSheetChangeValue(e)
     this.getProjectProjectDetailPAndLGridList()
     this.getpbiProjectDetailPAndLList()
     this.getProjectExpenseDetailList()
+    this.getProjectBuisinessProjectList()
+    this.getProjectBuisinessPeopleList()
+    this.getProjectBuisinessExpenseList()
     this.getPbiProjectInNumber()
     this.getPbiProjectInNumberInCost()
     this.getPbiProjectInNumberInCostLeave()
@@ -2735,6 +2739,9 @@ this.getProjectPortFoliyo()
 this.getProjectProjectDetailPAndLGridList()
 this.getpbiProjectDetailPAndLList()
 this.getProjectExpenseDetailList()
+this.getProjectBuisinessProjectList()
+this.getProjectBuisinessPeopleList()
+this.getProjectBuisinessExpenseList()
 this.getPbiProjectInNumber()
 this.getPbiProjectInNumberInCost()
 this.getPbiProjectInNumberInCostLeave()
@@ -2746,67 +2753,78 @@ this.pbiActionableInsightList()
   }
   actionComplete(args: any) {
     debugger
-    if (args.name== "actionComplete") {
-      var date = new Date(this.isDate)
-      var aa = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-      var d = aa.getDate()
-      var monthNumber = aa.getDate() + 1 //29
-      var monthNumbers = aa.getDate() + 2 //30
-      var monthNumbert = aa.getDate() + 3 //31
-      this.gridset.getColumnByField('thirtyone').visible = true;
+    if(this.actionGridRefresh==true)
+    {
+      if (args.name== "actionComplete") {
+        
+        var date = new Date(this.isDate)
+        var aa = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        var d = aa.getDate()
+        var monthNumber = aa.getDate() + 1 //29
+        var monthNumbers = aa.getDate() + 2 //30
+        var monthNumbert = aa.getDate() + 3 //31
+        this.gridset.getColumnByField('thirtyone').visible = true;
+  
+        this.gridset.getColumnByField('thirty').visible = true;
+        this.gridset.getColumnByField('twentynine').visible = true;
+        //var node=document.getElementById("overviewgrid")
+        if (d == 28) {
+           // node.getAttributeNames('')
+          var number = monthNumber.toString()
+          var number1 = monthNumbers.toString()
+          var number2 = monthNumbert.toString()
+          this.gridset.getColumnByField('thirtyone').visible = false;
+  
+          this.gridset.getColumnByField('thirty').visible = false;
+          this.gridset.getColumnByField('twentynine').visible = false;
+  
+  this.actionGridRefresh=false
+  
+          //this.gridset.getColumnByField(number1).visible = false;
+  
+          //this.gridset.getColumnByField(number2).visible = false;
+        //  this.grids.hideColumns([number, number1,number2]); 
+          //this.grids.folu
+          this.gridset.refreshColumns();
+          this.gridset.refresh()
+  
+        }
+        if (d == 29) {
+          var number = monthNumber.toString()
+          var number1 = monthNumbers.toString()
+          this.gridset.getColumnByField('thirty').visible = false;
+  
+          this.gridset.getColumnByField('thirtyone').visible = false;
+  this.actionGridRefresh=false
 
-      this.gridset.getColumnByField('thirty').visible = true;
-      this.gridset.getColumnByField('twentynine').visible = true;
-      //var node=document.getElementById("overviewgrid")
-      if (d == 28) {
-         // node.getAttributeNames('')
-        var number = monthNumber.toString()
-        var number1 = monthNumbers.toString()
-        var number2 = monthNumbert.toString()
-        this.gridset.getColumnByField('thirtyone').visible = false;
+          this.gridset.refreshColumns();
+          this.gridset.refresh()
+  
+  
+        }
+        if (d == 30) {
+          var number = monthNumber.toString()
+          this.gridset.getColumnByField('thirtyone').visible = false;
+          this.actionGridRefresh=false
+  
+          this.gridset.refreshColumns();
+          this.gridset.refresh()
+  
+  
+  
+        }
+        if(d==31)
+        {
+  this.actionGridRefresh=false
 
-        this.gridset.getColumnByField('thirty').visible = false;
-        this.gridset.getColumnByField('twentynine').visible = false;
-
-
-
-        //this.gridset.getColumnByField(number1).visible = false;
-
-        //this.gridset.getColumnByField(number2).visible = false;
-      //  this.grids.hideColumns([number, number1,number2]); 
-        //this.grids.folu
-        this.gridset.refreshColumns();
-        this.gridset.refresh()
-
+          this.gridset.refreshColumns();
+          this.gridset.refresh()
+  
+        }
       }
-      if (d == 29) {
-        var number = monthNumber.toString()
-        var number1 = monthNumbers.toString()
-        this.gridset.getColumnByField('thirty').visible = false;
 
-        this.gridset.getColumnByField('thirtyone').visible = false;
-        this.gridset.refreshColumns();
-        this.gridset.refresh()
-
-
-      }
-      if (d == 30) {
-        var number = monthNumber.toString()
-        this.gridset.getColumnByField('thirtyone').visible = false;
-
-        this.gridset.refreshColumns();
-        this.gridset.refresh()
-
-
-
-      }
-      if(d==31)
-      {
-        this.gridset.refreshColumns();
-        this.gridset.refresh()
-
-      }
     }
+  
 
 
   }
@@ -3002,6 +3020,8 @@ this.refreshGrid=false
     this.calendarName=this.monthName
   }
 actionableTimeSheetList:any=[]
+setActionableTimeSheetList:any=[]
+actionGridRefresh:boolean=false
 pbiActionableTimesheetList()
 {
   this.Loader=true
@@ -3013,10 +3033,104 @@ pbiActionableTimesheetList()
   {
     date=this.isDate
   }
-  this.HTTP.getpbiActionableTimeSheetList(date,this.CmpCode,this.departmentId).subscribe(arg => {
+  debugger
+    this.setActionableTimeSheetList=[]
+    this.actionableTimeSheetList=[]
+      this.HTTP.getpbiActionableTimeSheetList(date,this.CmpCode,this.departmentId).subscribe(arg => {
     this.actionableTimeSheetList=  arg.data.table
      console.log('actionableTimeSheetList',arg.data.table)
     this.Loader=false
+this.actionGridRefresh=true
+    var newArr = [];
+    for(var i = 0; i < this.actionableTimeSheetList.length; i++)
+    {
+      var obj = this.actionableTimeSheetList[i];
+      obj['one'] = obj[1];
+      obj['two'] = obj[2];
+      obj['three'] = obj[3];
+      obj['four'] = obj[4];
+      obj['five'] = obj[5];
+      obj['six'] = obj[6];
+      obj['seven'] = obj[7];
+      obj['eight'] = obj[8];
+      obj['nine'] = obj[9];
+      obj['ten'] = obj[10];
+      obj['eleven'] = obj[11];
+      obj['twelve'] = obj[12];
+      obj['threeten'] = obj[13];
+      obj['fourteen'] = obj[14];
+      obj['fifteen'] = obj[15];
+
+      obj['sixteen'] = obj[16];
+      obj['seventeen'] = obj[17];
+
+      obj['eighteen'] = obj[18];
+
+      obj['nineteen'] = obj[19];
+      obj['twenty'] = obj[20];
+
+      obj['twentyone'] = obj[21];
+
+      obj['twentytwo'] = obj[22];
+      obj['twentythree'] = obj[23];
+
+
+      obj['twentyfour'] = obj[24];
+
+      obj['twentyfive'] = obj[25];
+      obj['twentysix'] = obj[26];
+
+
+      obj['twentyseven'] = obj[27];
+
+
+      obj['twentyeight'] = obj[28];
+
+      obj['twentynine'] = obj[29];
+     
+      obj['thirty'] = obj[30];
+       obj['thirtyone'] = obj[31];
+
+
+
+
+    
+       delete(obj[1]);
+       delete(obj[2]);
+       delete(obj[3]);
+       delete(obj[4]);
+       delete(obj[5]);
+       delete(obj[6]);
+       delete(obj[7]);
+       delete(obj[8]);
+       delete(obj[9]);
+       delete(obj[10]);
+       delete(obj[11]);
+       delete(obj[12]);
+       delete(obj[13]);
+       delete(obj[14]);
+       delete(obj[15]);
+       delete(obj[16]);
+       delete(obj[17]);
+       delete(obj[18]);
+       delete(obj[19]);
+      
+       delete(obj[20]);
+       delete(obj[21]);
+       delete(obj[22]);
+       delete(obj[23]);
+       delete(obj[24]);
+       delete(obj[25]);
+       delete(obj[26]);
+       delete(obj[27]);
+       delete(obj[28]);
+       delete(obj[29]);
+       delete(obj[30]);
+       delete(obj[31]);
+            
+      newArr.push(obj);
+    }
+   this.setActionableTimeSheetList=newArr
 this.checkDate=0
 
   })
@@ -6467,10 +6581,19 @@ else if(y=='two')
   currentDate: any;
   isDate:any
   clickme(x,y) {
-
+debugger;
     if (x == 'add') {
       debugger;
+      if(this.currentDate==undefined)
+      {
+        dateValue = new Date();
+        
+      }
+      else{
       var dateValue = new Date(this.currentDate);
+
+
+      }
 
       var dateAfterChange = dateValue.setDate(dateValue.getDate() + 1);
       var mon = new Date(dateAfterChange)
@@ -6495,7 +6618,18 @@ else if(y=='two')
 
     }
     if (x == 'remove') {
+      if(this.currentDate==undefined)
+      {
+        dateValue = new Date();
+        
+      }
+      else{
       var dateValue = new Date(this.currentDate);
+
+
+      }
+
+
 
       var dateAfterChange = dateValue.setDate(dateValue.getDate() - 1);
       var mon = new Date(dateAfterChange)
@@ -6523,8 +6657,18 @@ else if(y=='two')
     if (x == 'addweek') {
 
 
+      if(this.currentDate==undefined)
+      {
+        dateValue = new Date();
+        
+      }
+      else{
       var dateValue = new Date(this.currentDate);
-      //d.setMonth(d.getMonth() - 3);
+
+
+      }
+
+
 
       var dateAfterChange = dateValue.setMonth(dateValue.getMonth() + 1);
       var mon = new Date(dateAfterChange)
@@ -6554,7 +6698,18 @@ else if(y=='two')
      // this.utilizationReportList = []
 
       //this.utilizationReportListsSecond = []
+      if(this.currentDate==undefined)
+      {
+        dateValue = new Date();
+        
+      }
+      else{
       var dateValue = new Date(this.currentDate);
+
+
+      }
+
+
 
 
 
@@ -6869,6 +7024,265 @@ else{
 
 })
   }
+  getListBuinessList:any=[]
+  buisnesscurrentYear:any;
+  buisnesspreviousYear:any;
+  previousYearRevnuePercent:any
+previousYearRevnue:any
+previousYearProjectMoney:any
+currentYearResourcePercent:any
+previousYearProjectMoneyPercent:any
+previousYearResource:any
+previousYearResourcePercent:any
+currentYearProjectCount:any
+currentYearProjectCountPercent:any
+currentYearProjectMoney:any
+currentYearProjectMoneyPercent:any
+     currentYearResource:any
+     currentYearRevnue:any
+previousYearProjectCountPercent:any
+previousYearProjectCount:any
+currentYearRevnuePercent:any
+previousYearProjectCountPercentGrowth:any
+previousYearProjectCountPercentGrowthimg:any
+previousYearProjectMoneyPercentGrowth:any
+previousYearProjectMoneyPercentGrowthimg:any
+previousYearResourcePercentGrowth:any
+previousYearResourcePercentGrowthimg:any
+previousYearRevnuePercentGrowth:any
+previousYearRevnuePercentGrowthimg:any
+currentYearRevnuePercentGrowth:any
+currentYearRevnuePercentGrowthimg:any
+currentYearResourcePercentGrowth:any
+currentYearResourcePercentGrowthimg:any
+currentYearProjectMoneyPercentGrowth:any
+currentYearProjectMoneyPercentGrowthimg:any
+currentYearProjectCountPercentGrowth:any
+currentYearProjectCountPercentGrowthimg:any
+  getProjectBuisinessProjectList()
+  {
+    this.getListBuinessList=[]
+    this.Loader=true
+    this.HTTP.getPbiBuisnessDetailList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+    this.getListBuinessList=  arg.data.table
+    console.log('getListBuinessList',arg.data.table)
+
+    this.Loader=false
+   this.buisnesscurrentYear=this.getListBuinessList[0].currentYear
+     this.buisnesspreviousYear=this.getListBuinessList[0].previousYear
+     
+this.currentYearProjectCount=this.getListBuinessList[0].currentYearProjectCount
+this.currentYearProjectCountPercent=this.getListBuinessList[0].currentYearProjectCountPercent
+this.currentYearProjectCountPercentGrowth=(this.currentYearProjectCount-this.currentYearProjectCountPercent)*100/this.currentYearProjectCountPercent
+if(this.currentYearProjectCountPercent==0)
+{
+  this.currentYearProjectCountPercentGrowth=0
+}
+if(this.currentYearProjectCountPercentGrowth>=0)
+{
+  this.currentYearProjectCountPercentGrowthimg=this.downUrl
+}
+else{
+  this.currentYearProjectCountPercentGrowthimg=this.upUrl
+}
+
+
+
+this.currentYearProjectMoney=this.getListBuinessList[0].currentYearProjectMoney
+this.currentYearProjectMoneyPercent=this.getListBuinessList[0].currentYearProjectMoneyPercent
+
+this.currentYearProjectMoneyPercentGrowth=(this.currentYearProjectMoney-this.currentYearProjectMoneyPercent)*100/this.currentYearProjectMoneyPercent
+if(this.currentYearProjectMoneyPercent==0)
+{
+  this.currentYearProjectMoneyPercentGrowth=0
+}
+if(this.currentYearProjectMoneyPercentGrowth>=0)
+{
+  this.currentYearProjectMoneyPercentGrowthimg=this.downUrl
+}
+else{
+  this.currentYearProjectMoneyPercentGrowthimg=this.upUrl
+}
+
+this.currentYearResource=this.getListBuinessList[0].currentYearResource
+this.currentYearResourcePercent=this.getListBuinessList[0].currentYearResourcePercent
+this.currentYearResourcePercentGrowth=(this.currentYearResource-this.currentYearResourcePercent)*100/this.currentYearResourcePercent
+if(this.currentYearResourcePercent==0)
+{
+  this.currentYearResourcePercentGrowth=0
+}
+if(this.currentYearResourcePercentGrowth>=0)
+{
+  this.currentYearResourcePercentGrowthimg=this.downUrl
+}
+else{
+  this.currentYearResourcePercentGrowthimg=this.upUrl
+}
+
+this.currentYearRevnue=this.getListBuinessList[0].currentYearRevnue
+
+this.currentYearRevnuePercent=this.getListBuinessList[0].currentYearRevnuePercent
+this.currentYearRevnuePercentGrowth=(this.currentYearRevnue-this.currentYearRevnuePercent)*100/this.currentYearRevnuePercent
+if(this.currentYearRevnuePercent==0)
+{
+  this.currentYearRevnuePercentGrowth=0
+}
+if(this.currentYearRevnuePercentGrowth>=0)
+{
+  this.currentYearRevnuePercentGrowthimg=this.downUrl
+}
+else{
+  this.currentYearRevnuePercentGrowthimg=this.upUrl
+}
+this.previousYearProjectCount=this.getListBuinessList[0].previousYearProjectCount
+this.previousYearProjectCountPercent=this.getListBuinessList[0].previousYearProjectCountPercent
+this.previousYearProjectCountPercentGrowth=(this.previousYearProjectCount-this.previousYearProjectCountPercent)*100/this.previousYearProjectCountPercent
+if(this.previousYearProjectCountPercent==0)
+{
+  this.previousYearProjectCountPercentGrowth=0
+}
+if(this.previousYearProjectCountPercentGrowth>=0)
+{
+  this.previousYearProjectCountPercentGrowthimg=this.downUrl
+}
+else{
+  this.previousYearProjectCountPercentGrowthimg=this.upUrl
+}
+this.previousYearProjectMoney=this.getListBuinessList[0].previousYearProjectMoney
+this.previousYearProjectMoneyPercent=this.getListBuinessList[0].previousYearProjectMoneyPercent
+
+this.previousYearProjectMoneyPercentGrowth=(this.previousYearProjectMoney-this.previousYearProjectMoneyPercent)*100/this.previousYearProjectMoneyPercent
+if(this.previousYearProjectMoneyPercent==0)
+{
+this.previousYearProjectMoneyPercentGrowth=0
+}
+if(this.previousYearProjectMoneyPercentGrowth>=0)
+{
+  this.previousYearProjectMoneyPercentGrowthimg=this.downUrl
+}
+else
+{
+this.previousYearProjectMoneyPercentGrowthimg=this.upUrl
+}
+
+this.previousYearResource=this.getListBuinessList[0].previousYearResource
+this.previousYearResourcePercent=this.getListBuinessList[0].previousYearResourcePercent
+this.previousYearResourcePercentGrowth=(this.previousYearResource-this.previousYearResourcePercent)*100/this.previousYearResourcePercent
+if(this.previousYearResourcePercent==0)
+{
+this.previousYearResourcePercentGrowth=0
+}
+if(this.previousYearResourcePercentGrowth>=0)
+{
+  this.previousYearResourcePercentGrowthimg=this.downUrl
+}
+else
+{
+this.previousYearResourcePercentGrowthimg=this.upUrl
+}
+
+this.previousYearRevnue=this.getListBuinessList[0].previousYearRevnue
+this.previousYearRevnuePercent=this.getListBuinessList[0].previousYearRevnuePercent
+this.previousYearRevnuePercentGrowth=(this.previousYearRevnue-this.previousYearRevnuePercent)*100/this.previousYearRevnuePercent
+if(this.previousYearRevnuePercent==0)
+{
+this.previousYearRevnuePercentGrowth=0
+}
+if(this.previousYearRevnuePercentGrowth>=0)
+{
+  this.previousYearRevnuePercentGrowthimg=this.downUrl
+}
+else
+{
+this.previousYearRevnuePercentGrowthimg=this.upUrl
+}
+
+
+
+})
+  }
+  peopleCurrentYear:any
+  getListBuinessPeopleList:any=[]
+  currentYearAttrition:any
+    currentYearBillable:any
+    currentYearCostR:any
+    currentYearNonBillable:any
+    currentYearRevenueR:any
+    currentYearTotalMoney:any
+    currentYearTotalNumber:any
+    peoplePreviousYear:any
+    previousYearBillable:any
+    previousYearCostR:any
+    previousYearNonBillable:any
+    previousYearTotalMoney:any
+    previousYearAttrition:any
+    previousYearTotalNumber:any
+previousYearRevenueR:any
+  getProjectBuisinessPeopleList()
+  {
+    this.getListBuinessPeopleList=[]
+    this.Loader=true
+    this.HTTP.getPbiBuisnessPeopleDetailList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+    this.getListBuinessPeopleList=  arg.data.table
+    console.log('getListBuinessPeopleList',arg.data.table)
+
+    this.Loader=false
+    this.peopleCurrentYear=this.getListBuinessPeopleList[0].currentYear
+  
+
+this.currentYearAttrition=this.getListBuinessPeopleList[0].currentYearAttrition
+this.currentYearBillable=this.getListBuinessPeopleList[0].currentYearBillable
+this.currentYearCostR=this.getListBuinessPeopleList[0].currentYearCostR
+this.currentYearNonBillable=this.getListBuinessPeopleList[0].currentYearNonBillable
+this.currentYearRevenueR=this.getListBuinessPeopleList[0].currentYearRevenueR
+this.currentYearTotalMoney=this.getListBuinessPeopleList[0].currentYearTotalMoney
+this.currentYearTotalNumber=this.getListBuinessPeopleList[0].currentYearTotalNumber
+this.peoplePreviousYear=this.getListBuinessPeopleList[0].previousYear
+this.previousYearAttrition=this.getListBuinessPeopleList[0].previousYearAttrition
+this.previousYearBillable=this.getListBuinessPeopleList[0].previousYearBillable
+this.previousYearCostR=this.getListBuinessPeopleList[0].previousYearCostR
+this.previousYearNonBillable=this.getListBuinessPeopleList[0].previousYearNonBillable
+this.previousYearRevenueR=this.getListBuinessPeopleList[0].previousYearRevenueR
+this.previousYearTotalMoney=this.getListBuinessPeopleList[0].previousYearTotalMoney
+
+this.previousYearTotalNumber=this.getListBuinessPeopleList[0].previousYearTotalNumber
+    })}
+    getListBuinessExpenseList:any=[]
+    previousYearExpense:any
+    currentYearExpense:any
+    expensepreviousYearTotalNumber:any
+expensepreviousYearExpense:any
+expensepreviousYearNonBillable:any
+expensepreviousYearBillable:any
+expensecurrentYearNonBillable:any
+expensecurrentYearTotalNumber:any
+expensecurrentYearBillable:any
+expensecurrentYearExpense:any
+expensepeoplePreviousYear:any
+    getProjectBuisinessExpenseList()
+    {
+      this.getListBuinessExpenseList=[]
+      this.Loader=true
+      this.HTTP.getPbiBuisnessExpenseDetailList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+      this.getListBuinessExpenseList=  arg.data.table
+
+      console.log('getListBuinessExpenseList',arg.data.table)
+  
+      this.Loader=false
+      this.expenseCurrentYear=this.getListBuinessExpenseList[0].currentYear
+     debugger
+this.expensecurrentYearBillable=this.getListBuinessExpenseList[0].currentYearBillable
+this.expensecurrentYearNonBillable=this.getListBuinessExpenseList[0].currentYearNonBillable
+this.expensecurrentYearExpense=this.getListBuinessExpenseList[0].currentYearExpense
+this.expensecurrentYearTotalNumber=this.getListBuinessExpenseList[0].currentYearTotalNumber
+this.expensepeoplePreviousYear=this.getListBuinessExpenseList[0].previousYear
+this.expensepreviousYearBillable=this.getListBuinessExpenseList[0].previousYearBillable
+this.expensepreviousYearNonBillable=this.getListBuinessExpenseList[0].previousYearNonBillable
+this.expensepreviousYearExpense=this.getListBuinessExpenseList[0].previousYearExpense
+
+this.expensepreviousYearTotalNumber=this.getListBuinessExpenseList[0].previousYearTotalNumber
+      })
+    }
   getListEmployeePerformance:any=[]
   getpbiPeopleEmployeePerformance(){
       let cmpcode=1
@@ -8357,6 +8771,9 @@ this.getProjectPortFoliyo()
 this.getProjectProjectDetailPAndLGridList()
 this.getpbiProjectDetailPAndLList()
 this.getProjectExpenseDetailList()
+this.getProjectBuisinessProjectList()
+this.getProjectBuisinessPeopleList()
+this.getProjectBuisinessExpenseList()
 this.getPbiProjectInNumber()
 this.getPbiProjectInNumberInCost()
 this.getPbiProjectInNumberInCostLeave()
