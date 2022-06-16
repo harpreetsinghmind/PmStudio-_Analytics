@@ -2220,6 +2220,7 @@ timeSheetChangeValue(e)
     this.setDepartment=0
 this.CmpCode="1"
 this.currencyName="₹"
+this.checkMom=true
 //this.departmentList=[{depId:'1',depName:'it'},{depId:'2',depName:'Admin'}]
 let latest_date =this. datepipe. transform(new Date(), 'yyyy-MM-dd');
 this.setDate=latest_date
@@ -2820,18 +2821,28 @@ selectInshightCheck(e)
 debugger
 if(e.target.value=="roadblock")
 {
+  this.checkMom=false
+  this.checkRoadBlock=true
+  this.checkOverDue=false
   this.pbiActionableInsightRoadBlockList()
 
 }
 else if (e.target.value=="overdue")
 {
+  this.checkMom=false
+  this.checkRoadBlock=false
+  this.checkOverDue=true
   this.pbiActionableInsightOverDueList()
 
 
 }
 else if(e.target.value=="mom")
 {
+  this.checkMom=true
+  this.checkRoadBlock=false
+  this.checkOverDue=false
   this.pbiActionableInsightList()
+
 
 
 }
@@ -2947,6 +2958,15 @@ this.showTimeValue="Please enter value less than 59 after dot"
   this.timeSheetValue=loggedTime
   
 }
+setactionableInsightList:any=[]
+setactionableInsightOverDueList:any=[]
+actionableInsightOverDueList:any=[]
+checkMom:boolean=false
+checkRoadBlock:boolean=false
+checkOverDue:boolean=false
+
+
+
 pbiActionableInsightOverDueList()
 {
   debugger
@@ -2999,22 +3019,116 @@ var type=null
 //    chInCondtion=this.checkInCondition
 
 // }
+this.setactionableInsightOverDueList=[]
+this.actionableInsightOverDueList=[]
   this.HTTP.getpbiActionableInsightOverDueList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
 debugger
 this.Loader=false
 this.checkDate=0
 //this.refreshGrid=true
-    this.actionableInsightList=  arg.data.table
-console.log('actionableInsightList',arg.data.table)
+    this.actionableInsightOverDueList=  arg.data.table
+console.log('actionableInsightOverDueList',arg.data.table)
+
+var newArr = [];
+for(var i = 0; i < this.actionableInsightOverDueList.length; i++)
+{
+  var obj = this.actionableInsightOverDueList[i];
+  obj['one'] = obj[1];
+  obj['two'] = obj[2];
+  obj['three'] = obj[3];
+  obj['four'] = obj[4];
+  obj['five'] = obj[5];
+  obj['six'] = obj[6];
+  obj['seven'] = obj[7];
+  obj['eight'] = obj[8];
+  obj['nine'] = obj[9];
+  obj['ten'] = obj[10];
+  obj['eleven'] = obj[11];
+  obj['twelve'] = obj[12];
+  obj['threeten'] = obj[13];
+  obj['fourteen'] = obj[14];
+  obj['fifteen'] = obj[15];
+
+  obj['sixteen'] = obj[16];
+  obj['seventeen'] = obj[17];
+
+  obj['eighteen'] = obj[18];
+
+  obj['nineteen'] = obj[19];
+  obj['twenty'] = obj[20];
+
+  obj['twentyone'] = obj[21];
+
+  obj['twentytwo'] = obj[22];
+  obj['twentythree'] = obj[23];
 
 
+  obj['twentyfour'] = obj[24];
+
+  obj['twentyfive'] = obj[25];
+  obj['twentysix'] = obj[26];
+
+
+  obj['twentyseven'] = obj[27];
+
+
+  obj['twentyeight'] = obj[28];
+
+  obj['twentynine'] = obj[29];
+ 
+  obj['thirty'] = obj[30];
+   obj['thirtyone'] = obj[31];
+
+
+
+
+
+   delete(obj[1]);
+   delete(obj[2]);
+   delete(obj[3]);
+   delete(obj[4]);
+   delete(obj[5]);
+   delete(obj[6]);
+   delete(obj[7]);
+   delete(obj[8]);
+   delete(obj[9]);
+   delete(obj[10]);
+   delete(obj[11]);
+   delete(obj[12]);
+   delete(obj[13]);
+   delete(obj[14]);
+   delete(obj[15]);
+   delete(obj[16]);
+   delete(obj[17]);
+   delete(obj[18]);
+   delete(obj[19]);
+  
+   delete(obj[20]);
+   delete(obj[21]);
+   delete(obj[22]);
+   delete(obj[23]);
+   delete(obj[24]);
+   delete(obj[25]);
+   delete(obj[26]);
+   delete(obj[27]);
+   delete(obj[28]);
+   delete(obj[29]);
+   delete(obj[30]);
+   delete(obj[31]);
+        
+  newArr.push(obj);
+}
+this.setactionableInsightOverDueList=newArr
   })
 }
+setactionableInsightRoadBlockList:any=[]
+actionableInsightRoadBlockList:any=[]
 pbiActionableInsightRoadBlockList()
 {
   debugger
+  this.setactionableInsightRoadBlockList=[]
   this.Loader=true
-  this.actionableInsightList=[]
+  this.actionableInsightRoadBlockList=[]
   if(this.checkDate==0)
   {
   var date=this.setDate
@@ -3067,8 +3181,8 @@ debugger
 this.Loader=false
 this.checkDate=0
 //this.refreshGrid=true
-    this.actionableInsightList=  arg.data.table
-console.log('actionableInsightList',arg.data.table)
+    this.actionableInsightRoadBlockList=  arg.data.table
+console.log('actionableInsightRoadBlockList',arg.data.table)
 
 
   })
@@ -3080,6 +3194,7 @@ pbiActionableInsightList()
   debugger
   this.Loader=true
   this.actionableInsightList=[]
+  this.setactionableInsightList=[]
   if(this.checkDate==0)
   {
   var date=this.setDate
@@ -3135,6 +3250,96 @@ this.checkDate=0
     this.actionableInsightList=  arg.data.table
 console.log('actionableInsightList',arg.data.table)
 
+var newArr = [];
+for(var i = 0; i < this.actionableInsightList.length; i++)
+{
+  var obj = this.actionableInsightList[i];
+  obj['one'] = obj[1];
+  obj['two'] = obj[2];
+  obj['three'] = obj[3];
+  obj['four'] = obj[4];
+  obj['five'] = obj[5];
+  obj['six'] = obj[6];
+  obj['seven'] = obj[7];
+  obj['eight'] = obj[8];
+  obj['nine'] = obj[9];
+  obj['ten'] = obj[10];
+  obj['eleven'] = obj[11];
+  obj['twelve'] = obj[12];
+  obj['threeten'] = obj[13];
+  obj['fourteen'] = obj[14];
+  obj['fifteen'] = obj[15];
+
+  obj['sixteen'] = obj[16];
+  obj['seventeen'] = obj[17];
+
+  obj['eighteen'] = obj[18];
+
+  obj['nineteen'] = obj[19];
+  obj['twenty'] = obj[20];
+
+  obj['twentyone'] = obj[21];
+
+  obj['twentytwo'] = obj[22];
+  obj['twentythree'] = obj[23];
+
+
+  obj['twentyfour'] = obj[24];
+
+  obj['twentyfive'] = obj[25];
+  obj['twentysix'] = obj[26];
+
+
+  obj['twentyseven'] = obj[27];
+
+
+  obj['twentyeight'] = obj[28];
+
+  obj['twentynine'] = obj[29];
+ 
+  obj['thirty'] = obj[30];
+   obj['thirtyone'] = obj[31];
+
+
+
+
+
+   delete(obj[1]);
+   delete(obj[2]);
+   delete(obj[3]);
+   delete(obj[4]);
+   delete(obj[5]);
+   delete(obj[6]);
+   delete(obj[7]);
+   delete(obj[8]);
+   delete(obj[9]);
+   delete(obj[10]);
+   delete(obj[11]);
+   delete(obj[12]);
+   delete(obj[13]);
+   delete(obj[14]);
+   delete(obj[15]);
+   delete(obj[16]);
+   delete(obj[17]);
+   delete(obj[18]);
+   delete(obj[19]);
+  
+   delete(obj[20]);
+   delete(obj[21]);
+   delete(obj[22]);
+   delete(obj[23]);
+   delete(obj[24]);
+   delete(obj[25]);
+   delete(obj[26]);
+   delete(obj[27]);
+   delete(obj[28]);
+   delete(obj[29]);
+   delete(obj[30]);
+   delete(obj[31]);
+        
+  newArr.push(obj);
+}
+this.setactionableInsightList=newArr
 
   })
 }
@@ -6913,6 +7118,23 @@ else if(y=='two')
   this.show = false
 
 }
+else if(y=='three')
+{
+  if(this.checkMom==true)
+{
+  this.pbiActionableInsightList()
+
+}
+if(this.checkRoadBlock==true)
+{
+  this.pbiActionableInsightRoadBlockList()
+}
+if(this.checkOverDue==true)
+{
+  this.pbiActionableInsightOverDueList()
+}
+
+}
    // this.getResourceUtilizationReportList();
   }
   show: boolean = false
@@ -6957,6 +7179,23 @@ else if(y=='two')
   this.pbiActionableCheckInCheckOutList()
   
 }
+else if(y=='three')
+{
+  if(this.checkMom==true)
+{
+  this.pbiActionableInsightList()
+
+}
+if(this.checkRoadBlock==true)
+{
+  this.pbiActionableInsightRoadBlockList()
+}
+if(this.checkOverDue==true)
+{
+  this.pbiActionableInsightOverDueList()
+}
+
+}
 
      // this.getResourceUtilizationReportList();
 
@@ -6996,6 +7235,23 @@ else if(y=='two')
       this.pbiActionableCheckInCheckOutList()
        
      }
+     else if(y=='three')
+{
+  if(this.checkMom==true)
+{
+  this.pbiActionableInsightList()
+
+}
+if(this.checkRoadBlock==true)
+{
+  this.pbiActionableInsightRoadBlockList()
+}
+if(this.checkOverDue==true)
+{
+  this.pbiActionableInsightOverDueList()
+}
+
+}
 
     }
 
@@ -7036,6 +7292,23 @@ else if(y=='two')
       this.pbiActionableCheckInCheckOutList()
         
       }
+      else if(y=='three')
+{
+  if(this.checkMom==true)
+{
+  this.pbiActionableInsightList()
+
+}
+if(this.checkRoadBlock==true)
+{
+  this.pbiActionableInsightRoadBlockList()
+}
+if(this.checkOverDue==true)
+{
+  this.pbiActionableInsightOverDueList()
+}
+
+}
     }
 
     if (x == 'removeweek') {
@@ -7078,6 +7351,23 @@ else if(y=='two')
     this.pbiActionableCheckInCheckOutList()
       
     }
+    else if(y=='three')
+{
+  if(this.checkMom==true)
+{
+  this.pbiActionableInsightList()
+
+}
+if(this.checkRoadBlock==true)
+{
+  this.pbiActionableInsightRoadBlockList()
+}
+if(this.checkOverDue==true)
+{
+  this.pbiActionableInsightOverDueList()
+}
+
+}
 
     }
   }
@@ -9132,7 +9422,19 @@ this.getPbiProjectInNumberInCostLeave()
 this.getpbiExpenseProject()
 this.pbiActionableTimesheetList()
 this.pbiActionableCheckInCheckOutList()
-this.pbiActionableInsightList()
+if(this.checkMom==true)
+{
+  this.pbiActionableInsightList()
+
+}
+if(this.checkRoadBlock==true)
+{
+  this.pbiActionableInsightRoadBlockList()
+}
+if(this.checkOverDue==true)
+{
+  this.pbiActionableInsightOverDueList()
+}
 
   }
   getResourcesDetail:any=[]
