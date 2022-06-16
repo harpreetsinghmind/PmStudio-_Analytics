@@ -1540,8 +1540,15 @@
                     height="400"
                     type="doughnut2d"
                     dataFormat="json"
-                    [dataSource]="datades21">
+                    [dataSource]="dataprojectCategory">
                 </fusioncharts>
+                    <!-- <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts> -->
                   </div>
                 </div>
 
@@ -1556,8 +1563,15 @@
                     height="400"
                     type="doughnut2d"
                     dataFormat="json"
-                    [dataSource]="datades21">
+                    [dataSource]="dataExpenseDeployee">
                 </fusioncharts>
+                    <!-- <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="datades21">
+                </fusioncharts> -->
                   </div>
                 </div>
 
@@ -1567,13 +1581,20 @@
                   </div>
 
                   <div class="chartBox">
-                    <fusioncharts
+  <fusioncharts
+                    width="100%"
+                    height="400"
+                    type="doughnut2d"
+                    dataFormat="json"
+                    [dataSource]="dataExpenseBreackUp">
+                </fusioncharts>
+                    <!-- <fusioncharts
                     width="100%"
                     height="400"
                     type="doughnut2d"
                     dataFormat="json"
                     [dataSource]="datades21">
-                </fusioncharts>
+                </fusioncharts> -->
                   </div>
                 </div>
 
@@ -1591,9 +1612,9 @@
                      <fusioncharts
                     width="100%"
                     height="400"
-                    type="pareto2d"
+                    type="scrollcombidy2d"
                     dataFormat="json"
-                    [dataSource]="datades23">
+                    [dataSource]="buisnessRevenue">
                 </fusioncharts>
                   </div>
                 </div>
@@ -1625,7 +1646,7 @@
                     height="400"
                     type="scrollcombidy2d"
                     dataFormat="json"
-                    [dataSource]="datahead">
+                    [dataSource]="dataBuisnessExpenseAndHeadCountAndProject">
                 </fusioncharts>
                   </div>
                 </div>
@@ -4181,17 +4202,17 @@
         <div><h3>Insights</h3></div>
   <div class="insightbox">
     <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-      <label class="custom-control-label" for="defaultUnchecked">MOM</label>
+      <input type="radio" class="custom-control-input" value ="mom"checked (change)="selectInshightCheck($event)" id="defaultUnchecked" name="defaultExampleRadios">
+      <label class="custom-control-label"  for="defaultUnchecked">MOM</label>
     </div>
 
     <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+      <input type="radio" class="custom-control-input" value="roadblock" (change)="selectInshightCheck($event)" id="defaultUnchecked" name="defaultExampleRadios">
       <label class="custom-control-label" for="defaultUnchecked">Roadblock</label>
     </div>
 
     <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+      <input type="radio" class="custom-control-input" value="overdue" (change)="selectInshightCheck($event)" id="defaultUnchecked" name="defaultExampleRadios">
       <label class="custom-control-label" for="defaultUnchecked">Overdue Tasks</label>
     </div>
 
@@ -4214,7 +4235,7 @@
                   <e-column field='customerName' width="150px" [disableHtmlEncode]="false" headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
                   </e-column>
-                  <e-column field='projectName' width="150px" headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='projectname' width="150px" headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
                   </e-column>
 
                     <e-column field='1' width="50" headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
@@ -4540,14 +4561,19 @@
                           <option value=">=">Greater Than Equal To</option>
                           <option value="<=">Less Than Equal To</option>
                         </select>
-                        <input type="text" [(ngModel)]="checkInValue" class="form-control">
+                        <input type="text" [(ngModel)]="checkInValue" (focusout)="onSearchChange($event)" class="form-control">
+                       <div class="red" *ngIf="checkMinValue">
+                        {{showMinValue}}
+
+                       </div>
+                      
                       </div>
 
                       <div class="checkFilterRow">
                         <label class="form-control">
                           Timesheet
                         </label>
-                        <select (change)="timeSheetChangeValue($event)" class="form-control spaceCol">
+                        <select (change)="timeSheetChangeValue($event)"  class="form-control spaceCol">
                           <option value="0">Select</option>
                           <option value="=">Equal</option>
                           <option value="!=">Not Equal</option>
@@ -4556,7 +4582,11 @@
                           <option value=">=">Greater Than Equal To</option>
                           <option value="<=">Less Than Equal To</option>
                         </select>
-                        <input type="text"  [(ngModel)]="timeSheetValue" class="form-control">
+                        <input type="text"  (focusout)="onSearchTime($event)" [(ngModel)]="timeSheetValue" class="form-control">
+                        <div class="red" *ngIf="checkTimeValue">
+                          {{showTimeValue}}
+  
+                         </div>
                       </div>
 
                       <div class="FilterBtn"><button (click)="filterValue()" class="btn btn-primary">Save</button></div>
