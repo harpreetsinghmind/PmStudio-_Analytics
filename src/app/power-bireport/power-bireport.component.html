@@ -3402,12 +3402,12 @@
                       <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{totalExpenseCurrentYear | number :'1.2-2'}} |</span><span>{{totalExpenseCurrentYearGrowthPercent | number :'1.2-2'}}%</span>
+                        <p><span>{{currencyName}}{{totalExpenseCurrentYear | number :'1.2-2'}} |</span><span>{{totalExpenseCurrentYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{totalExpenseCurrentYearGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{totalExpensePreviousYear | number :'1.2-2'}}|</span><span>
+                        <p><span>{{currencyName}}{{totalExpensePreviousYear | number :'1.2-2'}}|</span><span>
                           {{totalExpensePreviousYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{totalExpensePreviousYearGrowthPercentimg}}">
@@ -3416,13 +3416,13 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{totalExpenseCurrentYearYoy | number :'1.2-2'}} |</span>
+                        <p><span>{{currencyName}}{{totalExpenseCurrentYearYoy | number :'1.2-2'}} |</span>
                           <span>{{totalExpenseCurrentYearYoyGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalExpenseCurrentYearYoyGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{totalExpensePreviousYearYoy | number :'1.2-2'}} |</span>
+                        <p><span>{{currencyName}}{{totalExpensePreviousYearYoy | number :'1.2-2'}} |</span>
                           <span>{{totalExpensePreviousYearYoyGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalExpensePreviousYearYoyGrowthPercentimg}}">
@@ -3440,13 +3440,13 @@
                         <p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{serviceProviderCurrentYear | number :'1.2-2'}} |</span>
+                        <p><span>{{currencyName}}{{serviceProviderCurrentYear | number :'1.2-2'}} |</span>
                           <span>{{serviceProviderCurrentYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{serviceProviderCurrentYearGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{serviceProviderPreviousYear | number :'1.2-2'}} |</span>
+                        <p><span>{{currencyName}}{{serviceProviderPreviousYear | number :'1.2-2'}} |</span>
                           <span>{{serviceProviderPreviousYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
@@ -3456,7 +3456,7 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{serviceProviderCurrentYearYoy | number :'1.2-2'}} |
+                        <p><span>{{currencyName}}{{serviceProviderCurrentYearYoy | number :'1.2-2'}} |
 
                         </span><span>{{serviceProviderCurrentYearGrowthYoyPercent | number :'1.2-2'}}%
 
@@ -3467,7 +3467,7 @@
                         <img src="{{serviceProviderCurrentYearGrowthYoyPercentimg}}">
 
                       </p>
-                      <p><span>{{serviceProviderPreviousYearYoy | number :'1.2-2'}}
+                      <p><span>{{currencyName}}{{serviceProviderPreviousYearYoy | number :'1.2-2'}}
                       </span><span>{{serviceProviderPreviousYearGrowthYoyPercent | number :'1.2-2'}}%
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth">
@@ -3488,7 +3488,7 @@
                       <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p>Month ({{monthName}})</p>
-                        <p><span>{{customerExpenseCurrentYear | number :'1.2-2'}} |
+                        <p><span>{{currencyName}}{{customerExpenseCurrentYear | number :'1.2-2'}} |
 
                         </span><span>{{customerExpenseCurrentYearGrowth | number :'1.2-2'}}%
 
@@ -3498,7 +3498,7 @@
                         <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
 
                       </p>
-                        <p><span>{{customerExpensePreviousYear | number :'1.2-2'}} |</span>
+                        <p><span>{{currencyName}}{{customerExpensePreviousYear | number :'1.2-2'}} |</span>
                           <span>{{customerExpensePreviousYearGrowthPercent | number :'1.2-2'}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{customerExpensePreviousYearGrowthPercentimg}}">
@@ -3507,14 +3507,14 @@
                       </div>
                       <div>
                         <p>YOY</p>
-                        <p><span>{{customerExpenseCurrentYearYoy | number :'1.2-2'}} |</span>
+                        <p><span>{{currencyName}}{{customerExpenseCurrentYearYoy | number :'1.2-2'}} |</span>
                           <span>{{customerExpenseCurrentYearGrowthYoyPercent | number :'1.2-2'}}%
 
                           </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{customerExpenseCurrentYearGrowthYoyPercentimg}}">
 
                         </p>
-                        <p><span>{{customerExpensePreviousYearYoy | number :'1.2-2'}} |</span>
+                        <p><span>{{currencyName}}{{customerExpensePreviousYearYoy | number :'1.2-2'}} |</span>
                           <span>{{customerExpensePreviousYearGrowthYoyPercent | number :'1.2-2'}}%
 
                           </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
@@ -3534,32 +3534,32 @@
                 <div class="CurrentYearBox">
                   <div>
                     <h5>Total Reports</h5>
-                    <h5>₹​ {{totalReports | number :'1.2-2'}} <span>({{totalReportsLeft}})</span></h5>
+                    <h5>{{currencyName}}​ {{totalReports | number :'1.2-2'}} <span>({{totalReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Unsubmitted Report</h5>
-                    <h5>₹​ {{unsubmittedReports | number :'1.2-2'}} <span>({{unsubmittedReportsLeft}})</span></h5>
+                    <h5>{{currencyName}} {{unsubmittedReports | number :'1.2-2'}} <span>({{unsubmittedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Pending Report</h5>
-                    <h5>₹​  {{pendingReports | number :'1.2-2'}}<span>({{pendingReportsLeft}})</span></h5>
+                    <h5>{{currencyName}}{{pendingReports | number :'1.2-2'}}<span>({{pendingReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Approved Report</h5>
-                    <h5>₹​ {{approvedReports | number :'1.2-2'}} <span>({{approvedReportsLeft}})</span></h5>
+                    <h5>{{currencyName}}​ {{approvedReports | number :'1.2-2'}} <span>({{approvedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Reimbursed</h5>
-                    <h5>₹​ {{reimbursed | number :'1.2-2'}} <span>({{reimbursedLeft}})</span></h5>
+                    <h5>{{currencyName}}​ {{reimbursed | number :'1.2-2'}} <span>({{reimbursedLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Inprocess</h5>
-                    <h5>₹​ {{inprocess | number :'1.2-2'}} <span>({{inprocessLeft}})</span></h5>
+                    <h5>{{currencyName}}​ {{inprocess | number :'1.2-2'}} <span>({{inprocessLeft}})</span></h5>
                   </div>
 
                 </div>

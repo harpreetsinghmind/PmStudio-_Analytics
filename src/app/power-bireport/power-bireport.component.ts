@@ -2214,10 +2214,12 @@ timeSheetChangeValue(e)
    this.pbiActionableCheckInCheckOutList()
    this.pbiActionableInsightList()
   }
+  currencyName:any="₹"
   ngOnInit(): void {
     this.departmentId=0
     this.setDepartment=0
 this.CmpCode="1"
+this.currencyName="₹"
 //this.departmentList=[{depId:'1',depName:'it'},{depId:'2',depName:'Admin'}]
 let latest_date =this. datepipe. transform(new Date(), 'yyyy-MM-dd');
 this.setDate=latest_date
