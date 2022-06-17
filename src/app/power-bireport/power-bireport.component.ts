@@ -2818,14 +2818,14 @@ pbiActionableCheckInCheckOutList()
   }
   if(this.checkInValue==undefined ||this.checkInValue==null||this.checkInValue=="")
   {
-var chValue=0
+var chValue='08.00'
   }
   else{
 chValue=this.checkInValue
   }
   if(this.timeSheetValue==undefined||this.timeSheetValue==null||this.timeSheetValue=="")
   {
-var tmValue=0
+var tmValue='05.00'
   }
   else{
 tmValue=this.timeSheetValue
@@ -2833,7 +2833,7 @@ tmValue=this.timeSheetValue
   if(this.timeSheetCondition==undefined ||this.timeSheetCondition==null||this.timeSheetCondition==""||this.timeSheetCondition=="0"||this.timeSheetCondition==0)
   
   {
-var tmSheetCondition="null"
+var tmSheetCondition='<'
   }
   else{
      tmSheetCondition=this.timeSheetCondition
@@ -2841,15 +2841,21 @@ var tmSheetCondition="null"
   }
   if(this.checkInCondition==undefined ||this.checkInCondition==null||this.checkInCondition==""||this.checkInCondition=="0"||this.checkInCondition==0)
 {
-var chInCondtion="null"
+var chInCondtion='>'
 }
 else
 {
    chInCondtion=this.checkInCondition
 
 }
+if(this.conditionStatus==undefined || this.conditionStatus||this.conditionStatus=="")
+{
+  var type="and"
 
-var type=this.conditionStatus
+}
+else{
+  type=this.conditionStatus
+}
   this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId,chValue,chInCondtion,tmValue,tmSheetCondition,type).subscribe(arg => {
 debugger
 this.Loader=false
