@@ -32,8 +32,12 @@ export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
   @ViewChild('overviewgrid')
   public grids: GridComponent;
-  @ViewChild('overviewgridInsight')
+  @ViewChild('overviewgridInsightmom')
   public gridsInsight: GridComponent;
+  @ViewChild('overviewgridInsightroad')
+  public gridsInsightRoad: GridComponent;
+  @ViewChild('overviewgridInsightover')
+  public gridsInsightOver: GridComponent;
   @ViewChild('overviewgridcheck')
   public gridcheck: GridComponent;
   @ViewChild('overviewgridset')
@@ -2451,7 +2455,7 @@ this.pbiActionableInsightList()
 
 
   }
-  actionCompletecheck(args: any) {
+  actionCompleteCheck(args: any) {
     debugger
     if (args.name== "actionComplete") {
       var date = new Date(this.isDate)
@@ -2460,21 +2464,62 @@ this.pbiActionableInsightList()
       var monthNumber = aa.getDate() + 1 //29
       var monthNumbers = aa.getDate() + 2 //30
       var monthNumbert = aa.getDate() + 3 //31
-      this.gridcheck.getColumnByField('29').visible = true;
+      if(this.checkMom==true)
+      {
+        this.gridsInsight.getColumnByField('29').visible = true;
 
-      this.gridcheck.getColumnByField('30').visible = true;
-      this.gridcheck.getColumnByField('31').visible = true;
+        this.gridsInsight.getColumnByField('30').visible = true;
+        this.gridsInsight.getColumnByField('31').visible = true;
+      }
+      if(this.checkOverDue==true)
+      {
+        this.gridsInsightOver.getColumnByField('29').visible = true;
+
+        this.gridsInsightOver.getColumnByField('30').visible = true;
+        this.gridsInsightOver.getColumnByField('31').visible = true;
+      }
+      if(this.checkRoadBlock==true)
+      {
+        this.gridsInsightRoad.getColumnByField('29').visible = true;
+
+        this.gridsInsightRoad.getColumnByField('30').visible = true;
+        this.gridsInsightRoad.getColumnByField('31').visible = true;
+      }
+
       //var node=document.getElementById("overviewgrid")
       if (d == 28) {
          // node.getAttributeNames('')
         var number = monthNumber.toString()
         var number1 = monthNumbers.toString()
         var number2 = monthNumbert.toString()
-        this.gridcheck.getColumnByField('29').visible = false;
-
-        this.gridcheck.getColumnByField('30').visible = false;
-        this.gridcheck.getColumnByField('31').visible = false;
-
+        if(this.checkMom==true)
+        {
+          this.gridsInsight.getColumnByField('29').visible = false;
+  
+          this.gridsInsight.getColumnByField('30').visible = false;
+          this.gridsInsight.getColumnByField('31').visible = false;
+          this.gridsInsight.refreshColumns();
+          this.gridsInsight.refresh()
+        }
+        if(this.checkOverDue==true)
+        {
+          this.gridsInsightOver.getColumnByField('29').visible = false;
+  
+          this.gridsInsightOver.getColumnByField('30').visible = false;
+          this.gridsInsightOver.getColumnByField('31').visible = false;
+          this.gridsInsightOver.refreshColumns();
+          this.gridsInsightOver.refresh()
+        }
+        if(this.checkRoadBlock==true)
+        {
+          this.gridsInsightRoad.getColumnByField('29').visible = false;
+  
+          this.gridsInsightRoad.getColumnByField('30').visible = false;
+          this.gridsInsightRoad.getColumnByField('31').visible = false;
+          this.gridsInsightRoad.refreshColumns();
+          this.gridsInsightRoad.refresh()
+        }
+  
 
 
         //this.gridset.getColumnByField(number1).visible = false;
@@ -2482,35 +2527,104 @@ this.pbiActionableInsightList()
         //this.gridset.getColumnByField(number2).visible = false;
       //  this.grids.hideColumns([number, number1,number2]); 
         //this.grids.folu
-        this.gridcheck.refreshColumns();
-        this.gridcheck.refresh()
+       
 
       }
       if (d == 29) {
         var number = monthNumber.toString()
         var number1 = monthNumbers.toString()
-        this.gridcheck.getColumnByField('30').visible = false;
+        if(this.checkMom==true)
+        {
+  
+          this.gridsInsight.getColumnByField('30').visible = false;
+          this.gridsInsight.getColumnByField('31').visible = false;
+          this.gridsInsight.refreshColumns();
+          this.gridsInsight.refresh()
+        }
+        if(this.checkOverDue==true)
+        {
+  
+          this.gridsInsightOver.getColumnByField('30').visible = false;
+          this.gridsInsightOver.getColumnByField('31').visible = false;
+          this.gridsInsightOver.refreshColumns();
+          this.gridsInsightOver.refresh()
+        }
+        if(this.checkRoadBlock==true)
+        {
+  
+          this.gridsInsightRoad.getColumnByField('30').visible = false;
+          this.gridsInsightRoad.getColumnByField('31').visible = false;
+          this.gridsInsightRoad.refreshColumns();
+          this.gridsInsightRoad.refresh()
+        }
+  
 
-        this.gridcheck.getColumnByField('31').visible = false;
-        this.gridcheck.refreshColumns();
-        this.gridcheck.refresh()
+
+        
 
 
       }
       if (d == 30) {
         var number = monthNumber.toString()
-        this.gridcheck.getColumnByField('31').visible = false;
+        if(this.checkMom==true)
+        {
+  
+          this.gridsInsight.getColumnByField('31').visible = false;
+          this.gridsInsight.refreshColumns();
+          this.gridsInsight.refresh()
+        }
+        if(this.checkOverDue==true)
+        {
+  
+          this.gridsInsightOver.getColumnByField('31').visible = false;
+          this.gridsInsightOver.refreshColumns();
+          this.gridsInsightOver.refresh()
+        }
+        if(this.checkRoadBlock==true)
+        {
+  
+          this.gridsInsightRoad.getColumnByField('31').visible = false;
+          this.gridsInsightRoad.refreshColumns();
+          this.gridsInsightRoad.refresh()
+        }
+  
 
-        this.gridcheck.refreshColumns();
-        this.gridcheck.refresh()
+
+        
+
 
 
 
       }
       if(d==31)
       {
-        this.gridcheck.refreshColumns();
-        this.gridcheck.refresh()
+
+        if(this.checkMom==true)
+        {
+  
+          this.gridsInsight.refreshColumns();
+          this.gridsInsight.refresh()
+        }
+        if(this.checkOverDue==true)
+        {
+  
+          this.gridsInsightOver.refreshColumns();
+          this.gridsInsightOver.refresh()
+        }
+        if(this.checkRoadBlock==true)
+        {
+  
+          this.gridsInsightRoad.refreshColumns();
+          this.gridsInsightRoad.refresh()
+        }
+  
+
+
+        
+
+
+
+      
 
       }
     }

@@ -4249,10 +4249,10 @@
       </div>
 
       <div *ngIf="checkMom" class="table-responsive" style="margin-top: 12px;">
-        <ejs-grid #overviewgridInsight id='overviewgridInsight' [allowTextWrap]="true" [dataSource]='actionableInsightList' rowHeight='38' [allowSelection]='true'
+        <ejs-grid #overviewgridInsightmom id='overviewgridInsightmom' [allowTextWrap]="true" [dataSource]='actionableInsightList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
-                 [allowPaging]='true' [allowExcelExport]='true' >
+                (actionComplete)="actionCompleteCheck($event)"  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
                   <e-column field='customerName' width="150px" [disableHtmlEncode]="false" headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
@@ -4300,10 +4300,10 @@
               </ejs-grid>
       </div>
       <div *ngIf="checkRoadBlock" class="table-responsive" style="margin-top: 12px;">
-        <ejs-grid #overviewgridInsight id='overviewgridInsight' [allowTextWrap]="true" [dataSource]='actionableInsightRoadBlockList' rowHeight='38' [allowSelection]='true'
+        <ejs-grid #overviewgridInsightroad id='overviewgridInsightroad' [allowTextWrap]="true" [dataSource]='actionableInsightRoadBlockList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
-                 [allowPaging]='true' [allowExcelExport]='true' >
+                (actionComplete)="actionCompleteCheck($event)" [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
                   <e-column field='customerName' width="150px" [disableHtmlEncode]="false" headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
@@ -4351,10 +4351,10 @@
               </ejs-grid>
       </div>
       <div *ngIf="checkOverDue" class="table-responsive" style="margin-top: 12px;">
-        <ejs-grid #overviewgridInsight id='overviewgridInsight' [allowTextWrap]="true" [dataSource]='actionableInsightOverDueList' rowHeight='38' [allowSelection]='true'
+        <ejs-grid #overviewgridInsightover id='overviewgridInsightover' [allowTextWrap]="true" [dataSource]='actionableInsightOverDueList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
-                 [allowPaging]='true' [allowExcelExport]='true' >
+                (actionComplete)="actionCompleteCheck($event)"  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
                   <e-column field='customerName' width="150px" [disableHtmlEncode]="false" headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
