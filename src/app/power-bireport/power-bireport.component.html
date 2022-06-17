@@ -2252,6 +2252,7 @@
                 <a class="nav-link" data-toggle="tab" href="#projectpl" role="tab">Project P & L</a>
               </li>
 
+
               </ul>
 
            <div class="tab-content">
@@ -3001,7 +3002,8 @@
                           <ng-template #template let-data>
                             <div>
                               <img src="{{userImage(data)}}" style="width: 28px;margin-right: 5px; border-radius: 50%;">
-                              <span class="projectStatusbar"></span>
+                              <span *ngIf="data.inActive==0"class="projectStatusbar"></span>
+                              <span *ngIf="data.inActive==1"class="projectStatusbarGrey"></span>
                               <span>{{data.resourceName}}</span>
                             </div>
                           </ng-template>
@@ -3197,46 +3199,46 @@
                             <div class="YearValue"><p># Project</p><p>$ Project</p><p>Avg. Revenue</p><p>Avg. Tenure</p></div>
                             <div>
                               <p>{{plcurrentYear}}</p>
-                              <p><span>{{projectCostCurrentYear}} |</span><span>
-                                {{projectCostCurrentYearGrowthPercent}}%</span>
+                              <p><span>{{projectCostCurrentYear | number :'1.2-2'}} |</span><span>
+                                {{projectCostCurrentYearGrowthPercent | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectCostInDollarCurrentYear}}|</span><span>{{projectCostInDollarCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{projectCostInDollarCurrentYear | number :'1.2-2'}}|</span><span>{{projectCostInDollarCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgRevenueCurrentYear}} |</span><span>{{avgRevenueCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{avgRevenueCurrentYear | number :'1.2-2'}} |</span><span>{{avgRevenueCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgTenureCurrentYear}} |</span><span>{{avgTenureCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{avgTenureCurrentYear | number :'1.2-2'}} |</span><span>{{avgTenureCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgTenureCurrentYearGrowthPercentimg}}">
 
                               </p>
                             </div>
                             <div>
                               <p>{{plpreviousYear}}</p>
-                              <p><span>{{projectCostPreviousYear}} |</span><span>{{projectCostPreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                              <p><span>{{projectCostPreviousYear  | number :'1.2-2'}} |</span><span>{{projectCostPreviousYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{projectCostPreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectCostInDollarPerviousYear}} |</span><span>
-                                {{projectCostInDollarPreviousYearGrowthPercent}}%</span>
+                              <p><span>{{projectCostInDollarPerviousYear  | number :'1.2-2'}} |</span><span>
+                                {{projectCostInDollarPreviousYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgRevenuePreviousYear}} |</span><span>
-                                {{avgRevenuePreviousYearGrowthPercent}}%</span>
+                              <p><span>{{avgRevenuePreviousYear  | number :'1.2-2'}} |</span><span>
+                                {{avgRevenuePreviousYearGrowthPercent  | number :'1.2-2' }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenuePreviousYearGrowthPercentimg}}">
 
 
                               </p>
-                              <p><span>{{avgTenurePreviousYear}} |</span><span>
-                                {{avgTenurePreviousYearGrowthPercent}}%</span>
+                              <p><span>{{avgTenurePreviousYear  | number :'1.2-2'}} |</span><span>
+                                {{avgTenurePreviousYearGrowthPercent  | number :'1.2-2'}}%</span>
 
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3257,8 +3259,8 @@
                             <div class="YearValue"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>
                             <div>
                               <p>{{plcurrentYear}}</p>
-                              <p><span>{{totalCostCurrentYear}} |</span>
-                                <span>{{totalCostCurrentYearGrowthPercent}}%</span>
+                              <p><span>{{totalCostCurrentYear  | number :'1.2-2'}} |</span>
+                                <span>{{totalCostCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
 
@@ -3267,22 +3269,22 @@
 
 
                               </p>
-                              <p><span>{{netRevenueCurrentYear}} |</span>
-                                <span>{{netRevenueCurrentYearGrowthPercent}}%</span>
+                              <p><span>{{netRevenueCurrentYear  | number :'1.2-2'}} |</span>
+                                <span>{{netRevenueCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
                                 </span>
                           <img src="{{netRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgMarginCurrentYear}} |</span>
-                                <span>{{avgMarginCurrentYearGrowthPercent}}%</span>
+                              <p><span>{{avgMarginCurrentYear  | number :'1.2-2'}} |</span>
+                                <span>{{avgMarginCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectWithAvgMarginCurrentYear}} |</span>
-                                <span>{{projectWithAvgMarginCurrentYearGrowthPercent}}%</span>
+                              <p><span>{{projectWithAvgMarginCurrentYear  | number :'1.2-2'}} |</span>
+                                <span>{{projectWithAvgMarginCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectWithAvgMarginCurrentYearGrowthPercentimg}}">
 
@@ -3290,7 +3292,8 @@
                             </div>
                             <div>
                               <p>{{plpreviousYear}}</p>
-                              <p><span>{{totalCostPreviouYear}} |</span><span>{{totalCostPreviouYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                              <p><span>{{totalCostPreviouYear  | number :'1.2-2'}} |</span>
+                                <span>{{totalCostPreviouYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalCostPreviouYearGrowthPercentimg}}">
 
                               </p>
@@ -3298,11 +3301,13 @@
                           <img src="{{netRevenuePreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgMarginPreviousYear}} |</span><span>{{avgMarginPreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{avgMarginPreviousYear  | number :'1.2-2'}} 
+                                |</span><span>{{avgMarginPreviousYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginPreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectWithAvgMarginPreviousYear}} |</span><span>{{projectWithAvgMarginPreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{projectWithAvgMarginPreviousYear  | number :'1.2-2'}} 
+                                |</span><span>{{projectWithAvgMarginPreviousYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectWithAvgMarginPreviousYearGrowthPercentimg}}">
 
                               </p>
@@ -4666,7 +4671,6 @@
               <div class="modal-header">
                     <h4 class="modal-title" >Filters</h4>
                     <select (change)="changeStatus($event)" class="form-control spaceCol">
-                      <option value="0">Select</option>
                       <option value="and">And</option>
                       <option value="or">Or</option>
                      
