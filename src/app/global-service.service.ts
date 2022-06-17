@@ -632,15 +632,15 @@ getProjectProjectDetailRevnueAndCost(year,cmpcode,projectid,depid): Observable<a
   return this.httpClient.get(URL,{headers:headers})
  
  }
-getPbiProjectPortfoliyo(year,cmpcode,depid): Observable<any> {
+getPbiProjectPortfoliyo(year,cmpcode,depid,type): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectportfoliyo?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+  const URL=`${environment.apiUrl}pbiPeople/GetPbiProjectportfoliyo?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
  
- // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectportfoliyo?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
-  //const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectportfoliyo?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/GetPbiProjectportfoliyo?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
+  //const URL ="http://localhost:63000/api/pbiPeople/GetPbiProjectportfoliyo?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
  
   return this.httpClient.get(URL,{headers:headers})
  
@@ -956,15 +956,15 @@ const URL=`${environment.apiUrl}pbiPeople/getActionableTimeSheetList?year=`+year
  }
 
  
-getpbiActionableCheckInCheckOutList(year,cmpcode,depid,chValue,chInCondition,tmSheetValue,tmSheetCondition): Observable<any> {
+getpbiActionableCheckInCheckOutList(year,cmpcode,depid,chValue,chInCondition,tmSheetValue,tmSheetCondition,type): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-const URL=`${environment.apiUrl}pbiPeople/getActionableCheckInCheckOutList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&checkInValue="+chValue+"&checkInCondition="+chInCondition+"&timeSheetValue="+tmSheetValue+"&timeSheetCondition="+tmSheetCondition
+const URL=`${environment.apiUrl}pbiPeople/getActionableCheckInCheckOutList?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&checkInValue="+chValue+"&checkInCondition="+chInCondition+"&timeSheetValue="+tmSheetValue+"&timeSheetCondition="+tmSheetCondition+"&type="+type
  
  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid   
-//const URL ="http://localhost:63000/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&checkInValue="+chValue+"&checkInCondition="+chInCondition+"&timeSheetValue="+tmSheetValue+"&timeSheetCondition="+tmSheetCondition
+//const URL ="http://localhost:63000/api/pbiPeople/getActionableCheckInCheckOutList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&checkInValue="+chValue+"&checkInCondition="+chInCondition+"&timeSheetValue="+tmSheetValue+"&timeSheetCondition="+tmSheetCondition"+&type="+type
  
   return this.httpClient.get(URL,{headers:headers})
  
