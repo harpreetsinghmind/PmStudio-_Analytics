@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExcelExportProperties,SaveEventArgs, GridComponent } from '@syncfusion/ej2-angular-grids';
 import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
-import { dataBinding, GroupModel } from '@syncfusion/ej2-angular-schedule';
+import { dataBinding, GroupModel, TimelineMonthService } from '@syncfusion/ej2-angular-schedule';
 import { ToasterService } from '../toaster/toaster.service';
 import { GlobalServiceService } from '../global-service.service';
 import { AuthServiceService } from '../auth-service.service';
@@ -2641,6 +2641,43 @@ this.refreshGrid=false
   {
     this.show=false
     this.calendarName=this.monthName
+    this.currentDate=this.setDate
+    
+    this.checkDate=0
+    this.pbiActionableCheckInCheckOutList()
+  }
+
+  inSight()
+  {
+    this.show=false
+    this.calendarName=this.monthName
+    this.checkDate=0
+    this.currentDate=this.setDate
+    if(this.checkMom==true)
+{
+  this.pbiActionableInsightList()
+
+}
+if(this.checkRoadBlock==true)
+{
+  this.pbiActionableInsightRoadBlockList()
+}
+if(this.checkOverDue==true)
+{
+  this.pbiActionableInsightOverDueList()
+}
+
+  }
+
+
+  timesheetOut()
+  {
+    this.show=false
+    this.calendarName=this.monthName
+    this.currentDate=this.setDate
+
+    this.checkDate=0
+    this.pbiActionableTimesheetList()
   }
 actionableTimeSheetList:any=[]
 setActionableTimeSheetList:any=[]
@@ -2758,8 +2795,14 @@ this.checkDate=0
 
   })
 }
+changeStatus(e)
+{
+this.conditionStatus=e.target.value
+
+}
 refreshGrid:boolean=false
 actionableCheckInCheckOutList:any=[]
+conditionStatus:any
 pbiActionableCheckInCheckOutList()
 {
   debugger
@@ -2805,7 +2848,9 @@ else
    chInCondtion=this.checkInCondition
 
 }
-  this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId,chValue,chInCondtion,tmValue,tmSheetCondition).subscribe(arg => {
+
+var type=this.conditionStatus
+  this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId,chValue,chInCondtion,tmValue,tmSheetCondition,type).subscribe(arg => {
 debugger
 this.Loader=false
 this.checkDate=0
@@ -2815,6 +2860,11 @@ console.log('actionableTimeSheetList',arg.data.table)
 
 
   })
+}
+changeProjectStatus(e)
+{
+  this.projectStatus=e.target.value
+  this.getProjectPortFoliyo()
 }
 selectInshightCheck(e)
 {
@@ -2857,11 +2907,15 @@ onSearchChange(a) {
   {
   var aa=  0+e+'.00'
   var loggedTime=aa
+  this.checkInValue=loggedTime
+
   }
   if(e.length==2)
   {
    var bb= e+'.00'
 loggedTime=bb
+this.checkInValue=loggedTime
+
   }
   var afterDot = e.substr(e.indexOf('.'))
   var Decimal=e.split('.')
@@ -2912,11 +2966,15 @@ onSearchTime(a) {
   {
   var aa=  0+e+'.00'
   var loggedTime=aa
+  this.timeSheetValue=loggedTime
+
   }
   if(e.length==2)
   {
    var bb= e+'.00'
 loggedTime=bb
+this.timeSheetValue=loggedTime
+
   }
   var afterDot = e.substr(e.indexOf('.'))
   var Decimal=e.split('.')
@@ -2971,7 +3029,6 @@ pbiActionableInsightOverDueList()
 {
   debugger
   this.Loader=true
-  this.actionableInsightList=[]
   if(this.checkDate==0)
   {
   var date=this.setDate
@@ -3024,101 +3081,11 @@ this.actionableInsightOverDueList=[]
   this.HTTP.getpbiActionableInsightOverDueList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
 debugger
 this.Loader=false
-this.checkDate=0
 //this.refreshGrid=true
     this.actionableInsightOverDueList=  arg.data.table
 console.log('actionableInsightOverDueList',arg.data.table)
 
-var newArr = [];
-for(var i = 0; i < this.actionableInsightOverDueList.length; i++)
-{
-  var obj = this.actionableInsightOverDueList[i];
-  obj['one'] = obj[1];
-  obj['two'] = obj[2];
-  obj['three'] = obj[3];
-  obj['four'] = obj[4];
-  obj['five'] = obj[5];
-  obj['six'] = obj[6];
-  obj['seven'] = obj[7];
-  obj['eight'] = obj[8];
-  obj['nine'] = obj[9];
-  obj['ten'] = obj[10];
-  obj['eleven'] = obj[11];
-  obj['twelve'] = obj[12];
-  obj['threeten'] = obj[13];
-  obj['fourteen'] = obj[14];
-  obj['fifteen'] = obj[15];
 
-  obj['sixteen'] = obj[16];
-  obj['seventeen'] = obj[17];
-
-  obj['eighteen'] = obj[18];
-
-  obj['nineteen'] = obj[19];
-  obj['twenty'] = obj[20];
-
-  obj['twentyone'] = obj[21];
-
-  obj['twentytwo'] = obj[22];
-  obj['twentythree'] = obj[23];
-
-
-  obj['twentyfour'] = obj[24];
-
-  obj['twentyfive'] = obj[25];
-  obj['twentysix'] = obj[26];
-
-
-  obj['twentyseven'] = obj[27];
-
-
-  obj['twentyeight'] = obj[28];
-
-  obj['twentynine'] = obj[29];
- 
-  obj['thirty'] = obj[30];
-   obj['thirtyone'] = obj[31];
-
-
-
-
-
-   delete(obj[1]);
-   delete(obj[2]);
-   delete(obj[3]);
-   delete(obj[4]);
-   delete(obj[5]);
-   delete(obj[6]);
-   delete(obj[7]);
-   delete(obj[8]);
-   delete(obj[9]);
-   delete(obj[10]);
-   delete(obj[11]);
-   delete(obj[12]);
-   delete(obj[13]);
-   delete(obj[14]);
-   delete(obj[15]);
-   delete(obj[16]);
-   delete(obj[17]);
-   delete(obj[18]);
-   delete(obj[19]);
-  
-   delete(obj[20]);
-   delete(obj[21]);
-   delete(obj[22]);
-   delete(obj[23]);
-   delete(obj[24]);
-   delete(obj[25]);
-   delete(obj[26]);
-   delete(obj[27]);
-   delete(obj[28]);
-   delete(obj[29]);
-   delete(obj[30]);
-   delete(obj[31]);
-        
-  newArr.push(obj);
-}
-this.setactionableInsightOverDueList=newArr
   })
 }
 setactionableInsightRoadBlockList:any=[]
@@ -3179,7 +3146,6 @@ var type=null
   this.HTTP.getpbiActionableInsightRaodBlockList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
 debugger
 this.Loader=false
-this.checkDate=0
 //this.refreshGrid=true
     this.actionableInsightRoadBlockList=  arg.data.table
 console.log('actionableInsightRoadBlockList',arg.data.table)
@@ -3210,6 +3176,7 @@ var type=null
   else{
     var type=this.actionableType
   }
+  
 //   if(this.checkInValue==undefined ||this.checkInValue==null||this.checkInValue=="")
 //   {
 // var chValue=0
@@ -3245,101 +3212,11 @@ var type=null
   this.HTTP.getpbiActionableInsightList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
 debugger
 this.Loader=false
-this.checkDate=0
 //this.refreshGrid=true
     this.actionableInsightList=  arg.data.table
 console.log('actionableInsightList',arg.data.table)
 
-var newArr = [];
-for(var i = 0; i < this.actionableInsightList.length; i++)
-{
-  var obj = this.actionableInsightList[i];
-  obj['one'] = obj[1];
-  obj['two'] = obj[2];
-  obj['three'] = obj[3];
-  obj['four'] = obj[4];
-  obj['five'] = obj[5];
-  obj['six'] = obj[6];
-  obj['seven'] = obj[7];
-  obj['eight'] = obj[8];
-  obj['nine'] = obj[9];
-  obj['ten'] = obj[10];
-  obj['eleven'] = obj[11];
-  obj['twelve'] = obj[12];
-  obj['threeten'] = obj[13];
-  obj['fourteen'] = obj[14];
-  obj['fifteen'] = obj[15];
 
-  obj['sixteen'] = obj[16];
-  obj['seventeen'] = obj[17];
-
-  obj['eighteen'] = obj[18];
-
-  obj['nineteen'] = obj[19];
-  obj['twenty'] = obj[20];
-
-  obj['twentyone'] = obj[21];
-
-  obj['twentytwo'] = obj[22];
-  obj['twentythree'] = obj[23];
-
-
-  obj['twentyfour'] = obj[24];
-
-  obj['twentyfive'] = obj[25];
-  obj['twentysix'] = obj[26];
-
-
-  obj['twentyseven'] = obj[27];
-
-
-  obj['twentyeight'] = obj[28];
-
-  obj['twentynine'] = obj[29];
- 
-  obj['thirty'] = obj[30];
-   obj['thirtyone'] = obj[31];
-
-
-
-
-
-   delete(obj[1]);
-   delete(obj[2]);
-   delete(obj[3]);
-   delete(obj[4]);
-   delete(obj[5]);
-   delete(obj[6]);
-   delete(obj[7]);
-   delete(obj[8]);
-   delete(obj[9]);
-   delete(obj[10]);
-   delete(obj[11]);
-   delete(obj[12]);
-   delete(obj[13]);
-   delete(obj[14]);
-   delete(obj[15]);
-   delete(obj[16]);
-   delete(obj[17]);
-   delete(obj[18]);
-   delete(obj[19]);
-  
-   delete(obj[20]);
-   delete(obj[21]);
-   delete(obj[22]);
-   delete(obj[23]);
-   delete(obj[24]);
-   delete(obj[25]);
-   delete(obj[26]);
-   delete(obj[27]);
-   delete(obj[28]);
-   delete(obj[29]);
-   delete(obj[30]);
-   delete(obj[31]);
-        
-  newArr.push(obj);
-}
-this.setactionableInsightList=newArr
 
   })
 }
@@ -4095,7 +3972,6 @@ this.dataProjectProgressList = {
   }
   recieptIMg: any
   userImage(item) {
-    debugger;
     // <img src="/assets/img/Logo/male.png" style="width: 190px;">
     //if(data.e)
       // this.recieptIMg = `${environment.siteUrl}` + "Uploads/Icon/UploadIcons.png";
@@ -6860,11 +6736,21 @@ tooltipfor(args: any){
     })
   }
   getListProjectPortfoliyo:any=[]
+  projectStatus:any
   getProjectPortFoliyo()
   {
     this.getListProjectPortfoliyo=[]
     this.Loader=true
-    this.HTTP.getPbiProjectPortfoliyo(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+    if(this.projectStatus==undefined && this.projectStatus==null &&this.projectStatus=="f")
+{
+  var type="all"
+}
+else{
+  type=this.projectStatus
+
+}
+
+    this.HTTP.getPbiProjectPortfoliyo(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
     this.getListProjectPortfoliyo=  arg.data.table
     console.log('getListProjectPortfoliyo',arg.data.table)
 
@@ -7120,6 +7006,8 @@ else if(y=='two')
 }
 else if(y=='three')
 {
+  this.show = false
+
   if(this.checkMom==true)
 {
   this.pbiActionableInsightList()
@@ -9369,6 +9257,9 @@ this.setDate=latest_date
 let getdate = new Date(date); // 2020-06-21.
 let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
 this.monthName=shortMonth
+this.calendarName=this.monthName
+this.currentDate=this.setDate
+this.checkDate=0
 this.getpbiExpenseProjectCategory()
 this.getpbiExpenseDeployee()
 this.getpbiExpenseBreackUp()
