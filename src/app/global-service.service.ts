@@ -697,15 +697,15 @@ const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectDetailProjectDetailRoa
   return this.httpClient.get(URL,{headers:headers})
  
  }
- getPbiProjectDetailPAndLGridList(year,cmpcode,depid): Observable<any> {
+ getPbiProjectDetailPAndLGridList(year,cmpcode,depid,type): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectPAndLDetailGrid?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+  const URL=`${environment.apiUrl}pbiPeople/getAllPbiProjectPAndLDetailGrid?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
  
- // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectPAndLDetailGrid?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
-//const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectPAndLDetailGrid?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getAllPbiProjectPAndLDetailGrid?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
+//const URL ="http://localhost:63000/api/pbiPeople/getAllPbiProjectPAndLDetailGrid?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
  
   return this.httpClient.get(URL,{headers:headers})
  

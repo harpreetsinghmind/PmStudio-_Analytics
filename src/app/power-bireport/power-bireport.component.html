@@ -3189,7 +3189,12 @@
                     <div class="OutlierSection OutlierSection2">
                       <div class="OutlierHead OutlierHead2">
                         <div><h3>Project P & L</h3></div>
-
+                        <select class="form-control"(change)="changeProjectPAndLStatus($event)" style="width: 150px;">
+                          <option>Select Status</option>
+                          <option>All</option>
+                          <option>Open</option>
+                          <option>Closed</option>
+                        </select>
                       </div>
 
                       <div class="col-md-12 no-padding rateRow">
@@ -3205,11 +3210,11 @@
                           <img src="{{projectCostCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectCostInDollarCurrentYear | number :'1.2-2'}}|</span><span>{{projectCostInDollarCurrentYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{projectCostInDollarCurrentYear | number :'1.2-2'}}|</span><span>{{projectCostInDollarCurrentYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgRevenueCurrentYear | number :'1.2-2'}} |</span><span>{{avgRevenueCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{newavgRevenueCurrentYear | number :'1.2-2'}} |</span><span>{{newavgRevenueCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
@@ -3230,8 +3235,8 @@
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgRevenuePreviousYear  | number :'1.2-2'}} |</span><span>
-                                {{avgRevenuePreviousYearGrowthPercent  | number :'1.2-2' }}%</span>
+                              <p><span>{{newavgRevenuePreviousYear  | number :'1.2-2'}} |</span><span>
+                                {{newprojectCostPreviousYearGrowthPercent  | number :'1.2-2' }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenuePreviousYearGrowthPercentimg}}">
 
@@ -3320,7 +3325,9 @@
                         </div>
 
                       <div class="table-responsive tableBorders" style="display: inline-block;">
-                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectDetailPAndLGridList' rowHeight='38' [allowSelection]='true'
+                       
+                      
+                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='changeProjectPAndLStatus' rowHeight='38' [allowSelection]='true'
               [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
               [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                [allowPaging]='true' [allowExcelExport]='true' >
@@ -3863,15 +3870,22 @@
 
                   </e-column>
                   <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip' width='100'>
-                    <ng-template>
+                    <!-- <ng-template let data>
+
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
+                    </ng-template> -->
+                    <ng-template #template let-data>
+                      <img *ngIf="data.sms==='sms'" src="../../assets/img/logo/smscircle.png" style="width: 38px;">
+                      <!-- <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;"> -->
                     </ng-template>
 
                   </e-column>
                   <e-column field='email' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip' width='150'>
-                    <!-- <ng-template>
-                      <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
-                    </ng-template> -->
+                    <ng-template #template let-data>
+                      <img *ngIf="data.email==='email'" src="../../assets/img/logo/emailcircle.png" style="width: 38px;">
+                      <!-- <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;"> -->
+                    </ng-template>
+
                   </e-column>
                     <e-column field='1' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
 

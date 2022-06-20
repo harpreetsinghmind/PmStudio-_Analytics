@@ -4197,6 +4197,8 @@ projectWithAvgMarginCurrentYearGrowthPercentimg:any
 projectWithAvgMarginPreviousYearGrowthPercentimg:any
 totalCostCurrentYearGrowthPercentimg:any
 totalCostPreviouYearGrowthPercentimg:any
+newavgRevenueCurrentYear:any
+newavgRevenueCurrentYearGrowthPercent:any
   getpbiProjectDetailPAndLList(){
       let cmpcode=1
       let year='2022-02-20'
@@ -4451,12 +4453,20 @@ if(this.totalCostPreviouYearGrowthPercent>=0)
 else{
   this.totalCostPreviouYearGrowthPercentimg=this.upUrl
 }
+this.newavgRevenueCurrentYear=this.projectCostInDollarCurrentYear/this.projectCostCurrentYear
 
-})
+          this.newavgRevenueCurrentYearGrowthPercent=this.projectCostInDollarCurrentYearGrowthPercent/this.projectCostCurrentYearGrowthPercent
+          this.newavgRevenuePreviousYear=this.projectCostInDollarPerviousYear/this.projectCostPreviousYear
+        this.newprojectCostPreviousYearGrowthPercent=this.projectCostInDollarPreviousYearGrowthPercent/this.projectCostPreviousYearGrowthPercent
+
+        })
   }
   getListExpense:any=[]
   dataExpenselist:any=[]
+  newavgRevenuePreviousYear:any
   dataexpenselist:any
+  newprojectCostPreviousYearGrowthPercent:any
+ 
   getpbiExpense(){
       let cmpcode=1
       let year='2022-02-20'
@@ -7379,12 +7389,29 @@ if(this.checkOverDue==true)
 
     }
   }
+
+  pAndLType:any
+
+ changeProjectPAndLStatus(e)
+ {
+  this.pAndLType=e.target.value
+  this.getProjectProjectDetailPAndLGridList()
+debugger;
+ }
   getListProjectDetailPAndLGridList:any=[]
   getProjectProjectDetailPAndLGridList()
   {
     this.getListProjectDetailPAndLGridList=[]
     this.Loader=true
-    this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+    if(this.pAndLType==undefined ||this.pAndLType=="" || this.pAndLType==null)
+    {
+      var type=null
+
+    }
+    else{
+      type=this.pAndLType
+    }
+    this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
     this.getListProjectDetailPAndLGridList=  arg.data.table
     console.log('getListProjectDetailPAndLGridList',arg.data.table)
 
