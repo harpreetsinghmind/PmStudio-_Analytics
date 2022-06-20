@@ -3214,11 +3214,13 @@
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{newavgRevenueCurrentYear | number :'1.2-2'}} |</span><span>{{newavgRevenueCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{newavgRevenueCurrentYear | number :'1.2-2'}}
+                                 |</span><span>{{avgRevenueCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgTenureCurrentYear | number :'1.2-2'}} |</span><span>{{avgTenureCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{newavgTenureCurrentYear | number :'1.2-2'}} 
+                                |</span><span>{{avgTenureCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgTenureCurrentYearGrowthPercentimg}}">
 
                               </p>
@@ -3236,13 +3238,13 @@
 
                               </p>
                               <p><span>{{newavgRevenuePreviousYear  | number :'1.2-2'}} |</span><span>
-                                {{newprojectCostPreviousYearGrowthPercent  | number :'1.2-2' }}%</span>
+                                {{avgRevenuePreviousYearGrowthPercent  | number :'1.2-2' }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenuePreviousYearGrowthPercentimg}}">
 
 
                               </p>
-                              <p><span>{{avgTenurePreviousYear  | number :'1.2-2'}} |</span><span>
+                              <p><span>{{newavgTenurePreviousYear  | number :'1.2-2'}} |</span><span>
                                 {{avgTenurePreviousYearGrowthPercent  | number :'1.2-2'}}%</span>
 
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
@@ -3274,7 +3276,7 @@
 
 
                               </p>
-                              <p><span>{{netRevenueCurrentYear  | number :'1.2-2'}} |</span>
+                              <p><span>{{newnetRevenueCurrentYear  | number :'1.2-2'}} |</span>
                                 <span>{{netRevenueCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3302,7 +3304,7 @@
                           <img src="{{totalCostPreviouYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{netRevenuePreviousYear}} |</span><span>{{netRevenuePreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span>{{newnetRevenuePreviousYear | number :'1.2-2'}} |</span><span>{{netRevenuePreviousYearGrowthPercent}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{netRevenuePreviousYearGrowthPercentimg}}">
 
                               </p>
