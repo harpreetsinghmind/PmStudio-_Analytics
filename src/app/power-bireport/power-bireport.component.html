@@ -3871,7 +3871,7 @@
                     </ng-template>
 
                   </e-column>
-                  <e-column field='sms' headerText='SMS' [filter]='filter' clipMode='EllipsisWithTooltip' width='100'>
+                  <e-column field='sms' headerText='SMS'   [allowFiltering]='false' clipMode='EllipsisWithTooltip' width='100'>
                     <!-- <ng-template let data>
 
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
@@ -3882,14 +3882,14 @@
                     </ng-template>
 
                   </e-column>
-                  <e-column field='email' headerText='Email' [filter]='filter' clipMode='EllipsisWithTooltip' width='150'>
+                  <e-column field='email' headerText='Email' [allowFiltering]='false'  clipMode='EllipsisWithTooltip' width='150'>
                     <ng-template #template let-data>
                       <img *ngIf="data.email==='email'" src="../../assets/img/logo/emailcircle.png" style="width: 38px;">
                       <!-- <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;"> -->
                     </ng-template>
 
                   </e-column>
-                    <e-column field='1' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='one' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
 
                       <!-- <ng-template #template let-data>
                         <img *ngIf="data.one===2" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
@@ -4170,7 +4170,7 @@
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/emailcircle.png" style="width: 38px;">
                     </ng-template>
                   </e-column> -->
-                  <e-column field='timetable'   width="70px" headerText='' [filter]="false" clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='timetable'   [allowFiltering]='false'  width="70px" headerText='' [filter]="false" clipMode='EllipsisWithTooltip'></e-column>
                     <e-column field='1' height="38px"   width="50px"  headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
                     <e-column field='2' height="38px"    width="50px"  headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
