@@ -2232,7 +2232,7 @@ let getdate = new Date(); // 2020-06-21.
 this.getDate=latest_date
 let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
 this.monthName=shortMonth
-this.calendarName=this.monthName
+this.calendarName=this.monthName+''+getdate.getFullYear()
 
     this.filterSettings = { type: "Menu" };
     this.filter = { type: "CheckBox" };
@@ -3108,9 +3108,13 @@ this.refreshGrid=false
   {
     debugger
     this.show=false
-    this.calendarName=this.monthName
     this.currentDate=this.setDate
-    
+
+    let shortMonth = new Date(this.currentDate). toLocaleString('en-us', { month: 'short' }); /* Jun */
+this.monthName=shortMonth
+this.fullYear=new Date(this.currentDate).getFullYear()
+this.calendarName=this.monthName+' '+this.fullYear
+
     this.checkDate=0
     this.pbiActionableCheckInCheckOutList()
   }
@@ -3118,9 +3122,14 @@ this.refreshGrid=false
   inSight()
   {
     this.show=false
-    this.calendarName=this.monthName
     this.checkDate=0
     this.currentDate=this.setDate
+    let shortMonth = new Date(this.currentDate). toLocaleString('en-us', { month: 'short' }); /* Jun */
+
+    this.monthName=shortMonth
+    
+this.fullYear=new Date(this.currentDate).getFullYear()
+this.calendarName=this.monthName+' '+this.fullYear
     if(this.checkMom==true)
 {
   this.pbiActionableInsightList()
@@ -3141,8 +3150,13 @@ if(this.checkOverDue==true)
   timesheetOut()
   {
     this.show=false
-    this.calendarName=this.monthName
     this.currentDate=this.setDate
+    let shortMonth = new Date(this.currentDate). toLocaleString('en-us', { month: 'short' }); /* Jun */
+
+    this.monthName=shortMonth
+    
+this.fullYear=new Date(this.currentDate).getFullYear()
+this.calendarName=this.monthName+' '+this.fullYear
 
     this.checkDate=0
     this.pbiActionableTimesheetList()
@@ -7533,7 +7547,7 @@ this.endDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].
     this.previouslySelectedValue = args.value;
     var mon = new Date(this.previouslySelectedValue)
     var monthName = this.months[mon.getMonth()];
-    this.calendarName = monthName
+    this.calendarName = monthName+' '+mon.getFullYear()
     this.currentDate = this.datepipe.transform(new Date(this.previouslySelectedValue), 'yyyy-MM-dd');
     this.isDate = this.currentDate
     this.checkDate=1
@@ -7581,6 +7595,7 @@ if(this.checkOverDue==true)
   currentDate: any;
   isDate:any
   clickme(x,y) {
+    debugger
     if (x == 'add') {
       if(this.currentDate==undefined)
       {
@@ -7596,7 +7611,7 @@ if(this.checkOverDue==true)
       var dateAfterChange = dateValue.setDate(dateValue.getDate() + 1);
       var mon = new Date(dateAfterChange)
       var monthName = this.months[mon.getMonth()];
-      this.calendarName = monthName
+      this.calendarName = monthName+mon.getFullYear()
       this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
       this.isDate = this.currentDate
     this.checkDate=1
@@ -7649,7 +7664,7 @@ if(this.checkOverDue==true)
       var dateAfterChange = dateValue.setDate(dateValue.getDate() - 1);
       var mon = new Date(dateAfterChange)
       var monthName = this.months[mon.getMonth()];
-      this.calendarName = monthName
+      this.calendarName = monthName+mon.getFullYear()
       this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
       this.isDate = this.currentDate
     this.checkDate=1
@@ -7705,7 +7720,7 @@ if(this.checkOverDue==true)
       var dateAfterChange = dateValue.setMonth(dateValue.getMonth() + 1);
       var mon = new Date(dateAfterChange)
       var monthName = this.months[mon.getMonth()];
-      this.calendarName = monthName
+      this.calendarName = monthName+mon.getFullYear()
       this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
       this.isDate = this.currentDate
       this.checkDate=1
@@ -7761,11 +7776,11 @@ if(this.checkOverDue==true)
 
 
 
-
-      var dateAfterChange = dateValue.setMonth(dateValue.getMonth() - 1);
+var monthn=dateValue.getMonth() - 1
+      var dateAfterChange = dateValue.setMonth(monthn);
       var mon = new Date(dateAfterChange)
       var monthName = this.months[mon.getMonth()];
-      this.calendarName = monthName
+      this.calendarName = monthName+mon.getFullYear()
       this.currentDate = this.datepipe.transform(new Date(dateAfterChange), 'yyyy-MM-dd');
       this.isDate = this.currentDate
       this.checkDate=1
@@ -9829,6 +9844,7 @@ else{
   getDate:any
   setDate:any
   monthName:any
+  fullYear:any
   changeDate(e)
   {
 var date=e.target.value
@@ -9837,7 +9853,9 @@ this.setDate=latest_date
 let getdate = new Date(date); // 2020-06-21.
 let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
 this.monthName=shortMonth
-this.calendarName=this.monthName
+this.fullYear=getdate.getFullYear()
+
+this.calendarName=this.monthName+' '+ getdate.getFullYear()
 this.currentDate=this.setDate
 this.checkDate=0
 this.getpbiExpenseProjectCategory()
