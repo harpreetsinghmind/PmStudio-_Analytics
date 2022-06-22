@@ -7300,9 +7300,10 @@ tooltipfor(args: any){
   projectStatus:any
   getProjectPortFoliyo()
   {
+    debugger
     this.getListProjectPortfoliyo=[]
     this.Loader=true
-    if(this.projectStatus==undefined && this.projectStatus==null &&this.projectStatus=="f")
+    if(this.projectStatus==undefined || this.projectStatus==null ||this.projectStatus=="")
 {
   var type="All"
 }
