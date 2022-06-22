@@ -4201,37 +4201,6 @@ newnetRevenuePreviousYearGrowth:any
 this.plcurrentYear= this.getprojectDetailPAndLList[0].plcurrentYear
 this.plpreviousYear= this.getprojectDetailPAndLList[0].plpreviousYear
 
-
-this.avgMarginCurrentYear= this.getprojectDetailPAndLList[0].avgMarginCurrentYear
-this.avgMarginCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgMarginCurrentYearGrowth
-this.avgMarginCurrentYearGrowthPercent=(this.avgMarginCurrentYear-this.avgMarginCurrentYearGrowth)*100/this.avgMarginCurrentYearGrowth
-if(this.avgMarginCurrentYearGrowth==0)
-{
-  this.avgMarginCurrentYearGrowthPercent=0
-}
-
-if(this.avgMarginCurrentYearGrowthPercent>=0)
-{
-  this.avgMarginCurrentYearGrowthPercentimg=this.downUrl
-}
-else{
-  this.avgMarginCurrentYearGrowthPercentimg=this.upUrl
-}
-this.avgMarginPreviousYear=this.getprojectDetailPAndLList[0].avgMarginPreviousYear
-this.avgMarginPreviousYearGrowth=this.getprojectDetailPAndLList[0].avgMarginPreviousYearGrowth
-
-this.avgMarginPreviousYearGrowthPercent=(this.avgMarginPreviousYear-this.avgMarginPreviousYearGrowth)*100/this.avgMarginPreviousYearGrowth
-if(this.avgMarginPreviousYearGrowth==0)
-{
-  this.avgMarginPreviousYearGrowthPercent=0
-}
-if(this.avgMarginPreviousYearGrowthPercent>=0)
-{
-  this.avgMarginPreviousYearGrowthPercentimg=this.downUrl
-}
-else{
-  this.avgMarginPreviousYearGrowthPercentimg=this.upUrl
-}
 this.avgRevenueCurrentYear=this.getprojectDetailPAndLList[0].avgRevenueCurrentYear
 this.avgRevenueCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgRevenueCurrentYearGrowth
 this.newavgRevenueCurrentYear=this.projectCostInDollarCurrentYear/this.projectCostCurrentYear
@@ -4290,8 +4259,15 @@ else{
 this.avgTenurePreviousYear=this.getprojectDetailPAndLList[0].avgTenurePreviousYear
 
 this.avgTenurePreviousYearGrowth= this.getprojectDetailPAndLList[0].avgTenurePreviousYearGrowth
+
+
 this.newavgTenurePreviousYear=this.avgTenurePreviousYear/this.projectCostPreviousYear
-this.newavgTenurePreviousYearGrowth=this.avgTenurePreviousYearGrowth/this.projectCostInDollarPreviousYearGrowthPercent
+this.newavgTenurePreviousYearGrowth=this.avgTenurePreviousYearGrowth/this.projectCostInDollarPreviousYearGrowth
+debugger
+if(this.projectCostInDollarPreviousYearGrowth==0)
+{
+  this.newavgTenurePreviousYearGrowth=0
+}
 this.avgTenurePreviousYearGrowthPercent=(this.newavgTenurePreviousYear-this.newavgTenurePreviousYearGrowth)*100/this.newavgTenurePreviousYearGrowth
 
 if(this.newavgTenurePreviousYearGrowth==0)
@@ -4325,7 +4301,7 @@ else{
 this.netRevenuePreviousYear=this.getprojectDetailPAndLList[0].netRevenuePreviousYear
 
 this.newnetRevenuePreviousYear=this.netRevenuePreviousYear-this.totalCostPreviouYear
-
+debugger
 this.netRevenuePreviousYearGrowth=this.getprojectDetailPAndLList[0].netRevenuePreviousYearGrowth
 this.newnetRevenuePreviousYearGrowth=this.netRevenuePreviousYearGrowth-this.totalCostPreviouYearGrowth
 
@@ -4466,9 +4442,53 @@ if(this.totalCostCurrentYearGrowthPercent>=0)
 else{
   this.totalCostCurrentYearGrowthPercentimg=this.upUrl
 }
-  
-        
-        })
+this.avgMarginPreviousYear=(this.totalCostPreviouYear-this.newnetRevenuePreviousYear)*100/this.newnetRevenuePreviousYear
+  this.avgMarginPreviousYearGrowth=(this.totalCostPreviouYearGrowth-this.newnetRevenuePreviousYearGrowth)*100/this.newnetRevenuePreviousYearGrowth
+      this.avgMarginPreviousYearGrowthPercent=(this.avgMarginPreviousYear-this.avgMarginPreviousYearGrowth)*100/this.avgMarginPreviousYearGrowth
+     
+    //this.avgMarginPreviousYear=this.getprojectDetailPAndLList[0].avgMarginPreviousYear
+
+if(this.avgMarginPreviousYearGrowth==0)
+{
+  this.avgMarginPreviousYearGrowthPercent=0
+}
+if(this.avgMarginPreviousYearGrowthPercent>=0)
+{
+  this.avgMarginPreviousYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgMarginPreviousYearGrowthPercentimg=this.upUrl
+}
+this.avgMarginCurrentYear=(this.totalCostCurrentYear-this.totalCostCurrentYearGrowthPercent)*100/this.totalCostCurrentYearGrowthPercent
+    
+    
+//this.avgMarginCurrentYear= this.getprojectDetailPAndLList[0].avgMarginCurrentYear
+//this.avgMarginCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgMarginCurrentYearGrowth
+
+this.avgMarginCurrentYearGrowth=(this.totalCostCurrentYearGrowth-this.netRevenueCurrentYearGrowth)*100/this.netRevenueCurrentYearGrowth
+if(this.netRevenueCurrentYearGrowth==0)
+{
+  this.avgMarginCurrentYearGrowth=0
+}
+debugger
+this.avgMarginCurrentYearGrowthPercent=(this.avgMarginCurrentYear-this.avgMarginCurrentYearGrowth)*100/this.avgMarginCurrentYearGrowth
+if(this.avgMarginCurrentYearGrowth==0)
+{
+  this.avgMarginCurrentYearGrowthPercent=0
+}
+
+if(this.avgMarginCurrentYearGrowthPercent>=0)
+{
+  this.avgMarginCurrentYearGrowthPercentimg=this.downUrl
+}
+else{
+  this.avgMarginCurrentYearGrowthPercentimg=this.upUrl
+}
+
+    
+    
+    
+    })
   }
   getListExpense:any=[]
   dataExpenselist:any=[]
@@ -5170,38 +5190,20 @@ console.log('getListDeployee',arg.data.table)
   this.Loader=false
   var getColor=[]
 var sum=0
-  for(var i=0;i<this.getListDeployee.length;i++)
+  for(var i=0;i<this.getListDeployee.length+1;i++)
   {
     getColor.push(this.setColor[i])
   }
-  if(this.getListDeployee.length>5)
-  {
-    for(var i=0;i<5;i++)
-  {
 
-this.dataDeployee.push({"label":this.getListDeployee[i].deployeeName,"value":this.getListDeployee[i].deployeeId})
-  }
-  for(var j=0;j<this.getListDeployee.length;j++)
-  {
-    if(j>=5)
-    {
-      sum+=this.getListDeployee[j].deployeeId
-
-    }
-
-  }
-this.dataDeployee.push({"label":'Other','value':sum})
-  }
-
-else
-{
-for(var i=0;i<this.getListDeployee.length;i++)
-{
-this.dataDeployee.push({"label":this.getListDeployee[i].deployeeName,"value":this.getListDeployee[i].deployeeId})
+this.dataDeployee.push(
+  {"label":'On Bench',"value":this.getListDeployee[0].onbench},
+  {"label":'Deployee',"value":this.getListDeployee[0].deployeed}
+  
+  
+  )
+ 
 
 
-}
-}
 
   this.dataExpenseDeployee = {
     chart: {
