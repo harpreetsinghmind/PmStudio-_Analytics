@@ -2379,7 +2379,6 @@ this.pbiActionableCheckInCheckOutList()
 this.pbiActionableInsightList()
   }
   actionComplete(args: any) {
-    debugger
     if(this.actionGridRefresh==true)
     {
       if (args.name== "actionComplete") {
@@ -2456,7 +2455,6 @@ this.pbiActionableInsightList()
 
   }
   actionCompleteCheck(args: any) {
-    debugger
     if (args.name== "actionComplete") {
       var date = new Date(this.isDate)
       var aa = new Date(date.getFullYear(), date.getMonth() + 1, 0);
@@ -2632,7 +2630,6 @@ this.pbiActionableInsightList()
 
   }
   onGridDataBound(args) {
-    debugger
     // alert(args);
   if(this.refreshGrid==true)
   {
@@ -2807,7 +2804,6 @@ pbiActionableTimesheetList()
   {
     date=this.isDate
   }
-  debugger
     this.setActionableTimeSheetList=[]
     this.actionableTimeSheetList=[]
       this.HTTP.getpbiActionableTimeSheetList(date,this.CmpCode,this.departmentId).subscribe(arg => {
@@ -2919,7 +2915,6 @@ actionableCheckInCheckOutList:any=[]
 conditionStatus:any
 pbiActionableCheckInCheckOutList()
 {
-  debugger
   this.Loader=true
   this.actionableCheckInCheckOutList=[]
   if(this.checkDate==0)
@@ -2971,7 +2966,6 @@ else{
   type=this.conditionStatus
 }
   this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId,chValue,chInCondtion,tmValue,tmSheetCondition,type).subscribe(arg => {
-debugger
 this.Loader=false
 this.checkDate=0
 this.refreshGrid=true
@@ -2988,7 +2982,6 @@ changeProjectStatus(e)
 }
 selectInshightCheck(e)
 {
-debugger
 if(e.target.value=="roadblock")
 {
   this.checkMom=false
@@ -3020,7 +3013,6 @@ else if(e.target.value=="mom")
 showMinValue:any
 checkMinValue:boolean=false
 onSearchChange(a) {
-  debugger;
   this.checkMinValue=false
   var e=a.target.value
   if(e.length==1)
@@ -3079,7 +3071,6 @@ this.showMinValue="Please enter value less than 59 after dot"
 showTimeValue:any
 checkTimeValue:boolean=false
 onSearchTime(a) {
-  debugger;
   this.checkTimeValue=false
   var e=a.target.value
   if(e.length==1)
@@ -3147,7 +3138,6 @@ checkOverDue:boolean=false
 
 pbiActionableInsightOverDueList()
 {
-  debugger
   this.Loader=true
   if(this.checkDate==0)
   {
@@ -3199,7 +3189,6 @@ var type=null
 this.setactionableInsightOverDueList=[]
 this.actionableInsightOverDueList=[]
   this.HTTP.getpbiActionableInsightOverDueList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
-debugger
 this.Loader=false
 //this.refreshGrid=true
     this.actionableInsightOverDueList=  arg.data.table
@@ -3212,7 +3201,6 @@ setactionableInsightRoadBlockList:any=[]
 actionableInsightRoadBlockList:any=[]
 pbiActionableInsightRoadBlockList()
 {
-  debugger
   this.setactionableInsightRoadBlockList=[]
   this.Loader=true
   this.actionableInsightRoadBlockList=[]
@@ -3264,7 +3252,6 @@ var type=null
 
 // }
   this.HTTP.getpbiActionableInsightRaodBlockList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
-debugger
 this.Loader=false
 //this.refreshGrid=true
     this.actionableInsightRoadBlockList=  arg.data.table
@@ -3277,7 +3264,6 @@ actionableInsightList:any=[]
 actionableType:any
 pbiActionableInsightList()
 {
-  debugger
   this.Loader=true
   this.actionableInsightList=[]
   this.setactionableInsightList=[]
@@ -3330,7 +3316,6 @@ var type=null
 
 // }
   this.HTTP.getpbiActionableInsightList(date,this.CmpCode,this.departmentId,type).subscribe(arg => {
-debugger
 this.Loader=false
 //this.refreshGrid=true
     this.actionableInsightList=  arg.data.table
@@ -3343,7 +3328,6 @@ console.log('actionableInsightList',arg.data.table)
 
   getDepartmentListDropdown()
   {
-    debugger
     this.Loader=true
     this.HTTP.getpbiDepartmentList(this.setDate,this.CmpCode).subscribe(arg => {
 
@@ -3842,7 +3826,6 @@ getListProjectInNumberInCostLeave:any=[]
     this.setProjectNumberListInCostLeave=[]
     this.Loader=true
     this.HTTP.getPbiProjectDetailInNumberInCostLeave(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-debugger;
 this.Loader=false
       this.getListProjectInNumberInCostLeave=  arg.data.table
   console.log('getListProjectInNumberInCostLeave',arg.data.table)
@@ -3911,7 +3894,6 @@ plottooltext:     " $label: <b>$dataValue</b>",
 //   },
 //   "data": this.setProjectNumberListInCostLeave
 // };
-debugger
 //  this.projectDetailNumber = {
 //   "chart": {
 //     "theme": "fusion",
@@ -4085,7 +4067,6 @@ this.dataProjectProgressList = {
   {
    // if (args.column.field === 'resourceName') {
       if (args.data['inActive'] ==1) {
-        debugger
         args.cell.classList.add('abc');
      // }
     }
@@ -4513,12 +4494,43 @@ else{
         getColor.push(this.setColor[i])
       }
       var sum=0
-      for(var i=0;i<5;i++)
-      {
-    sum=this.getListExpense[i].designationId
+//       for(var i=0;i<5;i++)
+//       {
+//     sum=this.getListExpense[i].designationId
+// this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
+//       }
+// this.dataExpenselist.push({"label":'Other','value':100-sum})
+
+if(this.getListExpense.length>5)
+{
+  for(var i=0;i<5;i++)
+{
+ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
+
+}
+for(var j=0;j<this.getListExpense.length;j++)
+{
+  if(j>=5)
+  {
+ sum+=this.getListExpense[j].designationId
+
+
+  }
+
+}
+this.dataExpenselist.push({"label":'Other','value':sum})
+}
+
+else
+{
+for(var i=0;i<this.getListExpense.length;i++)
+{
+
 this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
-      }
-this.dataExpenselist.push({"label":'Other','value':100-sum})
+
+
+}
+}
       this.dataexpenselist = {
         chart: {
           "numberPrefix": "",
@@ -4576,7 +4588,6 @@ console.log('getListSpenderWise',arg.data.table)
     var sum=0
     for(var i=0;i<this.getListSpenderWise.length;i++)
     {
-      debugger
       var a1
       a1=this.getListSpenderWise[0].amount
     var b1=this.getListSpenderWise[1].amount
@@ -4896,7 +4907,6 @@ getpbiCustomerWise(){
   this.Loader=true
   this.HTTP.getPbiExpenseCustomerWise(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
-debugger
     this.getListComerWise=  arg.data.table
 console.log('getListSpenderWise',arg.data.table)
 
@@ -5017,7 +5027,6 @@ chart: {
       this.getListDesignation=  arg.data.table
   console.log('getListDesignation',arg.data.table)
 
-      debugger
       this.Loader=false
       var getColor=[]
 var sum=0
@@ -5025,7 +5034,6 @@ var sum=0
       {
         getColor.push(this.setColor[i])
       }
-      debugger
       if(this.getListDesignation.length>5)
       {
         for(var i=0;i<5;i++)
@@ -5089,7 +5097,6 @@ this.dataDesignation.push({"label":this.getListDesignation[i].designationName,"v
     this.getListCategory=  arg.data.table
 console.log('getListDesignation',arg.data.table)
 
-    debugger
     this.Loader=false
     var getColor=[]
 var sum=0
@@ -5097,7 +5104,6 @@ var sum=0
     {
       getColor.push(this.setColor[i])
     }
-    debugger
     if(this.getListCategory.length>5)
     {
       for(var i=0;i<5;i++)
@@ -5161,7 +5167,6 @@ getpbiExpenseDeployee(){
   this.getListDeployee=  arg.data.table
 console.log('getListDeployee',arg.data.table)
 
-  debugger
   this.Loader=false
   var getColor=[]
 var sum=0
@@ -5169,7 +5174,6 @@ var sum=0
   {
     getColor.push(this.setColor[i])
   }
-  debugger
   if(this.getListDeployee.length>5)
   {
     for(var i=0;i<5;i++)
@@ -5235,7 +5239,6 @@ getpbiExpenseBreackUp(){
   this.getListBreackUp=  arg.data.table
 console.log('getListBreackUp',arg.data.table)
 
-  debugger
   this.Loader=false
   var getColor=[]
 var sum=0
@@ -5243,7 +5246,6 @@ var sum=0
   {
     getColor.push(this.setColor[i])
   }
-  debugger
   if(this.getListBreackUp.length>5)
   {
     for(var i=0;i<5;i++)
@@ -5255,7 +5257,7 @@ this.dataBreackUp.push({"label":this.getListBreackUp[i].breackupName,"value":thi
   {
     if(j>=5)
     {
-      sum+=this.getListBreackUp[j].deployeeId
+      sum+=this.getListBreackUp[j].breackupId
 
     }
 
@@ -5586,7 +5588,6 @@ this.Loader=true
       this.resourceList=  arg.data.table
   console.log('resourceList',arg.data.table)
 
-      debugger
       this.Loader=false
       for(var i=0;i<this.resourceList.length;i++)
       {
@@ -5862,7 +5863,6 @@ this.dataVendor.push({'value':this.getListEmployeeVsVendor[i].vendor})
     this.dataVendorEmployee=[]
     this.Loader=true
     this.HTTP.getPbiProjectEmployeeVsVendor(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
-   debugger;
       this.getListProjectVsVendor=  arg.data.table
   console.log('getListProjectVsVendor',arg.data.table)
 
@@ -6319,7 +6319,6 @@ getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(){
   this.Loader=true
   this.HTTP.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
     this.getListProjectVsBenchBillProjectCountVsExpense=  arg.data.table
-    debugger;
   console.log('getListProjectVsBenchBillProjectCountVsExpense',arg.data.table)
 
     this.Loader=false
@@ -6691,7 +6690,6 @@ newList:any=[]
 //       designationId: 15
 // designationName:
 // var avgList=[]
-// debugger
 // for(var i=0;i<this.tenurUpList.length;i++)
 // {
 //   avgList.push( {'value':totalSum})
@@ -7138,7 +7136,6 @@ this.endDate=this.datepipe.transform(this.getListProjectDetailRevnureAndCost[0].
   calendarName: any = "Show Calendar"
   months: any = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   onValueChange(args: any,y): void {
-debugger;
     //this.utilizationReportList = []
 
     //this.utilizationReportListsSecond = []
@@ -7185,7 +7182,6 @@ if(this.checkOverDue==true)
   }
   show: boolean = false
   showCalendar() {
-    debugger
     this.show = true
 
   }
@@ -7194,9 +7190,7 @@ if(this.checkOverDue==true)
   currentDate: any;
   isDate:any
   clickme(x,y) {
-debugger;
     if (x == 'add') {
-      debugger;
       if(this.currentDate==undefined)
       {
         dateValue = new Date();
@@ -7424,7 +7418,6 @@ if(this.checkOverDue==true)
  {
   this.pAndLType=e.target.value
   this.getProjectProjectDetailPAndLGridList()
-debugger;
  }
   getListProjectDetailPAndLGridList:any=[]
   getProjectProjectDetailPAndLGridList()
@@ -7439,11 +7432,14 @@ debugger;
     else{
       type=this.pAndLType
     }
+
     this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
     this.getListProjectDetailPAndLGridList=  arg.data.table
     console.log('getListProjectDetailPAndLGridList',arg.data.table)
 
     this.Loader=false
+var sum=0
+
     for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++)
     {
       if(this.getListProjectDetailPAndLGridList[i].margin==null)
@@ -7452,8 +7448,28 @@ this.getListProjectDetailPAndLGridList[i].margin=0
       }
       var margintwo=100-Number(this.getListProjectDetailPAndLGridList[i].margin)
       var marginpercent=Number(this.getListProjectDetailPAndLGridList[i].margin)
+      sum+=this.getListProjectDetailPAndLGridList[i].margin
     }
+  
+    var avgSum=sum/this.getListProjectDetailPAndLGridList.length
+    for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++)
+    {
+      if(this.getListProjectDetailPAndLGridList[i].margin==null)
+      {
+        this.getListProjectDetailPAndLGridList[i].margin=0
+      }
+      if(this.getListProjectDetailPAndLGridList[i].margin>avgSum)
+      {
+        var isActive=0
 
+      }
+      else
+      {
+        isActive=1
+      }
+      this.getListProjectDetailPAndLGridList[i].isActive=isActive
+    }
+  
     })
   }
   customerExpenseCurrentYearGrowth:any
@@ -7968,7 +7984,6 @@ expensepeoplePreviousYear:any
   
       this.Loader=false
       this.expenseCurrentYear=this.getListBuinessExpenseList[0].currentYear
-     debugger
 this.expensecurrentYearBillable=this.getListBuinessExpenseList[0].currentYearBillable
 this.expensecurrentYearNonBillable=this.getListBuinessExpenseList[0].currentYearNonBillable
 this.expensecurrentYearExpense=this.getListBuinessExpenseList[0].currentYearExpense
@@ -9022,7 +9037,6 @@ imgnonBillableYoyYearPercentGrowth:any
     this.Loader=true
     this.HTTP.getPbiProjectDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
 this.Loader=false
-debugger
   this.getProjectListData=  arg.data.table
   console.log('getProjectListData',arg.data.table)
 
@@ -9523,7 +9537,6 @@ if(this.checkOverDue==true)
 this.Loader=true
     this.HTTP.getPbiPeopleResources(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getResourcesDetail=arg.data.table
-      debugger
   console.log('getResourcesDetail',arg.data.table)
   this.category=[]
     this.deployeeList=[]

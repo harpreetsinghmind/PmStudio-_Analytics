@@ -3190,7 +3190,6 @@
                       <div class="OutlierHead OutlierHead2">
                         <div><h3>Project P & L</h3></div>
                         <select class="form-control"(change)="changeProjectPAndLStatus($event)" style="width: 150px;">
-                          <option>Select Status</option>
                           <option>All</option>
                           <option>Open</option>
                           <option>Closed</option>
@@ -3369,8 +3368,16 @@
                     </ng-template>
                   </e-column>
 
-                  <e-column field='companyAvg' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='isActive' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip'>
 
+                    <ng-template #template let-data>
+                      <img *ngIf="data.isActive" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
+                      <img *ngIf="data.isActive === 0" src="../../assets/img/logo/green-signal.png" style="width: 22px;">
+                    </ng-template>
+                  </e-column>
+
+
+                  
 
 
 
