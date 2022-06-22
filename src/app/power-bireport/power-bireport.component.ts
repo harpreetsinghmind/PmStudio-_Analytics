@@ -3659,7 +3659,7 @@ this.dataBuisnessExpenseAndHeadCountAndProject = {
     yaxisname: "",
     syaxisname: "",
     labeldisplay: "rotate",
-    snumbersuffix: "%",
+    snumbersuffix: "",
     scrollheight: "10",
     numvisibleplot: "10",
     drawcrossline: "1",
@@ -3671,23 +3671,25 @@ this.dataBuisnessExpenseAndHeadCountAndProject = {
     }
   ],
   dataset: [
+   
+    {
+      seriesname: "Head Count",     
+      plottooltext: "Head Count: $dataValue",
+      data: this.setBuisinessHeadCount
+    },
     {
       seriesname: "Expense",
+      renderas: "area",
+      parentyaxis: "S",
+      showanchors: "0",
       plottooltext: "Expense: $dataValue",
       data: this.setBuisinessExpense
     },
     {
-      seriesname: "Head Count",
-      renderas: "area",
-      showanchors: "0",
-      plottooltext: ": $dataValue",
-      data: this.setBuisinessHeadCount
-    },
-    {
-      seriesname: "Project %",
-      parentyaxis: "S",
+      seriesname: "Project",
+     // parentyaxis: "S",
       renderas: "line",
-      plottooltext: "$dataValue Project",
+      plottooltext: "Project: $dataValue",
       showvalues: "0",
       data: this.setBuisinessProject
 }
