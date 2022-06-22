@@ -4332,7 +4332,7 @@
       </div>
       <div *ngIf="checkRoadBlock" class="table-responsive" style="margin-top: 12px;">
         <ejs-grid #overviewgridInsightroad id='overviewgridInsightroad' [allowTextWrap]="true" [dataSource]='actionableInsightRoadBlockList' rowHeight='38' [allowSelection]='true'
-                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+        [frozenRows]='0' [frozenColumns]='2'   [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (actionComplete)="actionCompleteCheck($event)" [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
@@ -4383,7 +4383,7 @@
       </div>
       <div *ngIf="checkOverDue" class="table-responsive" style="margin-top: 12px;">
         <ejs-grid #overviewgridInsightover id='overviewgridInsightover' [allowTextWrap]="true" [dataSource]='actionableInsightOverDueList' rowHeight='38' [allowSelection]='true'
-                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+        [frozenRows]='0' [frozenColumns]='2'   [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (actionComplete)="actionCompleteCheck($event)"  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
