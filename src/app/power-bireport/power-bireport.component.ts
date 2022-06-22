@@ -3861,6 +3861,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
   monthRevenue:any=[]
   numberRevenue:any=[]
   buisnessRevenue:any
+  numberproj:any=[]
   
     getPbiBuisinessRevenueList(){
         let cmpcode=1
@@ -3868,6 +3869,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
         this.getListBuisnessRevenue=[]
         this.monthRevenue=[]
         this.numberRevenue=[]
+        this.numberproj=[]
         this.Loader=true
         this.HTTP.getPbiBuisnessRevenueList(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
   this.Loader=false
@@ -3884,6 +3886,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
         {
   this.monthRevenue.push({"label":this.getListBuisnessRevenue[i].monthNames})
   this.numberRevenue.push({"value":this.getListBuisnessRevenue[i].revenue})
+  this.numberproj.push({"value":this.getListBuisnessRevenue[i].project})
  // this.venderNumber.push({"value":this.getListBuisnessRevenue[i].vendor})
   //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
       //this.setProjectNumberList.push({"label":this.getListBuisnessRevenue[i].monthNames,"value":this.getListProjectInNumber[i].employee})
@@ -3911,11 +3914,11 @@ plottooltext:     " $label: <b>$dataValue</b>",
       {
         seriesname: "Projects",
       //  plottooltext: "Employee: $dataValue",
-        data:this.numberRevenue
+        data:this.numberproj
       },
   
       {
-        seriesname: "Percentage",
+        seriesname: "Revenue",
         parentyaxis: "S",
         renderas: "line",
        // plottooltext: "$dataValue subsidies received",
@@ -5602,7 +5605,7 @@ var sum=0
 
 this.dataDeployee.push(
   {"label":'On Bench',"value":this.getListDeployee[0].onbench},
-  {"label":'Deployee',"value":this.getListDeployee[0].deployeed}
+  {"label":'Deployed',"value":this.getListDeployee[0].deployeed}
   
   
   )
