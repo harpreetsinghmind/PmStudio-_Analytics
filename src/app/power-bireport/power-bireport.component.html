@@ -1370,7 +1370,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#tab3" role="tab">Actionable Insights</a>
+          <a class="nav-link" data-toggle="tab" (click)="pbiActionableTimesheetList()" href="#tab3" role="tab">Actionable Insights</a>
         </li>
 
         <!--
@@ -2652,7 +2652,6 @@
 
                         <div class="projectBar">
                           <select class="form-control"(change)="changeProjectStatus($event)" style="width: 150px;">
-                            <option>Select Status</option>
                             <option>All</option>
                             <option>Open</option>
                             <option>Closed</option>
@@ -3304,7 +3303,7 @@
 
                               </p>
                               <p><span>{{newnetRevenuePreviousYear | number :'1.2-2'}} |
-                                
+
                               </span><span>{{netRevenuePreviousYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{netRevenuePreviousYearGrowthPercentimg}}">
 
@@ -3869,7 +3868,8 @@
               </div>
 
               <div class="table-responsive">
-                <ejs-grid #overviewgridset id='overviewgridset' [allowTextWrap]="true" [dataSource]='setActionableTimeSheetList' rowHeight='38' [allowSelection]='true'
+                <ejs-grid #overviewgridset id='overviewgridset'
+[frozenRows]='0' [frozenColumns]='3'  [allowTextWrap]="true" [dataSource]='setActionableTimeSheetList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' (actionComplete)="actionComplete($event)"[allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
@@ -4160,7 +4160,8 @@
 
 
       <ejs-grid #overviewgridcheck id='overviewgridcheck' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList'  [allowSelection]='true'
-                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+               
+[frozenRows]='0' [frozenColumns]='2'  [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (dataBound)="onGridDataBound($event)"
                  [allowPaging]='true' [allowExcelExport]='true' >
@@ -4279,7 +4280,7 @@
       </div>
 
       <div *ngIf="checkMom" class="table-responsive" style="margin-top: 12px;">
-        <ejs-grid #overviewgridInsightmom id='overviewgridInsightmom' [allowTextWrap]="true" [dataSource]='actionableInsightList' rowHeight='38' [allowSelection]='true'
+        <ejs-grid #overviewgridInsightmom [frozenRows]='0' [frozenColumns]='2'  id='overviewgridInsightmom' [allowTextWrap]="true" [dataSource]='actionableInsightList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (actionComplete)="actionCompleteCheck($event)"  [allowPaging]='true' [allowExcelExport]='true' >
@@ -4331,7 +4332,7 @@
       </div>
       <div *ngIf="checkRoadBlock" class="table-responsive" style="margin-top: 12px;">
         <ejs-grid #overviewgridInsightroad id='overviewgridInsightroad' [allowTextWrap]="true" [dataSource]='actionableInsightRoadBlockList' rowHeight='38' [allowSelection]='true'
-                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+        [frozenRows]='0' [frozenColumns]='2'   [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (actionComplete)="actionCompleteCheck($event)" [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
@@ -4382,7 +4383,7 @@
       </div>
       <div *ngIf="checkOverDue" class="table-responsive" style="margin-top: 12px;">
         <ejs-grid #overviewgridInsightover id='overviewgridInsightover' [allowTextWrap]="true" [dataSource]='actionableInsightOverDueList' rowHeight='38' [allowSelection]='true'
-                [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
+        [frozenRows]='0' [frozenColumns]='2'   [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (actionComplete)="actionCompleteCheck($event)"  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
