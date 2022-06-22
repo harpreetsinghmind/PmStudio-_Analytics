@@ -22,7 +22,7 @@ p.context {
   span.projectStatusbar{ background: #50cb9e; display: inline-block; width: 14px; height: 14px; border-radius: 50%; position: relative;
     margin-right: 6px; top: 3px;}
 
-    
+
   span.projectStatusbarGrey{ background: grey; display: inline-block; width: 14px; height: 14px; border-radius: 50%; position: relative;
     margin-right: 6px; top: 3px;}
 
@@ -1236,6 +1236,12 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     margin-right: 5px;}
     .circleInActive::before{ background-color: #c1c1c1 !important;}
 
+    .YearValue.YearValuePL {
+      padding-top: 39px;
+  }
+  .andOr{ display: flex; flex: 0 0 33%; align-items: center; justify-content: flex-end;}
+  .andOr select{ width: 66%; margin: 0;}
+.labelcheckout{ border: none; font-weight: 500 !important;}
   @media screen and (max-width: 700px){
 
     .popup{

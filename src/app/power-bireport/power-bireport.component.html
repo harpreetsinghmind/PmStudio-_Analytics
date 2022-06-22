@@ -1422,7 +1422,7 @@
                     <h4>Project</h4>
 
                     <div class="expenseValue expenseValue1">
-                      <div class="YearValue"><p># Project</p><p>$ Project</p><p>$ Avg. Resource</p><p>Revenue to be billed</p></div>
+                      <div class="YearValue YearValuePL"><p># Project</p><p>$ Project</p><p>$ Avg. Resource</p><p>Revenue to be billed</p></div>
                       <div>
                         <p>{{buisnesscurrentYear }}</p>
                         <p><span>{{currentYearProjectCount  | number :'1.2-2'}} |</span><span>{{currentYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
@@ -1430,15 +1430,15 @@
                         </p>
                         <p><span>{{currentYearProjectMoney  | number :'1.2-2'}} |</span><span>{{currentYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectMoneyPercentGrowthimg}}">
-                        
+
                         </p>
                         <p><span>{{currentYearResource  | number :'1.2-2'}} |</span><span>{{currentYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearResourcePercentGrowthimg}}">
-                        
+
                         </p>
                         <p><span>{{currentYearRevnue  | number :'1.2-2'}} |</span><span>{{currentYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearRevnuePercentGrowthimg}}">
-                        
+
                         </p>
                       </div>
                       <div>
@@ -1446,19 +1446,19 @@
                         <p><span>{{previousYearProjectCount  | number :'1.2-2'}} |</span><span>{{previousYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{currentYearRevnuePercentGrowthimg}}">
 
-                          
+
                         </p>
                         <p><span>{{previousYearProjectMoney  | number :'1.2-2'}} |</span><span>{{previousYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearProjectMoneyPercentGrowthimg}}">
-                        
+
                         </p>
                         <p><span>{{previousYearResource  | number :'1.2-2'}} |</span><span>{{previousYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearResourcePercentGrowthimg}}">
-                        
+
                         </p>
                         <p><span>{{previousYearRevnue  | number :'1.2-2'}} |</span><span>{{previousYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearRevnuePercentGrowthimg}}">
-                        
+
                         </p>
 
                       </div>
@@ -1510,7 +1510,7 @@
                         <p><span>${{expensecurrentYearExpense}} </span></p>
                       </div>
                       <div>
-                       
+
                         <p>{{expensepeoplePreviousYear}}</p>
                         <p><span>
                           <div class="progress">
@@ -3201,7 +3201,7 @@
                         <div class="boxExpense">
 
                           <div class="expenseValue expenseValue1">
-                            <div class="YearValue"><p># Project</p><p>$ Project</p><p>Avg. Revenue</p><p>Avg. Tenure</p></div>
+                            <div class="YearValue YearValuePL"><p># Project</p><p>$ Project</p><p>Avg. Revenue</p><p>Avg. Tenure</p></div>
                             <div>
                               <p>{{plcurrentYear}}</p>
                               <p><span>{{projectCostCurrentYear | number :'1.2-2'}} |</span><span>
@@ -3219,7 +3219,7 @@
                           <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{newavgTenureCurrentYear | number :'1.2-2'}} 
+                              <p><span>{{newavgTenureCurrentYear | number :'1.2-2'}}
                                 |</span><span>{{avgTenureCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgTenureCurrentYearGrowthPercentimg}}">
 
@@ -3263,7 +3263,7 @@
                         <div class="boxExpense" style="margin-left: 10px;">
 
                           <div class="expenseValue expenseValue1">
-                            <div class="YearValue"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>
+                            <div class="YearValue YearValuePL"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>
                             <div>
                               <p>{{plcurrentYear}}</p>
                               <p><span>{{totalCostCurrentYear  | number :'1.2-2'}} |</span>
@@ -3308,12 +3308,12 @@
                           <img src="{{netRevenuePreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgMarginPreviousYear  | number :'1.2-2'}} 
+                              <p><span>{{avgMarginPreviousYear  | number :'1.2-2'}}
                                 |</span><span>{{avgMarginPreviousYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginPreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectWithAvgMarginPreviousYear  | number :'1.2-2'}} 
+                              <p><span>{{projectWithAvgMarginPreviousYear  | number :'1.2-2'}}
                                 |</span><span>{{projectWithAvgMarginPreviousYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectWithAvgMarginPreviousYearGrowthPercentimg}}">
 
@@ -3327,8 +3327,8 @@
                         </div>
 
                       <div class="table-responsive tableBorders" style="display: inline-block;">
-                       
-                      
+
+
                         <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectDetailPAndLGridList' rowHeight='38' [allowSelection]='true'
               [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
               [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
@@ -3865,13 +3865,13 @@
                 [filterSettings]='filterSettings' (actionComplete)="actionComplete($event)"[allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
-                  <e-column width='120' field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column width='220' field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
                     <ng-template #template let-data>
-                      {{data.name}}/{{data.contactNumber}}
+                      {{data.name}}<br>{{data.contactNumber}}
                     </ng-template>
 
                   </e-column>
-                  <e-column field='sms' headerText='SMS'   [allowFiltering]='false' clipMode='EllipsisWithTooltip' width='100'>
+                  <e-column field='sms' headerText='SMS'   [allowFiltering]='false' clipMode='EllipsisWithTooltip' width='70'>
                     <!-- <ng-template let data>
 
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
@@ -3882,7 +3882,7 @@
                     </ng-template>
 
                   </e-column>
-                  <e-column field='email' headerText='Email' [allowFiltering]='false'  clipMode='EllipsisWithTooltip' width='150'>
+                  <e-column field='email' headerText='Email' [allowFiltering]='false'  clipMode='EllipsisWithTooltip' width='70'>
                     <ng-template #template let-data>
                       <img *ngIf="data.email==='email'" src="../../assets/img/logo/emailcircle.png" style="width: 38px;">
                       <!-- <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;"> -->
@@ -4152,7 +4152,7 @@
 
       <ejs-grid #overviewgridcheck id='overviewgridcheck' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList'  [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
-                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false' 
+                [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (dataBound)="onGridDataBound($event)"
                  [allowPaging]='true' [allowExcelExport]='true' >
                 <e-columns>
@@ -4686,18 +4686,14 @@
         <div class="modal-content">
               <div class="modal-header">
                     <h4 class="modal-title" >Filters</h4>
-                    <select (change)="changeStatus($event)" class="form-control spaceCol">
-                      <option value="and">And</option>
-                      <option value="or">Or</option>
-                     
-                    </select>
+
 
                     <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()" ><span aria-hidden="true">&times;</span></button>
                   </div>
                   <div class="modal-body">
                     <div class="form-group" style="margin-bottom:15px">
                       <div class="checkFilterRow">
-                        <label class="form-control">
+                        <label class="form-control labelcheckout">
                           CheckIn-CheckOut
                         </label>
                         <select (change)="checkInChangeValue($event)" class="form-control spaceCol">
@@ -4714,11 +4710,20 @@
                         {{showMinValue}}
 
                        </div>
-                      
+
                       </div>
 
+                      <div class="andOr">
+                        <select (change)="changeStatus($event)" class="form-control spaceCol">
+                          <option value="and">And</option>
+                          <option value="or">Or</option>
+
+                        </select>
+                      </div>
+
+
                       <div class="checkFilterRow">
-                        <label class="form-control">
+                        <label class="form-control labelcheckout">
                           Timesheet
                         </label>
                         <select (change)="timeSheetChangeValue($event)"  class="form-control spaceCol">
@@ -4733,7 +4738,7 @@
                         <input type="text"  (focusout)="onSearchTime($event)" [(ngModel)]="timeSheetValue" class="form-control">
                         <div class="red" *ngIf="checkTimeValue">
                           {{showTimeValue}}
-  
+
                          </div>
                       </div>
 
