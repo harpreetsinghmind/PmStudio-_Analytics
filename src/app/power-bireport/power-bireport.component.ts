@@ -9844,7 +9844,7 @@ else{
 this.onBenchTotalResource=this.getProjectListData[0].onBenchTotalResource;
 //this.onBenchTotalResouPercent=this.getProjectListData[0].onBenchTotalResourcePercent;
 this.onBenchTotalResouPercent=0;
-this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTotalResouPercent)/this.onBenchTotalResource
+this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTotalResouPercent)*100 /this.onBenchTotalResource
 (this.onBenchTotalResouPercent==0)
 {
   this.onBenchTotalResourcePercentGrowth=0
