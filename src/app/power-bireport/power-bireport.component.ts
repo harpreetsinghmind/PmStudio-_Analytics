@@ -4903,7 +4903,6 @@ else{
   newavgRevenuePreviousYear:any
   dataexpenselist:any
   newprojectCostPreviousYearGrowthPercent:any
-  dataExpensListMouseOver:any=[]
  
   getpbiExpense(){
       let cmpcode=1
@@ -4911,7 +4910,6 @@ else{
       this.getListExpense=[]
       this.dataExpenselist=[]
       this.Loader=true
-      this.dataExpensListMouseOver=[]
       this.HTTP.getpbiExpenseListData(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
       this.getListExpense=  arg.data.table
   console.log('getListExpense',arg.data.table)
@@ -4924,7 +4922,6 @@ else{
         getColor.push(this.setColor[i])
       }
       var sum=0
-      var sumAmount=0
 //       for(var i=0;i<5;i++)
 //       {
 //     sum=this.getListExpense[i].designationId
@@ -4937,22 +4934,19 @@ if(this.getListExpense.length>5)
   for(var i=0;i<5;i++)
 {
  this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
- this.dataExpensListMouseOver.push({"amount":this.getListExpense[i].amount,"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
+
 }
 for(var j=0;j<this.getListExpense.length;j++)
 {
   if(j>=5)
   {
  sum+=this.getListExpense[j].designationId
- sumAmount+=this.getListExpense[j].amount
 
 
   }
 
 }
 this.dataExpenselist.push({"label":'Other','value':sum})
-this.dataExpensListMouseOver.push({"amount":sumAmount,"label":'Other','value':sum})
-
 }
 
 else
@@ -4961,7 +4955,6 @@ for(var i=0;i<this.getListExpense.length;i++)
 {
 
 this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
-this.dataExpensListMouseOver.push({"amount":this.getListExpense[i].amount,"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
 
 
 }
@@ -4987,25 +4980,6 @@ this.dataExpensListMouseOver.push({"amount":this.getListExpense[i].amount,"label
 
 
       })
-  }
-  update(e)
-  {
-    debugger
- for(var i=0;i<this.dataExpensListMouseOver.length;i++)
- {
-  if(e.dataObj.id==this.dataExpensListMouseOver[i].label)
-  {
-
-e.dataObj.id=e.dataObj.id+' '+'Amount'
-e.dataObj.dataValue=e.dataObj.dataValue+' '+this.dataExpensListMouseOver[i].amount
-  }
-
- }
-    
-  }
-  render(e)
-  {
-    debugger
   }
   getListSpenderWise:any=[]
   dataSpenderWise:any=[]
@@ -9844,7 +9818,7 @@ else{
 this.onBenchTotalResource=this.getProjectListData[0].onBenchTotalResource;
 this.onBenchTotalResouPercent=this.getProjectListData[0].onBenchTotalResourcePercent;
 //this.onBenchTotalResouPercent=0;
-this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTotalResouPercent)*100 /this.onBenchTotalResource
+this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTotalResouPercent)*100 / this.onBenchTotalResource;
 (this.onBenchTotalResouPercent==0)
 {
   this.onBenchTotalResourcePercentGrowth=0
