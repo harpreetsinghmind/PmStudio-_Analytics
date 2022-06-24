@@ -4726,6 +4726,7 @@
                       <img *ngIf="data.one === 1" src="../../assets/img/logo/green-signal.png" style="width: 22px;">
                     </ng-template> -->
                     <ng-template #template let-data>
+                      {{data.one}}
                       <img *ngIf="data.one===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                       <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                     </ng-template>
@@ -4884,12 +4885,14 @@
                   </e-column>
                   <e-column field='twentyseven' headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
+                      {{data.twentyseven}}
                       <img *ngIf="data.twentyseven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                       <img *ngIf="data.twentseven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                     </ng-template>
                   </e-column>
                   <e-column field='twentyeight' headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
+                      {{data.twentyeight}}
                       <img *ngIf="data.twentyeight===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                       <img *ngIf="data.twentyeight === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                     </ng-template>
