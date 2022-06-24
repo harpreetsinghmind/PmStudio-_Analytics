@@ -2468,24 +2468,23 @@ this.pbiActionableInsightList()
         var monthNumbert = aa.getDate() + 3 //31
         if(this.checkMom==true)
         {
-          this.gridsInsight.getColumnByField('29').visible = true;
+          this.gridsInsight.getColumnByField('twentynine').visible = true;
   
-          this.gridsInsight.getColumnByField('30').visible = true;
-          this.gridsInsight.getColumnByField('31').visible = true;
+          this.gridsInsight.getColumnByField('thirty').visible = true;
+          this.gridsInsight.getColumnByField('thirtyone').visible = true;
         }
         if(this.checkOverDue==true)
         {
-          this.gridsInsightOver.getColumnByField('29').visible = true;
+          this.gridsInsightOver.getColumnByField('twentynine').visible = true;
   
-          this.gridsInsightOver.getColumnByField('30').visible = true;
-          this.gridsInsightOver.getColumnByField('31').visible = true;
+          this.gridsInsightOver.getColumnByField('thirty').visible = true;
+          this.gridsInsightOver.getColumnByField('thirtyone').visible = true;
         }
         if(this.checkRoadBlock==true)
         {
-          this.gridsInsightRoad.getColumnByField('29').visible = true;
-  
-          this.gridsInsightRoad.getColumnByField('30').visible = true;
-          this.gridsInsightRoad.getColumnByField('31').visible = true;
+          this.gridsInsightRoad.getColumnByField('twentynine').visible = true;
+          this.gridsInsightRoad.getColumnByField('thirty').visible = true;
+          this.gridsInsightRoad.getColumnByField('thirtyone').visible = true;
         }
   
         //var node=document.getElementById("overviewgrid")
@@ -2496,28 +2495,28 @@ this.pbiActionableInsightList()
           var number2 = monthNumbert.toString()
           if(this.checkMom==true)
           {
-            this.gridsInsight.getColumnByField('29').visible = false;
+            this.gridsInsight.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsight.getColumnByField('30').visible = false;
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirty').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
-            this.gridsInsightOver.getColumnByField('29').visible = false;
+            this.gridsInsightOver.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsightOver.getColumnByField('30').visible = false;
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirty').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
-            this.gridsInsightRoad.getColumnByField('29').visible = false;
+            this.gridsInsightRoad.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsightRoad.getColumnByField('30').visible = false;
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirty').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2538,24 +2537,24 @@ this.pbiActionableInsightList()
           if(this.checkMom==true)
           {
     
-            this.gridsInsight.getColumnByField('30').visible = false;
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirty').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
     
-            this.gridsInsightOver.getColumnByField('30').visible = false;
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirty').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
     
-            this.gridsInsightRoad.getColumnByField('30').visible = false;
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirty').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2571,21 +2570,21 @@ this.pbiActionableInsightList()
           if(this.checkMom==true)
           {
     
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
     
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
     
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2642,24 +2641,23 @@ this.pbiActionableInsightList()
         var monthNumbert = aa.getDate() + 3 //31
         if(this.checkMom==true)
         {
-          this.gridsInsight.getColumnByField('29').visible = true;
+          this.gridsInsight.getColumnByField('twentynine').visible = true;
   
-          this.gridsInsight.getColumnByField('30').visible = true;
-          this.gridsInsight.getColumnByField('31').visible = true;
+          this.gridsInsight.getColumnByField('thirty').visible = true;
+          this.gridsInsight.getColumnByField('thirtyone').visible = true;
         }
         if(this.checkOverDue==true)
         {
-          this.gridsInsightOver.getColumnByField('29').visible = true;
+          this.gridsInsightOver.getColumnByField('twentynine').visible = true;
   
-          this.gridsInsightOver.getColumnByField('30').visible = true;
-          this.gridsInsightOver.getColumnByField('31').visible = true;
+          this.gridsInsightOver.getColumnByField('thirty').visible = true;
+          this.gridsInsightOver.getColumnByField('thirtyone').visible = true;
         }
         if(this.checkRoadBlock==true)
         {
-          this.gridsInsightRoad.getColumnByField('29').visible = true;
-  
-          this.gridsInsightRoad.getColumnByField('30').visible = true;
-          this.gridsInsightRoad.getColumnByField('31').visible = true;
+          this.gridsInsightRoad.getColumnByField('twentynine').visible = true;
+          this.gridsInsightRoad.getColumnByField('thirty').visible = true;
+          this.gridsInsightRoad.getColumnByField('thirtyone').visible = true;
         }
   
         //var node=document.getElementById("overviewgrid")
@@ -2670,28 +2668,28 @@ this.pbiActionableInsightList()
           var number2 = monthNumbert.toString()
           if(this.checkMom==true)
           {
-            this.gridsInsight.getColumnByField('29').visible = false;
+            this.gridsInsight.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsight.getColumnByField('30').visible = false;
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirty').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
-            this.gridsInsightOver.getColumnByField('29').visible = false;
+            this.gridsInsightOver.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsightOver.getColumnByField('30').visible = false;
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirty').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
-            this.gridsInsightRoad.getColumnByField('29').visible = false;
+            this.gridsInsightRoad.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsightRoad.getColumnByField('30').visible = false;
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirty').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2712,24 +2710,24 @@ this.pbiActionableInsightList()
           if(this.checkMom==true)
           {
     
-            this.gridsInsight.getColumnByField('30').visible = false;
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirty').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
     
-            this.gridsInsightOver.getColumnByField('30').visible = false;
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirty').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
     
-            this.gridsInsightRoad.getColumnByField('30').visible = false;
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirty').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2745,21 +2743,21 @@ this.pbiActionableInsightList()
           if(this.checkMom==true)
           {
     
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
     
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
     
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2816,24 +2814,23 @@ this.pbiActionableInsightList()
         var monthNumbert = aa.getDate() + 3 //31
         if(this.checkMom==true)
         {
-          this.gridsInsight.getColumnByField('29').visible = true;
+          this.gridsInsight.getColumnByField('twentynine').visible = true;
   
-          this.gridsInsight.getColumnByField('30').visible = true;
-          this.gridsInsight.getColumnByField('31').visible = true;
+          this.gridsInsight.getColumnByField('thirty').visible = true;
+          this.gridsInsight.getColumnByField('thirtyone').visible = true;
         }
         if(this.checkOverDue==true)
         {
-          this.gridsInsightOver.getColumnByField('29').visible = true;
+          this.gridsInsightOver.getColumnByField('twentynine').visible = true;
   
-          this.gridsInsightOver.getColumnByField('30').visible = true;
-          this.gridsInsightOver.getColumnByField('31').visible = true;
+          this.gridsInsightOver.getColumnByField('thirty').visible = true;
+          this.gridsInsightOver.getColumnByField('thirtyone').visible = true;
         }
         if(this.checkRoadBlock==true)
         {
-          this.gridsInsightRoad.getColumnByField('29').visible = true;
-  
-          this.gridsInsightRoad.getColumnByField('30').visible = true;
-          this.gridsInsightRoad.getColumnByField('31').visible = true;
+          this.gridsInsightRoad.getColumnByField('twentynine').visible = true;
+          this.gridsInsightRoad.getColumnByField('thirty').visible = true;
+          this.gridsInsightRoad.getColumnByField('thirtyone').visible = true;
         }
   
         //var node=document.getElementById("overviewgrid")
@@ -2844,28 +2841,28 @@ this.pbiActionableInsightList()
           var number2 = monthNumbert.toString()
           if(this.checkMom==true)
           {
-            this.gridsInsight.getColumnByField('29').visible = false;
+            this.gridsInsight.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsight.getColumnByField('30').visible = false;
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirty').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
-            this.gridsInsightOver.getColumnByField('29').visible = false;
+            this.gridsInsightOver.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsightOver.getColumnByField('30').visible = false;
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirty').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
-            this.gridsInsightRoad.getColumnByField('29').visible = false;
+            this.gridsInsightRoad.getColumnByField('twentynine').visible = false;
     
-            this.gridsInsightRoad.getColumnByField('30').visible = false;
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirty').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2886,24 +2883,24 @@ this.pbiActionableInsightList()
           if(this.checkMom==true)
           {
     
-            this.gridsInsight.getColumnByField('30').visible = false;
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirty').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
     
-            this.gridsInsightOver.getColumnByField('30').visible = false;
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirty').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
     
-            this.gridsInsightRoad.getColumnByField('30').visible = false;
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirty').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -2919,21 +2916,21 @@ this.pbiActionableInsightList()
           if(this.checkMom==true)
           {
     
-            this.gridsInsight.getColumnByField('31').visible = false;
+            this.gridsInsight.getColumnByField('thirtyone').visible = false;
             this.gridsInsight.refreshColumns();
             this.gridsInsight.refresh()
           }
           if(this.checkOverDue==true)
           {
     
-            this.gridsInsightOver.getColumnByField('31').visible = false;
+            this.gridsInsightOver.getColumnByField('thirtyone').visible = false;
             this.gridsInsightOver.refreshColumns();
             this.gridsInsightOver.refresh()
           }
           if(this.checkRoadBlock==true)
           {
     
-            this.gridsInsightRoad.getColumnByField('31').visible = false;
+            this.gridsInsightRoad.getColumnByField('thirtyone').visible = false;
             this.gridsInsightRoad.refreshColumns();
             this.gridsInsightRoad.refresh()
           }
@@ -3576,6 +3573,96 @@ this.Loader=false
 //this.refreshGrid=true
     this.actionableInsightOverDueList=  arg.data.table
 console.log('actionableInsightOverDueList',arg.data.table)
+var newArr = [];
+for(var i = 0; i < this.actionableInsightOverDueList.length; i++)
+{
+  var obj = this.actionableInsightOverDueList[i];
+  obj['one'] = obj[1];
+  obj['two'] = obj[2];
+  obj['three'] = obj[3];
+  obj['four'] = obj[4];
+  obj['five'] = obj[5];
+  obj['six'] = obj[6];
+  obj['seven'] = obj[7];
+  obj['eight'] = obj[8];
+  obj['nine'] = obj[9];
+  obj['ten'] = obj[10];
+  obj['eleven'] = obj[11];
+  obj['twelve'] = obj[12];
+  obj['threeten'] = obj[13];
+  obj['fourteen'] = obj[14];
+  obj['fifteen'] = obj[15];
+
+  obj['sixteen'] = obj[16];
+  obj['seventeen'] = obj[17];
+
+  obj['eighteen'] = obj[18];
+
+  obj['nineteen'] = obj[19];
+  obj['twenty'] = obj[20];
+
+  obj['twentyone'] = obj[21];
+
+  obj['twentytwo'] = obj[22];
+  obj['twentythree'] = obj[23];
+
+
+  obj['twentyfour'] = obj[24];
+
+  obj['twentyfive'] = obj[25];
+  obj['twentysix'] = obj[26];
+
+
+  obj['twentyseven'] = obj[27];
+
+
+  obj['twentyeight'] = obj[28];
+
+  obj['twentynine'] = obj[29];
+ 
+  obj['thirty'] = obj[30];
+   obj['thirtyone'] = obj[31];
+
+
+
+
+
+   delete(obj[1]);
+   delete(obj[2]);
+   delete(obj[3]);
+   delete(obj[4]);
+   delete(obj[5]);
+   delete(obj[6]);
+   delete(obj[7]);
+   delete(obj[8]);
+   delete(obj[9]);
+   delete(obj[10]);
+   delete(obj[11]);
+   delete(obj[12]);
+   delete(obj[13]);
+   delete(obj[14]);
+   delete(obj[15]);
+   delete(obj[16]);
+   delete(obj[17]);
+   delete(obj[18]);
+   delete(obj[19]);
+  
+   delete(obj[20]);
+   delete(obj[21]);
+   delete(obj[22]);
+   delete(obj[23]);
+   delete(obj[24]);
+   delete(obj[25]);
+   delete(obj[26]);
+   delete(obj[27]);
+   delete(obj[28]);
+   delete(obj[29]);
+   delete(obj[30]);
+   delete(obj[31]);
+        
+  newArr.push(obj);
+}
+this.actionableInsightOverDueList=newArr
 
 if(this.actionableInsightOverDueList.length>0)
 {
@@ -3646,6 +3733,97 @@ this.Loader=false
 //this.refreshGrid=true
     this.actionableInsightRoadBlockList=  arg.data.table
 console.log('actionableInsightRoadBlockList',arg.data.table)
+var newArr = [];
+for(var i = 0; i < this.actionableInsightRoadBlockList.length; i++)
+{
+  var obj = this.actionableInsightRoadBlockList[i];
+  obj['one'] = obj[1];
+  obj['two'] = obj[2];
+  obj['three'] = obj[3];
+  obj['four'] = obj[4];
+  obj['five'] = obj[5];
+  obj['six'] = obj[6];
+  obj['seven'] = obj[7];
+  obj['eight'] = obj[8];
+  obj['nine'] = obj[9];
+  obj['ten'] = obj[10];
+  obj['eleven'] = obj[11];
+  obj['twelve'] = obj[12];
+  obj['threeten'] = obj[13];
+  obj['fourteen'] = obj[14];
+  obj['fifteen'] = obj[15];
+
+  obj['sixteen'] = obj[16];
+  obj['seventeen'] = obj[17];
+
+  obj['eighteen'] = obj[18];
+
+  obj['nineteen'] = obj[19];
+  obj['twenty'] = obj[20];
+
+  obj['twentyone'] = obj[21];
+
+  obj['twentytwo'] = obj[22];
+  obj['twentythree'] = obj[23];
+
+
+  obj['twentyfour'] = obj[24];
+
+  obj['twentyfive'] = obj[25];
+  obj['twentysix'] = obj[26];
+
+
+  obj['twentyseven'] = obj[27];
+
+
+  obj['twentyeight'] = obj[28];
+
+  obj['twentynine'] = obj[29];
+ 
+  obj['thirty'] = obj[30];
+   obj['thirtyone'] = obj[31];
+
+
+
+
+
+   delete(obj[1]);
+   delete(obj[2]);
+   delete(obj[3]);
+   delete(obj[4]);
+   delete(obj[5]);
+   delete(obj[6]);
+   delete(obj[7]);
+   delete(obj[8]);
+   delete(obj[9]);
+   delete(obj[10]);
+   delete(obj[11]);
+   delete(obj[12]);
+   delete(obj[13]);
+   delete(obj[14]);
+   delete(obj[15]);
+   delete(obj[16]);
+   delete(obj[17]);
+   delete(obj[18]);
+   delete(obj[19]);
+  
+   delete(obj[20]);
+   delete(obj[21]);
+   delete(obj[22]);
+   delete(obj[23]);
+   delete(obj[24]);
+   delete(obj[25]);
+   delete(obj[26]);
+   delete(obj[27]);
+   delete(obj[28]);
+   delete(obj[29]);
+   delete(obj[30]);
+   delete(obj[31]);
+        
+  newArr.push(obj);
+}
+this.actionableInsightRoadBlockList=[]
+this.actionableInsightRoadBlockList=newArr
 if(this.actionableInsightRoadBlockList.length>0)
 {
 this.gridsInsightRoad.refresh()
@@ -3719,6 +3897,97 @@ this.Loader=false
     this.actionableInsightList=  arg.data.table
 console.log('actionableInsightList',arg.data.table)
 
+var newArr = [];
+for(var i = 0; i < this.actionableInsightList.length; i++)
+{
+  var obj = this.actionableInsightList[i];
+  obj['one'] = obj[1];
+  obj['two'] = obj[2];
+  obj['three'] = obj[3];
+  obj['four'] = obj[4];
+  obj['five'] = obj[5];
+  obj['six'] = obj[6];
+  obj['seven'] = obj[7];
+  obj['eight'] = obj[8];
+  obj['nine'] = obj[9];
+  obj['ten'] = obj[10];
+  obj['eleven'] = obj[11];
+  obj['twelve'] = obj[12];
+  obj['threeten'] = obj[13];
+  obj['fourteen'] = obj[14];
+  obj['fifteen'] = obj[15];
+
+  obj['sixteen'] = obj[16];
+  obj['seventeen'] = obj[17];
+
+  obj['eighteen'] = obj[18];
+
+  obj['nineteen'] = obj[19];
+  obj['twenty'] = obj[20];
+
+  obj['twentyone'] = obj[21];
+
+  obj['twentytwo'] = obj[22];
+  obj['twentythree'] = obj[23];
+
+
+  obj['twentyfour'] = obj[24];
+
+  obj['twentyfive'] = obj[25];
+  obj['twentysix'] = obj[26];
+
+
+  obj['twentyseven'] = obj[27];
+
+
+  obj['twentyeight'] = obj[28];
+
+  obj['twentynine'] = obj[29];
+ 
+  obj['thirty'] = obj[30];
+   obj['thirtyone'] = obj[31];
+
+
+
+
+
+   delete(obj[1]);
+   delete(obj[2]);
+   delete(obj[3]);
+   delete(obj[4]);
+   delete(obj[5]);
+   delete(obj[6]);
+   delete(obj[7]);
+   delete(obj[8]);
+   delete(obj[9]);
+   delete(obj[10]);
+   delete(obj[11]);
+   delete(obj[12]);
+   delete(obj[13]);
+   delete(obj[14]);
+   delete(obj[15]);
+   delete(obj[16]);
+   delete(obj[17]);
+   delete(obj[18]);
+   delete(obj[19]);
+  
+   delete(obj[20]);
+   delete(obj[21]);
+   delete(obj[22]);
+   delete(obj[23]);
+   delete(obj[24]);
+   delete(obj[25]);
+   delete(obj[26]);
+   delete(obj[27]);
+   delete(obj[28]);
+   delete(obj[29]);
+   delete(obj[30]);
+   delete(obj[31]);
+        
+  newArr.push(obj);
+}
+
+this.actionableInsightList=newArr
 if(this.actionableInsightList.length>0)
 {
   this.gridsInsight.refresh()
