@@ -1492,8 +1492,10 @@
                         <p><span>{{currencyName}}{{currentYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearBillable}}</span></p>
                         <p><span>{{currentYearNonBillable}}</span></p>
+                        <!-- <p><span>{{currencyName}}{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p> -->
+                        <!-- <p><span>{{currencyName}}{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
                         <p><span>{{currencyName}}{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{currencyName}}{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{currentYearProjectMoney / currentYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearAttrition}}%</span></p>
                       </div>
                       <div>
@@ -1502,8 +1504,10 @@
                         <p><span>{{currencyName}}{{previousYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearBillable}}</span></p>
                         <p><span>{{previousYearNonBillable}}</span></p>
+                        <!-- <p><span>{{currencyName}}{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
+                        <!-- <p><span>{{currencyName}}{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
                         <p><span>{{currencyName}}{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{currencyName}}{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{previousYearProjectMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearAttrition}}%</span></p>
                       </div>
                     </div>
