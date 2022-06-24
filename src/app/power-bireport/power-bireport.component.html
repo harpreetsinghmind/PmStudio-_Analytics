@@ -1481,7 +1481,7 @@
                         <p><span>{{currentYearBillable}}</span></p>
                         <p><span>{{currentYearNonBillable}}</span></p>
                         <p><span>{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currentYearProjectMoney / currentYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearAttrition}}%</span></p>
                       </div>
                       <div>
@@ -1491,7 +1491,7 @@
                         <p><span>{{previousYearBillable}}</span></p>
                         <p><span>{{previousYearNonBillable}}</span></p>
                         <p><span>{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{previousYearProjectMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearAttrition}}%</span></p>
                       </div>
                     </div>
