@@ -1422,7 +1422,7 @@
                     <h4>Project</h4>
 
                     <div class="expenseValue expenseValue1">
-                      <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Ag Revenue Per Project</p><p>Revenue to be billed</p></div>
+                      <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Ag Revenue/Project</p><p>Purposed/ Balanced</p><p>Revenue to be billed</p></div>
                       <div>
                         <p>{{buisnesscurrentYear }}</p>
                         <p><span>{{currentYearProjectCount }}
@@ -1437,6 +1437,13 @@
                         </p>
                         <p><span>{{currentYearResource  | number :'1.2-2'}} |</span><span>{{currentYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearResourcePercentGrowthimg}}">
+
+                        </p>
+
+                        <p><span>{{currentYearRevnue  | number :'1.2-2'}} |
+
+                        </span><span>{{currentYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{currentYearRevnuePercentGrowthimg}}">
 
                         </p>
                         <p><span>{{currentYearRevnue  | number :'1.2-2'}} |</span><span>{{currentYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
@@ -1464,6 +1471,11 @@
 
                         </p>
 
+                        <p><span>{{previousYearRevnue  | number :'1.2-2'}} |</span><span>{{previousYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{previousYearRevnuePercentGrowthimg}}">
+
+                        </p>
+
                       </div>
 
                     </div>
@@ -1472,12 +1484,12 @@
                   <div class="boxExpense boxExpenseSpace">
                     <h4>People</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p># Total</p><p>{{currencyName}} Total</p><p>Billable</p><p>Non Billable</p><p>Avg. Cost {{currencyName}} /Resource</p>
+                      <div class="YearValue"><p># Head Count</p><p> Total Cost</p><p>Billable Resource</p><p>Non Billable Resource</p><p>Avg. Cost  /Resource</p>
                       <p>Avg. Revenue/Resource</p><p>Attrition</p></div>
                       <div>
                         <p>{{peopleCurrentYear}}</p>
                         <p><span>{{currentYearTotalNumber}}</span></p>
-                        <p><span>{{currentYearTotalMoney | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{currentYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearBillable}}</span></p>
                         <p><span>{{currentYearNonBillable}}</span></p>
                         <p><span>{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p>
@@ -1487,7 +1499,7 @@
                       <div>
                         <p>{{peoplePreviousYear}}</p>
                         <p><span>{{previousYearTotalNumber}}</span></p>
-                        <p><span>{{previousYearTotalMoney | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{previousYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearBillable}}</span></p>
                         <p><span>{{previousYearNonBillable}}</span></p>
                         <p><span>{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
@@ -1500,7 +1512,7 @@
                   <div class="boxExpense expenseValue1">
                     <h4>Expense</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p>Total</p><p>Billable</p><p>Non Billable </p><p>Avg. Expense/Resouce</p></div>
+                      <div class="YearValue"><p>Total Expense</p><p>Billable</p><p>Non Billable </p><p>Avg. Expense/Resouce</p></div>
                       <div>
                         <p>{{expenseCurrentYear}}</p>
                         <p><span>
@@ -1534,7 +1546,7 @@
               <div class="col-md-12 no-padding ChartRow">
                 <div class="ChartRowCol ChartRowColRightMargin">
                   <div class="ChartRowHead">
-                    <h4 class="headingFour">Project Category (Last Six Months)</h4>
+                    <h4 class="headingFour">Project Category </h4>
                   </div>
 
                   <div class="chartBox">
@@ -1557,7 +1569,7 @@
 
                 <div class="ChartRowCol ChartRowColLefttMargin">
                   <div class="ChartRowHead">
-                    <h4 class="headingFour">Deploy % (Last Six Months)</h4>
+                    <h4 class="headingFour">Deploy </h4>
                   </div>
 
                   <div class="chartBox">
@@ -1580,7 +1592,7 @@
 
                 <div class="ChartRowCol">
                   <div class="ChartRowHead">
-                    <h4 class="headingFour">Expense Breakup (Last Six Months)</h4>
+                    <h4 class="headingFour">Expense Breakup </h4>
                   </div>
 
                   <div class="chartBox">
@@ -4735,57 +4747,57 @@
                   <e-column field='two' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
 
                     <ng-template #template let-data>
-                      <img *ngIf="data.two===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.two === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.two===2">{{data.two}}</span>
+                      <span class="delayStatus" *ngIf="data.two === 1">{{data.two}}</span>
                     </ng-template>
                   </e-column>
 
                   <e-column field='three' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.three===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.three === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.three===2">{{data.three}}</span>
+                      <span class="delayStatus" *ngIf="data.three === 1">{{data.three}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='four' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.four===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.four === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.four===2">{{data.four}}</span>
+                      <span class="delayStatus" *ngIf="data.four === 1">{{data.four}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='five' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.five===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.five === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.five===2">{{data.five}}</span>
+                      <span class="delayStatus" *ngIf="data.five === 1">{{data.five}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='six' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.six===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.six === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.six===2">{{data.six}}</span>
+                      <span class="delayStatus" *ngIf="data.six === 1">{{data.six}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='seven' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.seven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.seven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.seven===2">{{data.seven}}</span>
+                      <span class="delayStatus" *ngIf="data.seven === 1">{{data.seven}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='eight' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.eight===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.eight === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.eight===2">{{data.eight}}</span>
+                      <span class="delayStatus" *ngIf="data.eight === 1">{{data.eight}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='nine' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.nine===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.nine === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.nine===2">{{data.nine}}</span>
+                      <span class="delayStatus" *ngIf="data.nine === 1">{{data.nine}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='ten' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
                     <ng-template #template let-data>
-                      <img *ngIf="data.ten===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.ten === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.ten===2">{{data.ten}}</span>
+                      <span class="delayStatus" *ngIf="data.ten === 1">{{data.ten}}</span>
                     </ng-template>
                   </e-column>
                   <e-column field='eleven' headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
