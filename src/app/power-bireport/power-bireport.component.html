@@ -1472,26 +1472,26 @@
                   <div class="boxExpense boxExpenseSpace">
                     <h4>People</h4>
                     <div class="expenseValue">
-                      <div class="YearValue"><p># Total</p><p>{{currencyName}} Total</p><p>Billable</p><p>Non Billable</p><p>Avg. Cost $/Resource</p>
+                      <div class="YearValue"><p># Total</p><p>{{currencyName}} Total</p><p>Billable</p><p>Non Billable</p><p>Avg. Cost {{currencyName}} /Resource</p>
                       <p>Avg. Revenue/Resource</p><p>Attrition</p></div>
                       <div>
                         <p>{{peopleCurrentYear}}</p>
                         <p><span>{{currentYearTotalNumber}}</span></p>
-                        <p><span>{{currentYearTotalMoney}}</span></p>
+                        <p><span>{{currentYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearBillable}}</span></p>
                         <p><span>{{currentYearNonBillable}}</span></p>
-                        <p><span>{{currentYearCostR}}</span></p>
-                        <p><span>{{currentYearRevenueR}}</span></p>
+                        <p><span>{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearAttrition}}%</span></p>
                       </div>
                       <div>
                         <p>{{peoplePreviousYear}}</p>
                         <p><span>{{previousYearTotalNumber}}</span></p>
-                        <p><span>{{previousYearTotalMoney}}</span></p>
+                        <p><span>{{previousYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearBillable}}</span></p>
                         <p><span>{{previousYearNonBillable}}</span></p>
-                        <p><span>{{previousYearCostR}}</span></p>
-                        <p><span>{{previousYearRevenueR}}</span></p>
+                        <p><span>{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearAttrition}}%</span></p>
                       </div>
                     </div>
@@ -1508,9 +1508,9 @@
                             <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{expensecurrentYearTotalNumber}}%</div>
                           </div></span>
                         </p>
-                        <p><span>{{currencyName}}{{expensecurrentYearBillable}} </span></p>
-                        <p><span>{{currencyName}}{{expensecurrentYearNonBillable}} </span></p>
-                        <p><span>{{currencyName}}{{expensecurrentYearExpense}} </span></p>
+                        <p><span>{{currencyName}}{{expensecurrentYearBillable | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{expensecurrentYearNonBillable | number :'1.2-2'}} </span></p>
+                        <p><span>{{currencyName}}{{expensecurrentYearExpense | number :'1.2-2'}} </span></p>
                       </div>
                       <div>
 
@@ -1520,9 +1520,9 @@
                             <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{expensepreviousYearTotalNumber}}</div>
                           </div></span>
                         </p>
-                        <p><span>{{currencyName}}{{expensepreviousYearBillable}} </span></p>
-                        <p><span>{{currencyName}}{{expensepreviousYearNonBillable}} </span></p>
-                        <p><span>{{currencyName}}{{expensepreviousYearExpense}}</span></p>
+                        <p><span>{{currencyName}}{{expensepreviousYearBillable | number :'1.2-2'}} </span></p>
+                        <p><span>{{currencyName}}{{expensepreviousYearNonBillable | number :'1.2-2'}} </span></p>
+                        <p><span>{{currencyName}}{{expensepreviousYearExpense | number :'1.2-2'}}</span></p>
                       </div>
                     </div>
                   </div>
