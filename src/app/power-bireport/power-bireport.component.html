@@ -1425,12 +1425,12 @@
                       <div class="YearValue YearValuePL"><p># Project</p><p>{{currencyName}}Project</p><p>{{currencyName}}Avg. Resource</p><p>Revenue to be billed</p></div>
                       <div>
                         <p>{{buisnesscurrentYear }}</p>
-                        <p><span>{{currentYearProjectCount  | number :'1.2-2'}} 
+                        <p><span>{{currentYearProjectCount  | number :'1.2-2'}}
                           |</span><span>{{currentYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectCountPercentGrowthimg}}">
                         </p>
                         <p><span>{{currentYearProjectMoney  | number :'1.2-2'}} |
-                          
+
                         </span><span>{{currentYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectMoneyPercentGrowthimg}}">
 
@@ -1960,7 +1960,7 @@
                   </div>
                 </div>
 
-                <div class="ChartRowCol ChartRowColLefttMargin">
+                <div class="ChartRowCol ChartRowColLefttMargin ChartRowColLefttMargin21">
                   <div class="ChartRowHead">
                     <h4 class="headingFour">Employee vs Vendor (Last Six Months)</h4>
                     <a href="#">Detaileds Report</a>
@@ -2000,7 +2000,7 @@
                   </div>
                 </div>
 
-                <div class="ChartRowCol ChartRowColLefttMargin">
+                <div class="ChartRowCol ChartRowColLefttMargin ChartRowColLefttMargin21">
                   <div class="ChartRowHead">
                     <h4 class="headingFour">Employee attrition trend (Last Six Months) </h4>
                     <a href="#">Detailed Report</a>
@@ -2044,7 +2044,7 @@
                   </div>
                 </div>
 
-                <div class="ChartRowCol ChartRowColLefttMargin">
+                <div class="ChartRowCol ChartRowColLefttMargin ChartRowColLefttMargin21">
                   <div class="ChartRowHead">
                     <h4 class="headingFour">Department(Top 5) </h4>
                     <a href="#">Detailed Report</a>
@@ -2083,7 +2083,7 @@
                   </div>
                 </div>
 
-                <div class="ChartRowCol ChartRowColLefttMargin">
+                <div class="ChartRowCol ChartRowColLefttMargin ChartRowColLefttMargin21">
                   <div class="ChartRowHead">
                     <h4 class="headingFour">Age</h4>
                     <a href="#">Detailed Report</a>
@@ -2122,7 +2122,7 @@
                   </div>
                 </div>
 
-                <div class="ChartRowCol ChartRowColLefttMargin">
+                <div class="ChartRowCol ChartRowColLefttMargin ChartRowColLefttMargin21">
                   <div class="ChartRowHead">
                     <h4 class="headingFour">Gender</h4>
                     <a href="#">Detailed Report</a>
@@ -2917,8 +2917,8 @@
 
                 <div class="tab-pane" id="projectdetails" role="tabpanel">
                   <div class="card-body">
-                    <div class="col-md-12 no-padding" style="display:flex">
-                      <div class="col-md-6" style="padding-right: 10px;">
+                    <div class="col-md-12 no-padding projectTabInfo" style="display:flex">
+                      <div class="col-md-6 projectTabInfoItem" style="padding-right: 10px;">
                     <div class="col-md-12 no-padding" style="background: #fff; padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;">
                       <b style="font-weight: 500;">Project Name :</b> {{projectNameFirst}}
                     </div>
@@ -2977,7 +2977,7 @@
 
                       </div>
                     </div>
-                      <div class="col-md-6 innderdiv no-padding">
+                      <div class="col-md-6 innderdiv no-padding projectTabInfoItem">
 
                         <div class="chartBox">
                           <fusioncharts
@@ -3230,7 +3230,7 @@
                             </div>
                             <div>
                               <p>{{plpreviousYear}}</p>
-                              <p><span>{{projectCostPreviousYear  | number :'1.2-2'}} 
+                              <p><span>{{projectCostPreviousYear  | number :'1.2-2'}}
                                 |</span><span>{{projectCostPreviousYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{projectCostPreviousYearGrowthPercentimg}}">
 
@@ -3384,7 +3384,7 @@
                   </e-column>
 
 
-                  
+
 
 
 
@@ -3841,7 +3841,7 @@
               <div class="card-body">
 
             <div class="OutlierSection">
-              <div class="OutlierHead">
+              <div class="OutlierHead OutlierHead3">
                 <div><h3>Time sheet Outlier</h3></div>
                 <div class="form-group monthCheckStatus" style="margin-bottom: 0; display: inline-flex;margin-top: -5px;">
 
@@ -4112,7 +4112,7 @@
           <div class="card-body">
 
         <div class="OutlierSection">
-          <div class="OutlierHead">
+          <div class="OutlierHead OutlierHead3">
             <div ><h3>Check in check out</h3></div>
 
             <div class="form-group monthCheckStatus" style="margin-bottom: 0; display: inline-flex;margin-top: 0;">
@@ -4166,7 +4166,7 @@
 
 
       <ejs-grid #overviewgridcheck id='overviewgridcheck' [allowTextWrap]="true" [dataSource]='actionableCheckInCheckOutList'  [allowSelection]='true'
-               
+
 [frozenRows]='0' [frozenColumns]='2'  [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                 [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                 (dataBound)="onGridDataBound($event)"
@@ -4235,7 +4235,7 @@
       <div class="card-body">
 
     <div class="OutlierSection">
-      <div class="OutlierHead">
+      <div class="OutlierHead OutlierHead3">
         <div><h3>Insights</h3></div>
         <div class="form-group monthCheckStatus" style="margin-bottom: 0; display: inline-flex;margin-top: 0;">
 

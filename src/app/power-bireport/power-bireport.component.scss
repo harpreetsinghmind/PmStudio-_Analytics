@@ -947,6 +947,8 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     @media screen and (max-width:1370px) {
       .bottomcard .col-md-3{font-size: 10px; padding: 6px;}
       .nav-tabs > li > a{ }
+      .maindiv h5 { line-height: 28px;  margin: 6px 0;
+    }
 
     }
 
@@ -955,8 +957,17 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
       .expenseValue p{font-size: 13px;}
     }
 
+    @media screen and (max-width:1279px) {
+      ul.mandateItem li{ font-size: 12px;}
+      .OutlierHead{ flex-wrap: wrap;}
+      .projectBar{ margin-top: 5px; justify-content: start;}
+      ul.mandateItem{     flex-wrap: wrap;}
+    }
+
     @media screen and (max-width:1180px) {
-      .boxExpense{min-height: 140px;}
+      .boxExpense{min-height: 290px;}
+      .projectBar{display: block;}
+
 
     }
 
@@ -981,8 +992,21 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
       .mobInfo .innderdiv{     display: flex; width: 100%; align-items: center;justify-content: center; padding: 0;}
       .mobInfo{ padding: 0;}
       .mobscroll{ overflow: scroll;}
+      .project .col-md-4, .project .col-md-8 { width: 100%;}
+      .projectTabInfo{ flex-wrap: wrap;}
+      .projectTabInfo .projectTabInfoItem{ width: 100%;}
+      .projectTabInfo .maindiv{ flex-wrap: wrap;margin-bottom: 10px;}
+      .projectTabInfo .maindiv .mobInfo{width: 100%; margin-right: 0 !important; padding: 0 !important;}
+      .OutlierHead.OutlierHead2{ display: flex !important;}
+      .OutlierHead3{ display: flex !important;}
+
     }
 
+
+    @media screen and (max-width:768px) {
+      .halfdiv, .halfdiv1{ width: 100%;}
+      .OutlierHead3 div{ margin-bottom: 10px;}
+    }
 
 
 
@@ -1242,6 +1266,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   .andOr{ display: flex; flex: 0 0 33%; align-items: center; justify-content: flex-end;}
   .andOr select{ width: 66%; margin: 0;}
 .labelcheckout{ border: none; font-weight: 500 !important;}
+.ChartRowColLefttMargin21{ margin-right: 0 !important;}
   @media screen and (max-width: 700px){
 
     .popup{
