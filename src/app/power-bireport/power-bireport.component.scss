@@ -1267,6 +1267,28 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   .andOr select{ width: 66%; margin: 0;}
 .labelcheckout{ border: none; font-weight: 500 !important;}
 .ChartRowColLefttMargin21{ margin-right: 0 !important;}
+span.openStatus {
+  background: #e76565;
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+span.delayStatus {
+  background: #ed8f1c;
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  padding: 2px;
+}
+
   @media screen and (max-width: 700px){
 
     .popup{

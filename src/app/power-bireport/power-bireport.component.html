@@ -4490,7 +4490,7 @@
                     </ng-template>
                   </e-column>
 
-          
+
 </e-columns>
 
 
@@ -4726,9 +4726,10 @@
                       <img *ngIf="data.one === 1" src="../../assets/img/logo/green-signal.png" style="width: 22px;">
                     </ng-template> -->
                     <ng-template #template let-data>
-                      {{data.one}}
-                      <img *ngIf="data.one===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                      <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                      <span class="openStatus" *ngIf="data.one===2">{{data.one}}</span>
+                      <span class="delayStatus" *ngIf="data.one === 1">{{data.one}}</span>
+                      <!-- <img *ngIf="data.one===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
+                      <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;"> -->
                     </ng-template>
                   </e-column>
                   <e-column field='two' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
