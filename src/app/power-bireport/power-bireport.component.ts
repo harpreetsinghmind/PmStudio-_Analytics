@@ -3103,7 +3103,6 @@ this.refreshGrid=false
   }
   checkinCheciOut()
   {
-    debugger
     this.show=false
     this.currentDate=this.setDate
 
@@ -3336,7 +3335,6 @@ if(this.conditionStatus==undefined || this.conditionStatus||this.conditionStatus
 else{
   type=this.conditionStatus
 }
-debugger
   this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId,chValue,chInCondtion,tmValue,tmSheetCondition,type).subscribe(arg => {
 this.Loader=false
 this.checkDate=0
@@ -4940,7 +4938,6 @@ this.avgTenurePreviousYearGrowth= this.getprojectDetailPAndLList[0].avgTenurePre
 
 this.newavgTenurePreviousYear=this.avgTenurePreviousYear/this.projectCostPreviousYear
 this.newavgTenurePreviousYearGrowth=this.avgTenurePreviousYearGrowth/this.projectCostInDollarPreviousYearGrowth
-debugger
 if(this.projectCostInDollarPreviousYearGrowth==0)
 {
   this.newavgTenurePreviousYearGrowth=0
@@ -4978,7 +4975,6 @@ else{
 this.netRevenuePreviousYear=this.getprojectDetailPAndLList[0].netRevenuePreviousYear
 
 this.newnetRevenuePreviousYear=this.netRevenuePreviousYear-this.totalCostPreviouYear
-debugger
 this.netRevenuePreviousYearGrowth=this.getprojectDetailPAndLList[0].netRevenuePreviousYearGrowth
 this.newnetRevenuePreviousYearGrowth=this.netRevenuePreviousYearGrowth-this.totalCostPreviouYearGrowth
 
@@ -5147,7 +5143,6 @@ if(this.netRevenueCurrentYearGrowth==0)
 {
   this.avgMarginCurrentYearGrowth=0
 }
-debugger
 this.avgMarginCurrentYearGrowthPercent=(this.avgMarginCurrentYear-this.avgMarginCurrentYearGrowth)*100/this.avgMarginCurrentYearGrowth
 if(this.avgMarginCurrentYearGrowth==0)
 {
@@ -5839,7 +5834,7 @@ for(var i=0;i<this.getListCategory.length;i++)
         "defaultCenterLabel": "",
       "centerLabel": " $label: $value",
         "centerLabelBold": "1",
-        "showTooltip": "0",
+        "showTooltip": "1",
         "decimals": "0",
         'paletteColors' :getColor.toString(),
         "theme": "fusion"
@@ -5892,7 +5887,7 @@ this.dataDeployee.push(
       "defaultCenterLabel": "",
     "centerLabel": " $label: $value",
       "centerLabelBold": "1",
-      "showTooltip": "0",
+      "showTooltip": "1",
       "decimals": "0",
       'paletteColors' :getColor.toString(),
       "theme": "fusion"
@@ -5965,7 +5960,7 @@ this.dataBreackUp.push({"label":this.getListBreackUp[i].breackupName,"value":thi
       "defaultCenterLabel": "",
     "centerLabel": " $label: $value",
       "centerLabelBold": "1",
-      "showTooltip": "0",
+      "showTooltip": "1",
       "decimals": "0",
       'paletteColors' :getColor.toString(),
       "theme": "fusion"
@@ -7574,7 +7569,6 @@ tooltipfor(args: any){
   projectStatus:any
   getProjectPortFoliyo()
   {
-    debugger
     this.getListProjectPortfoliyo=[]
     this.Loader=true
     if(this.projectStatus==undefined || this.projectStatus==null ||this.projectStatus=="")
@@ -7870,7 +7864,6 @@ if(this.checkOverDue==true)
   currentDate: any;
   isDate:any
   clickme(x,y) {
-    debugger
     if (x == 'add') {
       if(this.currentDate==undefined)
       {
@@ -8473,9 +8466,14 @@ if(this.currentYearProjectCountPercent==0)
 {
   this.currentYearProjectCountPercentGrowth=0
 }
-if(this.currentYearProjectCountPercentGrowth>=0)
+debugger
+if(this.currentYearProjectCountPercentGrowth>0)
 {
   this.currentYearProjectCountPercentGrowthimg=this.downUrl
+}
+else if(this.currentYearProjectCountPercentGrowth==0.00||this.currentYearProjectCountPercentGrowth==0)
+{
+  this.currentYearProjectCountPercentGrowthimg=0
 }
 else{
   this.currentYearProjectCountPercentGrowthimg=this.upUrl
@@ -8491,11 +8489,12 @@ if(this.currentYearProjectMoneyPercent==0)
 {
   this.currentYearProjectMoneyPercentGrowth=0
 }
-if(this.currentYearProjectMoneyPercentGrowth>=0)
+if(this.currentYearProjectMoneyPercentGrowth>0)
 {
   this.currentYearProjectMoneyPercentGrowthimg=this.downUrl
 }
-else{
+
+else {
   this.currentYearProjectMoneyPercentGrowthimg=this.upUrl
 }
 

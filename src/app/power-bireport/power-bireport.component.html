@@ -1422,12 +1422,12 @@
                     <h4>Project</h4>
 
                     <div class="expenseValue expenseValue1">
-                      <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Ag Revenue/Project</p><p>Purposed/ Balanced</p><p>Revenue to be billed</p></div>
+                      <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Avg Revenue/Project</p><p>Purposed/ Revenue</p><p>Revenue to be billed</p></div>
                       <div>
                         <p>{{buisnesscurrentYear }}</p>
                         <p><span>{{currentYearProjectCount }}
                           |</span><span>{{currentYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
-                          <img src="{{currentYearProjectCountPercentGrowthimg}}">
+                          <img *ngIf="currentYearProjectMoneyPercentGrowth !=0.00"src="{{currentYearProjectCountPercentGrowthimg}}">
                         </p>
                         <p><span>{{currencyName}}{{currentYearProjectMoney  | number :'1.2-2'}} |
 
@@ -1435,18 +1435,18 @@
                           <img src="{{currentYearProjectMoneyPercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currentYearResource  | number :'1.2-2'}} |</span><span>{{currentYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{currentYearResource  | number :'1.2-2'}} |</span><span>{{currentYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearResourcePercentGrowthimg}}">
 
                         </p>
 
-                        <p><span>{{currentYearRevnue  | number :'1.2-2'}} |
+                        <p><span>{{currencyName}}{{currentYearRevnue  | number :'1.2-2'}} |
 
                         </span><span>{{currentYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearRevnuePercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currentYearRevnue  | number :'1.2-2'}} |</span><span>{{currentYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{currentYearRevnue  | number :'1.2-2'}} |</span><span>{{currentYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearRevnuePercentGrowthimg}}">
 
                         </p>
@@ -1462,16 +1462,16 @@
                           <img src="{{previousYearProjectMoneyPercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{previousYearResource  | number :'1.2-2'}} |</span><span>{{previousYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{previousYearResource  | number :'1.2-2'}} |</span><span>{{previousYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearResourcePercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{previousYearRevnue  | number :'1.2-2'}} |</span><span>{{previousYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{previousYearRevnue  | number :'1.2-2'}} |</span><span>{{previousYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearRevnuePercentGrowthimg}}">
 
                         </p>
 
-                        <p><span>{{previousYearRevnue  | number :'1.2-2'}} |</span><span>{{previousYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{previousYearRevnue  | number :'1.2-2'}} |</span><span>{{previousYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearRevnuePercentGrowthimg}}">
 
                         </p>
@@ -1492,8 +1492,8 @@
                         <p><span>{{currencyName}}{{currentYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearBillable}}</span></p>
                         <p><span>{{currentYearNonBillable}}</span></p>
-                        <p><span>{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{currentYearAttrition}}%</span></p>
                       </div>
                       <div>
@@ -1502,8 +1502,8 @@
                         <p><span>{{currencyName}}{{previousYearTotalMoney | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearBillable}}</span></p>
                         <p><span>{{previousYearNonBillable}}</span></p>
-                        <p><span>{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p>
                         <p><span>{{previousYearAttrition}}%</span></p>
                       </div>
                     </div>
