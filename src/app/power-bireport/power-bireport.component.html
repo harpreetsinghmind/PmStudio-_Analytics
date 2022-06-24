@@ -1505,7 +1505,7 @@
                         <p>{{expenseCurrentYear}}</p>
                         <p><span>
                           <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{expensecurrentYearTotalNumber}}%</div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{expensecurrentYearTotalNumber}} {{currencyName}}</div>
                           </div></span>
                         </p>
                         <p><span>{{currencyName}}{{expensecurrentYearBillable | number :'1.2-2'}}</span></p>
@@ -1517,7 +1517,7 @@
                         <p>{{expensepeoplePreviousYear}}</p>
                         <p><span>
                           <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{expensepreviousYearTotalNumber}}</div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{expensepreviousYearTotalNumber}} {{currencyName}}</div>
                           </div></span>
                         </p>
                         <p><span>{{currencyName}}{{expensepreviousYearBillable | number :'1.2-2'}} </span></p>
@@ -4297,7 +4297,12 @@
                   <e-column field='projectname' width="150px" headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
                   </e-column>
 
-                  <e-column field='1' height="38px"   width="50px"  headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
+                  <e-column field='1' height="38px"   width="50px"  headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                    <!-- <ng-template #template let-data>
+                      <img *ngIf="data.'1'===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
+                      <img *ngIf="data.'1' === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                    </ng-template> -->
+                  </e-column>
                   <e-column field='2' height="38px"    width="50px"  headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
 
                   <e-column field='3' height="38px" width="50px" headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip'></e-column>
