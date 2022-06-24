@@ -1422,14 +1422,14 @@
                     <h4>Project</h4>
 
                     <div class="expenseValue expenseValue1">
-                      <div class="YearValue YearValuePL"><p># Project</p><p>{{currencyName}}Project</p><p>{{currencyName}}Avg. Resource</p><p>Revenue to be billed</p></div>
+                      <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Ag Revenue Per Project</p><p>Revenue to be billed</p></div>
                       <div>
                         <p>{{buisnesscurrentYear }}</p>
-                        <p><span>{{currentYearProjectCount  | number :'1.2-2'}}
+                        <p><span>{{currentYearProjectCount }}
                           |</span><span>{{currentYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectCountPercentGrowthimg}}">
                         </p>
-                        <p><span>{{currentYearProjectMoney  | number :'1.2-2'}} |
+                        <p><span>{{currencyName}}{{currentYearProjectMoney  | number :'1.2-2'}} |
 
                         </span><span>{{currentYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectMoneyPercentGrowthimg}}">
@@ -1446,12 +1446,12 @@
                       </div>
                       <div>
                         <p>{{buisnesspreviousYear }}</p>
-                        <p><span>{{previousYearProjectCount  | number :'1.2-2'}} |</span><span>{{previousYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
+                        <p><span>{{previousYearProjectCount }} |</span><span>{{previousYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{currentYearRevnuePercentGrowthimg}}">
 
 
                         </p>
-                        <p><span>{{previousYearProjectMoney  | number :'1.2-2'}} |</span><span>{{previousYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{previousYearProjectMoney  | number :'1.2-2'}} |</span><span>{{previousYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearProjectMoneyPercentGrowthimg}}">
 
                         </p>
