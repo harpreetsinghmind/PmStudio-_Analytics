@@ -16,6 +16,7 @@ import { Tooltip } from '@syncfusion/ej2-popups';
 import { environment } from 'src/environments/environment';
 
 import { debug } from 'console';
+import { of } from 'rxjs';
 
 
 
@@ -4993,7 +4994,7 @@ else{
 
       
 this.netRevenuePreviousYear=this.getprojectDetailPAndLList[0].netRevenuePreviousYear
-
+debugger
 this.newnetRevenuePreviousYear=this.netRevenuePreviousYear-this.totalCostPreviouYear
 this.netRevenuePreviousYearGrowth=this.getprojectDetailPAndLList[0].netRevenuePreviousYearGrowth
 this.newnetRevenuePreviousYearGrowth=this.netRevenuePreviousYearGrowth-this.totalCostPreviouYearGrowth
@@ -5004,11 +5005,11 @@ if(this.newnetRevenuePreviousYearGrowth==0)
 {
   this.netRevenuePreviousYearGrowthPercent=0
 }
-if(this.netRevenuePreviousYearGrowthPercent>=0)
+if(this.netRevenuePreviousYearGrowthPercent>0)
 {
   this.netRevenuePreviousYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.netRevenuePreviousYearGrowthPercent<0){
   this.netRevenuePreviousYearGrowthPercentimg=this.upUrl
 }
 
@@ -5049,11 +5050,11 @@ if(this.projectCostInDollarPreviousYearGrowth==0)
 {
   this.projectCostInDollarPreviousYearGrowthPercent=0
 }
-if(this.projectCostInDollarCurrentYearGrowthPercent>=0)
+if(this.projectCostInDollarCurrentYearGrowthPercent>0)
 {
   this.projectCostInDollarCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.projectCostInDollarCurrentYearGrowthPercent<0){
   this.projectCostInDollarCurrentYearGrowthPercentimg=this.upUrl
 }
 this.projectCostPreviousYear=this.getprojectDetailPAndLList[0].projectCostPreviousYear
@@ -8276,11 +8277,11 @@ this.customerExpensePreviousYearGrowthYoy=this.getListExpenseDetailList[0].custo
     {
       this.customerExpensePreviousYearGrowthYoyPercent=0
     }
-    if(this.customerExpensePreviousYearGrowthYoyPercent>=0)
+    if(this.customerExpensePreviousYearGrowthYoyPercent>0)
 {
   this.customerExpensePreviousYearGrowthYoyPercentimg=this.downUrl
 }
-else{
+else if(this.customerExpensePreviousYearGrowthYoyPercent<0){
   this.customerExpensePreviousYearGrowthYoyPercentimg=this.upUrl
 }
 
@@ -8294,11 +8295,11 @@ else{
       this.customerExpensePreviousYearGrowthPercent=0
     }
 
-   if(this.customerExpensePreviousYearGrowthPercent>=0)
+   if(this.customerExpensePreviousYearGrowthPercent>0)
    {
      this.customerExpensePreviousYearGrowthPercentimg=this.downUrl
    }
-   else{
+   else if(this.customerExpensePreviousYearGrowthPercent<0){
      this.customerExpensePreviousYearGrowthPercentimg=this.upUrl
    }
     this.serviceProviderCurrentYear=this.getListExpenseDetailList[0].serviceProviderCurrentYear
@@ -8310,11 +8311,11 @@ else{
     {
       this.serviceProviderCurrentYearGrowthPercent=0
     }
-    if(this.serviceProviderCurrentYearGrowthPercent>=0)
+    if(this.serviceProviderCurrentYearGrowthPercent>0)
    {
      this.serviceProviderCurrentYearGrowthPercentimg=this.downUrl
    }
-   else{
+   else if(this.serviceProviderCurrentYearGrowthPercent<0){
      this.serviceProviderCurrentYearGrowthPercentimg=this.upUrl
    }
 
@@ -8326,11 +8327,11 @@ else{
       this.serviceProviderCurrentYearGrowthYoyPercent=0
     }
 
-    if(this.serviceProviderCurrentYearGrowthYoyPercent>=0)
+    if(this.serviceProviderCurrentYearGrowthYoyPercent>0)
     {
       this.serviceProviderCurrentYearGrowthYoyPercentimg=this.downUrl
     }
-    else{
+    else if(this.serviceProviderCurrentYearGrowthYoyPercent<0){
       this.serviceProviderCurrentYearGrowthYoyPercentimg=this.upUrl
     }
     this.serviceProviderPreviousYearGrowthYoy=this.getListExpenseDetailList[0].serviceProviderPreviousYearGrowthYoy
@@ -8342,11 +8343,11 @@ else{
       this.serviceProviderPreviousYearGrowthYoyPercent=0
     }
 
-    if(this.serviceProviderPreviousYearGrowthYoyPercent>=0)
+    if(this.serviceProviderPreviousYearGrowthYoyPercent>0)
     {
       this.serviceProviderPreviousYearGrowthYoyPercentimg=this.downUrl
     }
-    else{
+    else if(this.serviceProviderPreviousYearGrowthYoyPercent<0){
       this.serviceProviderPreviousYearGrowthYoyPercentimg=this.upUrl
     }
 
@@ -8359,11 +8360,11 @@ this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceP
       this.serviceProviderPreviousYearGrowthPercent=0
     }
 
-    if(this.serviceProviderPreviousYearGrowthPercent>=0)
+    if(this.serviceProviderPreviousYearGrowthPercent>0)
     {
       this.serviceProviderPreviousYearGrowthPercentimg=this.downUrl
     }
-    else{
+    else if(this.serviceProviderPreviousYearGrowthPercent<0){
       this.serviceProviderPreviousYearGrowthPercentimg=this.upUrl
     }
 
@@ -8375,11 +8376,11 @@ this.serviceProviderPreviousYearGrowth=this.getListExpenseDetailList[0].serviceP
    this.totalExpenseCurrentYearGrowthPercent=0
  }
 
- if(this.totalExpenseCurrentYearGrowthPercent>=0)
+ if(this.totalExpenseCurrentYearGrowthPercent>0)
  {
    this.totalExpenseCurrentYearGrowthPercentimg=this.downUrl
  }
- else{
+ else if(this.totalExpenseCurrentYearGrowthPercent<0){
    this.totalExpenseCurrentYearGrowthPercentimg=this.upUrl
  }
 
@@ -8391,11 +8392,11 @@ if(this.totalExpensePreviousYearGrowth==0)
   this.totalExpensePreviousYearGrowthPercent=0
 }
 
-if(this.totalExpensePreviousYearGrowthPercent>=0)
+if(this.totalExpensePreviousYearGrowthPercent>0)
 {
   this.totalExpensePreviousYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.totalExpensePreviousYearGrowthPercent<0){
   this.totalExpensePreviousYearGrowthPercentimg=this.upUrl
 }
 
@@ -8408,11 +8409,11 @@ if(this.totalExpenseCurrentYearYoyGrowth==0)
   this.totalExpenseCurrentYearYoyGrowthPercent=0
 }
 
-if(this.totalExpenseCurrentYearYoyGrowthPercent>=0)
+if(this.totalExpenseCurrentYearYoyGrowthPercent>0)
 {
   this.totalExpenseCurrentYearYoyGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.totalExpenseCurrentYearYoyGrowthPercent<0){
   this.totalExpenseCurrentYearYoyGrowthPercentimg=this.upUrl
 }
 this.totalExpensePreviousYearYoy=this.getListExpenseDetailList[0].totalExpensePreviousYearYoy
@@ -8424,11 +8425,11 @@ if(this.totalExpensePreviousYearYoyGrowth==0)
   this.totalExpensePreviousYearYoyGrowthPercent=0
 }
 
-if(this.totalExpensePreviousYearYoyGrowthPercent>=0)
+if(this.totalExpensePreviousYearYoyGrowthPercent>0)
 {
   this.totalExpensePreviousYearYoyGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.totalExpensePreviousYearYoyGrowthPercent<0){
   this.totalExpensePreviousYearYoyGrowthPercentimg=this.upUrl
 }
 
@@ -9300,11 +9301,11 @@ if(this.totalGrowthCurrentyoyYear==0)
 {
   this.totalCurrentGrowthyoyPercent=0
 }
-if(this.totalCurrentGrowthyoyPercent>=0)
+if(this.totalCurrentGrowthyoyPercent>0)
 {
   this.imgUrl19=this.downUrl
 }
-else{
+else if(this.totalCurrentGrowthyoyPercent<0){
   this.imgUrl19=this.upUrl
 }
 this.totalVendorCurrentyoyYear=this.getListData[0].totalVendorCurrentyoyYear
@@ -9314,11 +9315,11 @@ if(this.totalVendorCurrentGrowthYoyPercent==0)
 {
   this.totalVendorCurrentGrowthYoyPercent=0
 }
-if(this.totalVendorCurrentGrowthYoyPercent>=0)
+if(this.totalVendorCurrentGrowthYoyPercent>0)
 {
   this.imgUrl20=this.downUrl
 }
-else{
+else if(this.totalVendorCurrentGrowthYoyPercent<0){
   this.imgUrl20=this.upUrl
 }
 this.totalCurrentAdditionyoyYear=this.getListData[0].totalCurrentAdditionyoyYear
@@ -9329,11 +9330,11 @@ if(this.totalAdditionGrowthYoyYearPercent==0)
 {
 this.totalGrowthCurrentAdditionyoyYearPercent=0
 }
-if(this.totalGrowthCurrentAdditionyoyYearPercent>=0)
+if(this.totalGrowthCurrentAdditionyoyYearPercent>0)
 {
   this.imgUrl21=this.downUrl
 }
-else{
+else if(this.totalGrowthCurrentAdditionyoyYearPercent<0){
   this.imgUrl21=this.upUrl
 }
 this.totalVendorCurrentAdditionyoyYear=this.getListData[0].totalVendorCurrentAdditionyoyYear
@@ -9343,11 +9344,11 @@ if(this.totalVendorGrowthCurrentAdditionyoyYear==0)
 {
 this.totalVendorGrowthCurrentAdditionyoyYearPercent=0
 }
-if(this.totalVendorGrowthCurrentAdditionyoyYearPercent>=0)
+if(this.totalVendorGrowthCurrentAdditionyoyYearPercent>0)
 {
   this.imgUrl22=this.downUrl
 }
-else{
+else if(this.totalVendorGrowthCurrentAdditionyoyYearPercent<0){
   this.imgUrl22=this.upUrl
 }
 this.totalCurrentAttritionyoyYear=this.getListData[0].totalCurrentAttritionyoyYear
@@ -9357,11 +9358,11 @@ if(this.totalCurrentGrowthAttritionyoyYear==0)
 {
 this.totalCurrentGrowthAttritionyoyYearPercent=0
 }
-if(this.totalCurrentGrowthAttritionyoyYearPercent>=0)
+if(this.totalCurrentGrowthAttritionyoyYearPercent>0)
 {
   this.imgUrl23=this.downUrl
 }
-else{
+else if(this.totalCurrentGrowthAttritionyoyYearPercent<0){
   this.imgUrl23=this.upUrl
 }
 this.totalVendorCurrentAttritionyoyYear=this.getListData[0].totalVendorCurrentAttritionyoyYear
@@ -9372,11 +9373,11 @@ if(this.totalVendorCurrentGrowthAttritionyoyYear==0)
   this.totalVendorCurrentGrowthAttritionyoyYearPercent=0
 }
 
-if(this.totalVendorCurrentGrowthAttritionyoyYearPercent>=0)
+if(this.totalVendorCurrentGrowthAttritionyoyYearPercent>0)
 {
   this.imgUrl24=this.downUrl
 }
-else{
+else if(this.totalVendorCurrentGrowthAttritionyoyYearPercent<0){
   this.imgUrl24=this.upUrl
 }
 
@@ -9398,11 +9399,11 @@ else{
   this.employeePercentage =(this.totalPrevousYear-this.totalGrowthPrevousYearPercent) *100 / this.totalGrowthPrevousYearPercent
 
 }
-if(this.employeePercentage>=0)
+if(this.employeePercentage>0)
 {
   this.imgUrl=this.downUrl
 }
-else{
+else if(this.employeePercentage<0){
   this.imgUrl=this.upUrl
 }
 if(this.currentGrowthYearPercent==0)
@@ -9413,11 +9414,11 @@ else{
   this.employeePerviousYearpercentage=(this.valcurrentYear-this.currentGrowthYearPercent)*100/this.currentGrowthYearPercent
 
 }
-if(this.employeePerviousYearpercentage>=0)
+if(this.employeePerviousYearpercentage>0)
 {
   this.imgUrl1=this.downUrl
 }
-else{
+else if(this.employeePerviousYearpercentage<0){
   this.imgUrl1=this.upUrl
 }
 
@@ -9429,11 +9430,11 @@ else{
   this.employeeyoyprecentage=(this.totalyoyYear-this.totalGrowthYoyYearPercent)/this.totalGrowthYoyYearPercent*100
 
 }
-if(this.employeeyoyprecentage>=0)
+if(this.employeeyoyprecentage>0)
 {
   this.imgUrl2=this.downUrl
 }
-else{
+else if(this.employeeyoyprecentage<0){
   this.imgUrl2=this.upUrl
 }
 if( this.totalGrowthAdditionPreviousYearPercent==0)
@@ -9444,11 +9445,11 @@ else{
   this.employeeAdditionPercentage=(this.totalAdditionPreviousYear-this.totalGrowthAdditionPreviousYearPercent)*100/this.totalGrowthAdditionPreviousYearPercent
 
 }
-if(this.employeeAdditionPercentage>=0)
+if(this.employeeAdditionPercentage>0)
 {
   this.imgUrl3=this.downUrl
 }
-else{
+else if(this.employeeAdditionPercentage<0){
   this.imgUrl3=this.upUrl
 }
 if(this.currentGrowthAddtionYearPercent==0)
@@ -9459,11 +9460,11 @@ else{
 this.employeeAdditionCurrentYearPercentage=(this.currentAddtionYear-this.currentGrowthAddtionYearPercent)*100/this.currentGrowthAddtionYearPercent
 
 }
-if(this.employeeAdditionCurrentYearPercentage>=0)
+if(this.employeeAdditionCurrentYearPercentage>0)
 {
   this.imgUrl4=this.downUrl
 }
-else{
+else if(this.employeeAdditionCurrentYearPercentage<0){
   this.imgUrl4=this.upUrl
 }
 if(this.totalAdditionGrowthYoyYearPercent==0)
@@ -9474,11 +9475,11 @@ else{
   this.employeeAdditionyoypercentage=(this.totalAdditionyoyYear-this.totalAdditionGrowthYoyYearPercent)*100/this.totalAdditionGrowthYoyYearPercent
 
 }
-if(this.employeeAdditionyoypercentage>=0)
+if(this.employeeAdditionyoypercentage>0)
 {
   this.imgUrl5=this.downUrl
 }
-else{
+else if(this.employeeAdditionyoypercentage<0){
   this.imgUrl5=this.upUrl
 }
 
@@ -9490,11 +9491,11 @@ else{
   this.employeeAttritionPercentage=(this.totalattritionPerviousYear-this.totalGrowthattritionPerviousYearPercent)*100/this.totalattritionPerviousYear
 
 }
-if(this.employeeAttritionPercentage>=0)
+if(this.employeeAttritionPercentage>0)
 {
   this.imgUrl6=this.downUrl
 }
-else{
+else if(this.employeeAttritionPercentage<0){
   this.imgUrl6=this.upUrl
 }
 if(this.currentGrowthattritionYearPercent==0)
@@ -9504,11 +9505,11 @@ this.employeeAttritionCurrentPercent=0
 else{
   this.employeeAttritionCurrentPercent=(this.currentattritionYear-this.currentGrowthattritionYearPercent)*100/this.currentGrowthattritionYearPercent
 }
-if(this.employeeAttritionCurrentPercent>=0)
+if(this.employeeAttritionCurrentPercent>0)
 {
   this.imgUrl7=this.downUrl
 }
-else{
+else if(this.employeeAttritionCurrentPercent<0){
   this.imgUrl7=this.upUrl
 }
 
@@ -9525,11 +9526,11 @@ else{
   this.employeeAttritionYoyPercentage=(this.totalAttritionyoyYear-this.totalAttritionGrowthYoyYearPercent)*100/this.totalAttritionGrowthYoyYearPercent
 
 }
-if(this.employeeAttritionYoyPercentage>=0)
+if(this.employeeAttritionYoyPercentage>0)
 {
   this.imgUrl8=this.downUrl
 }
-else{
+else if(this.employeeAttritionYoyPercentage<0){
   this.imgUrl8=this.upUrl
 }
 if(this.totalVendorGrowthPrevoisYearPercent==0)
@@ -9540,11 +9541,11 @@ else{
 this.VendorPreviousPercentage=(this.totalVendorPrevoisYear-this.totalVendorGrowthPrevoisYearPercent)*100/this.totalVendorGrowthPrevoisYearPercent
 
 }
-if(this.VendorPreviousPercentage>=0)
+if(this.VendorPreviousPercentage>0)
 {
   this.imgUrl9=this.downUrl
 }
-else{
+else if(this.VendorPreviousPercentage<0){
   this.imgUrl9=this.upUrl
 }
 
@@ -9555,11 +9556,11 @@ if(this.currentGrowthVendorYearPercent==0)
 else{
 this.VendorCurrentYearPercentage=(this.currentVendorYear-this.currentGrowthVendorYearPercent)*100/this.currentGrowthVendorYearPercent
 }
-if(this.VendorCurrentYearPercentage>=0)
+if(this.VendorCurrentYearPercentage>0)
 {
   this.imgUrl10=this.downUrl
 }
-else{
+else if(this.VendorCurrentYearPercentage<0){
   this.imgUrl10=this.upUrl
 }
 if(this.totalVendorGrowthYoyYearPercent==0)
@@ -9570,11 +9571,11 @@ else{
 this.VendorYoyPercentage=(this.totalVendoryoyYear-this.totalVendorGrowthYoyYearPercent)*100/this.totalVendorGrowthYoyYearPercent
 
 }
-if(this.VendorYoyPercentage>=0)
+if(this.VendorYoyPercentage>0)
 {
   this.imgUrl11=this.downUrl
 }
-else{
+else if(this.VendorYoyPercentage<0){
   this.imgUrl11=this.upUrl
 }
 if(this.totalGrowthAdditionVendorPreviousYearPercent==0)
@@ -9584,11 +9585,11 @@ if(this.totalGrowthAdditionVendorPreviousYearPercent==0)
 else{
 this.VendorAddtionprevousPercentage=(this.totalAdditionVendorPreviousYear-this.totalGrowthAdditionVendorPreviousYearPercent)*100/this.totalGrowthAdditionVendorPreviousYearPercent
 }
-if(this.VendorAddtionprevousPercentage>=0)
+if(this.VendorAddtionprevousPercentage>0)
 {
   this.imgUrl12=this.downUrl
 }
-else{
+else  if(this.VendorAddtionprevousPercentage<0){
   this.imgUrl12=this.upUrl
 }
 if(this.currentGrowthVendorAddtionYearPercent==0)
