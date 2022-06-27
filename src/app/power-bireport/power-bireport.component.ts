@@ -4910,11 +4910,11 @@ if(this.newavgRevenueCurrentYearGrowthPercent==0)
   this.avgRevenueCurrentYearGrowthPercent=0
 }
 
-if(this.avgRevenueCurrentYearGrowthPercent>=0)
+if(this.avgRevenueCurrentYearGrowthPercent>0)
 {
   this.avgRevenueCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.avgRevenueCurrentYearGrowthPercent<0){
   this.avgRevenueCurrentYearGrowthPercentimg=this.upUrl
 }
 this.avgRevenuePreviousYear=this.getprojectDetailPAndLList[0].avgRevenuePreviousYear
@@ -4927,11 +4927,11 @@ if(this.newprojectCostPreviousYearGrowthPercent==0)
 {
   this.avgRevenuePreviousYearGrowthPercent=0
 }
-if(this.avgRevenuePreviousYearGrowthPercent>=0)
+if(this.avgRevenuePreviousYearGrowthPercent>0)
 {
   this.avgRevenuePreviousYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.avgRevenuePreviousYearGrowthPercent<0){
   this.avgRevenuePreviousYearGrowthPercentimg=this.upUrl
 }
 this.avgTenureCurrentYear=this.getprojectDetailPAndLList[0].avgTenureCurrentYear
@@ -4945,11 +4945,11 @@ if(this.newavgTenureCurrentYearGrowth==0)
 {
   this.avgTenureCurrentYearGrowthPercent=0
 }
-if(this.avgTenureCurrentYearGrowthPercent>=0)
+if(this.avgTenureCurrentYearGrowthPercent>0)
 {
   this.avgTenureCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.avgTenureCurrentYearGrowthPercent<0){
   this.avgTenureCurrentYearGrowthPercentimg=this.upUrl
 }
 this.avgTenurePreviousYear=this.getprojectDetailPAndLList[0].avgTenurePreviousYear
@@ -4969,11 +4969,11 @@ if(this.newavgTenurePreviousYearGrowth==0)
 {
   this.avgTenurePreviousYearGrowthPercent=0
 }
-if(this.avgTenurePreviousYearGrowthPercent>=0)
+if(this.avgTenurePreviousYearGrowthPercent>0)
 {
   this.avgTenurePreviousYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.avgTenurePreviousYearGrowthPercent<0){
   this.avgTenurePreviousYearGrowthPercentimg=this.upUrl
 }
 this.totalCostPreviouYear=this.getprojectDetailPAndLList[0].totalCostPreviouYear
@@ -4984,11 +4984,11 @@ if(this.totalCostPreviouYearGrowth==0)
 {
   this.totalCostPreviouYearGrowthPercent=0
 }
-if(this.totalCostPreviouYearGrowthPercent>=0)
+if(this.totalCostPreviouYearGrowthPercent>0)
 {
   this.totalCostPreviouYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.totalCostPreviouYearGrowthPercent<0){
   this.totalCostPreviouYearGrowthPercentimg=this.upUrl
 }
 
@@ -5001,6 +5001,7 @@ this.newnetRevenuePreviousYearGrowth=this.netRevenuePreviousYearGrowth-this.tota
 
 
 this.netRevenuePreviousYearGrowthPercent=(this.newnetRevenuePreviousYear-this.newnetRevenuePreviousYearGrowth)*100/this.newnetRevenuePreviousYearGrowth
+console.log('netRevenuePreviousYearGrowthPercent',this.netRevenuePreviousYearGrowthPercent)
 if(this.newnetRevenuePreviousYearGrowth==0)
 {
   this.netRevenuePreviousYearGrowthPercent=0
@@ -5020,11 +5021,11 @@ if(this.projectCostCurrentYearGrowth==0)
 {
   this.projectCostCurrentYearGrowthPercent=0
 }
-if(this.projectCostCurrentYearGrowthPercent>=0)
+if(this.projectCostCurrentYearGrowthPercent>0)
 {
   this.projectCostCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.projectCostCurrentYearGrowthPercent<0){
   this.projectCostCurrentYearGrowthPercentimg=this.upUrl
 }
 this.projectCostInDollarCurrentYear=this.getprojectDetailPAndLList[0].projectCostInDollarCurrentYear
@@ -5035,11 +5036,13 @@ if(this.projectCostInDollarCurrentYearGrowth==0)
 {
   this.projectCostInDollarCurrentYearGrowthPercent=0
 }
-if(this.projectCostInDollarCurrentYearGrowthPercent>=0)
+if(this.projectCostInDollarCurrentYearGrowthPercent>0)
 {
   this.projectCostInDollarCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.projectCostInDollarCurrentYearGrowthPercent<0)
+
+{
   this.projectCostInDollarCurrentYearGrowthPercentimg=this.upUrl
 }
 
@@ -5064,11 +5067,11 @@ if(this.projectCostPreviousYearGrowth==0)
 {
   this.projectCostPreviousYearGrowthPercent=0
 }
-if(this.projectCostPreviousYearGrowthPercent>=0)
+if(this.projectCostPreviousYearGrowthPercent>0)
 {
   this.projectCostPreviousYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.projectCostPreviousYearGrowthPercent<0){
   this.projectCostPreviousYearGrowthPercentimg=this.upUrl
 }
 
@@ -5079,11 +5082,11 @@ if(this.projectWithAvgMarginCurrentYearGrowth==0)
 {
   this.projectWithAvgMarginCurrentYearGrowthPercent=0
 }
-if(this.projectWithAvgMarginCurrentYearGrowthPercent>=0)
+if(this.projectWithAvgMarginCurrentYearGrowthPercent>0)
 {
   this.projectWithAvgMarginCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.projectWithAvgMarginCurrentYearGrowthPercent<0){
   this.projectWithAvgMarginCurrentYearGrowthPercentimg=this.upUrl
 }
 this.projectWithAvgMarginPreviousYear=this.getprojectDetailPAndLList[0].projectWithAvgMarginPreviousYear
@@ -5093,11 +5096,11 @@ if(this.projectWithAvgMarginPreviousYearGrowth==0)
 {
   this.projectWithAvgMarginPreviousYearGrowthPercent=0
 }
-if(this.projectWithAvgMarginPreviousYearGrowthPercent>=0)
+if(this.projectWithAvgMarginPreviousYearGrowthPercent>0)
 {
   this.projectWithAvgMarginPreviousYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.projectWithAvgMarginPreviousYearGrowthPercent<0){
   this.projectWithAvgMarginPreviousYearGrowthPercentimg=this.upUrl
 }
 
@@ -5114,11 +5117,11 @@ if(this.netRevenueCurrentYearGrowth==0)
 {
   this.netRevenueCurrentYearGrowthPercent=0
 }
-if(this.netRevenueCurrentYearGrowthPercent>=0)
+if(this.netRevenueCurrentYearGrowthPercent>0)
 {
   this.netRevenueCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.netRevenueCurrentYearGrowthPercent<0){
   this.netRevenueCurrentYearGrowthPercentimg=this.upUrl
 }
 
@@ -5129,11 +5132,11 @@ if(this.totalCostCurrentYearGrowth==0)
 }
 
 
-if(this.totalCostCurrentYearGrowthPercent>=0)
+if(this.totalCostCurrentYearGrowthPercent>0)
 {
   this.totalCostCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.totalCostCurrentYearGrowthPercent<0){
   this.totalCostCurrentYearGrowthPercentimg=this.upUrl
 }
 this.avgMarginPreviousYear=(this.totalCostPreviouYear-this.newnetRevenuePreviousYear)*100/this.newnetRevenuePreviousYear
@@ -5146,11 +5149,11 @@ if(this.avgMarginPreviousYearGrowth==0)
 {
   this.avgMarginPreviousYearGrowthPercent=0
 }
-if(this.avgMarginPreviousYearGrowthPercent>=0)
+if(this.avgMarginPreviousYearGrowthPercent>0)
 {
   this.avgMarginPreviousYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.avgMarginPreviousYearGrowthPercent<0){
   this.avgMarginPreviousYearGrowthPercentimg=this.upUrl
 }
 this.avgMarginCurrentYear=(this.totalCostCurrentYear-this.totalCostCurrentYearGrowthPercent)*100/this.totalCostCurrentYearGrowthPercent
@@ -5170,11 +5173,11 @@ if(this.avgMarginCurrentYearGrowth==0)
   this.avgMarginCurrentYearGrowthPercent=0
 }
 
-if(this.avgMarginCurrentYearGrowthPercent>=0)
+if(this.avgMarginCurrentYearGrowthPercent>0)
 {
   this.avgMarginCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+else if(this.avgMarginCurrentYearGrowthPercent<0){
   this.avgMarginCurrentYearGrowthPercentimg=this.upUrl
 }
 
@@ -9599,11 +9602,11 @@ if(this.currentGrowthVendorAddtionYearPercent==0)
 else{
 this.VendorAddtionCurrentPercentage=(this.currentVendorAddtionYear-this.currentGrowthVendorAddtionYearPercent)*100/this.currentGrowthVendorAddtionYearPercent
 }
-if(this.VendorAddtionCurrentPercentage>=0)
+if(this.VendorAddtionCurrentPercentage>0)
 {
   this.imgUrl13=this.downUrl
 }
-else{
+else if(this.VendorAddtionCurrentPercentage<0){
   this.imgUrl13=this.upUrl
 }
 if(this.totalVendorAdditionGrowthYoyYearPercent==0)
@@ -9613,11 +9616,11 @@ if(this.totalVendorAdditionGrowthYoyYearPercent==0)
 else{
 this.VendorAddtionYoyPercentage=(this.totalVendorAdditionyoyYear-this.totalVendorAdditionGrowthYoyYearPercent)*100/this.totalVendorAdditionGrowthYoyYearPercent
 }
-if(this.VendorAddtionYoyPercentage>=0)
+if(this.VendorAddtionYoyPercentage>0)
 {
   this.imgUrl14=this.downUrl
 }
-else{
+else if(this.VendorAddtionYoyPercentage<0){
   this.imgUrl14=this.upUrl
 }
 if(this.totalGrowthVendorattritionYearPercent==0)
@@ -9627,11 +9630,11 @@ if(this.totalGrowthVendorattritionYearPercent==0)
 else{
 this.VendorAttritionPercentage=(this.totalVendorattritionYear-this.totalGrowthVendorattritionYearPercent)*100/this.totalGrowthVendorattritionYearPercent
 }
-if(this.VendorAttritionPercentage>=0)
+if(this.VendorAttritionPercentage>0)
 {
   this.imgUrl15=this.downUrl
 }
-else{
+else if(this.VendorAttritionPercentage<0){
   this.imgUrl15=this.upUrl
 }
 if(this.totalGrowthVendorattritionYearPercent==0)
@@ -9641,11 +9644,11 @@ if(this.totalGrowthVendorattritionYearPercent==0)
 else{
 this.currentVendorAttritionPercentage=(this.currentVendorAttritionYear-this.currentGrowthVendorattritionYearPercent)*100/this.currentGrowthVendorattritionYearPercent
 }
-if(this.currentVendorAttritionPercentage>=0)
+if(this.currentVendorAttritionPercentage>0)
 {
   this.imgUrl16=this.downUrl
 }
-else{
+else if(this.currentVendorAttritionPercentage<0){
   this.imgUrl16=this.upUrl
 }
 if(this.totalVendorAttritionGrowthYoyYearPercent==0)
@@ -9655,11 +9658,11 @@ if(this.totalVendorAttritionGrowthYoyYearPercent==0)
 else{
 this.currentVendorAttritionYoyPercentage=(this.totalVendorAttritionyoyYear-this.totalVendorAttritionGrowthYoyYearPercent)*100/this.totalVendorAttritionGrowthYoyYearPercent
 }
-if(this.currentVendorAttritionYoyPercentage>=0)
+if(this.currentVendorAttritionYoyPercentage>0)
 {
   this.imgUrl17=this.downUrl
 }
-else{
+else if(this.currentVendorAttritionYoyPercentage<0){
   this.imgUrl17=this.upUrl
 }
 
@@ -9796,11 +9799,11 @@ this.avgLeaveTotalPercentage=0
 }
 
 
-if(this.avgLeaveTotalPercentage>=0)
+if(this.avgLeaveTotalPercentage>0)
 {
   this.imgavgLeaveTotalPercentage=this.downUrl
 }
-else{
+else if(this.avgLeaveTotalPercentage<0){
   this.imgavgLeaveTotalPercentage=this.upUrl
 }
 
@@ -9813,11 +9816,11 @@ this.closeYoyYearPercentGrowth=0
 }
 
 
-if(this.closeYoyYearPercentGrowth>=0)
+if(this.closeYoyYearPercentGrowth>0)
 {
   this.imgcloseYoyYearPercentGrowth=this.downUrl
 }
-else{
+else if(this.closeYoyYearPercentGrowth<0){
   this.imgcloseYoyYearPercentGrowth=this.upUrl
 }
 this.onBenchYoyYear=this.getProjectListData[0].onBenchYoyYear
@@ -9830,11 +9833,11 @@ this.onBenchYoyYear=this.getProjectListData[0].onBenchYoyYear
  }
 
 
- if(this.onBenchYoyYearPercentGrowth>=0)
+ if(this.onBenchYoyYearPercentGrowth>0)
  {
    this.imgonBenchYoyYearPercentGrowth=this.downUrl
  }
- else{
+ else if(this.onBenchYoyYearPercentGrowth<0){
    this.imgonBenchYoyYearPercentGrowth=this.upUrl
  }
 
@@ -9850,11 +9853,11 @@ this.onBenchYoyYear=this.getProjectListData[0].onBenchYoyYear
  }
 
 
- if(this.venderYoyYearPercentGrowth>=0)
+ if(this.venderYoyYearPercentGrowth>0)
  {
    this.imgvenderYoyYearPercentGrowth=this.downUrl
  }
- else{
+ else if(this.venderYoyYearPercentGrowth<0){
    this.imgvenderYoyYearPercentGrowth=this.upUrl
  }
 
@@ -9867,11 +9870,11 @@ this.costYoyYearPercentGrowth=0
 }
 
 
-if(this.costYoyYearPercentGrowth>=0)
+if(this.costYoyYearPercentGrowth>0)
 {
   this.imgcostYoyYearPercentGrowth=this.downUrl
 }
-else{
+else if(this.costYoyYearPercentGrowth<0){
   this.imgcostYoyYearPercentGrowth=this.upUrl
 }
 
@@ -9886,11 +9889,11 @@ this.avgLeaveYoyYearPercentGrowth=0
 }
 
 
-if(this.avgLeaveYoyYearPercentGrowth>=0)
+if(this.avgLeaveYoyYearPercentGrowth>0)
 {
   this.imgavgLeaveYoyYearPercentGrowth=this.downUrl
 }
-else{
+else if(this.avgLeaveYoyYearPercentGrowth<0){
   this.imgavgLeaveYoyYearPercentGrowth=this.upUrl
 }
 
@@ -9906,11 +9909,11 @@ this.nonBillableYoyYearPercentGrowth=0
 }
 
 
-if(this.nonBillableYoyYearPercentGrowth>=0)
+if(this.nonBillableYoyYearPercentGrowth>0)
 {
   this.imgnonBillableYoyYearPercentGrowth=this.downUrl
 }
-else{
+else if(this.nonBillableYoyYearPercentGrowth<0){
   this.imgnonBillableYoyYearPercentGrowth=this.upUrl
 }
 this.cost =this.getProjectListData[0].cost
@@ -9920,11 +9923,11 @@ if(this.costPercentageGrowth==0)
 {
   this.costPercentageGrowthValue=0
 }
-if(this.costPercentageGrowthValue>=0)
+if(this.costPercentageGrowthValue>0)
 {
   this.imgcostPercentageGrowthValue=this.downUrl
 }
-else{
+else if(this.costPercentageGrowthValue<0){
   this.imgcostPercentageGrowthValue=this.upUrl
 }
 this.leaveTotalYoy=this.getProjectListData[0].leaveTotalYoy
@@ -9934,11 +9937,11 @@ if(this.leaveTotalYoyPercent==0)
 {
 this.leaveTotalYoyPercentGrowth=0
 }
-if(this.leaveTotalYoyPercentGrowth>=0)
+if(this.leaveTotalYoyPercentGrowth>0)
 {
   this.imgleaveTotalYoyPercentGrowth=this.downUrl
 }
-else{
+else if(this.leaveTotalYoyPercentGrowth<0){
   this.imgleaveTotalYoyPercentGrowth=this.upUrl
 }
 this.billableResourceTotal=this.getProjectListData[0].billableResourceTotal
@@ -9950,11 +9953,11 @@ if(this.nonBillableResourceTotalPercent==0)
 {
   this.nonBillableResourceTotalPercentGrowth=0
 }
-if(this.nonBillableResourceTotalPercentGrowth>=0)
+if(this.nonBillableResourceTotalPercentGrowth>0)
 {
   this.imgnonBillableResourceTotalPercentGrowth=this.downUrl
 }
-else{
+else if(this.nonBillableResourceTotalPercentGrowth<0){
   this.imgnonBillableResourceTotalPercentGrowth=this.upUrl
 }
 this.nonBillableResourceTotalYoy=this.getProjectListData[0].nonBillableResourceTotalYoy
@@ -9965,11 +9968,11 @@ if(this.nonBillableResourceTotalYoyPercent==0)
   this.nonBillableResourceTotalYoyPercentGrowth=0
 }
 
-if(this.nonBillableResourceTotalYoyPercentGrowth>=0)
+if(this.nonBillableResourceTotalYoyPercentGrowth>0)
 {
   this.imgnonBillableResourceTotalYoyPercentGrowth=this.downUrl
 }
-else{
+else if(this.nonBillableResourceTotalYoyPercentGrowth<0){
   this.imgnonBillableResourceTotalYoyPercentGrowth=this.upUrl
 }
 this.onBenchTotalYoy=this.getProjectListData[0].onBenchTotalYoy
@@ -9980,11 +9983,11 @@ if(this.OnBenchTotalYoyPercent==0)
   this.onBenchTotalYoyPercentGrowth=0
 }
 
-if(this.onBenchTotalYoyPercentGrowth>=0)
+if(this.onBenchTotalYoyPercentGrowth>0)
 {
   this.imgonBenchTotalYoyPercentGrowth=this.downUrl
 }
-else{
+else if(this.onBenchTotalYoyPercentGrowth<0){
   this.imgonBenchTotalYoyPercentGrowth=this.upUrl
 }
 this.revenue=this.getProjectListData[0].revenue
@@ -9996,11 +9999,11 @@ if(this.revenueCostTotalYoyPercent==0)
   this.revenueCostTotalYoyPercentGrowth=0
 }
 
-if(this.revenueCostTotalYoyPercentGrowth>=0)
+if(this.revenueCostTotalYoyPercentGrowth>0)
 {
   this.imgrevenueCostTotalYoyPercentGrowth=this.downUrl
 }
-else{
+else if(this.revenueCostTotalYoyPercentGrowth<0){
   this.imgrevenueCostTotalYoyPercentGrowth=this.upUrl
 }
 this.revenuePercentageGrowth=this.getProjectListData[0].revenuePercentageGrowth
@@ -10009,11 +10012,11 @@ if(this.revenuePercentageGrowth==0)
 {
   this.revenuePercentageGrowthPercent=0
 }
-if(this.revenuePercentageGrowthPercent>=0)
+if(this.revenuePercentageGrowthPercent>0)
 {
   this.imgrevenuePercentageGrowthPercent=this.downUrl
 }
-else{
+else if(this.revenuePercentageGrowthPercent<0){
   this.imgrevenuePercentageGrowthPercent=this.upUrl
 }
 
@@ -10024,11 +10027,11 @@ if(this.serviceProviderTotalResourcePercentage==0)
   {
     this.serviceProviderTotalResourcePercentageGrowth=0
   }
-  if(this.serviceProviderTotalResourcePercentageGrowth>=0)
+  if(this.serviceProviderTotalResourcePercentageGrowth>0)
 {
   this.imgserviceProviderTotalResourcePercentageGrowth=this.downUrl
 }
-else{
+else if(this.serviceProviderTotalResourcePercentageGrowth<0){
   this.imgserviceProviderTotalResourcePercentageGrowth=this.upUrl
 }
 
@@ -10040,11 +10043,11 @@ if(this.totalGrowthCloseProjectPercent==0)
 {
   this.totalGrowthCloseProjectPercentGrowth=0
 }
-if(this.totalGrowthCloseProjectPercentGrowth>=0)
+if(this.totalGrowthCloseProjectPercentGrowth>0)
 {
   this.imgtotalGrowthCloseProjectPercentGrowth=this.downUrl
 }
-else{
+else if(this.totalGrowthCloseProjectPercentGrowth<0){ 
   this.imgtotalGrowthCloseProjectPercentGrowth=this.upUrl
 }
 this.totalGrowthOpenProjectPercent=this.getProjectListData[0].totalGrowthOpenProjectPercent
@@ -10055,11 +10058,11 @@ if(this.totalLeaveResourcePercent==0)
 {
   this.totalLeaveResourcePercentGrowth=0
 }
-if(this.totalLeaveResourcePercentGrowth>=0)
+if(this.totalLeaveResourcePercentGrowth>0)
 {
   this.imgtotalLeaveResourcePercentGrowth=this.downUrl
 }
-else{
+else if(this.totalLeaveResourcePercentGrowth<0){
   this.imgtotalLeaveResourcePercentGrowth=this.upUrl
 }
 this.totalOpenProject=this.getProjectListData[0].totalOpenProject
@@ -10068,11 +10071,11 @@ if(this.totalGrowthOpenProjectPercent==0)
 {
   this.totalGrowthOpenProjectPercentGrowth=0
 }
-if(this.totalGrowthOpenProjectPercentGrowth>=0)
+if(this.totalGrowthOpenProjectPercentGrowth>0)
 {
   this.imgtotalGrowthOpenProjectPercentGrowth=this.downUrl
 }
-else{
+else if(this.totalGrowthOpenProjectPercentGrowth<0){
   this.imgtotalGrowthOpenProjectPercentGrowth=this.upUrl
 }
 this.totalResourcePercent=this.getProjectListData[0].totalResourcePercent
@@ -10082,11 +10085,11 @@ if(this.totalResourcePercent==0)
   this.totalResourcePercentGrowth=0
 
 }
-if(this.totalResourcePercentGrowth>=0)
+if(this.totalResourcePercentGrowth>0)
 {
   this.imgtotalResourcePercentGrowth=this.downUrl
 }
-else{
+else if(this.totalResourcePercentGrowth<0){
   this.imgtotalResourcePercentGrowth=this.upUrl
 }
 this.totalResourcePercentGrowthPercentGrowth=(this.totalResourcePercent-this.totalResourcePercentGrowth)*100/this.totalResourcePercentGrowth
@@ -10094,11 +10097,11 @@ if(this.totalResourcePercentGrowth==0)
 {
   this.totalResourcePercentGrowthPercentGrowth=0
 }
-if(this.totalResourcePercentGrowthPercentGrowth>=0)
+if(this.totalResourcePercentGrowthPercentGrowth>0)
 {
   this.imgtotalResourcePercentGrowthPercentGrowth=this.downUrl
 }
-else{
+else if(this.totalResourcePercentGrowthPercentGrowth<0){
   this.imgtotalResourcePercentGrowthPercentGrowth=this.upUrl
 }
 
@@ -10109,11 +10112,11 @@ if(this.totalGrowthProjectYoyYearPercent==0)
 {
   this.totalGrowthProjectYoyYearPercentGrowth=0
 }
-if(this.totalGrowthProjectYoyYearPercentGrowth>=0)
+if(this.totalGrowthProjectYoyYearPercentGrowth>0)
 {
   this.imgtotalGrowthProjectYoyYearPercentGrowth=this.downUrl
 }
-else{
+else if(this.totalGrowthProjectYoyYearPercentGrowth<0){
   this.imgtotalGrowthProjectYoyYearPercentGrowth=this.upUrl
 }
 
@@ -10124,11 +10127,11 @@ if(this.vendorTotalResourcePercentage==0)
 {
   this.vendorTotalResourcePercentageGrowth=0
 }
-if(this.vendorTotalResourcePercentageGrowth>=0)
+if(this.vendorTotalResourcePercentageGrowth>0)
 {
   this.imgvendorTotalResourcePercentageGrowth=this.downUrl
 }
-else{
+else if(this.vendorTotalResourcePercentageGrowth<0){
   this.imgvendorTotalResourcePercentageGrowth=this.upUrl
 }
 this.vendorTotalYoy=this.getProjectListData[0].vendorTotalYoy
@@ -10139,11 +10142,11 @@ if(this.vendorTotalYoyPercent==0)
   this.vendorTotalYoyPercentGrowth=0
 
 }
-if(this.vendorTotalYoyPercentGrowth>=0)
+if(this.vendorTotalYoyPercentGrowth>0)
 {
   this.imgvendorTotalYoyPercentGrowth=this.downUrl
 }
-else{
+else if(this.vendorTotalYoyPercentGrowth<0){
   this.imgvendorTotalYoyPercentGrowth=this.upUrl
 }
 
@@ -10155,11 +10158,11 @@ this.onBenchTotalResourcePercentGrowth=(this.onBenchTotalResource-this.onBenchTo
 {
   this.onBenchTotalResourcePercentGrowth=0
 }
-if(this.onBenchTotalResourcePercentGrowth>=0)
+if(this.onBenchTotalResourcePercentGrowth>0)
 {
   this.imgonBenchTotalResourcePercentGrowth=this.downUrl
 }
-else{
+else if(this.onBenchTotalResourcePercentGrowth<0){
   this.imgonBenchTotalResourcePercentGrowth=this.upUrl
 }
 this.billableResourceTotalPercent=this.getProjectListData[0].billableResourceTotalPercent
@@ -10169,11 +10172,11 @@ this.billableResourceTotalPercent=0;
 {
   this.billableResourceTotalPercentGrowth=0
 }
-if(this.billableResourceTotalPercentGrowth>=0)
+if(this.billableResourceTotalPercentGrowth>0)
 {
   this.imgbillableResourceTotalPercentGrowth=this.downUrl
 }
-else{
+else if(this.billableResourceTotalPercentGrowth<0){
   this.imgbillableResourceTotalPercentGrowth=this.upUrl
 }
   //}
