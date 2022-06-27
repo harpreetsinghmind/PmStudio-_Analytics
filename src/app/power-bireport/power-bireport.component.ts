@@ -4129,12 +4129,16 @@ plottooltext:     " $label: <b>$dataValue</b>",
   numberRevenue:any=[]
   buisnessRevenue:any
   numberproj:any=[]
+  proposeRevenue:any=[]
+  avgReveue:any=[]
   
     getPbiBuisinessRevenueList(){
         let cmpcode=1
         let year='2022-02-20'
         this.getListBuisnessRevenue=[]
+        this.avgReveue=[]
         this.monthRevenue=[]
+        this.proposeRevenue=[]
         this.numberRevenue=[]
         this.numberproj=[]
         this.Loader=true
@@ -4153,6 +4157,10 @@ plottooltext:     " $label: <b>$dataValue</b>",
         {
   this.monthRevenue.push({"label":this.getListBuisnessRevenue[i].monthNames})
   this.numberRevenue.push({"value":this.getListBuisnessRevenue[i].revenue})
+  this.proposeRevenue.push({"value":this.getListBuisnessRevenue[i].proposeByRevenue})
+  this.avgReveue.push({"value":this.getListBuisnessRevenue[i].avgRevenueByProject})
+
+
   this.numberproj.push({"value":this.getListBuisnessRevenue[i].project})
  // this.venderNumber.push({"value":this.getListBuisnessRevenue[i].vendor})
   //this.venderNumber.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
@@ -4178,12 +4186,24 @@ plottooltext:     " $label: <b>$dataValue</b>",
       }
     ],
     dataset: [
+      // {
+      //   seriesname: "Avg Revenue /Projects",
+      // //  plottooltext: "Employee: $dataValue",
+      //   data:this.avgReveue
+      // },
+      {
+        seriesname: "Proposed Revenue",
+        parentyaxis: "S",
+        renderas: "line",
+      //  plottooltext: "Employee: $dataValue",
+        data:this.proposeRevenue
+      },
       {
         seriesname: "Projects",
       //  plottooltext: "Employee: $dataValue",
         data:this.numberproj
       },
-  
+      
       {
         seriesname: "Revenue",
         parentyaxis: "S",
@@ -5836,7 +5856,6 @@ for(var i=0;i<this.getListCategory.length;i++)
         "showTooltip": "1",
         "decimals": "0",
         "showlabels": "0",
-        'labelFontSize':'0',
         'paletteColors' :getColor.toString(),
         "theme": "fusion"
       },
@@ -5885,7 +5904,6 @@ this.dataDeployee.push(
       "startingAngle": "100",
       "showLegend": "1",
       "showlabels": "0",
-      'labelFontSize':'0',
 
       "defaultCenterLabel": "",
     "centerLabel": " $label: $value",
@@ -5960,7 +5978,6 @@ this.dataBreackUp.push({"label":this.getListBreackUp[i].breackupName,"value":thi
       "startingAngle": "100",
       "showLegend": "1",
       "showlabels": "0",
-      'labelFontSize':'0',
 
       "defaultCenterLabel": "",
     "centerLabel": " $label: $value",

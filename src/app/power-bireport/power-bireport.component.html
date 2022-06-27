@@ -1422,7 +1422,7 @@
                     <h4>Project</h4>
 
                     <div class="expenseValue expenseValue1">
-                      <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Avg Revenue/Project</p><p>Purposed/ Revenue</p><p>Revenue to be billed</p></div>
+                      <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Avg Revenue Project</p><p>Purposed Revenue</p><p>Revenue to be billed</p></div>
                       <div>
                         <p>{{buisnesscurrentYear }}</p>
                         <p><span>{{currentYearProjectCount }}
@@ -1523,7 +1523,7 @@
                         <p>{{expenseCurrentYear}}</p>
                         <p><span>
                           <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{expensecurrentYearTotalNumber}} {{currencyName}}</div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> {{currencyName}} {{expensecurrentYearTotalNumber}} </div>
                           </div></span>
                         </p>
                         <p><span>{{currencyName}}{{expensecurrentYearBillable | number :'1.2-2'}}</span></p>
@@ -1535,7 +1535,7 @@
                         <p>{{expensepeoplePreviousYear}}</p>
                         <p><span>
                           <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{expensepreviousYearTotalNumber}} {{currencyName}}</div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{currencyName}} {{expensepreviousYearTotalNumber}}</div>
                           </div></span>
                         </p>
                         <p><span>{{currencyName}}{{expensepreviousYearBillable | number :'1.2-2'}} </span></p>
