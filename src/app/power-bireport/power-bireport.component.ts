@@ -5828,7 +5828,6 @@ for(var i=0;i<this.getListCategory.length;i++)
       chart: {
         "numberPrefix": "",
         "bgColor": "#ffffff",
-        "startingAngle": "100",
         "showLegend": "1",
 
         "defaultCenterLabel": "",
@@ -5836,6 +5835,8 @@ for(var i=0;i<this.getListCategory.length;i++)
         "centerLabelBold": "1",
         "showTooltip": "1",
         "decimals": "0",
+        "showlabels": "0",
+        'labelFontSize':'0',
         'paletteColors' :getColor.toString(),
         "theme": "fusion"
       },
@@ -5883,6 +5884,8 @@ this.dataDeployee.push(
       "bgColor": "#ffffff",
       "startingAngle": "100",
       "showLegend": "1",
+      "showlabels": "0",
+      'labelFontSize':'0',
 
       "defaultCenterLabel": "",
     "centerLabel": " $label: $value",
@@ -5956,6 +5959,8 @@ this.dataBreackUp.push({"label":this.getListBreackUp[i].breackupName,"value":thi
       "bgColor": "#ffffff",
       "startingAngle": "100",
       "showLegend": "1",
+      "showlabels": "0",
+      'labelFontSize':'0',
 
       "defaultCenterLabel": "",
     "centerLabel": " $label: $value",
@@ -8219,11 +8224,12 @@ if(this.customerExpenseCurrentYearGrowth==0)
   this.customerExpenseCurrentYearGrowthPercent=0
 }
 
-if(this.customerExpenseCurrentYearGrowthPercent>=0)
+if(this.customerExpenseCurrentYearGrowthPercent>0)
 {
   this.customerExpenseCurrentYearGrowthPercentimg=this.downUrl
 }
-else{
+
+else if(this.customerExpenseCurrentYearGrowthPercent<0){
   this.customerExpenseCurrentYearGrowthPercentimg=this.upUrl
 }
 
@@ -8236,11 +8242,11 @@ this.customerExpenseCurrentYearGrowthYoy=this.getListExpenseDetailList[0].custom
     {
       this.customerExpenseCurrentYearGrowthYoyPercent=0
     }
-    if(this.customerExpenseCurrentYearGrowthYoyPercent>=0)
+    if(this.customerExpenseCurrentYearGrowthYoyPercent>0)
 {
   this.customerExpenseCurrentYearGrowthYoyPercentimg=this.downUrl
 }
-else{
+else if(this.customerExpenseCurrentYearGrowthYoyPercent<0){
   this.customerExpenseCurrentYearGrowthYoyPercentimg=this.upUrl
 }
 
@@ -8447,6 +8453,14 @@ currentYearProjectMoneyPercentGrowth:any
 currentYearProjectMoneyPercentGrowthimg:any
 currentYearProjectCountPercentGrowth:any
 currentYearProjectCountPercentGrowthimg:any
+currentYearpropose:any
+currentYearproposePercent:any
+previousYearpropose:any
+previousYearproposePercent:any
+previousYearproposePercentGrowth:any
+currentYearproposePercentGrowth:any
+previousYearproposePercentGrowthimg:any
+currentYearproposePercentGrowthimg:any
   getProjectBuisinessProjectList()
   {
     this.getListBuinessList=[]
@@ -8458,7 +8472,43 @@ currentYearProjectCountPercentGrowthimg:any
     this.Loader=false
    this.buisnesscurrentYear=this.getListBuinessList[0].currentYear
      this.buisnesspreviousYear=this.getListBuinessList[0].previousYear
-     
+    
+this.currentYearpropose=this.getListBuinessList[0].currentYearpropose
+this.currentYearproposePercent=this.getListBuinessList[0].currentYearproposePercent
+this.currentYearproposePercentGrowth=(this.currentYearpropose-this.currentYearproposePercent)*100/this.currentYearproposePercent
+if(this.currentYearproposePercent===0)
+{
+  this.currentYearproposePercentGrowth=0
+}
+if(this.currentYearproposePercentGrowth>0)
+{
+  this.currentYearproposePercentGrowthimg=this.downUrl
+
+}
+
+
+if(this.currentYearproposePercentGrowth<0)
+{
+  this.currentYearproposePercentGrowthimg=this.upUrl
+
+}
+this.previousYearpropose=this.getListBuinessList[0].previousYearpropose
+this.previousYearproposePercent=this.getListBuinessList[0].previousYearproposePercent
+this.previousYearproposePercentGrowth=(this.previousYearpropose-this.previousYearproposePercent)*100/this.previousYearproposePercent
+if(this.previousYearproposePercent===0)
+{
+  this.previousYearproposePercentGrowth=0
+}
+if(this.previousYearproposePercentGrowth>0)
+{
+  this.previousYearproposePercentGrowthimg=this.downUrl
+
+}
+if(this.previousYearproposePercentGrowth<0)
+{
+  this.previousYearproposePercentGrowthimg=this.upUrl
+
+}
 this.currentYearProjectCount=this.getListBuinessList[0].currentYearProjectCount
 this.currentYearProjectCountPercent=this.getListBuinessList[0].currentYearProjectCountPercent
 this.currentYearProjectCountPercentGrowth=(this.currentYearProjectCount-this.currentYearProjectCountPercent)*100/this.currentYearProjectCountPercent
@@ -8471,11 +8521,7 @@ if(this.currentYearProjectCountPercentGrowth>0)
 {
   this.currentYearProjectCountPercentGrowthimg=this.downUrl
 }
-else if(this.currentYearProjectCountPercentGrowth==0.00||this.currentYearProjectCountPercentGrowth==0)
-{
-  this.currentYearProjectCountPercentGrowthimg=0
-}
-else{
+else if(this.currentYearProjectCountPercentGrowth<0){
   this.currentYearProjectCountPercentGrowthimg=this.upUrl
 }
 
@@ -8494,7 +8540,7 @@ if(this.currentYearProjectMoneyPercentGrowth>0)
   this.currentYearProjectMoneyPercentGrowthimg=this.downUrl
 }
 
-else {
+else if(this.currentYearProjectMoneyPercentGrowth<0) {
   this.currentYearProjectMoneyPercentGrowthimg=this.upUrl
 }
 
@@ -8505,11 +8551,11 @@ if(this.currentYearResourcePercent==0)
 {
   this.currentYearResourcePercentGrowth=0
 }
-if(this.currentYearResourcePercentGrowth>=0)
+if(this.currentYearResourcePercentGrowth>0)
 {
   this.currentYearResourcePercentGrowthimg=this.downUrl
 }
-else{
+else if(this.currentYearResourcePercentGrowth<0){
   this.currentYearResourcePercentGrowthimg=this.upUrl
 }
 
@@ -8521,11 +8567,11 @@ if(this.currentYearRevnuePercent==0)
 {
   this.currentYearRevnuePercentGrowth=0
 }
-if(this.currentYearRevnuePercentGrowth>=0)
+if(this.currentYearRevnuePercentGrowth>0)
 {
   this.currentYearRevnuePercentGrowthimg=this.downUrl
 }
-else{
+else if(this.currentYearRevnuePercentGrowth<0){
   this.currentYearRevnuePercentGrowthimg=this.upUrl
 }
 this.previousYearProjectCount=this.getListBuinessList[0].previousYearProjectCount
@@ -8535,11 +8581,11 @@ if(this.previousYearProjectCountPercent==0)
 {
   this.previousYearProjectCountPercentGrowth=0
 }
-if(this.previousYearProjectCountPercentGrowth>=0)
+if(this.previousYearProjectCountPercentGrowth>0)
 {
   this.previousYearProjectCountPercentGrowthimg=this.downUrl
 }
-else{
+else if(this.previousYearProjectCountPercentGrowth<0){
   this.previousYearProjectCountPercentGrowthimg=this.upUrl
 }
 this.previousYearProjectMoney=this.getListBuinessList[0].previousYearProjectMoney
@@ -8550,11 +8596,11 @@ if(this.previousYearProjectMoneyPercent==0)
 {
 this.previousYearProjectMoneyPercentGrowth=0
 }
-if(this.previousYearProjectMoneyPercentGrowth>=0)
+if(this.previousYearProjectMoneyPercentGrowth>0)
 {
   this.previousYearProjectMoneyPercentGrowthimg=this.downUrl
 }
-else
+else if(this.previousYearProjectMoneyPercentGrowth<0)
 {
 this.previousYearProjectMoneyPercentGrowthimg=this.upUrl
 }
@@ -8566,11 +8612,11 @@ if(this.previousYearResourcePercent==0)
 {
 this.previousYearResourcePercentGrowth=0
 }
-if(this.previousYearResourcePercentGrowth>=0)
+if(this.previousYearResourcePercentGrowth>0)
 {
   this.previousYearResourcePercentGrowthimg=this.downUrl
 }
-else
+else if(this.previousYearResourcePercentGrowth<0)
 {
 this.previousYearResourcePercentGrowthimg=this.upUrl
 }
@@ -8582,11 +8628,11 @@ if(this.previousYearRevnuePercent==0)
 {
 this.previousYearRevnuePercentGrowth=0
 }
-if(this.previousYearRevnuePercentGrowth>=0)
+if(this.previousYearRevnuePercentGrowth>0)
 {
   this.previousYearRevnuePercentGrowthimg=this.downUrl
 }
-else
+else if(this.previousYearRevnuePercentGrowth<0)
 {
 this.previousYearRevnuePercentGrowthimg=this.upUrl
 }
