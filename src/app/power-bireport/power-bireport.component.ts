@@ -4646,25 +4646,66 @@ plottooltext:     " $label: <b>$dataValue</b>",
       }
       for(var i=0;i<this.getListProgress.length;i++)
       {
+        
 this.dataProgress.push({"label":this.getListProgress[i].monthes})
-this.dataProjectProgressList.push({"value":this.getListProgress[i].cost})
-this.dataProjectCostList.push({"value":this.getListProgress[i].progress})
+this.dataProjectProgressList.push({"value":this.getListProgress[i].project})
+this.dataProjectCostList.push({"value":this.getListProgress[i].cost})
 this.setList.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
 
 }
 
 
+// this.dataProjectProgressList = {
+//   "chart": {
+//     "caption": "Progress & Cost %",
+//     'paletteColors' :'7cb5ec',
+//     "showHoverEffect": "1",
+//     "theme": "fusion"
+// },
+// "data":this.setList
+// };
+
 this.dataProjectProgressList = {
-  "chart": {
-    "caption": "Progress & Cost %",
-    'paletteColors' :'7cb5ec',
-    "showHoverEffect": "1",
-    "theme": "fusion"
-},
-"data":this.setList
+  chart: {
+    //caption: "Analysing Subsidies by Youth Population",
+    //subcaption: "By province",
+    yaxisname: "",
+    syaxisname: "",
+    labeldisplay: "rotate",
+    snumbersuffix: "",
+    scrollheight: "10",
+    numvisibleplot: "10",
+    drawcrossline: "1",
+    theme: "fusion",
+plottooltext:     " $label: <b>$dataValue</b>",
+  },
+  categories: [
+    {
+      category:this.dataProgress
+    }
+  ],
+  dataset: [
+    // {
+    //   seriesname: "Avg Revenue /Projects",
+    // //  plottooltext: "Employee: $dataValue",
+    //   data:this.avgReveue
+    // },
+    {
+      seriesname: "Progress",
+     
+    //  plottooltext: "Employee: $dataValue",
+      data:this.dataProjectProgressList
+    },
+    {
+      seriesname: "Cost",
+      parentyaxis: "S",
+      renderas: "line",
+    //  plottooltext: "Employee: $dataValue",
+      data:this.dataProjectCostList
+    },
+    
+     ]
 };
-
-
 
 
       })
