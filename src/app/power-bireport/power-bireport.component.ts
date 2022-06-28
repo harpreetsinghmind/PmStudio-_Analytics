@@ -4069,14 +4069,12 @@ plottooltext:     " $label: <b>$dataValue</b>",
       data:this.numberProject
     },
 
-    {
-      seriesname: "Percentage",
-      parentyaxis: "S",
-      renderas: "line",
-     // plottooltext: "$dataValue subsidies received",
-      //showvalues: "0",
-      data: this.numberProject
-    }
+    // {
+    //   seriesname: "Percentage",
+    //   parentyaxis: "S",
+    //   renderas: "line",
+    //   data: this.numberProject
+    // }
   ]
 };
 
@@ -4567,7 +4565,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
     },
 
     {
-      seriesname: "Percentage",
+      seriesname: "Leaves",
       parentyaxis: "S",
       renderas: "line",
      // plottooltext: "$dataValue subsidies received",
@@ -7255,8 +7253,6 @@ this.percentAddList.push({"value":this.getListEmployeeAddition[i].avgPercent})
 
   this.dataempoyeeaddition = {
     chart: {
-      //caption: "Analysing Subsidies by Youth Population",
-      //subcaption: "By province",
       yaxisname: "",
       syaxisname: "",
       labeldisplay: "rotate",
@@ -7274,19 +7270,17 @@ plottooltext:     " $label: <b>$dataValue</b>",
     ],
     dataset: [
       {
-        seriesname: "Total Employee",
+        seriesname: "Employee Count",
       //  plottooltext: "Employee: $dataValue",
         data:this.cateList
       },
 
-      {
-        seriesname: "Percentage",
-        parentyaxis: "S",
-        renderas: "line",
-       // plottooltext: "$dataValue subsidies received",
-        //showvalues: "0",
-        data: this.cateList
-      }
+      // {
+      //   seriesname: "Percentage",
+      //   parentyaxis: "S",
+      //   renderas: "line",
+      //   data: this.cateList
+      // }
     ]
   };
 
@@ -7322,6 +7316,13 @@ plottooltext:     " $label: <b>$dataValue</b>",
 tenCatList:any=[]
 curAvgLsit:any=[]
 newList:any=[]
+perFormanceType:any
+changeProjectEmployeePerformance(e)
+{
+debugger
+this.perFormanceType=e.target.value
+this.getPerformance()
+}
   getpbiPeopleTenureWiseEmployee(){
       let cmpcode=1
       let year='2022-02-20'
@@ -7577,7 +7578,15 @@ tooltipfor(args: any){
 
     this.getListEmployeePerformance=[]
     this.Loader=true
-    this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+    var type
+    if(this.perFormanceType==undefined || this.perFormanceType=='' || this.perFormanceType ==null)
+    {
+      type="All"
+    }
+    else{
+      type=this.perFormanceType
+    }
+    this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
     this.getListEmployeePerformance=  arg.data.table
     this.Loader=false
     console.log('performance',arg.data.table)
@@ -8749,7 +8758,15 @@ this.expensepreviousYearTotalNumber=this.getListBuinessExpenseList[0].previousYe
       let year='2022-02-20'
       this.getListEmployeePerformance=[]
       this.Loader=true
-      this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+      var type
+      if(this.perFormanceType==undefined || this.perFormanceType=='' || this.perFormanceType ==null)
+      {
+        type="All"
+      }
+      else{
+        type=this.perFormanceType
+      }
+      this.HTTP.getPbiReportEmployeePerformance(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
       this.getListEmployeePerformance=  arg.data.table
     console.log('getListEmployeePerformance',arg.data.table)
 
@@ -8862,19 +8879,18 @@ this.dataempoyeeattrition = {
   ],
   dataset: [
     {
-      seriesname: "Total Employee",
+      seriesname: "Employee Count",
     //  plottooltext: "Employee: $dataValue",
       data:this.dataEmployeeAttrition
     },
 
-    {
-      seriesname: "Percentage",
-      parentyaxis: "S",
-      renderas: "line",
-     // plottooltext: "$dataValue subsidies received",
-      showvalues: "0",
-      data: this.dataEmployeeAttrition
-    }
+    // {
+    //   seriesname: "Percentage",
+    //   parentyaxis: "S",
+    //   renderas: "line",
+    //   showvalues: "0",
+    //   data: this.dataEmployeeAttrition
+    // }
   ]
 };
 

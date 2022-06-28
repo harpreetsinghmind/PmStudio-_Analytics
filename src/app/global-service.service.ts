@@ -546,16 +546,16 @@ getPbiReportEmployeeTenureWiseEmployeeDetail(year,cmpcode,depid): Observable<any
   return this.httpClient.get(URL,{headers:headers})
 
 }
-getPbiReportEmployeePerformance(year,cmpcode,depid): Observable<any> {
+getPbiReportEmployeePerformance(year,cmpcode,depid,type): Observable<any> {
   // debugger;
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleEmployeePerformance?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+  const URL=`${environment.apiUrl}pbiPeople/getPbiPeopleEmployeePerformance?year=`+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
 
   //const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getPbiPeopleEmployeePerformance?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
-  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleEmployeePerformance?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+  //const URL ="http://localhost:63000/api/pbiPeople/getPbiPeopleEmployeePerformance?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid+"&type="+type
 
   return this.httpClient.get(URL,{headers:headers})
 

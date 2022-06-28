@@ -1427,7 +1427,7 @@
                         <p>{{buisnesscurrentYear }}</p>
                         <p><span>{{currentYearProjectCount }}
                           |</span><span>{{currentYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
-                          <img *ngIf="currentYearProjectMoneyPercentGrowth !=0.00"src="{{currentYearProjectCountPercentGrowthimg}}">
+                          <img src="{{currentYearProjectCountPercentGrowthimg}}">
                         </p>
                         <p><span>{{currencyName}}{{currentYearProjectMoney  | number :'1.2-2'}} |
 
@@ -2168,7 +2168,11 @@
                 <div class="OutlierSection">
                   <div class="OutlierHead">
                     <div><h3 style="margin: 7px 0 20px;">Employee Performance</h3></div>
-
+                    <select class="form-control"(change)="changeProjectEmployeePerformance($event)" style="width: 150px;">
+                      <option>All</option>
+                      <option>Active</option>
+                      <option>In Active</option>
+                    </select>
                   </div>
 
                   <div class="table-responsive tableBorders peopleheight">
@@ -2583,18 +2587,25 @@
                     <div class="col-md-12 no-padding ChartRow">
                       <div class="ChartRowCol ChartRowColRightMargin">
                         <div class="ChartRowHead">
-                          <h4 class="headingFour">$ Projects (Last Six Months)</h4>
+                          <h4 class="headingFour"> Project Revenue (Last Six Months)</h4>
                           <a href="#">Detailed Report</a>
                         </div>
 
                         <div class="chartBox">
-                          <fusioncharts
+                          <!-- <fusioncharts
                   width="100%"
                   height="400"
                   type="scrollcombidy2d"
                   dataFormat="json"
                   [dataSource]="projectDetailNumberInCost">
-                </fusioncharts>
+                </fusioncharts> -->
+                <fusioncharts
+                width="100%"
+                height="400"
+                type="scrollcombidy2d"
+                dataFormat="json"
+                [dataSource]="buisnessRevenue">
+            </fusioncharts>
                         </div>
                       </div>
 
