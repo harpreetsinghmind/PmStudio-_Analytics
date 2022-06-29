@@ -7855,6 +7855,7 @@ if(this.getListProjectPortfoliyo[i].progress==null)
   revnueFirst:any
   startDate:any
   endDate:any
+  purposedRevenue:any
   getProjectProjectDetailRevnueAndCost(data)
   {
     this.getListProjectDetailRevnureAndCost=[]
@@ -7864,6 +7865,7 @@ if(this.getListProjectPortfoliyo[i].progress==null)
     console.log('getListProjectDetailRevnureAndCost',arg.data.table)
     this.Loader=false
     this.costFirst=this.getListProjectDetailRevnureAndCost[0].cost
+    this.purposedRevenue=this.getListProjectDetailRevnureAndCost[0].purposedRevenue
 this.costSecond=this.getListProjectDetailRevnureAndCost[0].projectType
 this.marginFirst= this.getListProjectDetailRevnureAndCost[0].margin
 this.marginSecond=this.getListProjectDetailRevnureAndCost[0].delivery
