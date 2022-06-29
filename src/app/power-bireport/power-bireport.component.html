@@ -1466,7 +1466,7 @@
                           <img src="{{previousYearResourcePercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{previousYearpropose  
+                        <p><span>{{currencyName}}{{previousYearpropose
                           | number :'1.2-2'}} |</span><span>
                             {{previousYearproposePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearproposePercentGrowthimg}}">
@@ -3014,7 +3014,7 @@
                         <div class="chartBox">
                           <fusioncharts
                           width="100%"
-                          height="250"
+                          height="300"
                           type="scrollcombidy2d"
                           dataFormat="json"
                           [dataSource]="dataProjectProgressList">
@@ -3231,7 +3231,7 @@
                       </div>
 
                       <div class="col-md-12 no-padding rateRow">
-                        <div class="boxExpense">
+                        <div class="boxExpense boxExpensePL">
 
                           <div class="expenseValue expenseValue1">
                             <div class="YearValue YearValuePL"><p># Project</p><p>{{currencyName}}Project</p><p>Avg. Revenue</p><p>Avg. Tenure</p></div>
@@ -3296,7 +3296,7 @@
                           </div>
                         </div>
 
-                        <div class="boxExpense" style="margin-left: 10px;">
+                        <div class="boxExpense boxExpensePL" style="margin-left: 10px;">
 
                           <div class="expenseValue expenseValue1">
                             <div class="YearValue YearValuePL"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>

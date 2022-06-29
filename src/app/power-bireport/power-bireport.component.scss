@@ -48,7 +48,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     margin: 0;
     padding: 5px 0;
 }
-.setni { display: flex; min-height: 205px;}
+.setni { display: flex; min-height: 245px;}
 .setni h5{ font-size: 12px;}
   ul.nav.nav-pills{ border-bottom: 1px solid #ddd;}
 
@@ -736,13 +736,14 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
   ul.expenselist li{ margin-right: 25px;}
   .rateRow{display: flex; align-items: center; width: 100%;  justify-content: space-between;}
-  .boxExpense { background: #fff;  padding: 10px;  text-align: center;  width: 100%;color: #373737; min-height: 250px; margin-bottom: 10px !important;}
+  .boxExpense { background: #fff;  padding: 10px;  text-align: center;  width: 100%;color: #373737; min-height: 290px; margin-bottom: 10px !important;}
+  .boxExpensePL{ min-height: 200px;}
   .boxExpense h4{margin: 0 0 10px; font-size: 15px;color: #000;}
   .expenseValue p {
     font-size: 14px;
     font-weight: 500;
     margin: 0;
-    line-height: 25px;
+    line-height: 30px;
   }
   .expenseValue {
     display: flex;
