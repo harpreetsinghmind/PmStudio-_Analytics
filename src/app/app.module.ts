@@ -50,7 +50,10 @@ FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme,PowerCharts,TreeMap,
 
 //FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
 
-
+FusionCharts.options['license']({
+  key: 'RjD2fA-21qC3E4A1H4C3B2A8B8D6E6F6B3H5vaiD8A1nhfxiI4A7A-16teB3E4F2B3D3C10B6C3B4A4F3G3C3G1A7C8poiC4D1I4iC8B7B5C-11C-9jE3E3G2tpgC2A1E2tllB3B7D1A3F3H3A2A15A32B13B9ckeG4H3PB2kmA-16A3C1E3ui1A1KA2B2B-13E-11oF1B3F1B7D5C4E4F4B2G2F3I2C2C6w==',
+  creditLabel: false,
+});
 
 //FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
 

@@ -2221,6 +2221,7 @@ timeSheetChangeValue(e)
   }
   currencyName:any="₹"
   ngOnInit(): void {
+   
     this.departmentId=0
     this.setDepartment=0
 this.CmpCode="1"
