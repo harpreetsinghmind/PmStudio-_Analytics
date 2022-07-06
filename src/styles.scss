@@ -1904,7 +1904,7 @@ ul.nav.nav-tabs li.nav-item a{border-radius: 0; border: 1px solid #ddd; color: #
 .nav-tabs-custom > .nav-tabs > li > a{ border: 1px solid #ddd !important;}
 .nav-tabs-custom > .nav-tabs > li.active { border-top-color: #d7d8d8 !important;}
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus { border-top-color: #d7d8d8;}
-.nav-pills>li{ border: 1px solid #ddd;}
+.nav-pills>li{ border: 1px solid #ddd; border-radius: 10px 10px 0 0;}
 input.e-input, .e-input-group input.e-input, .e-input-group.e-control-wrapper input.e-input, .e-input-group textarea.e-input, .e-input-group.e-control-wrapper textarea.e-input, textarea.e-input, .e-float-input input, .e-float-input.e-control-wrapper input, .e-float-input textarea, .e-float-input.e-control-wrapper textarea{ border-color: #ccc;}
 
 .e-input-group:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-input-group.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap{ border-color: #ccc;}
@@ -2418,7 +2418,7 @@ body{ -webkit-print-color-adjust: exact !important;}
 }
 
 .nav-tabs > li > a{font-weight: 500 !important;}
-.nav-item.active a{ font-weight: 600 !important;}
+
 
 .e-grid .e-gridheader .e-fltr-icon .e-sortfilterdiv{ margin: -15px 13px;}
 .expense-report .edit-reciept .container{padding: 0; font-size: 13px;}

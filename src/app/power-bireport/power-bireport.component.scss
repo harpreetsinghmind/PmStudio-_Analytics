@@ -27,7 +27,7 @@ p.context {
     margin-right: 6px; top: 3px;}
 
   li.nav-item.active {
-    background: #f5f5f5 !important;
+    background: #306cf6 !important;
 }
 .projectDetailsTable .e-content table tr{ height: 43px; }
 
@@ -60,10 +60,10 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 }
 
 .nav-pills > li{ background: #fff;}
+.nav-pills > li:hover{ background: #306cf6 ;}
+.nav-pills > li:hover a{ color: #fff ;}
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  color: #111;
-}
+
 
   form {
     padding: 20px;
@@ -234,6 +234,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   .nav-item.active a {
 
     border-radius: 0;
+    color: #fff;
   }
 
   p.context {
@@ -731,7 +732,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   }
 
   .expenseValue1 p {
-    line-height: 33px !important;
+    line-height: 34px !important;
   }
 
   ul.expenselist li{ margin-right: 25px;}
@@ -744,6 +745,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     font-weight: 500;
     margin: 0;
     line-height: 30px;
+
   }
   .expenseValue {
     display: flex;
@@ -756,6 +758,8 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   }
 
   #overviewexpense .boxExpense{ min-height: 130px;}
+
+
 
   .upgrowth {
     color: #e42d1b;
@@ -774,7 +778,8 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     color: #000;
     font-size: 15px;
   }
-  .boxExpense .progress{width: 110px;}
+  .boxExpense .progress{width: 94% !important;
+    margin: 0 3% 7px;}
   .CurrentYearBox {
     border-top: 1px dashed #b4b4b4;
     margin-top: 10px;
@@ -861,13 +866,24 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
           content: " ";}
 
           ul.nav.nav-tabs.subtabs li {
-            margin-right: 20px;
+            margin-right: 20px;border-bottom: 2px solid #fff;
         }
 
+        ul.nav.nav-tabs.subtabs li.nav-item.active {
+          border-bottom: 2px solid #406aef;
+      }
+
+      ul.nav.nav-tabs.subtabs li.nav-item.active {
+        color: #406aef !important;
+    }
+
           ul.subtabs a{ padding: 0 !important;background: transparent !important;border: none !important;
-            color: #4d9be3 !important;font-size: 16px !important;font-weight: 500 !important; min-width: auto !important;}
-          ul.subtabs{ border: none;}
-          ul.subtabs li.nav-item.active a{ text-decoration: underline;}
+            color: #393938 !important;font-size: 15px !important;font-weight: 500 !important; min-width: auto !important;}
+          ul.subtabs{ border: none;background: #fff;}
+
+          ul.subtabs li {
+            padding: 10px;
+        }
 
           .OutlierSection2{ background: transparent !important;}
           .OutlierHead2{ background: #fff; padding: 10px; margin-bottom: 10px; border: 2px solid #ddd;}
@@ -914,7 +930,31 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
     }
 
+    .expenseValue.expenseValue1 div p {
+      border-bottom: 1px solid #e5e5e5;
+      min-height: 35px;
+  }
 
+  .boxExpense.boxExpenseSpace .expenseValue div{ width: 100%;}
+  .boxExpense.boxExpenseSpace .expenseValue div p{  border-bottom: 1px solid #e5e5e5;}
+  .boxExpense.expenseValue1 .expenseValue div{ width: 100%;}
+  .boxExpense.expenseValue1 .expenseValue div p{  border-bottom: 1px solid #e5e5e5;}
+
+  .expenseValue21 div{ width: 100%;}
+  .expenseValue21 div p{border-bottom: 1px solid #e5e5e5;}
+
+  .expenseValue22 div{ width: 100%;}
+  .expenseValue22 div p{border-bottom: 1px solid #e5e5e5;}
+
+    p.yearSon {
+      color: #406aef; border-bottom: none !important;
+  }
+
+
+  .expenseValue.expenseValue1 div {
+    width: 100%;
+}
+.expenseValue21 .YearValue, .expenseValue22 .YearValue{ padding-top: 30px;}
   .project .boxExpense{
     min-height: auto;
   }
@@ -923,7 +963,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     border-bottom: none;}
 
     .project8{background: #fff;
-      min-height: 253px;
+      min-height: 290px;
       margin-bottom: 10px;}
 
       .circle1::before{ background-color: #2ec4b6 !important;}
@@ -955,7 +995,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
     @media screen and (max-width:1280px) {
       .setni h5 {font-size: 12px;}
-      .expenseValue p{font-size: 13px;}
+      .expenseValue p{font-size: 12px;}
     }
 
     @media screen and (max-width:1279px) {
@@ -968,6 +1008,11 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     @media screen and (max-width:1180px) {
       .boxExpense{min-height: 290px;}
       .projectBar{display: block;}
+      .rateRow{ display: block;}
+      .rateRow.project .col-md-4{ padding-right: 0 !important; width: 100%;}
+      .rateRow.project .col-md-8{  width: 100%;}
+      .boxExpense.boxExpensePL{ margin-left: 0 !important;}
+      .boxExpenseSpace{ margin: 0 !important;}
 
 
     }
@@ -977,7 +1022,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     @media screen and (max-width:992px) {
       .cardbox .card{ margin: 1%;  width: 98%;}
       .bottomcard .col-md-3{width: 98%; font-size: 12px; margin: 1%;}
-      .nav-tabs > li > a{ font-size: 11px; min-height: 40px;}
+      .nav-tabs > li > a{ font-size: 11px; }
       .progresscard{     display: block;}
       .report-row select.form-control { margin-top: 10px;}
       .table td, .table th{ font-size: 12px;}
@@ -1007,6 +1052,8 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     @media screen and (max-width:768px) {
       .halfdiv, .halfdiv1{ width: 100%;}
       .OutlierHead3 div{ margin-bottom: 10px;}
+      .pbicantain{ padding: 15px 0;}
+      .expenseValue p{font-size: 12px;}
     }
 
 
@@ -1262,7 +1309,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     .circleInActive::before{ background-color: #c1c1c1 !important;}
 
     .YearValue.YearValuePL {
-      padding-top: 39px;
+      padding-top: 35px;
   }
   .andOr{ display: flex; flex: 0 0 33%; align-items: center; justify-content: flex-end;}
   .andOr select{ width: 66%; margin: 0;}
@@ -1289,6 +1336,8 @@ span.delayStatus {
   border-radius: 50%;
   padding: 2px;
 }
+
+// .expenseValue.expenseValue1 div, .boxExpense.boxExpenseSpace div{width: 100%;}
 
   @media screen and (max-width: 700px){
 
