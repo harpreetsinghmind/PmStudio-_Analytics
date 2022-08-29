@@ -438,6 +438,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   @media screen and (max-width:767px) {
     .btnset{ margin-top: -30px !important; margin-bottom: 10px;}
     .e-grid{ width: 1000px !important;}
+    .nav-pills .nav-link{  min-width: 100px; font-size: 14px; }
   }
 
 
@@ -1049,12 +1050,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     }
 
 
-    @media screen and (max-width:768px) {
-      .halfdiv, .halfdiv1{ width: 100%;}
-      .OutlierHead3 div{ margin-bottom: 10px;}
-      .pbicantain{ padding: 15px 0;}
-      .expenseValue p{font-size: 12px;}
-    }
+
 
 
 
@@ -1338,6 +1334,21 @@ span.delayStatus {
 }
 
 // .expenseValue.expenseValue1 div, .boxExpense.boxExpenseSpace div{width: 100%;}
+
+@media screen and (max-width:768px) {
+  .halfdiv, .halfdiv1{ width: 100%;}
+  .OutlierHead3 div{ margin-bottom: 10px;}
+  .pbicantain{ padding: 15px 0;}
+  .expenseValue p{font-size: 10px;}
+  .expenseValue.expenseValue1 div p { min-height: 36px;}
+.YearValue.YearValuePL {  padding-top: 36px;}
+.expenseValue p {  }
+.expenseValue21 .YearValue, .expenseValue22 .YearValue{ padding-top: 31px;}
+.onbenchBox {flex-wrap: wrap;}
+.onbenchBox .col-md-6{width: 100%;}
+.monthCheckStatus{    margin: 8px 0 !important;}
+ul.nav.nav-tabs.subtabs li{ margin-right: 0px;}
+}
 
   @media screen and (max-width: 700px){
 
