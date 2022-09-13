@@ -1426,21 +1426,21 @@
                       <div>
                         <p class="yearSon">{{buisnesscurrentYear }}</p>
                         <p><span>{{currentYearProjectCount }}
-                          |</span><span>{{currentYearProjectCountPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          |</span><span>{{decimalFormat(currentYearProjectCountPercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectCountPercentGrowthimg}}">
                         </p>
-                        <p><span>{{currencyName}}{{currentYearProjectMoney  | number :'1.2-2'}} |
+                        <p><span>{{currencyName}}{{decimalFormat(currentYearProjectMoney)}} |
 
-                        </span><span>{{currentYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        </span><span>{{decimalFormat(currentYearProjectMoneyPercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectMoneyPercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{currentYearResource  | number :'1.2-2'}} |</span><span>{{currentYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{decimalFormat(currentYearResource)}} |</span><span>{{currentYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearResourcePercentGrowthimg}}">
 
                         </p>
 
-                        <p><span>{{currencyName}}{{currentYearpropose  | number :'1.2-2'}} |
+                        <p><span>{{currencyName}}{{decimalFormat(currentYearpropose)}} |
 
                         </span><span>{{currentYearproposePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearproposePercentGrowthimg}}">
@@ -1458,22 +1458,22 @@
 
 
                         </p>
-                        <p><span>{{currencyName}}{{previousYearProjectMoney  | number :'1.2-2'}} |</span><span>{{previousYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{decimalFormat(previousYearProjectMoney) }}|</span><span>{{previousYearProjectMoneyPercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearProjectMoneyPercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{previousYearResource  | number :'1.2-2'}} |</span><span>{{previousYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{decimalFormat(previousYearResource)}} |</span><span>{{previousYearResourcePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearResourcePercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{previousYearpropose
-                          | number :'1.2-2'}} |</span><span>
-                            {{previousYearproposePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{decimalFormat(previousYearpropose)
+                          }} |</span><span>
+                            {{decimalFormat(previousYearproposePercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearproposePercentGrowthimg}}">
 
                         </p>
 
-                        <p><span>{{currencyName}}{{previousYearRevnue  | number :'1.2-2'}} |</span><span>{{previousYearRevnuePercentGrowth  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{currencyName}}{{decimalFormat(previousYearRevnue )}} |</span><span>{{decimalFormat(previousYearRevnuePercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearRevnuePercentGrowthimg}}">
 
                         </p>
@@ -1491,25 +1491,25 @@
                       <div>
                         <p class="yearSon">{{peopleCurrentYear}}</p>
                         <p><span>{{currentYearTotalNumber}}</span></p>
-                        <p><span>{{currencyName}}{{currentYearTotalMoney | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(currentYearTotalMoney)}}</span></p>
                         <p><span>{{currentYearBillable}}</span></p>
                         <p><span>{{currentYearNonBillable}}</span></p>
                         <!-- <p><span>{{currencyName}}{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p> -->
                         <!-- <p><span>{{currencyName}}{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
-                        <p><span>{{currencyName}}{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{currencyName}}{{currentYearProjectMoney / currentYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{ decimalFormat(currentYearTotalMoney  /  currentYearTotalNumber )}}</span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(currentYearProjectMoney / currentYearTotalNumber)}}</span></p>
                         <p><span>{{currentYearAttrition}}%</span></p>
                       </div>
                       <div>
                         <p class="yearSon">{{peoplePreviousYear}}</p>
                         <p><span>{{previousYearTotalNumber}}</span></p>
-                        <p><span>{{currencyName}}{{previousYearTotalMoney | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(previousYearTotalMoney)}}</span></p>
                         <p><span>{{previousYearBillable}}</span></p>
                         <p><span>{{previousYearNonBillable}}</span></p>
                         <!-- <p><span>{{currencyName}}{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
                         <!-- <p><span>{{currencyName}}{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
-                        <p><span>{{currencyName}}{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
-                        <p><span>{{currencyName}}{{previousYearProjectMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(previousYearTotalMoney / previousYearTotalNumber) }}</span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(previousYearProjectMoney / previousYearTotalNumber )}}</span></p>
                         <p><span>{{previousYearAttrition}}%</span></p>
                       </div>
                     </div>
@@ -1526,9 +1526,9 @@
                             <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> {{currencyName}} {{expensecurrentYearTotalNumber}} </div>
                           </div></span>
                         </p>
-                        <p><span>{{currencyName}}{{expensecurrentYearBillable | number :'1.2-2'}}</span></p>
-                        <p><span>{{currencyName}}{{expensecurrentYearNonBillable | number :'1.2-2'}} </span></p>
-                        <p><span>{{currencyName}}{{expensecurrentYearExpense | number :'1.2-2'}} </span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(expensecurrentYearBillable)}}</span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(expensecurrentYearNonBillable)}} </span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(expensecurrentYearExpense)}} </span></p>
                       </div>
                       <div>
 
@@ -1538,9 +1538,9 @@
                             <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{currencyName}} {{expensepreviousYearTotalNumber}}</div>
                           </div></span>
                         </p>
-                        <p><span>{{currencyName}}{{expensepreviousYearBillable | number :'1.2-2'}} </span></p>
-                        <p><span>{{currencyName}}{{expensepreviousYearNonBillable | number :'1.2-2'}} </span></p>
-                        <p><span>{{currencyName}}{{expensepreviousYearExpense | number :'1.2-2'}}</span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(expensepreviousYearBillable)}} </span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(expensepreviousYearNonBillable)}} </span></p>
+                        <p><span>{{currencyName}}{{decimalFormat(expensepreviousYearExpense)}}</span></p>
                       </div>
                     </div>
                   </div>
@@ -1714,12 +1714,12 @@
                       <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
                         <p class="yearSon">Month ({{monthName}})</p>
-                        <p><span>{{valcurrentYear | number :'1.2-2'}} |</span><span>{{employeePerviousYearpercentage | number :'1.2-2'}}%</span>
+                        <p><span>{{decimalFormat(valcurrentYear) }} |</span><span>{{decimalFormat(employeePerviousYearpercentage) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{imgUrl1}}">
 
                         </p>
-                        <p><span>{{totalPrevousYear | number :'1.2-2'}} |</span><span>{{employeePercentage | number :'1.2-2'}}%</span>
+                        <p><span>{{decimalFormat(totalPrevousYear) }} |</span><span>{{decimalFormat(employeePercentage)}}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <!-- <img src="../../assets/img/down.jpg"> -->
                           <img src="{{imgUrl}}">
@@ -1729,18 +1729,18 @@
                       </div>
                       <div>
                         <p class="yearSon">YOY</p>
-                        <p><span>{{totalCurrentyoyYear | number :'1.2-2'}} |</span><span>{{totalCurrentGrowthyoyPercent | number :'1.2-2'}}%
+                        <p><span>{{decimalFormat(totalCurrentyoyYear)}} |</span><span>{{decimalFormat(totalCurrentGrowthyoyPercent)}}%
 
                         </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl19}}">
 
                       </p>
-                        <p><span>{{totalyoyYear | number :'1.2-2' }} |</span><span>{{employeeyoyprecentage | number :'1.2-2'}}%
+                       <p><span>{{decimalFormat(totalyoyYear) }} |</span><span>{{decimalFormat(employeeyoyprecentage) }}%
 
                         </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl2}}">
 
-                      </p>
+                      </p> 
 
 
                       </div>
@@ -1753,13 +1753,13 @@
                       <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
                         <p class="yearSon">Month ({{monthName}})</p>
-                        <p><span>{{currentAddtionYear | number :'1.2-2'}} |</span><span>{{employeeAdditionCurrentYearPercentage | number :'1.2-2'}}%
+                        <p><span>{{decimalFormat(currentAddtionYear)}} |</span><span>{{decimalFormat(employeeAdditionCurrentYearPercentage)}}%
 
                         </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl4}}">
 
                       </p>
-                        <p><span>{{totalAdditionPreviousYear | number :'1.2-2'}} |</span><span>{{employeeAdditionPercentage | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span>{{decimalFormat(totalAdditionPreviousYear) }} |</span><span>{{decimalFormat(employeeAdditionPercentage) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{imgUrl3}}">
 
                         </p>
@@ -1767,13 +1767,13 @@
                       </div>
                       <div>
                         <p class="yearSon">YOY</p>
-                        <p><span>{{totalCurrentAdditionyoyYear | number :'1.2-2'}}|</span><span>{{totalGrowthCurrentAdditionyoyYearPercent | number :'1.2-2'}}%
+                        <p><span>{{decimalFormat(totalCurrentAdditionyoyYear)}}|</span><span>{{decimalFormat(totalGrowthCurrentAdditionyoyYearPercent)}}%
 
                         </span>
                         <img src="{{imgUrl21}}">
 
                       </p>
-                      <p><span>{{totalAdditionyoyYear | number :'1.2-2'}}|</span><span>{{employeeAdditionyoypercentage | number :'1.2-2'}}%
+                      <p><span>{{decimalFormat(totalAdditionyoyYear)}}|</span><span>{{decimalFormat(employeeAdditionyoypercentage) }}%
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                       <img src="{{imgUrl5}}">
@@ -1789,15 +1789,15 @@
                       <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
                         <p class="yearSon">Month ({{monthName}})</p>
-                        <p><span>{{currentattritionYear | number :'1.2-2'}} |</span><span>
-                          {{employeeAttritionCurrentPercent | number :'1.2-2'}}
+                        <p><span>{{decimalFormat(currentattritionYear)}} |</span><span>
+                          {{decimalFormat(employeeAttritionCurrentPercent)}}
                           %
                         </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl7}}">
 
                       </p>
-                        <p><span>{{totalattritionPerviousYear | number :'1.2-2'}} |</span>
-                          <span>{{employeeAttritionPercentage | number :'1.2-2'}}%</span>
+                        <p><span>{{decimalFormat(totalattritionPerviousYear)}} |</span>
+                          <span>{{decimalFormat(employeeAttritionPercentage) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{imgUrl6}}">
 
@@ -1806,14 +1806,14 @@
                       </div>
                       <div>
                         <p class="yearSon">YOY</p>
-                        <p><span>{{totalCurrentAttritionyoyYear | number :'1.2-2'}}|</span><span>
-                          {{totalCurrentGrowthAttritionyoyYearPercent | number :'1.2-2'}}
+                        <p><span>{{decimalFormat(totalCurrentAttritionyoyYear) }}|</span><span>
+                          {{decimalFormat(totalCurrentGrowthAttritionyoyYearPercent) }}
                           %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{imgUrl23}}">
 
                         </p>
-                        <p><span>{{totalAttritionyoyYear | number :'1.2-2'}}|</span><span>
-                          {{employeeAttritionYoyPercentage | number :'1.2-2'}}
+                        <p><span>{{decimalFormat(totalAttritionyoyYear)}}|</span><span>
+                          {{decimalFormat(employeeAttritionYoyPercentage) }}
                           %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{imgUrl8}}">
 
@@ -1831,13 +1831,13 @@
                     <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
                       <p class="yearSon">Month ({{monthName}})</p>
-                      <p><span>{{currentVendorYear | number :'1.2-2'}} |</span><span>{{VendorCurrentYearPercentage | number :'1.2-2'}}%</span>
+                      <p><span>{{decimalFormat(currentVendorYear)}} |</span><span>{{decimalFormat(VendorCurrentYearPercentage)}}%</span>
                         <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgUrl10}}">
 
                       </p>
-                      <p><span>{{totalVendorPrevoisYear | number :'1.2-2'}} |</span>
-                        <span>{{VendorPreviousPercentage | number :'1.2-2'}}%</span>
+                      <p><span>{{decimalFormat(totalVendorPrevoisYear)}} |</span>
+                        <span>{{decimalFormat(VendorPreviousPercentage)}}%</span>
                         <img src="{{imgUrl9}}">
 
                         <span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
@@ -1845,12 +1845,12 @@
                     </div>
                     <div>
                       <p class="yearSon">YOY</p>
-                      <p><span>{{totalVendorCurrentyoyYear | number :'1.2-2'}} |</span><span>{{totalVendorCurrentGrowthYoyPercent | number :'1.2-2'}}%</span>
+                      <p><span>{{decimalFormat(totalVendorCurrentyoyYear) }} |</span><span>{{decimalFormat(totalVendorCurrentGrowthYoyPercent) }}%</span>
                         <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl20}}">
 
                       </p>
-                      <p><span>{{totalVendoryoyYear | number :'1.2-2'}} |</span><span>{{VendorYoyPercentage | number :'1.2-2'}}%</span>
+                      <p><span>{{decimalFormat(totalVendoryoyYear)}} |</span><span>{{decimalFormat(VendorYoyPercentage)}}%</span>
                         <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl11}}">
 
@@ -1866,15 +1866,15 @@
                     <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
                       <p class="yearSon">Month ({{monthName}})</p>
-                      <p><span>{{currentVendorAddtionYear | number :'1.2-2'}} |</span><span>
-                        {{VendorAddtionCurrentPercentage | number :'1.2-2'}}
+                      <p><span>{{decimalFormat(currentVendorAddtionYear) }} |</span><span>
+                        {{decimalFormat(VendorAddtionCurrentPercentage) }}
                         %
                       </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                       <img src="{{imgUrl13}}">
 
                     </p>
-                      <p><span>{{totalAdditionVendorPreviousYear | number :'1.2-2'}}|</span>
-                        <span>{{VendorAddtionprevousPercentage | number :'1.2-2'}}%</span>
+                      <p><span>{{decimalFormat(totalAdditionVendorPreviousYear)}}|</span>
+                        <span>{{decimalFormat(VendorAddtionprevousPercentage) }}%</span>
                         <img src="{{imgUrl12}}">
 
                         <span class="glyphicon glyphicon-arrow-up upgrowth">
@@ -1883,14 +1883,14 @@
                     </div>
                     <div>
                       <p class="yearSon">YOY</p>
-                      <p><span>{{totalVendorCurrentAdditionyoyYear | number :'1.2-2'}} |</span><span>
-                        {{totalVendorGrowthCurrentAdditionyoyYearPercent | number :'1.2-2'}}
+                      <p><span>{{decimalFormat(totalVendorCurrentAdditionyoyYear)}} |</span><span>
+                        {{decimalFormat(totalVendorGrowthCurrentAdditionyoyYearPercent)}}
                         %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl22}}">
 
                       </p>
-                      <p><span>{{totalVendorAdditionyoyYear | number :'1.2-2'}} |</span><span>
-                        {{VendorAddtionYoyPercentage | number :'1.2-2'}}
+                      <p><span>{{decimalFormat(totalVendorAdditionyoyYear) }} |</span><span>
+                        {{decimalFormat(VendorAddtionYoyPercentage)}}
                         %</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl14}}">
 
@@ -1906,14 +1906,14 @@
                     <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                     <div>
                       <p class="yearSon">Month ({{monthName}})</p>
-                      <p><span>{{currentVendorAttritionYear | number :'1.2-2'}} |</span><span>
-                        {{currentVendorAttritionPercentage | number :'1.2-2'}}
+                      <p><span>{{decimalFormat(currentVendorAttritionYear)}} |</span><span>
+                        {{decimalFormat(currentVendorAttritionPercentage) }}
                         %
                         <img src="{{imgUrl16}}">
 
                       </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span></p>
-                      <p><span>{{totalVendorattritionYear | number :'1.2-2'}} |</span><span>
-                        {{VendorAttritionPercentage | number :'1.2-2'}}
+                      <p><span>{{decimalFormat(totalVendorattritionYear) }} |</span><span>
+                        {{decimalFormat(VendorAttritionPercentage) }}
                         %
                         <img src="{{imgUrl15}}">
 
@@ -1922,14 +1922,14 @@
                     </div>
                     <div>
                       <p class="yearSon">YOY</p>
-                      <p><span>{{totalVendorCurrentAttritionyoyYear | number :'1.2-2'}} |</span><span>
-                        {{totalVendorCurrentGrowthAttritionyoyYearPercent | number :'1.2-2'}}
+                      <p><span>{{decimalFormat(totalVendorCurrentAttritionyoyYear) }} |</span><span>
+                        {{decimalFormat(totalVendorCurrentGrowthAttritionyoyYearPercent)}}
                         %
                         <img src="{{imgUrl24}}">
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span></p>
-                      <p><span>{{totalVendorAttritionyoyYear | number :'1.2-2'}} |</span><span>
-                        {{currentVendorAttritionYoyPercentage | number :'1.2-2'}}
+                      <p><span>{{decimalFormat(totalVendorAttritionyoyYear) }} |</span><span>
+                        {{decimalFormat(currentVendorAttritionYoyPercentage)}}
                         %
                         <img src="{{imgUrl17}}">
 
@@ -2274,7 +2274,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#projectpl" role="tab">Project P & L</a>
+                <a class="nav-link" data-toggle="tab" (click)="pandlCallMethod()" href="#projectpl" role="tab">Project P & L</a>
               </li>
 
 
@@ -2329,12 +2329,12 @@
                           <div class="YearValue"><p>Revenue</p><p>Cost</p></div>
                           <div>
                             <p class="yearSon">Month ({{monthName}})</p>
-                            <p><span>{{revenue}} |</span><span>{{revenuePercentageGrowthPercent  | number :'1.2-2'}}%</span>
+                            <p><span>{{currencyName}}{{revenue}} |</span><span>{{revenuePercentageGrowthPercent  | number :'1.2-2'}}%</span>
                               <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgrevenuePercentageGrowthPercent}}">
 
                             </p>
-                            <p><span>{{cost}} |</span><span>{{+costPercentageGrowthValue  | number :'1.2-2'}}%</span>
+                            <p><span>{{currencyName}}{{cost}} |</span><span>{{+costPercentageGrowthValue  | number :'1.2-2'}}%</span>
                               <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgcostPercentageGrowthValue}}">
 
@@ -2342,13 +2342,13 @@
                           </div>
                           <div>
                             <p class="yearSon">YOY</p>
-                            <p><span>{{revenueCostTotalYoy}} |</span><span>{{revenueCostTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
+                            <p><span>{{currencyName}}{{revenueCostTotalYoy | number :'1.2-2'}} |</span><span>{{revenueCostTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
                               <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgrevenueCostTotalYoyPercentGrowth}}">
 
                             </p>
 
-                            <p><span>{{costYoyYear | number :'1.2-2'}} |</span><span>{{costYoyYearPercentGrowth  | number :'1.2-2'}}%</span>
+                            <p><span>{{currencyName}}{{costYoyYear | number :'1.2-2'}} |</span><span>{{costYoyYearPercentGrowth  | number :'1.2-2'}}%</span>
                               <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgcostYoyYearPercentGrowth}}">
 
@@ -2427,8 +2427,8 @@
                               </p>
                             </div>
                             <div>
-                              <p class="yearSon">YOY</p>
-                              <p><span>{{venderYoyYear  | number :'1.2-2'}} |</span><span>{{venderYoyYearPercentGrowth  | number :'1.2-2'}}%</span>
+                              <p  class="yearSon">YOY</p>
+                              <p><span>{{venderYoyYear  }} |</span><span>{{venderYoyYearPercentGrowth  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgvenderYoyYearPercentGrowth}}">
 
@@ -2510,13 +2510,13 @@
                             </div>
                             <div>
                               <p class="yearSon">YOY</p>
-                              <p><span>{{nonBillableResourceTotalYoy  | number :'1.2-2'}} |</span><span>
+                              <p><span>{{nonBillableResourceTotalYoy  }} |</span><span>
                                 {{nonBillableResourceTotalYoyPercentGrowth  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgnonBillableResourceTotalYoyPercentGrowth}}">
 
                               </p>
-                              <p><span>{{nonBillableYoyYear  | number :'1.2-2'}} |</span><span>
+                              <p><span>{{nonBillableYoyYear  }} |</span><span>
                                 {{nonBillableYoyYearPercentGrowth  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgnonBillableYoyYearPercentGrowth}}">
@@ -3234,7 +3234,7 @@
                         <div class="boxExpense boxExpensePL">
 
                           <div class="expenseValue expenseValue1">
-                            <div class="YearValue YearValuePL"><p># Project</p><p>{{currencyName}}Project</p><p>Avg. Revenue</p><p>Avg. Tenure</p></div>
+                            <div class="YearValue YearValuePL"><p># Project</p><p>Project Revenue</p><p>Avg. Revenue Project</p><p>Avg. Tenure</p></div>
                             <div>
                               <p class="yearSon">{{plcurrentYear}}</p>
                               <p><span>{{projectCostCurrentYear | number :'1.2-2'}} |</span><span>
@@ -3243,7 +3243,7 @@
                           <img src="{{projectCostCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectCostInDollarCurrentYear | number :'1.2-2'}}|
+                              <p><span>{{currencyName}}{{projectCostInDollarCurrentYear | number :'1.2-2'}}|
 
                               </span><span>{{projectCostInDollarCurrentYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
@@ -3267,7 +3267,7 @@
                           <img src="{{projectCostPreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{projectCostInDollarPerviousYear  | number :'1.2-2'}} |</span><span>
+                              <p><span>{{currencyName}}{{projectCostInDollarPerviousYear  | number :'1.2-2'}} |</span><span>
                                 {{projectCostInDollarPreviousYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
@@ -3367,7 +3367,7 @@
                       <div class="table-responsive tableBorders" style="display: inline-block;">
 
 
-                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectDetailPAndLGridList' rowHeight='38' [allowSelection]='true'
+                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectDetailPAndLGridListAfter' rowHeight='38' [allowSelection]='true'
               [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
               [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                [allowPaging]='true' [allowExcelExport]='true' >
@@ -3393,9 +3393,9 @@
                     <ng-template #template let-data>
                       <div class="progress" >
 
-                        <div class="progress-bar setBarMargin progress-bar-warning" role="progressbar" style="width:{{data.margin}}%">
+                        <div class=" setBarMargin " role="progressbar" style="width:{{data.margin}}%">
                       </div>
-                        <div   class="progress-bar getBarMargin progress-bar-danger" role="progressbar" style="width:100-{{data.margin}}%">
+                        <div   class=" getBarMargin " role="progressbar" style="width:100-{{data.margin}}%">
                           <!-- --Non-Billable:{{data.V_Billable}} -->
                         </div>
                       <!-- </div> -->

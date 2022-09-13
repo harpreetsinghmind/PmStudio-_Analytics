@@ -1087,10 +1087,10 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     width: 8em;
   }
   .progress-bar {
-    animation-duration: 3s;
+    //animation-duration: 3s;
     animation-name: width;
   //  background-image: linear-gradient(to right, red, blue);
-    background-size: 24em 0.25em;
+   // background-size: 24em 0.25em;
     height: 100%;
     position: relative;
   }
@@ -1170,7 +1170,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
 }
   .setBarMargin{
-    //width: 50px;
+   
     background-color: red;
   }
   .getBarMargin{

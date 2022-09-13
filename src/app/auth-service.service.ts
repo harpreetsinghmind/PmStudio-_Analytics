@@ -127,7 +127,9 @@ export class AuthServiceService {
 
   Decimalformat:any;
   DecimalFormat(datas:string) {
+
     this.Decimalformat = this.getdecimalFormat();
+    this.Decimalformat='2'
     if (this.Decimalformat=='0')
     {return this.decimalpipe.transform(datas, '1.0-0')}
     if (this.Decimalformat=='1')

@@ -202,8 +202,21 @@ timeSheetChangeValue(e)
   actwk3
   actwk4
   actwk5
+  
+
+decimalFormat(data:any){
+  if(data ==undefined)
+  {
+
+  }
+  else{
+  debugger
 
 
+  }
+  return this.authServiceService.DecimalFormat(data)
+
+}
   datades = {
     chart: {
       "numberPrefix": "",
@@ -4562,7 +4575,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
     {
       seriesname: "Projects",
     //  plottooltext: "Employee: $dataValue",
-      data:this.numberProjectInCostLeave
+      data:this.venderNumberInCostLeave
     },
 
     {
@@ -4698,7 +4711,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
       data:this.dataProjectProgressList
     },
     {
-      seriesname: "Cost",
+      seriesname: "Cost %",
       parentyaxis: "S",
       renderas: "line",
     //  plottooltext: "Employee: $dataValue",
@@ -8173,9 +8186,11 @@ if(this.checkOverDue==true)
   this.getProjectProjectDetailPAndLGridList()
  }
   getListProjectDetailPAndLGridList:any=[]
+  getListProjectDetailPAndLGridListAfter:any=[]
   getProjectProjectDetailPAndLGridList()
   {
     this.getListProjectDetailPAndLGridList=[]
+    this.getListProjectDetailPAndLGridListAfter=[]
     this.Loader=true
     if(this.pAndLType==undefined ||this.pAndLType=="" || this.pAndLType==null)
     {
@@ -8222,7 +8237,7 @@ this.getListProjectDetailPAndLGridList[i].margin=0
       }
       this.getListProjectDetailPAndLGridList[i].isActive=isActive
     }
-  
+  this.getListProjectDetailPAndLGridListAfter=this.getListProjectDetailPAndLGridList
     })
   }
   customerExpenseCurrentYearGrowth:any
@@ -10327,6 +10342,12 @@ if(this.checkOverDue==true)
 }
 
   }
+  pandlCallMethod()
+  {
+    this.getProjectProjectDetailPAndLGridList()
+    
+  }
+
   getResourcesDetail:any=[]
   category:any=[]
   employeeList:any=[]
