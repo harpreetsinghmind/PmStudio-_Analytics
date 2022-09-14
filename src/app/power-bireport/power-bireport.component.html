@@ -3249,7 +3249,7 @@
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{newavgRevenueCurrentYear | number :'1.2-2'}}
+                              <p><span>{{currencyName}}{{newavgRevenueCurrentYear | number :'1.2-2'}}
                                  |</span><span>{{avgRevenueCurrentYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
 
@@ -3273,7 +3273,7 @@
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{newavgRevenuePreviousYear  | number :'1.2-2'}} |</span><span>
+                              <p><span>{{currencyName}}{{newavgRevenuePreviousYear  | number :'1.2-2'}} |</span><span>
                                 {{avgRevenuePreviousYearGrowthPercent  | number :'1.2-2' }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenuePreviousYearGrowthPercentimg}}">
@@ -3302,7 +3302,7 @@
                             <div class="YearValue YearValuePL"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>
                             <div>
                               <p class="yearSon">{{plcurrentYear}}</p>
-                              <p><span>{{totalCostCurrentYear  | number :'1.2-2'}} |</span>
+                              <p><span>{{currencyName}}{{totalCostCurrentYear  | number :'1.2-2'}} |</span>
                                 <span>{{totalCostCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3312,7 +3312,7 @@
 
 
                               </p>
-                              <p><span>{{newnetRevenueCurrentYear  | number :'1.2-2'}} |</span>
+                              <p><span>{{currencyName}}{{newnetRevenueCurrentYear  | number :'1.2-2'}} |</span>
                                 <span>{{netRevenueCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3320,7 +3320,7 @@
                           <img src="{{netRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgMarginCurrentYear  | number :'1.2-2'}} |</span>
+                              <p><span>{{currencyName}}{{avgMarginCurrentYear  | number :'1.2-2'}} |</span>
                                 <span>{{avgMarginCurrentYearGrowthPercent  | number :'1.2-2'}}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginCurrentYearGrowthPercentimg}}">
@@ -3335,18 +3335,18 @@
                             </div>
                             <div>
                               <p class="yearSon">{{plpreviousYear}}</p>
-                              <p><span>{{totalCostPreviouYear  | number :'1.2-2'}} |</span>
+                              <p><span>{{currencyName}}{{totalCostPreviouYear  | number :'1.2-2'}} |</span>
                                 <span>{{totalCostPreviouYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalCostPreviouYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{newnetRevenuePreviousYear | number :'1.2-2'}} |
+                              <p><span>{{currencyName}}{{newnetRevenuePreviousYear | number :'1.2-2'}} |
 
                               </span><span>{{netRevenuePreviousYearGrowthPercent | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{netRevenuePreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{avgMarginPreviousYear  | number :'1.2-2'}}
+                              <p><span>{{currencyName}}{{avgMarginPreviousYear  | number :'1.2-2'}}
                                 |</span><span>{{avgMarginPreviousYearGrowthPercent  | number :'1.2-2'}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginPreviousYearGrowthPercentimg}}">
 
@@ -3407,7 +3407,7 @@
                     </ng-template>
                   </e-column>
 
-                  <e-column field='isActive' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column field='isActive' headerText='Company Avg Margin vs Project Margin' [filter]='filter' clipMode='EllipsisWithTooltip' textAlign="center">
 
                     <ng-template #template let-data>
                       <img *ngIf="data.isActive" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
