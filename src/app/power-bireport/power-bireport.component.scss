@@ -1052,7 +1052,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
 
 
-
+.pdr-20{ padding-right: 20px; padding-left: 10px;}
 
 
     .peopleheight .e-content {
@@ -1261,7 +1261,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     padding: 20px;
     background: #fff;
     border-radius: 5px;
-    width: 30%;
+    width: 40%;
     position: relative;
     transition: all 5s ease-in-out;
   }
@@ -1289,7 +1289,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     max-height: 30%;
     overflow: auto;
   }
-  .empListResource{ margin: 3px 0;}
+  .empListResource{ margin: 3px 0;font-size: 14px;}
   .checkFilterRow{ display: flex; justify-content: space-between; margin: 5px 0;}
   .spaceCol{ margin: 0 10px;}
   .checkFilterRow .form-control{ border-radius: 0;}
@@ -1331,6 +1331,15 @@ span.delayStatus {
   text-align: center;
   border-radius: 50%;
   padding: 2px;
+}
+.deviationAllTaskWrap ul li.active a{ background: #306cf6;
+  color: #fff;}
+  .resourceTable{ max-height: 400px !important; overflow-y: scroll !important;}
+@media screen and (max-width:1280px) {
+  .fontSmall p{ font-size: 11px; min-height: 37px !important;}
+  .fontSmall2 p{ font-size: 11px; }
+  .fontSmall .YearValue.YearValuePL{  padding-top: 37px;}
+  .fontSmall2 .YearValue{ padding-top: 31px;}
 }
 
 // .expenseValue.expenseValue1 div, .boxExpense.boxExpenseSpace div{width: 100%;}

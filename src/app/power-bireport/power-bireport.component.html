@@ -2800,7 +2800,7 @@
                                        <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.nonbillablePercent}}%">
                   {{data.nonBillablePer}}
                                      </div>
-                                       <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vnonbillablePercent}}%">
+                                       <div   class="progress-bar getBarBill progress-bar-danger pdr-20" role="progressbar" style="width:{{data.vnonbillablePercent}}%">
                           {{data.vNonBillable}}
                                        </div>
 
@@ -2892,7 +2892,7 @@
                                        <div class="progress-bar setBarMom progress-bar-warning" role="progressbar" style="width:{{data.momopenpercent}}%">
                                      {{data.momopen}}
                                      </div>
-                                       <div   class="progress-bar getBarMom progress-bar-danger" role="progressbar" style="width:{{data.momclosepercent}}%">
+                                       <div   class="progress-bar getBarMom progress-bar-danger pdr-20" role="progressbar" style="width:{{data.momclosepercent}}%">
                                     {{data.momclose}}
                                        </div>
 
@@ -2913,7 +2913,7 @@
                                        <div class="progress-bar setBarRoad progress-bar-warning" role="progressbar" style="width:{{data.roadblockopenpercent}}%">
                                         {{data.openRoadBlock}}
                                      </div>
-                                       <div   class="progress-bar getBarRoad progress-bar-danger" role="progressbar" style="width:{{data.roadblockclosepercent}}%">
+                                       <div   class="progress-bar getBarRoad progress-bar-danger pdr-20" role="progressbar" style="width:{{data.roadblockclosepercent}}%">
                                          {{data.closeRoadBlock}}
                                        </div>
                                        <!-- <div class="progress-bar petBarTime progress-bar-warning" role="progressbar" style="width:{{data.timerejectedpercent}}%">
@@ -3115,7 +3115,7 @@
 
 
 
-                    <div class="col-md-12 no-padding mobscroll" style="margin-top:15px">
+                    <div class="col-md-12 no-padding mobscroll deviationAllTaskWrap" style="margin-top:15px">
 
                       <ul class="nav nav-tabs" style="height: 33px; margin-top: 30px;">
                         <li class="active"><a data-target="#deviation" data-toggle="tab">Deviation</a></li>
@@ -3230,7 +3230,7 @@
                         </select>
                       </div>
 
-                      <div class="col-md-12 no-padding rateRow">
+                      <div class="col-md-12 no-padding rateRow fontSmall">
                         <div class="boxExpense boxExpensePL">
 
                           <div class="expenseValue expenseValue1">
@@ -3444,9 +3444,9 @@
               <li class="nav-item active">
                 <a class="nav-link active" data-toggle="tab" href="#overviewexpense" role="tab">Overview</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#actionin" role="tab">Actionable Insights</a>
-              </li>
+              </li> -->
 
 
 
@@ -3455,7 +3455,7 @@
            <div class="tab-content">
              <div class="tab-pane active" id="overviewexpense" role="tabpanel">
               <div class="card-body">
-                <div class="col-md-12 no-padding rateRow">
+                <div class="col-md-12 no-padding rateRow fontSmall2">
                   <div class="boxExpense">
                     <h4>Total Expense & Growth Rate</h4>
                     <div class="expenseValue expenseValue22">
@@ -5149,7 +5149,7 @@
         </div>
         <a class="close" (click)="popup = false" style="top: 10px;right: 20px;">&times;</a>
       </div>
-        <div class="content">
+        <div class="content resourceTable">
           <table class="resTable">
             <tr>
               <td>
