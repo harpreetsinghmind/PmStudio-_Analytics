@@ -2195,20 +2195,23 @@
             </e-column>
              <e-column field='totalTenure' headerText='Total Tenture' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'>
               <!-- <ng-template #template let-data>
-                {{dateformat(data.totalTenure)}}
+                {{Dateformat(data.totalTenure)}}
               </ng-template> -->
             </e-column>
-              <e-column field='joiningDate'  type='date'  [format]="format" headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'>
-
-                   <!-- <ng-template #template let-data>
-                {{dateformat(data.joiningDate)}}
-              </ng-template> -->
+              <e-column field='joiningDate'  type='date' headerText='Joining Date' [filter]='filter' clipMode='EllipsisWithTooltip'width="150" textAlign='Center'>
+                <ng-template #template let-data>
+                {{Dateformat(data.joiningDate)}}
+              </ng-template>
               </e-column>
-              <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'></e-column>
+              <e-column field='salaryCostCompnany' headerText='Salary/Cost to Company' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'>
+                <ng-template #template let-data>
+                  {{decimalFormat(data.salaryCostCompnany)}}
+                </ng-template>
+              </e-column>
 
              <e-column field='totalProject' headerText='Total Project' [filter]='filter' clipMode='EllipsisWithTooltip' width="150" textAlign='Center'>
                 <ng-template #template let-data>
-                  {{(data.totalProject)}}
+                  {{data.totalProject}}
                 </ng-template>
               </e-column>
 

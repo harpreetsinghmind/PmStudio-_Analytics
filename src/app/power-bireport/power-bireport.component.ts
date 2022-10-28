@@ -7,6 +7,7 @@ import { ToasterService } from '../toaster/toaster.service';
 import { GlobalServiceService } from '../global-service.service';
 import { AuthServiceService } from '../auth-service.service';
 import { CalendarComponent } from "@syncfusion/ej2-angular-calendars";
+import * as CryptoJS from 'crypto-js'
 
 import { min } from 'moment';
 import { DatePipe } from '@angular/common'
@@ -17,12 +18,9 @@ import { environment } from 'src/environments/environment';
 
 import { debug } from 'console';
 import { of } from 'rxjs';
-
-
-
+import { ActivatedRoute } from '@angular/router';
 
 type AOA = any[][];
-
 
 @Component({
   selector: 'app-power-bireport',
@@ -31,6 +29,7 @@ type AOA = any[][];
 })
 export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
+
   @ViewChild('overviewgrid')
   public grids: GridComponent;
   @ViewChild('overviewgridInsightmom')
@@ -204,19 +203,10 @@ timeSheetChangeValue(e)
   actwk5
   
 
-decimalFormat(data:any){
-  if(data ==undefined)
-  {
-
+  decimalFormat(datas) {
+    return this.authServiceService.DecimalFormat(datas);
   }
-  else{
-  debugger
 
-
-  }
-  return this.authServiceService.DecimalFormat(data)
-
-}
   datades = {
     chart: {
       "numberPrefix": "",
@@ -2154,7 +2144,7 @@ decimalFormat(data:any){
 
   fromdateFirst: any;
   fromdateLast: any;
-  CmpCode: any;
+  CmpCode: any =  0;
   public filter: Object;
   public filterSettings: Object;
   public selectionSettings: Object;
@@ -2163,15 +2153,28 @@ decimalFormat(data:any){
   public item: number[] = [1, 2, 3, 4, 5];
   roleIds: any;
   UserType: any
+  Token:any;
 
 
 
   constructor(
    private  HTTP: GlobalServiceService,
    private datepipe:DatePipe,
+   private route: ActivatedRoute,
    private authServiceService:AuthServiceService
 
-  ) { }
+  ) {
+    this.route.queryParams.subscribe(params => {
+      this.Token = params['token'];
+      debugger
+      let val = params['UserId'].replace(" ", "+")
+      let data  = CryptoJS.AES.decrypt(val, environment.AnalyticKey);
+      let UserId = data.toString(CryptoJS.enc.Utf8);
+      this.userId= UserId;
+  });
+  this.HTTP.GetLoginusers(this.userId, null, this.Token)
+
+   }
   setDepartment:any
   departmentList:any=[]
   onChange(e)
@@ -2232,33 +2235,31 @@ decimalFormat(data:any){
    this.pbiActionableCheckInCheckOutList()
    this.pbiActionableInsightList()
   }
+  dateFormat
   currencyName:any="₹"
   ngOnInit(): void {
-   
+   debugger
     this.departmentId=0
     this.setDepartment=0
-this.CmpCode="1"
-this.currencyName="₹"
-this.checkMom=true
-//this.departmentList=[{depId:'1',depName:'it'},{depId:'2',depName:'Admin'}]
-let latest_date =this. datepipe. transform(new Date(), 'yyyy-MM-dd');
-this.setDate=latest_date
-let getdate = new Date(); // 2020-06-21.
-this.getDate=latest_date
-let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
-this.monthName=shortMonth
-this.calendarName=this.monthName+''+getdate.getFullYear()
-
+    this.currencyName="₹"
+    this.CmpCode = this.authServiceService.getcompanyCode();
+    this.dateFormat= this.authServiceService.getdateFormat()
+    this.checkMom=true
+    let latest_date =this. datepipe.transform(new Date(), 'yyyy-MM-dd');
+    this.setDate=latest_date
+    let getdate = new Date(); 
+    this.getDate=latest_date
+    let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
+    this.monthName=shortMonth
+    this.calendarName=this.monthName+''+getdate.getFullYear()
     this.filterSettings = { type: "Menu" };
     this.filter = { type: "CheckBox" };
+  
     this.Planwk1 = [
       {
         field: 'openTask',
         headerText: 'Open',
-        textAlign:"Center",
-
-
-
+        textAlign:"Center"
       },
       {
         field: 'pendingTask',
@@ -2340,58 +2341,57 @@ this.calendarName=this.monthName+''+getdate.getFullYear()
       },
     ];
     this.getpbiExpenseProjectCategory()
-this.getpbiExpenseDeployee()
-this.getpbiExpenseBreackUp()
-this.getPbiBuisinessRevenueList()
-this.getPbiBuisinessAvgRevenueList()
-this.getPbiBuisinessExpenseAndHeadCountAndProjectList()
-this.getpbiExpenseDepartment()
-this.getpbiExpense()
+    this.getpbiExpenseDeployee()
+    this.getpbiExpenseBreackUp()
+    this.getPbiBuisinessRevenueList()
+    this.getPbiBuisinessAvgRevenueList()
+    this.getPbiBuisinessExpenseAndHeadCountAndProjectList()
+    this.getpbiExpenseDepartment()
+    this.getpbiExpense()
     this.getpbiPeopleDetailList()
-this.getpbiPeopleDesignation()
+    this.getpbiPeopleDesignation()
+    this.getpbiSpenderWise()
+    this.getpbiCustomerWise()
+    this.getpbiPeopleDepartment()
+    this.getpbiPeopleLocation()
+    this.getpbiPeopleAge()
+    this.getpbiPeopleJoband()
+    this.getpbiPeopleGender()
+    this.getpbiPeopleEmployeeVsVendor()
+    this.getpbiPeopleEmployeeAddition()
+    this.getpbiPeopleEmployeeAttrition()
+    this.getpbiPeopleEmployeePerformance()
+    this.getpbiPeopleTenureWiseEmployee()
+    this.getpbiProjectDetailList()
+    this.getpbiPeopleResources()
+    this.getpbiProjectEmployeeVsVendor()
+    this.getpbiProjecDeployeeVsBench()
+    this.getpbiProjecDeployeeVsBenchBill()
+    this.getpbiExpenseReportList()
+    this.getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense()
+    this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
+    this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
 
-this.getpbiSpenderWise()
-this.getpbiCustomerWise()
-this.getpbiPeopleDepartment()
-this.getpbiPeopleLocation()
-this.getpbiPeopleAge()
-this.getpbiPeopleJoband()
-this.getpbiPeopleGender()
-this.getpbiPeopleEmployeeVsVendor()
-this.getpbiPeopleEmployeeAddition()
-this.getpbiPeopleEmployeeAttrition()
-this.getpbiPeopleEmployeePerformance()
-this.getpbiPeopleTenureWiseEmployee()
-this.getpbiProjectDetailList()
-this.getpbiPeopleResources()
-this.getpbiProjectEmployeeVsVendor()
-this.getpbiProjecDeployeeVsBench()
-this.getpbiProjecDeployeeVsBenchBill()
-this.getpbiExpenseReportList()
-this.getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense()
-this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
-this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
-
-this.getProjectPortFoliyo()
-//this.getProjectProjectDetailRevnueAndCost()
-//this.getPbiProjectDetailProgressAndCost()
-//this.getpbiProjectDetailRoadblock()
-//this.getpbiProjectDevaition()
-//this.getpbiProjectDevaitionAllTask()
-this.getProjectProjectDetailPAndLGridList()
-this.getpbiProjectDetailPAndLList()
-this.getProjectExpenseDetailList()
-this.getProjectBuisinessProjectList()
-this.getProjectBuisinessPeopleList()
-this.getProjectBuisinessExpenseList()
-this.getPbiProjectInNumber()
-this.getPbiProjectInNumberInCost()
-this.getPbiProjectInNumberInCostLeave()
-this.getpbiExpenseProject()
-this.getDepartmentListDropdown()
-this.pbiActionableTimesheetList()
-this.pbiActionableCheckInCheckOutList()
-this.pbiActionableInsightList()
+    this.getProjectPortFoliyo()
+    //this.getProjectProjectDetailRevnueAndCost()
+    //this.getPbiProjectDetailProgressAndCost()
+    //this.getpbiProjectDetailRoadblock()
+    //this.getpbiProjectDevaition()
+    //this.getpbiProjectDevaitionAllTask()
+    this.getProjectProjectDetailPAndLGridList()
+    this.getpbiProjectDetailPAndLList()
+    this.getProjectExpenseDetailList()
+    this.getProjectBuisinessProjectList()
+    this.getProjectBuisinessPeopleList()
+    this.getProjectBuisinessExpenseList()
+    this.getPbiProjectInNumber()
+    this.getPbiProjectInNumberInCost()
+    this.getPbiProjectInNumberInCostLeave()
+    this.getpbiExpenseProject()
+    this.getDepartmentListDropdown()
+    this.pbiActionableTimesheetList()
+    this.pbiActionableCheckInCheckOutList()
+    this.pbiActionableInsightList()
   }
   actionComplete(args: any) {
     if(this.actionGridRefresh==true)
@@ -2419,13 +2419,13 @@ this.pbiActionableInsightList()
           this.gridset.getColumnByField('thirty').visible = false;
           this.gridset.getColumnByField('twentynine').visible = false;
   
-  this.actionGridRefresh=false
+          this.actionGridRefresh=false
   
           //this.gridset.getColumnByField(number1).visible = false;
-  
           //this.gridset.getColumnByField(number2).visible = false;
-        //  this.grids.hideColumns([number, number1,number2]); 
+          //this.grids.hideColumns([number, number1,number2]); 
           //this.grids.folu
+
           this.gridset.refreshColumns();
           this.gridset.refresh()
   
@@ -3960,10 +3960,6 @@ for(var i = 0; i < this.actionableInsightList.length; i++)
   obj['thirty'] = obj[30];
    obj['thirtyone'] = obj[31];
 
-
-
-
-
    delete(obj[1]);
    delete(obj[2]);
    delete(obj[3]);
@@ -4011,23 +4007,20 @@ if(this.actionableInsightList.length>0)
   })
 }
 
-  getDepartmentListDropdown()
-  {
+  getDepartmentListDropdown(){
     this.Loader=true
     this.HTTP.getpbiDepartmentList(this.setDate,this.CmpCode).subscribe(arg => {
-
       this.departmentList=  arg.data.table
-  console.log('departmentList',arg.data.table)
-
+      console.log('departmentList',arg.data.table)
       this.Loader=false
     })
   }
   getListProjectInNumber:any=[]
-month:any=[]
-numberProject:any=[]
-venderNumber:any=[]
-projectDetailNumber:any
-setProjectNumberList:any=[]
+  month:any=[]
+  numberProject:any=[]
+  venderNumber:any=[]
+  projectDetailNumber:any
+  setProjectNumberList:any=[]
 
   getPbiProjectInNumber(){
       let cmpcode=1
@@ -7571,29 +7564,21 @@ this.tentureDetails={
       })
   }
 
-  // dateformat(datas)
-  // {
-  //   return this.datePipe.transform(datas, 'dd/MM/yyyy')
 
-  // }
-  // DateFormat:any
-  // Dateformat(datas:string){
-  // //  this.DateFormat= this.getdateFormat();
-  // this.DateFormat= '-1'
-
-  //   if (this.DateFormat=='1')
-  //   {
-  //     return this.datePipe.transform(datas, 'MM/dd/yyyy')
-  //   }
-  //   if(this.DateFormat=='2')
-  //   {
-  //     return this.datePipe.transform(datas, 'dd/MM/yyyy')
-  //   }
-  //   if(this.DateFormat== '3')
-  //   {
-  //     return this.datePipe.transform(datas, 'yyyy/MM/dd')
-  //   }
-  // }
+  Dateformat(datas:string){
+    if (this.dateFormat=='1')
+    {
+      return this.datepipe.transform(datas, 'MM/dd/yyyy')
+    }
+    if(this.dateFormat=='2')
+    {
+      return this.datepipe.transform(datas, 'dd/MM/yyyy')
+    }
+    if(this.dateFormat== '3')
+    {
+      return this.datepipe.transform(datas, 'yyyy/MM/dd')
+    }
+  }
   getPerformanceDetail(data)
 {
 this.getProjectProjectDetailRevnueAndCost(data)

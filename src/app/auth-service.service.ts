@@ -58,6 +58,14 @@ export class AuthServiceService {
   setUserId(userId: string) {
     localStorage.setItem(btoa("userId"), btoa(userId));
   }
+  setcompanyCode(CmpCode: string) {
+    localStorage.setItem(btoa("companyCode"), btoa(CmpCode));
+  }
+  getcompanyCode() {
+    let ut = localStorage.getItem(btoa("companyCode"));
+    ut = ut === null ? ut : atob(ut);
+    return ut;
+  }
   getRoleId() {
     let un = localStorage.getItem(btoa("roleId"));
     un = un === null ? un : atob(un);
@@ -127,9 +135,7 @@ export class AuthServiceService {
 
   Decimalformat:any;
   DecimalFormat(datas:string) {
-
     this.Decimalformat = this.getdecimalFormat();
-    this.Decimalformat='2'
     if (this.Decimalformat=='0')
     {return this.decimalpipe.transform(datas, '1.0-0')}
     if (this.Decimalformat=='1')

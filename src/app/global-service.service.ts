@@ -4,6 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { AuthServiceService } from './auth-service.service';
 
 
 
@@ -11,8 +12,9 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class GlobalServiceService {
+  
 
-  constructor(private _http: Http,private httpClient: HttpClient,) {
+  constructor(private _http: Http,private httpClient: HttpClient, private authServiceService:AuthServiceService) {
 
 
    }
@@ -322,11 +324,11 @@ GetContainerBookingChart(Start, End,productname,pic,port): Observable<any> {
   // let token = this.authService.getToken();
   // headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-
   const URL ="https://demo.pm-studio.com/LGAPI/api/admin/GetContainerBookingChart?ProductName="+productname+"&PLC="+pic+"&Port="+port+"&StartDate="+Start+"&Enddate="+End;
   return this.httpClient.get(URL,{headers:headers})
     
 }
+
 GetL1L2RatioChart(Start, End, productname,pic,port): Observable<any> {
   const headers = new HttpHeaders();
   // let token = this.authService.getToken();
@@ -1127,5 +1129,19 @@ const URL=`${environment.apiUrl}pbiPeople/getpbiBuisnessExpenseAndHeadCountAndPr
   return this.httpClient.get(URL,{headers:headers})
  
  }
+
+ GetLoginusers(UserId, CmpCode, token){
+  const headers = new HttpHeaders();
+  headers.append('Authorization', `bearer ${token}`)
+  headers.append('Content-Type', 'application/json');
+  const URL=`${environment.apiUrl}/Admin/GetLoginusers?userid=`+UserId+`&CmpCode=`+CmpCode;
+  return this.httpClient.get(URL,{headers:headers}).subscribe((res:any) => {
+    this.authServiceService.setcompanyCode(res.data.table[0].companyCode); 
+    this.authServiceService.setUserId(UserId);
+    this.authServiceService.setdateFormat(res.data.table[0].dateFormat)
+    this.authServiceService.setdecimalFormat(res.data.table[0].decimalFormat);
+  })
+}
+
 }
 
