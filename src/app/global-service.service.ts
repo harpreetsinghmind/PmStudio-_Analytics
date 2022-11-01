@@ -1130,18 +1130,20 @@ const URL=`${environment.apiUrl}pbiPeople/getpbiBuisnessExpenseAndHeadCountAndPr
  
  }
 
- GetLoginusers(UserId, CmpCode, token){
+ GetLoginusers(UserId,CmpCode,token): Observable<any> {
   const headers = new HttpHeaders();
+  // let token = this.authService.getToken();
   headers.append('Authorization', `bearer ${token}`)
   headers.append('Content-Type', 'application/json');
-  const URL=`${environment.apiUrl}/Admin/GetLoginusers?userid=`+UserId+`&CmpCode=`+CmpCode;
-  return this.httpClient.get(URL,{headers:headers}).subscribe((res:any) => {
-    this.authServiceService.setcompanyCode(res.data.table[0].companyCode); 
-    this.authServiceService.setUserId(UserId);
-    this.authServiceService.setdateFormat(res.data.table[0].dateFormat)
-    this.authServiceService.setdecimalFormat(res.data.table[0].decimalFormat);
-  })
-}
+  const URL=`${environment.apiUrl}/Admin/GetLoginusers?userid=`+UserId+`&CmpCode=`+CmpCode
+  // const URL ="https://demo.pm-studio.com/api/api/pbiPeople/getpbiBuisnessExpenseAndHeadCountAndProjectList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+  //const URL ="http://localhost:63000/api/pbiPeople/getpbiBuisnessExpenseAndHeadCountAndProjectList?year="+year+"&cmpcode="+cmpcode+"&departmentid="+depid
+ 
+  return this.httpClient.get(URL,{headers:headers})
+ 
+ }
+
+
 
 }
 

@@ -2144,7 +2144,7 @@ timeSheetChangeValue(e)
 
   fromdateFirst: any;
   fromdateLast: any;
-  CmpCode: any =  0;
+  CmpCode: any =  undefined;
   public filter: Object;
   public filterSettings: Object;
   public selectionSettings: Object;
@@ -2167,12 +2167,13 @@ timeSheetChangeValue(e)
     this.route.queryParams.subscribe(params => {
       this.Token = params['token'];
       debugger
-      let val = params['UserId'].replace(" ", "+")
-      let data  = CryptoJS.AES.decrypt(val, environment.AnalyticKey);
-      let UserId = data.toString(CryptoJS.enc.Utf8);
-      this.userId= UserId;
+      let val = params['UserId']
+      // let data  = CryptoJS.AES.decrypt(val, environment.AnalyticKey);
+      // let UserId = data.toString(CryptoJS.enc.Utf8);
+      this.userId= val;
+    
   });
-  this.HTTP.GetLoginusers(this.userId, null, this.Token)
+
 
    }
   setDepartment:any
@@ -2238,12 +2239,10 @@ timeSheetChangeValue(e)
   dateFormat
   currencyName:any="₹"
   ngOnInit(): void {
-   debugger
+    debugger
     this.departmentId=0
     this.setDepartment=0
     this.currencyName="₹"
-    this.CmpCode = this.authServiceService.getcompanyCode();
-    this.dateFormat= this.authServiceService.getdateFormat()
     this.checkMom=true
     let latest_date =this. datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.setDate=latest_date
@@ -2340,58 +2339,69 @@ timeSheetChangeValue(e)
 
       },
     ];
-    this.getpbiExpenseProjectCategory()
-    this.getpbiExpenseDeployee()
-    this.getpbiExpenseBreackUp()
-    this.getPbiBuisinessRevenueList()
-    this.getPbiBuisinessAvgRevenueList()
-    this.getPbiBuisinessExpenseAndHeadCountAndProjectList()
-    this.getpbiExpenseDepartment()
-    this.getpbiExpense()
-    this.getpbiPeopleDetailList()
-    this.getpbiPeopleDesignation()
-    this.getpbiSpenderWise()
-    this.getpbiCustomerWise()
-    this.getpbiPeopleDepartment()
-    this.getpbiPeopleLocation()
-    this.getpbiPeopleAge()
-    this.getpbiPeopleJoband()
-    this.getpbiPeopleGender()
-    this.getpbiPeopleEmployeeVsVendor()
-    this.getpbiPeopleEmployeeAddition()
-    this.getpbiPeopleEmployeeAttrition()
-    this.getpbiPeopleEmployeePerformance()
-    this.getpbiPeopleTenureWiseEmployee()
-    this.getpbiProjectDetailList()
-    this.getpbiPeopleResources()
-    this.getpbiProjectEmployeeVsVendor()
-    this.getpbiProjecDeployeeVsBench()
-    this.getpbiProjecDeployeeVsBenchBill()
-    this.getpbiExpenseReportList()
-    this.getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense()
-    this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
-    this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
+    this.HTTP.GetLoginusers(this.userId, null, this.Token).subscribe(res =>{
+      this.CmpCode = res.data.table[0].companyCode;
+      this.Decimalformat = res.data.table[0].dateFormat;
+      this.dateFormat = res.data.table[0].dateFormat;
+  
+      this.getpbiExpenseProjectCategory()
+      this.getpbiExpenseDeployee()
+      this.getpbiExpenseBreackUp()
+      this.getPbiBuisinessRevenueList()
+      this.getPbiBuisinessAvgRevenueList()
+      this.getPbiBuisinessExpenseAndHeadCountAndProjectList()
+      this.getpbiExpenseDepartment()
+      this.getpbiExpense()
+      this.getpbiPeopleDetailList()
+      this.getpbiPeopleDesignation()
+      this.getpbiSpenderWise()
+      this.getpbiCustomerWise()
+      this.getpbiPeopleDepartment()
+      this.getpbiPeopleLocation()
+      this.getpbiPeopleAge()
+      this.getpbiPeopleJoband()
+      this.getpbiPeopleGender()
+      this.getpbiPeopleEmployeeVsVendor()
+      this.getpbiPeopleEmployeeAddition()
+      this.getpbiPeopleEmployeeAttrition()
+      this.getpbiPeopleEmployeePerformance()
+      this.getpbiPeopleTenureWiseEmployee()
+      this.getpbiProjectDetailList()
+      this.getpbiPeopleResources()
+      this.getpbiProjectEmployeeVsVendor()
+      this.getpbiProjecDeployeeVsBench()
+      this.getpbiProjecDeployeeVsBenchBill()
+      this.getpbiExpenseReportList()
+      this.getpbiProjecDeployeeVsBenchBillEmployeeCountVsExpense()
+      this.getpbiProjecDeployeeVsBenchBillProjectCountVsExpense()
+      this.getpbiProjecDeployeeVsBenchBillCustomerVsService()
+  
+      this.getProjectPortFoliyo()
+      //this.getProjectProjectDetailRevnueAndCost()
+      //this.getPbiProjectDetailProgressAndCost()
+      //this.getpbiProjectDetailRoadblock()
+      //this.getpbiProjectDevaition()
+      //this.getpbiProjectDevaitionAllTask()
+      this.getProjectProjectDetailPAndLGridList()
+      this.getpbiProjectDetailPAndLList()
+      this.getProjectExpenseDetailList()
+      this.getProjectBuisinessProjectList()
+      this.getProjectBuisinessPeopleList()
+      this.getProjectBuisinessExpenseList()
+      this.getPbiProjectInNumber()
+      this.getPbiProjectInNumberInCost()
+      this.getPbiProjectInNumberInCostLeave()
+      this.getpbiExpenseProject()
+      this.getDepartmentListDropdown()
+      this.pbiActionableTimesheetList()
+      this.pbiActionableCheckInCheckOutList()
+      this.pbiActionableInsightList()
+      this.authServiceService.setcompanyCode(res.data.table[0].companyCode); 
+      this.authServiceService.setUserId(this.userId);
+      this.authServiceService.setdateFormat(res.data.table[0].dateFormat)
+      this.authServiceService.setdecimalFormat(res.data.table[0].decimalFormat);
+    })
 
-    this.getProjectPortFoliyo()
-    //this.getProjectProjectDetailRevnueAndCost()
-    //this.getPbiProjectDetailProgressAndCost()
-    //this.getpbiProjectDetailRoadblock()
-    //this.getpbiProjectDevaition()
-    //this.getpbiProjectDevaitionAllTask()
-    this.getProjectProjectDetailPAndLGridList()
-    this.getpbiProjectDetailPAndLList()
-    this.getProjectExpenseDetailList()
-    this.getProjectBuisinessProjectList()
-    this.getProjectBuisinessPeopleList()
-    this.getProjectBuisinessExpenseList()
-    this.getPbiProjectInNumber()
-    this.getPbiProjectInNumberInCost()
-    this.getPbiProjectInNumberInCostLeave()
-    this.getpbiExpenseProject()
-    this.getDepartmentListDropdown()
-    this.pbiActionableTimesheetList()
-    this.pbiActionableCheckInCheckOutList()
-    this.pbiActionableInsightList()
   }
   actionComplete(args: any) {
     if(this.actionGridRefresh==true)
