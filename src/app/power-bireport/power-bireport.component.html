@@ -11,14 +11,14 @@
 
 <div class="jumbotron expensereport">
     <div class="reports-pages">
-      <div class="row report-row" style="padding: 5px 0;">
+      <div class="row report-row" style="padding: 8px 0;">
         <div class="col-md-9 no-padding" style="text-align: left;">
           <h4 class="title-new title-new-100">Analytics Report</h4>
         </div>
 
          <div class="col-md-3" style="text-align:right;display: flex; align-items: center;">
           <div class="form-group" style="width: 100%;">
-            <input type="date" [(ngModel)]="getDate" (change)="changeDate($event)" class="form-control">
+            <input type="date" [(ngModel)]="getDate" (change)="changeDate($event)" class="form-control homeDateFilter">
           </div>
            <button class="text-dark font-weight-bold" style="font-size: 13px;background: transparent;
            border: none;" (click)="openModal()"><img src="../../assets/img/23.png"></button>
@@ -1740,7 +1740,7 @@
                         </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgUrl2}}">
 
-                      </p> 
+                      </p>
 
 
                       </div>

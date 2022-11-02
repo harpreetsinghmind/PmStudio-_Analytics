@@ -1,6 +1,56 @@
-.logo-lg{width: 160px; margin-left: 0px;}
+.logo-lg{width: 150px; margin-left: 0px;}
 
 .dropdown-toggle::after{ display: none;}
 
 .dropdown-menu2 a{ padding: 5px 10px; color: #333; display: inline-block; width: 100%;}
 .dropdown-menu2 a:hover{ background-color: #e9ecef;}
+.analyticHeader{ margin: 0;
+  display: flex;
+  align-items: center;
+
+  padding: 5px 0;
+  position: fixed;
+  max-height: 100px;
+  z-index: 1030;
+  border-bottom: 4px solid #ececec;
+  background: #fff;
+  width: 100%;
+  top: 0;}
+
+  .notifyIcon{margin-right: 5px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px;}
+
+    .notifyIcon:hover{ background: #eaf6fe;}
+
+    .dropdown-menu2{ position: absolute;
+      inset: 0px auto auto 0px;
+      margin: 0px;
+      transform: translate(-107px, 40px);
+      padding: 0;
+      width: 420px;
+      left: auto;
+      right: 0;
+      box-shadow: 0 0 10px #e5e5e5;
+      border: 1px solid #eee;}
+
+      .currentdatetime{ display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top:1px;
+        border-right: 1px solid #ddd;
+        padding-right: 10px;
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    .dropdownUserDiv{    min-width: auto;
+      display: inline-flex;
+      border: 1px solid #ddd;
+      padding: 0;
+      height: 43px;
+      border-radius: 5px;
+      position: relative;
+
+      margin-left: 5px;}

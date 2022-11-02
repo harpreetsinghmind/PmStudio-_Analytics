@@ -1166,7 +1166,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
 }
   .setBarMargin{
-   
+
     background-color: red;
   }
   .getBarMargin{
@@ -1332,6 +1332,7 @@ span.delayStatus {
   border-radius: 50%;
   padding: 2px;
 }
+.homeDateFilter{ border-bottom: 1px solid #ccc !important; padding-left: 0;  border-radius: 0; border: none;}
 .deviationAllTaskWrap ul li.active a{ background: #306cf6;
   color: #fff;}
   .resourceTable{ max-height: 400px !important; overflow-y: scroll !important;}
