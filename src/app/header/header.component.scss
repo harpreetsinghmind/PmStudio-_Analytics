@@ -54,3 +54,30 @@
       position: relative;
 
       margin-left: 5px;}
+.myProfileDiv{    position: absolute;
+  inset: 0px auto auto 0px;
+  margin: 0px;
+ transform: inherit;
+  box-shadow: 0 0 10px #e5e5e5;
+  border: 1px solid #eee;
+  width: 285px;
+  right: 0;
+  left: auto;
+  top: 100%;
+  margin: 2px 0 0;padding: 0;}
+
+  .myProfileDiv li{ padding: 10px;}
+
+  .prof-img img{
+    border-radius: 50%;
+    width: 70px;
+    border: 1px solid #ddd;
+    padding: 2px;
+    height: 70px;}
+.UserProfileDataItem{ color: #565655; font-size: 14px;border-bottom: 2px solid #ddd;}
+.UserProfileDataItem p{ margin-bottom: 0;padding: 2px 3px;}
+.userName{ font-weight: 600; margin-top: 3px;}
+.userprofileBottomItem{    font-size: 15px;  color: #6f6f6e;}
+.userprofileBottomItem .signItem{padding: 5px 10px; display: flex; align-items: center;}
+.userprofileBottomItem img{ margin-right: 10px; width: 25px;}
+.signItem:hover { background-color: #ececec; cursor: pointer;}

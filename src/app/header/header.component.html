@@ -18,7 +18,7 @@
 
       </div> -->
 
-    <div class="col-md-6 text-right" style="text-align: right;">
+    <div class="col-md-6 text-right" style="text-align: right;padding: 0 3px;">
       <div class="text-end" style="display: flex;  align-items: center;  justify-content: end;">
 
           <div class="currentdatetime"><span _ngcontent-fgb-c2="" style="font-size: 14px;">Wed, Nov 2, 2022 12:00 PM</span></div>
@@ -51,11 +51,29 @@
               <img _ngcontent-fgb-c2="" style="width: 70px;height: 25px; margin-top: 4px;" src="https://demo.pm-studio.com/api//Uploads/companyLogo\10098_f1b427a9-ecc4-41c7-b649-3982c066eec6_04-07-2022-11-34-16.jpeg">
               <img src="../../assets/img/profile.png" style="width: 35px;margin: 0 0 0 8px;">
             </button>
-            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="https://app.pm-studio.com/#/expense/contactsupport">Contact Support</a></li>
-             <li><button class="dropdown-item" (click)="Logout()" >Log Out</button></li>
+             <ul class="dropdown-menu myProfileDiv" aria-labelledby="dropdownMenuButton1">
+              <li class="UserProfileDataItem">
+                <span class="prof-img"><img src="../../assets/img/profile.png"></span>
+                <p class="userName">Parvesh Kumar</p>
+                <p>parvesh@crgroup.co.in</p>
+                <p>User Id: 10098</p>
+              </li>
+             <li style="padding: 0px 0 15px;">
+              <div class="userprofileBottomItem">
+                <div class="signItem">
+                  <img src="../../assets/img/faq.png">
+                  <span>FAQ</span>
+                </div>
 
-            </ul> -->
+                <div class="signItem">
+                  <img src="../../assets/img/log.png">
+                  <span (click)="Logout()">Sign Out</span>
+                </div>
+
+              </div>
+             </li>
+
+            </ul>
           </div>
 
       </div>
