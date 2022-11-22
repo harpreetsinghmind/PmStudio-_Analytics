@@ -6,6 +6,8 @@ import { CommomServiceService } from '../commom-service.service';
 import { GlobalServiceService } from '../global-service.service';
 import { ToasterService } from '../toaster/toaster.service';
 import { AuthServiceService } from '../auth-service.service';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,11 @@ import { AuthServiceService } from '../auth-service.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  userName
+  userEmail
+  userComponyImage
+  UserImage
+  AppUrl
   constructor(private Http: GlobalServiceService,
     private router: Router,
      private toaster: ToasterService,
@@ -23,7 +29,13 @@ export class HeaderComponent implements OnInit {
      toggle='showed';
 usertype:any;
   ngOnInit(): void {
-    this.usertype=    this.auth.getRoleId()
+    this.AppUrl = environment.domainUrl
+    this.userId = this.auth.getUserId()
+    this.userName = this.auth.getUsername()
+    this.usertype   =   this.auth.getRoleId()
+    this.userEmail  =   this.auth.getUserEmail()
+    this.userComponyImage  =  environment.siteUrl+this.auth.getComponyImage()
+    this.UserImage  =   environment.siteUrl+this.auth.getUserImage()
     $(document).ready(function() {
       $(".sidebar-dropdown > a").click(function() {
         debugger;
@@ -77,9 +89,7 @@ usertype:any;
 
 
  
-  // closetoggle() {
-  //   this.display = "none";
-  // }
+ userId
 
 
   Logout(){

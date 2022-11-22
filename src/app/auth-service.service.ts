@@ -24,12 +24,42 @@ export class AuthServiceService {
     return this.currentUserSubject.value;
   }
 
-  setUsername(userName: string) {
-    localStorage.setItem(btoa("userName"), btoa(userName));
+  setUsername(data: string) {
+    localStorage.setItem(btoa("userName"), btoa(data));
+  }
+
+  setUserImage(data: string) {
+    localStorage.setItem(btoa("UserImage"), btoa(data));
+  }
+  setComponyImage(data: string) {
+    localStorage.setItem(btoa("ComponyImage"), btoa(data));
+  }
+  setUserEmail(data: string) {
+    localStorage.setItem(btoa("UserEmail"), btoa(data));
+  }
+  getUserImage() {
+    let un = localStorage.getItem(btoa("UserImage"));
+    un = un === null ? un : atob(un);
+    return un;
+  }
+  getComponyImage() {
+    let un = localStorage.getItem(btoa("ComponyImage"));
+    un = un === null ? un : atob(un);
+    return un;
+  }
+  getUserEmail() {
+    let un = localStorage.getItem(btoa("UserEmail"));
+    un = un === null ? un : atob(un);
+    return un;
   }
 
   getUserId() {
     let un = localStorage.getItem(btoa("userId"));
+    un = un === null ? un : atob(un);
+    return un;
+  }
+  getUsername() {
+    let un = localStorage.getItem(btoa("userName"));
     un = un === null ? un : atob(un);
     return un;
   }

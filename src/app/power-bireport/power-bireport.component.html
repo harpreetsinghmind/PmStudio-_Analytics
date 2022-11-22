@@ -2273,7 +2273,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail('10282')" role="tab">Project Details</a>
+                <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail(getListProjectPortfoliyo[0]?.projectid)" role="tab">Project Details</a>
               </li>
 
               <li class="nav-item">
@@ -2704,6 +2704,7 @@
                       </div>
 
                       <div class="table-responsive">
+      
                         <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectPortfoliyo' rowHeight='38' [allowSelection]='true'
                         [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
                         (queryCellInfo)='tooltipfor($event)'  (headerCellInfo)='headerCellInfo($event)'  [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'

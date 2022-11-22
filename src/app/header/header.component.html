@@ -48,26 +48,31 @@
 
           <div class="dropdown dropdownUserDiv" style="min-width: auto;">
             <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img _ngcontent-fgb-c2="" style="width: 70px;height: 25px; margin-top: 4px;" src="https://demo.pm-studio.com/api//Uploads/companyLogo\10098_f1b427a9-ecc4-41c7-b649-3982c066eec6_04-07-2022-11-34-16.jpeg">
-              <img src="../../assets/img/profile.png" style="width: 35px;margin: 0 0 0 8px;">
+              <img _ngcontent-fgb-c2="" style="width: 70px;height: 25px; margin-top: 4px;" [src]="userComponyImage">
+              <img [src]="UserImage" style="width: 35px;margin: 0 0 0 8px;">
             </button>
              <ul class="dropdown-menu myProfileDiv" aria-labelledby="dropdownMenuButton1">
               <li class="UserProfileDataItem">
-                <span class="prof-img"><img src="../../assets/img/profile.png"></span>
-                <p class="userName">Parvesh Kumar</p>
-                <p>parvesh@crgroup.co.in</p>
-                <p>User Id: 10098</p>
+                <span class="prof-img"><img [src]="UserImage"></span>
+                <p class="userName">{{userName}}</p>
+                <p>{{userEmail}}</p>
+                <p>User Id: {{userId}}</p>
               </li>
              <li style="padding: 0px 0 15px;">
               <div class="userprofileBottomItem">
                 <div class="signItem">
                   <img src="../../assets/img/faq.png">
-                  <span>FAQ</span>
+                  <span><a [href]="AppUrl+'#/expense/showfaq'">FAQ</a></span>
                 </div>
 
                 <div class="signItem">
-                  <img src="../../assets/img/log.png">
-                  <span (click)="Logout()">Sign Out</span>
+                  <img src="../../assets/img/on.png">
+                  <span >Onboarding Session</span>
+                </div>
+                
+                <div class="signItem">
+               
+                  <span >Your Portal is Currently in Deluxe plan</span>
                 </div>
 
               </div>

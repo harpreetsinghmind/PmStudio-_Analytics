@@ -19,6 +19,19 @@ p.context {
 
   }
 
+  .loader {
+
+    width: 110px;
+    height: 110px;
+    /* -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite; */
+    background-image: url(/assets/img/Logo/Load.gif); background-size: 100%;
+  }
+  
+  .loader-position h2{ color: #fff;
+    font-size: 24px;
+    text-align: center;}
+
   span.projectStatusbar{ background: #50cb9e; display: inline-block; width: 14px; height: 14px; border-radius: 50%; position: relative;
     margin-right: 6px; top: 3px;}
 

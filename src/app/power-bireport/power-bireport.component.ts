@@ -2398,6 +2398,10 @@ timeSheetChangeValue(e)
       this.pbiActionableInsightList()
       this.authServiceService.setcompanyCode(res.data.table[0].companyCode); 
       this.authServiceService.setUserId(this.userId);
+      this.authServiceService.setUsername(res.data.table[0].name)
+      this.authServiceService.setUserImage(res.data.table[0].userImage)
+      this.authServiceService.setComponyImage(res.data.table[0].logo)
+      this.authServiceService.setUserEmail(res.data.table[0].email)
       this.authServiceService.setdateFormat(res.data.table[0].dateFormat)
       this.authServiceService.setdecimalFormat(res.data.table[0].decimalFormat);
     })
