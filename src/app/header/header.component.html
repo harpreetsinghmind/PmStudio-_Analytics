@@ -65,15 +65,19 @@
                   <span><a [href]="AppUrl+'#/expense/showfaq'">FAQ</a></span>
                 </div>
 
-                <div class="signItem">
+                <div class="signItem" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   <img src="../../assets/img/on.png">
                   <span >Onboarding Session</span>
                 </div>
-                
+
                 <div class="signItem">
-               
+
                   <span >Your Portal is Currently in Deluxe plan</span>
                 </div>
+
+
+
+
 
               </div>
              </li>
@@ -92,3 +96,25 @@
 
 
 
+
+
+<!-- Modal -->
+<div class="modal fade analyticModal" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog" style="width:800px; max-width:800px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Onboarding Session</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span _ngcontent-qck-c2="" aria-hidden="true" class="close-icon">×</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: 0;">
+        <video style="width: 100%;" controls id="videoPlayer"  #videoPlayer>
+          <source  src="../assets/img/PM_Walkthrough_Latest.mp4" type="video/mp4" />
+          Browser not supported
+        </video>
+      </div>
+
+    </div>
+  </div>
+</div>
