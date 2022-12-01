@@ -2702,7 +2702,7 @@
                           <ul class="mandateItem">
                             <li><span class="circle1"></span>Vendor</li>
                             <li><span class="circle2"></span>Service Provider</li>
-                            <li><span class="circle3"></span>Total</li>
+                            <li><span class="circle3"></span>Pending</li>
                             <li><span class="circle4"></span>Approved</li>
                             <li><span class="circle5"></span>Pending</li>
                             <li><span class="circle6"></span>Open</li>
@@ -2876,13 +2876,13 @@
 
                                 <div class="progress" >
 
-                                       <div class="progress-bar setBarTime progress-bar-warning" role="progressbar" style="width:{{data.timeopenpercent}}%">
+                                       <div class="progress-bar setBarTime progress-bar-warning" role="progressbar" style="width:{{data.timeopenpercent}}%; font-size:9px;">
                                         {{data.timepending}}
                                      </div>
-                                       <div   class="progress-bar getBarTime progress-bar-danger" role="progressbar" style="width:{{data.timeclosepercent}}%">
+                                       <div   class="progress-bar getBarTime progress-bar-danger" role="progressbar" style="width:{{data.timeclosepercent}}%; font-size:9px;">
                                    {{data.timeapproved}}
                                        </div>
-                                       <div class="progress-bar petBarTime progress-bar-warning" role="progressbar" style="width:{{data.timerejectedpercent}}%">
+                                       <div class="progress-bar petBarTime progress-bar-warning" role="progressbar" style="width:{{data.timerejectedpercent}}%; font-size:9px;">
                                      {{data.timerejected}}
                                     </div>
 
@@ -3260,15 +3260,21 @@
                               </span><span>{{decimalFormat(projectCostInDollarCurrentYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
-                              </p>
+                              <!-- </p>
                               <p><span>{{currencyName}}{{decimalFormat(newavgRevenueCurrentYear)}}
                                  |</span><span>{{decimalFormat(avgRevenueCurrentYearGrowthPercent)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
 
+                              </p> -->
+                              <p><span>{{currencyName}}{{decimalFormat(currentYearResource)}} |</span><span>{{decimalFormat(currentYearResourcePercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                                <img src="{{currentYearResourcePercentGrowthimg}}">
+      
                               </p>
-                              <p><span>{{decimalFormat(newavgTenureCurrentYear)}}
-                                |</span><span>{{decimalFormat(avgTenureCurrentYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
-                          <img src="{{avgTenureCurrentYearGrowthPercentimg}}">
+                            
+                              <p><span>{{newavgTenureCurrentYear}}
+                                </span>
+                                <!-- <span>{{decimalFormat(avgTenureCurrentYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                          <img src="{{avgTenureCurrentYearGrowthPercentimg}}"> -->
 
                               </p>
                             </div>
@@ -3285,20 +3291,25 @@
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{currencyName}}{{decimalFormat(newavgRevenuePreviousYear)  }} |</span><span>
+                              <!-- <p><span>{{currencyName}}{{decimalFormat(newavgRevenuePreviousYear)  }} |</span><span>
                                 {{decimalFormat(avgRevenuePreviousYearGrowthPercent) }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenuePreviousYearGrowthPercentimg}}">
 
 
+                              </p> -->
+                              <p><span>{{currencyName}}{{decimalFormat(previousYearResource)}} |</span><span>{{decimalFormat(previousYearResourcePercentGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                                <img src="{{previousYearResourcePercentGrowthimg}}">
+
                               </p>
-                              <p><span>{{decimalFormat(newavgTenurePreviousYear)  }} |</span><span>
+                              <p><span>{{newavgTenurePreviousYear}} </span>
+                                <!-- <span>
                                 {{decimalFormat(avgTenurePreviousYearGrowthPercent) }}%</span>
 
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
-                                </span>
-                          <img src="{{avgTenurePreviousYearGrowthPercentimg}}">
+                                </span> -->
+                                <img src="{{avgTenurePreviousYearGrowthPercentimg}}">
 
 
                               </p>
@@ -3332,7 +3343,7 @@
                           <img src="{{netRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{currencyName}}{{(avgMarginCurrentYear) }} |</span>
+                              <p><span>{{currencyName}}{{decimalFormat(avgMarginCurrentYear) }} |</span>
                                 <span>{{decimalFormat(avgMarginCurrentYearGrowthPercent) }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginCurrentYearGrowthPercentimg}}">

@@ -5130,47 +5130,47 @@ else if(this.avgRevenuePreviousYearGrowthPercent<0){
   this.avgRevenuePreviousYearGrowthPercentimg=this.upUrl
 }
 this.avgTenureCurrentYear=this.getprojectDetailPAndLList[0].avgTenureCurrentYear
-this.newavgTenureCurrentYear=this.avgTenureCurrentYear/this.projectCostCurrentYear
+this.newavgTenureCurrentYear=this.avgTenureCurrentYear; ///this.projectCostCurrentYear
 
 this.avgTenureCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgTenureCurrentYearGrowth
 
 this.newavgTenureCurrentYearGrowth=this.avgTenureCurrentYearGrowth/this.projectCostCurrentYearGrowth
-this.avgTenureCurrentYearGrowthPercent=(this.newavgTenureCurrentYear-this.newavgTenureCurrentYearGrowth)*100/this.newavgTenureCurrentYearGrowth
-if(this.newavgTenureCurrentYearGrowth==0)
-{
-  this.avgTenureCurrentYearGrowthPercent=0
-}
-if(this.avgTenureCurrentYearGrowthPercent>0)
-{
-  this.avgTenureCurrentYearGrowthPercentimg=this.downUrl
-}
-else if(this.avgTenureCurrentYearGrowthPercent<0){
-  this.avgTenureCurrentYearGrowthPercentimg=this.upUrl
-}
+// this.avgTenureCurrentYearGrowthPercent=(this.newavgTenureCurrentYear-this.newavgTenureCurrentYearGrowth)*100/this.newavgTenureCurrentYearGrowth
+// if(this.newavgTenureCurrentYearGrowth==0)
+// {
+//   this.avgTenureCurrentYearGrowthPercent=0
+// }
+// if(this.avgTenureCurrentYearGrowthPercent>0)
+// {
+//   this.avgTenureCurrentYearGrowthPercentimg=this.downUrl
+// }
+// else if(this.avgTenureCurrentYearGrowthPercent<0){
+//   this.avgTenureCurrentYearGrowthPercentimg=this.upUrl
+// }
 this.avgTenurePreviousYear=this.getprojectDetailPAndLList[0].avgTenurePreviousYear
 
 this.avgTenurePreviousYearGrowth= this.getprojectDetailPAndLList[0].avgTenurePreviousYearGrowth
 
 
-this.newavgTenurePreviousYear=this.avgTenurePreviousYear/this.projectCostPreviousYear
-this.newavgTenurePreviousYearGrowth=this.avgTenurePreviousYearGrowth/this.projectCostInDollarPreviousYearGrowth
+this.newavgTenurePreviousYear= this.getprojectDetailPAndLList[0].projectCostPreviousYear
+this.newavgTenurePreviousYearGrowth=this.avgTenurePreviousYearGrowth;///this.projectCostInDollarPreviousYearGrowth
 if(this.projectCostInDollarPreviousYearGrowth==0)
 {
   this.newavgTenurePreviousYearGrowth=0
 }
-this.avgTenurePreviousYearGrowthPercent=(this.newavgTenurePreviousYear-this.newavgTenurePreviousYearGrowth)*100/this.newavgTenurePreviousYearGrowth
+// this.avgTenurePreviousYearGrowthPercent=(this.newavgTenurePreviousYear-this.newavgTenurePreviousYearGrowth)*100/this.newavgTenurePreviousYearGrowth
 
-if(this.newavgTenurePreviousYearGrowth==0)
-{
-  this.avgTenurePreviousYearGrowthPercent=0
-}
-if(this.avgTenurePreviousYearGrowthPercent>0)
-{
-  this.avgTenurePreviousYearGrowthPercentimg=this.downUrl
-}
-else if(this.avgTenurePreviousYearGrowthPercent<0){
-  this.avgTenurePreviousYearGrowthPercentimg=this.upUrl
-}
+// if(this.newavgTenurePreviousYearGrowth==0)
+// {
+//   this.avgTenurePreviousYearGrowthPercent=0
+// }
+// if(this.avgTenurePreviousYearGrowthPercent>0)
+// {
+//   this.avgTenurePreviousYearGrowthPercentimg=this.downUrl
+// }
+// else if(this.avgTenurePreviousYearGrowthPercent<0){
+//   this.avgTenurePreviousYearGrowthPercentimg=this.upUrl
+// }
 this.totalCostPreviouYear=this.getprojectDetailPAndLList[0].totalCostPreviouYear
 this.totalCostPreviouYearGrowth=this.getprojectDetailPAndLList[0].totalCostPreviouYearGrowth
 
@@ -7806,6 +7806,7 @@ else{
 }
 
     this.HTTP.getPbiProjectPortfoliyo(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
+      debugger
     this.getListProjectPortfoliyo=  arg.data.table
     console.log('getListProjectPortfoliyo',arg.data.table)
 
@@ -7968,7 +7969,7 @@ if(this.getListProjectPortfoliyo[i].timerejected==null || this.getListProjectPor
 }
 var total=Number(this.getListProjectPortfoliyo[i].timeapproved)+Number(this.getListProjectPortfoliyo[i].timepending)
 var totaltime=Number(this.getListProjectPortfoliyo[i].timerejected)+Number(this.getListProjectPortfoliyo[i].timepending)+Number(this.getListProjectPortfoliyo[i].timeapproved)
-var tooltiptime='Total:'+total+'<br/>Time Pending:'+Number(this.getListProjectPortfoliyo[i].timepending)+'<br/>Time Approved:'+Number(this.getListProjectPortfoliyo[i].timeapproved)+'<br/>Time Rejected:'+Number(this.getListProjectPortfoliyo[i].timerejected)
+var tooltiptime='Total:'+this.getListProjectPortfoliyo[i].totaltime+'<br/>Time Pending:'+this.getListProjectPortfoliyo[i].timepending+'<br/>Time Approved:'+this.getListProjectPortfoliyo[i].timeapproved+'<br/>Time Rejected:'+this.getListProjectPortfoliyo[i].timerejected
 
 this.getListProjectPortfoliyo[i].tooltiptime=tooltiptime
 let timeopenpercent= Number(this.getListProjectPortfoliyo[i].timepending)*100/totaltime
