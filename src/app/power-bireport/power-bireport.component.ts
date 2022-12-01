@@ -63,6 +63,141 @@ export class PowerBIReportComponent implements OnInit {
     { text: 'Michael', id: 5, groupId: 3, color: '#df5286' },
     { text: 'Root', id: 6, groupId: 3, color: '#00bdae' }
   ];
+
+  public TenureWiseEmployeeData = {
+    "chart": {
+        "theme": "fusion",
+        "caption": "Avg. Tenure Wise Employee Details",
+        "subcaption": "By Employees",
+        "xAxisName": "Months",
+        "YAxisName": "Employees years of experience",
+        "numberPrefix": " ",
+        "showmean": "1",
+        "showValue":1,
+        "legendBorderAlpha": "0",
+        "drawmeanconnector": "1",
+        "legendShadow": "0",
+        "legendPosition": "right",
+        "outlierIconColor": "#fff00f",
+        "showalloutliers": "1",
+        "showToolTip": "1",
+        "outliericonsides": "20",
+        "outliericonalpha": "40",
+        "outliericonshape": "triangle",
+        "outliericonradius": "4",
+        "showValues": "1",
+     
+    },
+  
+    "categories": [
+        {
+            "category": [
+                {
+                    "label": "Jan",
+                },
+                {
+                    "label": "Feb"
+                },
+                {
+                    "label": "Mar"
+                },
+                {
+                  "label": "Aprl"
+                },
+                {
+                    "label": "May"
+                },
+                {
+                    "label": "Jun"
+                },
+                {
+                    "label": "Jul"
+                },
+                {
+                    "label": "Aug"
+                },
+                {
+                    "label": "Sep"
+                },
+                {
+                    "label": "Oct"
+                },
+                {
+                    "label": "Nov"
+                },
+                {
+                    "label": "Dec"
+                }
+            ]
+        }
+    ],
+    "dataset": [
+        {
+            "seriesname": "Employees",
+            "lowerBoxColor": "#0075c2",
+            "upperBoxColor": "#1aaf5d",
+            "data": [
+                {
+                    min:"5",
+                    max:"15",
+                    q1:"5",
+                    q3:"15",
+                    median:"9",
+                    mean:"9",
+                    tooltext: "Above Average: 15 {Br} Average: 9 {Br} Below Average: 5"
+                },
+                {
+                  min:"3",
+                  max:"12",
+                  q1:"3",
+                  q3:"12",
+                  median:"8",
+                  mean:"8",
+                  tooltext: "Above Average: 12 {Br} Average: 8 {Br} Below Average: 3"
+              },
+                {
+                    "value": "1,1.5,0.2,4,3,0.5,6,0.8,0.5,2,0.6,1,3"
+                },
+                {
+                    "value": "1,1.5,0.2,2,3,1,6,3,0.5,2,0.6,1,3"
+                },
+                {
+                    "value": "1,0.1.5,0.2,4,3,1,6,5,0.5,2,0.6,0.1,3",
+                    "outliers": "9"
+                },
+                {
+                    "value": "1,1.5,2,4,3,1,6,10,0.5,2,0.6,1,3"
+                },
+                {
+                  outliers: "15,15,16,17,21",
+                  min:"0.2",
+                  max:"8",
+                  q1:"0.8",
+                  q3:"4",
+                  median:"2",
+                  mean:"2.68"
+              },
+              {
+                  "value": "1,1.5,0.2,4,3,1,6,8,0.5,2,0.6,1,3",
+                  "outliers": "10,12,13,11"
+              },
+              {
+                  "value": "1,1.5,0.2,4,3,0.5,6,0.8,0.5,2,0.6,1,3"
+              },
+              {
+                  "value": "1,1.5,0.2,2,3,1,6,3,0.5,2,0.6,1,3"
+              },
+              {
+                  "value": "1,0.1,5,0.2,4,3,1,5,5,0.5,2,0.4,0.1,3",
+                  "outliers": "10,12,13,11"
+              }
+              
+               
+            ]
+        }
+        
+    ]
+}
   public allowMultiple = true;
   display = "none";
   openModal() {
@@ -6353,11 +6488,12 @@ this.Loader=true
       {
         if(this.resourceList[i].contribution==1)
         {
-this.resouceBillableList.push({'billid':this.resourceList[i].resourceName})
+this.resouceBillableList.push({'billid':this.resourceList[i].resourceName, active:this.resourceList[i].inActive
+})
         }
         if(this.resourceList[i].contribution==0)
         {
-this.resouceNonBillableList.push({'billid':this.resourceList[i].resourceName})
+this.resouceNonBillableList.push({'billid':this.resourceList[i].resourceName,active:this.resourceList[i].inActive})
         }
       }
     })
@@ -9565,7 +9701,7 @@ if(this.totalGrowthattritionPerviousYearPercent==0)
   this.employeeAttritionPercentage=0
 }
 else{
-  this.employeeAttritionPercentage=(this.totalattritionPerviousYear-this.totalGrowthattritionPerviousYearPercent)*100/this.totalattritionPerviousYear
+  this.employeeAttritionPercentage=(this.totalattritionPerviousYear-this.totalGrowthattritionPerviousYearPercent)*100/this.totalGrowthattritionPerviousYearPercent
 
 }
 if(this.employeeAttritionPercentage>0)
@@ -10081,7 +10217,7 @@ else if(this.revenueCostTotalYoyPercentGrowth<0){
   this.imgrevenueCostTotalYoyPercentGrowth=this.upUrl
 }
 this.revenuePercentageGrowth=this.getProjectListData[0].revenuePercentageGrowth
-this.revenuePercentageGrowthPercent=(this.revenue-this.revenuePercentageGrowth)*100/this.revenuePercentageGrowthPercent
+this.revenuePercentageGrowthPercent=(this.revenue-this.revenuePercentageGrowth)*100/this.revenuePercentageGrowth
 if(this.revenuePercentageGrowth==0)
 {
   this.revenuePercentageGrowthPercent=0

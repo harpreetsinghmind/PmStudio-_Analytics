@@ -1316,6 +1316,8 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   .activeEmp .mandateItem span{ background: #ffffff;}
   .activePerson{background: #9cce79; width: 13px;height: 13px; display: inline-block; border-radius: 50%; position: relative; top:1px;
     margin-right: 5px;}
+    .inactivePerson{background: #c1c1c1; width: 13px;height: 13px; display: inline-block; border-radius: 50%; position: relative; top:1px;
+      margin-right: 5px;}
     .circleInActive::before{ background-color: #c1c1c1 !important;}
 
     .YearValue.YearValuePL {
