@@ -7,6 +7,7 @@ import { GlobalServiceService } from '../global-service.service';
 import { ToasterService } from '../toaster/toaster.service';
 import { AuthServiceService } from '../auth-service.service';
 import { environment } from 'src/environments/environment';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -24,16 +25,32 @@ export class HeaderComponent implements OnInit {
     private router: Router,
      private toaster: ToasterService,
      private comon: CommomServiceService,
+     private datePipe: DatePipe,
      private auth: AuthServiceService ) { }
 
      toggle='showed';
 usertype:any;
+  now:any = this.datePipe.transform(new Date(),'EEE, MMM d, y HH:mm');
   ngOnInit(): void {
     this.AppUrl = environment.domainUrl
     this.userId = this.auth.getUserId()
     this.userName = this.auth.getUsername()
     this.usertype   =   this.auth.getRoleId()
     this.userEmail  =   this.auth.getUserEmail()
+    // this.timeformat= this.auth.gettimeformat();
+
+    setInterval(() => {
+          // if(this.timeformat==1)
+          // {
+            this.now = new Date();
+            let date=  this.datePipe.transform(this.now,'EEE, MMM d, y HH:mm');
+            this.now= date;
+          // }else{
+          //   this.now = new Date();
+          //   let date=  this.datePipe.transform(this.now,'EEE, MMM d, y hh:mm a');
+          //   this.now= date;
+          // }
+    }, 1000);
     this.userComponyImage  =  environment.siteUrl+this.auth.getComponyImage()
     this.UserImage  =   environment.siteUrl+this.auth.getUserImage()
     $(document).ready(function() {

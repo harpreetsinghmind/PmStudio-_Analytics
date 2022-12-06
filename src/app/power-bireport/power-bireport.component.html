@@ -1714,6 +1714,7 @@
                       <div class="YearValue"><p>{{currentYear}}</p><p>{{perviousYear}}</p></div>
                       <div>
                         <p class="yearSon">Month ({{monthName}})</p>
+                    
                         <p><span>{{decimalFormat(valcurrentYear) }} |</span><span>{{decimalFormat(employeePerviousYearpercentage) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{imgUrl1}}">
@@ -2303,6 +2304,7 @@
                           <div class="YearValue"><p>Open</p><p>Close</p></div>
                           <div>
                             <p class="yearSon">Month ({{monthName}})</p>
+                    
                             <p><span>{{totalOpenProject}} |</span><span>{{decimalFormat(totalGrowthOpenProjectPercentGrowth)  }}%
 
                             </span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
@@ -2704,7 +2706,7 @@
                             <li><span class="circle2"></span>Service Provider</li>
                             <li><span class="circle3"></span>Pending</li>
                             <li><span class="circle4"></span>Approved</li>
-                            <li><span class="circle5"></span>Pending</li>
+                            <li><span class="circle5"></span>Rejected</li>
                             <li><span class="circle6"></span>Open</li>
                             <li><span class="circle7"></span>Closed</li>
                           </ul>
@@ -2715,37 +2717,30 @@
       
                         <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectPortfoliyo' rowHeight='38' [allowSelection]='true'
                         [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
-                        (queryCellInfo)='tooltipfor($event)'  (headerCellInfo)='headerCellInfo($event)'  [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
-                         [allowPaging]='true' [allowExcelExport]='true' >
+                        [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                        (queryCellInfo)='tooltipfor($event)' [allowPaging]='true' [allowExcelExport]='true' >
                         <e-columns>
-                          <e-column field='customer' headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                          <e-column  field='customer' headerText='Customer' [filter]='filter' clipMode='EllipsisWithTooltip'>
                           </e-column>
                           <e-column field='project' headerText='Project' [filter]='filter' clipMode='EllipsisWithTooltip'>
-                            <!-- <ng-template let-data>
-                <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail(data.projectid)" role="tab">
-                  {{data.projectid}}
-
-                </a>
-
-                            </ng-template> -->
+                         
                             <ng-template #template let-data>
-                  <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail(data.projectid)" role="tab">
-                    {{data.project}}
-
-                  </a>
+                              <a class="nav-link" data-toggle="tab" href="#projectdetails" (click)="getPerformanceDetail(data.projectid)" role="tab">
+                              {{data.project}}
+                            </a>
                             </ng-template>
                           </e-column>
 
 
-        <e-column field='resource'  textAlign="Center"  headerText='Resources' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                          <e-column field='resource'  textAlign="Center"  headerText='Resources' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                            <ng-template #template let-data>
+                              <a class="nav-link" href="javascript:void(0);"  (click)="getResouceList(data.projectid) " role="tab">
+                                {{data.resource}}
 
-      <ng-template #template let-data>
-<a class="nav-link" href="javascript:void(0);"  (click)="getResouceList(data.projectid) " role="tab">
-{{data.resource}}
-
-</a>
-      </ng-template>
+                              </a>
+                            </ng-template>
                           </e-column>
+
                             <e-column field='tooltipBillableCount' headerText='# Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
                                 <!-- <ejs-progressbar #linear1 id='linear1' type='Linear' maximum='100' minimum='0' [value]='40'
                                 trackThickness='24' progressThickness='24'
@@ -2762,7 +2757,7 @@
                           {{data.billablePer}}
                                    </div>
                                      <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vbillablePercent}}%">
-          {{data.V_Billable}}
+          {{data.v_Billable}}
                                      </div>
                                    <!-- </div> -->
 
@@ -2791,7 +2786,7 @@
                             {{data.billable}}
                                      </div>
                                        <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vbillablePercentAmount}}%">
-                  {{data.V_BillableAmount}}
+                  {{data.v_BillableAmount}}
                                        </div>
 
 
@@ -2806,14 +2801,14 @@
                             <e-column field='tooltipNonBillableCount' headerText='# Non Billable' [filter]='filter' clipMode='EllipsisWithTooltip'>
                               <ng-template #template let-data>
 
-
+                            
                                 <div class="progress" >
 
-                                       <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.nonbillablePercent}}%">
-                  {{data.nonBillablePer}}
+                                       <div class="progress-bar setBarBill progress-bar-warning" role="progressbar" style="width:{{data.nonBillablePer==0?0:data.nonbillablePercent}}%">
+                                        {{data.nonBillablePer}}
                                      </div>
-                                       <div   class="progress-bar getBarBill progress-bar-danger pdr-20" role="progressbar" style="width:{{data.vnonbillablePercent}}%">
-                          {{data.vNonBillable}}
+                                       <div   class="progress-bar getBarBill progress-bar-danger" role="progressbar" style="width:{{data.vNonBillable == 0?0:data.vnonbillablePercent}}%">
+                                        {{data.vNonBillable}}
                                        </div>
 
 
@@ -2900,7 +2895,9 @@
 
 
                                 <div class="progress" >
-
+                                    <div class="progress-bar setBarTime progress-bar-warning" role="progressbar" style="width:{{data.momPendingpercent}}%; font-size:9px;">
+                                      {{data.mompending}}
+                                   </div>
                                        <div class="progress-bar setBarMom progress-bar-warning" role="progressbar" style="width:{{data.momopenpercent}}%">
                                      {{data.momopen}}
                                      </div>
@@ -3022,7 +3019,7 @@
                       </div>
                     </div>
                       <div class="col-md-6 innderdiv no-padding projectTabInfoItem">
-
+                        <!-- {{dataProjectProgressList | json}} -->
                         <div class="chartBox">
                           <fusioncharts
                           width="100%"
@@ -3073,12 +3070,12 @@
                                 Non-Billable:{{data.nonBillableHour}}
                               </div> -->
                               <!-- <div *ngIf="data.totalHours !=0 "> -->
-                                <div class="progress-bar setBar progress-bar-warning" role="progressbar" style="width:{{data.billPercent}}%">
-                                {{data.billableHour}}
+                                <div class="progress-bar setBar progress-bar-warning" role="progressbar" style="width:{{data.totaltime == '00:00'?0:100}}%">
+                                {{data.totaltime}}
                               </div>
-                                <div   class="progress-bar getBar progress-bar-danger" role="progressbar" style="width:{{data.nonBillPercent}}%">
+                                <!-- <div   class="progress-bar getBar progress-bar-danger" role="progressbar" style="width:{{data.nonBillPercent}}%">
                                   {{data.nonBillableHour}}
-                                </div>
+                                </div> -->
                               <!-- </div> -->
 
 
@@ -3234,6 +3231,7 @@
                   <div class="card-body">
                     <div class="OutlierSection OutlierSection2" style="padding:0;">
                       <div class="OutlierHead OutlierHead2">
+                 
                         <div><h3>Project P & L</h3></div>
                         <select class="form-control"(change)="changeProjectPAndLStatus($event)" style="width: 150px;">
                           <option>All</option>
@@ -3271,10 +3269,10 @@
       
                               </p>
                             
-                              <p><span>{{newavgTenureCurrentYear}}
-                                </span>
-                                <!-- <span>{{decimalFormat(avgTenureCurrentYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
-                          <img src="{{avgTenureCurrentYearGrowthPercentimg}}"> -->
+                              <p><span>{{getprojectDetailPAndLList[0]?.avgTenureCurrentYear}}
+                                </span> | 
+                                <span>{{getprojectDetailPAndLList[0]?.avgTenureCurrentYearGrowth }}</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                       
 
                               </p>
                             </div>
@@ -3302,14 +3300,14 @@
                                 <img src="{{previousYearResourcePercentGrowthimg}}">
 
                               </p>
-                              <p><span>{{newavgTenurePreviousYear}} </span>
-                                <!-- <span>
-                                {{decimalFormat(avgTenurePreviousYearGrowthPercent) }}%</span>
+                              <p><span>{{getprojectDetailPAndLList[0]?.avgTenurePreviousYear}} |</span>
+                                <span>
+                                {{getprojectDetailPAndLList[0]?.avgTenurePreviousYearGrowth}}</span>
 
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
-                                </span> -->
-                                <img src="{{avgTenurePreviousYearGrowthPercentimg}}">
+                                </span>
+                               
 
 
                               </p>
@@ -3390,7 +3388,7 @@
                       <div class="table-responsive tableBorders">
 
 
-                        <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectDetailPAndLGridListAfter' rowHeight='38' [allowSelection]='true'
+              <ejs-grid #overviewgrid id='overviewgrid' [dataSource]='getListProjectDetailPAndLGridListAfter' rowHeight='38' [allowSelection]='true'
               [allowSorting]='true' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
               [filterSettings]='filterSettings' [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
                [allowPaging]='true' [allowExcelExport]='true' >
@@ -3879,10 +3877,10 @@
           <div class="card-body">
             <ul class="nav nav-tabs subtabs" role="tablist">
               <li class="nav-item active">
-                <a class="nav-link active" data-toggle="tab" (click)="timesheetOut()"href="#timesheetout" role="tab">Time sheet Outlier</a>
+                <a class="nav-link active" data-toggle="tab" (click)="timesheetOut()"href="#timesheetout" role="tab">Time Sheet Outlier</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" (click)="checkinCheciOut()" href="#checkinout" role="tab">Check in check out</a>
+                <a class="nav-link" data-toggle="tab" (click)="checkinCheciOut()" href="#checkinout" role="tab">Check- in Check- out</a>
               </li>
 
               <li class="nav-item">
@@ -3897,7 +3895,7 @@
 
             <div class="OutlierSection">
               <div class="OutlierHead OutlierHead3">
-                <div><h3>Time sheet Outlier</h3></div>
+                <div><h3>Time Sheet Outlier</h3></div>
                 <div class="form-group monthCheckStatus" style="margin-bottom: 0; display: inline-flex;margin-top: -5px;">
 
                   <button title="Month" (click)="clickme('removeweek','one');" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
@@ -3929,19 +3927,19 @@
               </div>
 
               <div class="table-responsive">
-                <ejs-grid #overviewgridset id='overviewgridset'
-[frozenRows]='0' [frozenColumns]='3'  [allowTextWrap]="true" [dataSource]='setActionableTimeSheetList' rowHeight='38' [allowSelection]='true'
+                <ejs-grid #overviewgridset id='overviewgridset' [frozenRows]='0' [frozenColumns]='3'
+                [allowTextWrap]="true" [dataSource]='setActionableTimeSheetList' rowHeight='38' [allowSelection]='true'
                 [allowSorting]='false' height='600' [enableHover]='false' [selectionSettings]='selectionSettings'
-                [filterSettings]='filterSettings' (actionComplete)="actionComplete($event)"[allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
-                 [allowPaging]='true' [allowExcelExport]='true' >
+                [filterSettings]='filterSettings' (actionComplete)="actionComplete($event)" [allowSorting]='true' [allowFiltering]='true' [enableVirtualization]='false'
+                 [allowPaging]='true' [pageSettings]='pageSettings'  >
                 <e-columns>
-                  <e-column width='220' field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' clipMode='EllipsisWithTooltip'>
+                  <e-column width='220' field='name' [disableHtmlEncode]="false" headerText='Name<br> Contact No.' [filter]='filter' >
                     <ng-template #template let-data>
                       {{data.name}}<br>{{data.contactNumber}}
                     </ng-template>
 
                   </e-column>
-                  <e-column field='sms' headerText='SMS'   [allowFiltering]='false' clipMode='EllipsisWithTooltip' width='70'>
+                  <e-column field='sms' headerText='SMS'   [allowFiltering]='false'  width='70'>
                     <!-- <ng-template let data>
 
                       <img _ngcontent-egl-c6="" src="../assets/img/Logo/smscircle.png" style="width: 38px;">
@@ -3952,14 +3950,14 @@
                     </ng-template>
 
                   </e-column>
-                  <e-column field='email' headerText='Email' [allowFiltering]='false'  clipMode='EllipsisWithTooltip' width='70'>
+                  <e-column field='email' headerText='Email' [allowFiltering]='false'   width='70'>
                     <ng-template #template let-data>
                       <img *ngIf="data.email==='email'" src="../../assets/img/logo/emailcircle.png" style="width: 38px;">
                       <!-- <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;"> -->
                     </ng-template>
 
                   </e-column>
-                    <e-column field='one' headerText='1' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='one' headerText='1' [filter]='filter'  width='50'>
 
                       <!-- <ng-template #template let-data>
                         <img *ngIf="data.one===2" src="../../assets/img/logo/red-signal.gif" style="width: 22px;">
@@ -3970,7 +3968,7 @@
                         <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='two' headerText='2' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='two' headerText='2' [filter]='filter'  width='50'>
 
                       <ng-template #template let-data>
                         <img *ngIf="data.two===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
@@ -3978,175 +3976,175 @@
                       </ng-template>
                     </e-column>
 
-                    <e-column field='three' headerText='3' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='three' headerText='3' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.three===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.three === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='four' headerText='4' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='four' headerText='4' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.four===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.four === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='five' headerText='5' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='five' headerText='5' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.five===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.five === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='six' headerText='6' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='six' headerText='6' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.six===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.six === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='seven' headerText='7' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='seven' headerText='7' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.seven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.seven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='eight' headerText='8' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='eight' headerText='8' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.eight===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.eight === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='nine' headerText='9' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='nine' headerText='9' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.nine===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.nine === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='ten' headerText='10' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='ten' headerText='10' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.ten===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.ten === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='eleven' headerText='11' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='eleven' headerText='11' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.eleven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.eleven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twelve' headerText='12' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twelve' headerText='12' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twelve===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twelve === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='threeten' headerText='13' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='threeten' headerText='13' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.threeten===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.threeten === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='fourteen' headerText='14' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='fourteen' headerText='14' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.fourteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.fourteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='fifteen' headerText='15' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='fifteen' headerText='15' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.fifteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.fifteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='sixteen' headerText='16' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='sixteen' headerText='16' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.sixteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.sixteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='seventeen' headerText='17' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='seventeen' headerText='17' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.seventeen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.seventeen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='eighteen' headerText='18' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='eighteen' headerText='18' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.eighteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.eighteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='nineteen' headerText='19' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='nineteen' headerText='19' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.nineteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.nineteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twenty' headerText='20' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twenty' headerText='20' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twenty===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twenty === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentyone' headerText='21' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentyone' headerText='21' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyone===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyone === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentytwo' headerText='22' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentytwo' headerText='22' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentytwo===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twenttwo === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentythree' headerText='23' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentythree' headerText='23' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentythree===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentythree === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentyfour' headerText='24' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentyfour' headerText='24' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyfour===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyfour === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentyfive' headerText='25' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentyfive' headerText='25' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyfive===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyfive === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentysix' headerText='26' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentysix' headerText='26' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentysix===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentysix === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentyseven' headerText='27' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentyseven' headerText='27' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyseven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentseven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentyeight' headerText='28' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentyeight' headerText='28' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyeight===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyeight === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='twentynine' headerText='29' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='twentynine' headerText='29' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentynine===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentynine === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='thirty' headerText='30' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='thirty' headerText='30' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.thirty===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.thirty === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
                       </ng-template>
                     </e-column>
-                    <e-column field='thirtyone' headerText='31' [filter]='filter' clipMode='EllipsisWithTooltip' width='50'>
+                    <e-column field='thirtyone' headerText='31' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.thirtyone===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.thirtyone === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
@@ -4168,7 +4166,7 @@
 
         <div class="OutlierSection">
           <div class="OutlierHead OutlierHead3">
-            <div ><h3>Check in check out</h3></div>
+            <div ><h3>Check- in Check- out</h3></div>
 
             <div class="form-group monthCheckStatus" style="margin-bottom: 0; display: inline-flex;margin-top: 0;">
 

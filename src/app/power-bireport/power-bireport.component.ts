@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExcelExportProperties,SaveEventArgs, GridComponent } from '@syncfusion/ej2-angular-grids';
 import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
@@ -25,7 +25,8 @@ type AOA = any[][];
 @Component({
   selector: 'app-power-bireport',
   templateUrl: './power-bireport.component.html',
-  styleUrls: ['./power-bireport.component.scss']
+  styleUrls: ['./power-bireport.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PowerBIReportComponent implements OnInit {
   public selectedDate: Date = new Date(2021, 3, 4);
@@ -44,6 +45,7 @@ export class PowerBIReportComponent implements OnInit {
   public gridset: GridComponent;
   @ViewChild("calendarObj")
   public calendarobj: CalendarComponent;
+  public pageSettings = { pageCount: 3 };
   @ViewChild('getid')
   public gridsFor: GridComponent;
   public workDays: number[] = [0, 1, 2, 3, 4, 5];
@@ -2296,7 +2298,8 @@ timeSheetChangeValue(e)
    private  HTTP: GlobalServiceService,
    private datepipe:DatePipe,
    private route: ActivatedRoute,
-   private authServiceService:AuthServiceService
+   private authServiceService:AuthServiceService,
+   private change:ChangeDetectorRef
 
   ) {
     this.route.queryParams.subscribe(params => {
@@ -2313,10 +2316,9 @@ timeSheetChangeValue(e)
    }
   setDepartment:any
   departmentList:any=[]
-  onChange(e)
-  {
-    this.departmentId=e.target.value
+  onChange(e){
 
+    this.departmentId=e.target.value
     this.getpbiExpenseProjectCategory()
     this.getpbiExpenseDeployee()
     this.getpbiExpenseBreackUp()
@@ -2385,19 +2387,20 @@ timeSheetChangeValue(e)
     this.getDate=latest_date
     let shortMonth = getdate. toLocaleString('en-us', { month: 'short' }); /* Jun */
     this.monthName=shortMonth
-    this.calendarName=this.monthName+''+getdate.getFullYear()
+    this.calendarName=this.monthName+''+getdate.getFullYear();
+    this.selectionSettings = { persistSelection: true, type: "Multiple", checkboxOnly: true };
     this.filterSettings = { type: "Menu" };
     this.filter = { type: "CheckBox" };
   
     this.Planwk1 = [
       {
         field: 'openTask',
-        headerText: 'Open',
+        headerText: 'Total',
         textAlign:"Center"
       },
       {
         field: 'pendingTask',
-        headerText: 'Pending',
+        headerText: 'In Progress',
         textAlign:"Center",
 
 
@@ -2406,7 +2409,7 @@ timeSheetChangeValue(e)
       },
       {
         field: 'closeTask',
-        headerText: 'Close',
+        headerText: 'Closed',
         textAlign:"Center",
 
 
@@ -2540,6 +2543,7 @@ timeSheetChangeValue(e)
       this.authServiceService.setdateFormat(res.data.table[0].dateFormat)
       this.authServiceService.setdecimalFormat(res.data.table[0].decimalFormat);
     })
+
 
   }
   actionComplete(args: any) {
@@ -3265,33 +3269,26 @@ this.refreshGrid=false
   }
   
   }
-  checkinCheciOut()
-  {
-    this.show=false
+  checkinCheciOut(){
+    debugger
     this.currentDate=this.setDate
-
     let shortMonth = new Date(this.currentDate). toLocaleString('en-us', { month: 'short' }); /* Jun */
-this.monthName=shortMonth
-this.fullYear=new Date(this.currentDate).getFullYear()
-this.calendarName=this.monthName+' '+this.fullYear
-
+    this.monthName=shortMonth
+    this.fullYear=new Date(this.currentDate).getFullYear()
+    this.calendarName=this.monthName+' '+this.fullYear
     this.checkDate=0
     this.pbiActionableCheckInCheckOutList()
   }
 
-  inSight()
-  {
+  inSight(){
     this.show=false
     this.checkDate=0
     this.currentDate=this.setDate
     let shortMonth = new Date(this.currentDate). toLocaleString('en-us', { month: 'short' }); /* Jun */
-
     this.monthName=shortMonth
-    
-this.fullYear=new Date(this.currentDate).getFullYear()
-this.calendarName=this.monthName+' '+this.fullYear
-    if(this.checkMom==true)
-{
+    this.fullYear=new Date(this.currentDate).getFullYear()
+    this.calendarName=this.monthName+' '+this.fullYear
+    if(this.checkMom==true){
   this.pbiActionableInsightList()
 
 }
@@ -3433,10 +3430,9 @@ this.actionGridRefresh=true
     }
    this.setActionableTimeSheetList=newArr
 this.checkDate=0
+this.gridset.dataSource=this.setActionableTimeSheetList
 this.gridset.refresh()
 this.gridset.refreshColumns()
-
-this.gridset.dataSource=this.setActionableTimeSheetList
   })
 }
 changeStatus(e)
@@ -3447,8 +3443,8 @@ this.conditionStatus=e.target.value
 refreshGrid:boolean=false
 actionableCheckInCheckOutList:any=[]
 conditionStatus:any
-pbiActionableCheckInCheckOutList()
-{
+pbiActionableCheckInCheckOutList(){
+  debugger
   this.Loader=true
   this.actionableCheckInCheckOutList=[]
   if(this.checkDate==0)
@@ -3461,68 +3457,65 @@ pbiActionableCheckInCheckOutList()
   }
   if(this.checkInValue==undefined ||this.checkInValue==null||this.checkInValue=="")
   {
-var chValue='08.00'
+  var chValue='08.00'
   }
   else{
-chValue=this.checkInValue
+  chValue=this.checkInValue
   }
   if(this.timeSheetValue==undefined||this.timeSheetValue==null||this.timeSheetValue=="")
   {
-var tmValue='05.00'
+  var tmValue='05.00'
   }
   else{
-tmValue=this.timeSheetValue
+  tmValue=this.timeSheetValue
   }
   if(this.timeSheetCondition==undefined ||this.timeSheetCondition==null||this.timeSheetCondition==""||this.timeSheetCondition=="0"||this.timeSheetCondition==0)
   
   {
-var tmSheetCondition='<'
+  var tmSheetCondition='<'
   }
   else{
      tmSheetCondition=this.timeSheetCondition
 
   }
   if(this.checkInCondition==undefined ||this.checkInCondition==null||this.checkInCondition==""||this.checkInCondition=="0"||this.checkInCondition==0)
-{
-var chInCondtion='>'
-}
-else
-{
-   chInCondtion=this.checkInCondition
+  {
+  var chInCondtion='>'
+  }
+  else
+  {
+    chInCondtion=this.checkInCondition
 
-}
-if(this.conditionStatus==undefined || this.conditionStatus||this.conditionStatus=="")
-{
-  var type="and"
+  }
+  if(this.conditionStatus==undefined || this.conditionStatus||this.conditionStatus=="")
+  {
+    var type="and"
 
-}
-else{
-  type=this.conditionStatus
-}
+  }
+  else{
+    type=this.conditionStatus
+  }
   this.HTTP.getpbiActionableCheckInCheckOutList(date,this.CmpCode,this.departmentId,chValue,chInCondtion,tmValue,tmSheetCondition,type).subscribe(arg => {
-this.Loader=false
-this.checkDate=0
-this.refreshGrid=true
-    this.actionableCheckInCheckOutList=  arg.data.table
-console.log('actionableCheckInCheckOutList',arg.data.table)
-if(this.actionableCheckInCheckOutList.length>0)
-{
-  this.gridcheck.refreshColumns()
-  this.gridcheck.refresh()
-  this.gridcheck.dataSource=this.actionableCheckInCheckOutList
-}
-
-
-
+  this.Loader=false
+  this.checkDate=0
+  this.refreshGrid=true
+  this.actionableCheckInCheckOutList=  arg.data.table
+  console.log('actionableCheckInCheckOutList',arg.data.table)
+  if(this.actionableCheckInCheckOutList.length>0){
+    this.Loader=false
+    this.gridcheck.refreshColumns()
+    this.gridcheck.refresh()
+    this.gridcheck.dataSource=this.actionableCheckInCheckOutList
+  }
   })
+  this.Loader=false
 }
 changeProjectStatus(e)
 {
   this.projectStatus=e.target.value
   this.getProjectPortFoliyo()
 }
-selectInshightCheck(e)
-{
+selectInshightCheck(e){
 if(e.target.value=="roadblock")
 {
   this.checkMom=false
@@ -3546,9 +3539,6 @@ else if(e.target.value=="mom")
   this.checkRoadBlock=false
   this.checkOverDue=false
   this.pbiActionableInsightList()
-
-
-
 }
 }
 showMinValue:any
@@ -3679,7 +3669,7 @@ checkOverDue:boolean=false
 
 pbiActionableInsightOverDueList()
 {
-  this.Loader=true
+  // this.Loader=true
   this.overdueGrid=true
   if(this.checkDate==0)
   {
@@ -3840,7 +3830,7 @@ actionableInsightRoadBlockList:any=[]
 pbiActionableInsightRoadBlockList()
 {
   this.setactionableInsightRoadBlockList=[]
-  this.Loader=true
+  // this.Loader=true
   this.actionableInsightRoadBlockList=[]
   if(this.checkDate==0)
   {
@@ -4001,7 +3991,7 @@ actionableType:any
 momGrid:boolean=false
 pbiActionableInsightList()
 {
-  this.Loader=true
+  // this.Loader=true
   this.actionableInsightList=[]
   this.setactionableInsightList=[]
   if(this.checkDate==0)
@@ -4146,14 +4136,17 @@ for(var i = 0; i < this.actionableInsightList.length; i++)
 }
 
 this.actionableInsightList=newArr
+this.Loader=false
 if(this.actionableInsightList.length>0)
 {
-  this.gridsInsight.refresh()
-  this.gridsInsight.refreshColumns()
-  this.gridsInsight.dataSource=this.actionableInsightList
+  this.gridsInsight.refresh();
+  this.gridsInsight.refreshColumns();
+  this.gridsInsight.dataSource=this.actionableInsightList;
+
 }
 
-  })
+})
+this.Loader=false
 }
 
   getDepartmentListDropdown(){
@@ -4780,19 +4773,20 @@ plottooltext:     " $label: <b>$dataValue</b>",
   dataProjectCostList:any=[]
   dataProjectProgressList:any=[]
   setList:any=[]
+  // dataProjectProgressListele = [] 
   getPbiProjectDetailProgressAndCost(data){
-      let cmpcode=1
+      // let cmpcode=1
       let year='2022-02-20'
+      this.Loader=true
       this.getListProgress=[]
       this.dataProgress=[]
-      this.dataProjectProgressList=[]
+      this.dataProjectProgressList= undefined
       this.setList=[]
-      this.dataProjectCostList=[]
-      this.Loader=true
+      // this.dataProjectCostList=[]
+      let dataForWindow = []
+      let dataProjectProgressListele = []
       this.HTTP.getPbiProjectDetailProgressAndCost(this.setDate,this.CmpCode,data,this.departmentId).subscribe(arg => {
       this.getListProgress=  arg.data.table
-  console.log('getListProgress',arg.data.table)
-
       this.Loader=false
       var getColor=[]
 
@@ -4802,24 +4796,12 @@ plottooltext:     " $label: <b>$dataValue</b>",
       }
       for(var i=0;i<this.getListProgress.length;i++)
       {
-        
-this.dataProgress.push({"label":this.getListProgress[i].monthes})
-this.dataProjectProgressList.push({"value":this.getListProgress[i].project})
-this.dataProjectCostList.push({"value":this.getListProgress[i].cost})
-this.setList.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
+        this.dataProgress.push({"label":this.getListProgress[i].monthes})
+        dataProjectProgressListele.push({"value":this.getListProgress[i].project})
+        dataForWindow.push({"value":this.getListProgress[i].cost})
+        this.setList.push({"label":this.getListProgress[i].monthes,"value":this.getListProgress[i].cost})
 
-}
-
-
-// this.dataProjectProgressList = {
-//   "chart": {
-//     "caption": "Progress & Cost %",
-//     'paletteColors' :'7cb5ec',
-//     "showHoverEffect": "1",
-//     "theme": "fusion"
-// },
-// "data":this.setList
-// };
+      }
 
 this.dataProjectProgressList = {
   chart: {
@@ -4850,55 +4832,24 @@ plottooltext:     " $label: <b>$dataValue</b>",
       seriesname: "Progress",
      
     //  plottooltext: "Employee: $dataValue",
-      data:this.dataProjectProgressList
+      data: dataProjectProgressListele
     },
     {
       seriesname: "Cost %",
       parentyaxis: "S",
       renderas: "line",
     //  plottooltext: "Employee: $dataValue",
-      data:this.dataProjectCostList
+      data:dataForWindow
     },
     
      ]
 };
+this.change.detectChanges();
 
+})
 
-      })
   }
-  // datades21 = {
-  //   chart: {
-  //     "numberPrefix": "$",
-  //     "bgColor": "#ffffff",
-  //     "startingAngle": "100",
-  //     "showLegend": "1",
-  //     "defaultCenterLabel": "",
-  //     "centerLabel": "Revenue from $label: $value",
-  //     "centerLabelBold": "1",
-  //     "showTooltip": "0",
-  //     "decimals": "0",
-  //     'paletteColors' :'7bb7ed, e4d556, 2b8f8d, f55d5c',
-  //     "theme": "fusion"
-  //   },
-  //   "data": [{
-  //     "label": "Traffic",
-  //     "value": "5680"
-  //   },
-  //   {
-  //     "label": "Family Engagement",
-  //     "value": "1036"
-  //   },
-  //   {
-  //     "label": "Public Transport",
-  //     "value": "950"
-  //   },
-  //   {
-  //     "label": "Weather",
-  //     "value": "500"
-  //   }
-  // ]
 
-  // };
   getListProjectDetailRoadblock:any=[]
   getpbiProjectDetailRoadblock(data){
       let cmpcode=1
@@ -4921,7 +4872,7 @@ plottooltext:     " $label: <b>$dataValue</b>",
           this.getListProjectDetailRoadblock[i].nonBillableHour=0
 
         }
-        var tooltipShow="Billable:"+Number(this.getListProjectDetailRoadblock[i].billableHour)+", Non-Billable:"+Number(this.getListProjectDetailRoadblock[i].nonBillableHour)
+        var tooltipShow="Billable:"+this.getListProjectDetailRoadblock[i].billableHour+", Non-Billable:"+this.getListProjectDetailRoadblock[i].nonBillableHour
         var total=Number(this.getListProjectDetailRoadblock[i].billableHour)+Number(this.getListProjectDetailRoadblock[i].nonBillableHour)
       var billPercent=Number(this.getListProjectDetailRoadblock[i].billableHour)*100/total
       this.getListProjectDetailRoadblock[i].tooltipShow=tooltipShow
@@ -5131,14 +5082,15 @@ else if(this.avgRevenuePreviousYearGrowthPercent<0){
 }
 this.avgTenureCurrentYear=this.getprojectDetailPAndLList[0].avgTenureCurrentYear
 this.newavgTenureCurrentYear=this.avgTenureCurrentYear; ///this.projectCostCurrentYear
+this.avgTenurePreviousYear=this.getprojectDetailPAndLList[0].avgTenurePreviousYear
 
 this.avgTenureCurrentYearGrowth=this.getprojectDetailPAndLList[0].avgTenureCurrentYearGrowth
 
-this.newavgTenureCurrentYearGrowth=this.avgTenureCurrentYearGrowth/this.projectCostCurrentYearGrowth
+this.newavgTenureCurrentYearGrowth=this.avgTenureCurrentYearGrowth///this.projectCostCurrentYearGrowth
 // this.avgTenureCurrentYearGrowthPercent=(this.newavgTenureCurrentYear-this.newavgTenureCurrentYearGrowth)*100/this.newavgTenureCurrentYearGrowth
 // if(this.newavgTenureCurrentYearGrowth==0)
 // {
-//   this.avgTenureCurrentYearGrowthPercent=0
+  // this.avgTenureCurrentYearGrowthPercent=0
 // }
 // if(this.avgTenureCurrentYearGrowthPercent>0)
 // {
@@ -5147,7 +5099,8 @@ this.newavgTenureCurrentYearGrowth=this.avgTenureCurrentYearGrowth/this.projectC
 // else if(this.avgTenureCurrentYearGrowthPercent<0){
 //   this.avgTenureCurrentYearGrowthPercentimg=this.upUrl
 // }
-this.avgTenurePreviousYear=this.getprojectDetailPAndLList[0].avgTenurePreviousYear
+
+
 
 this.avgTenurePreviousYearGrowth= this.getprojectDetailPAndLList[0].avgTenurePreviousYearGrowth
 
@@ -5416,7 +5369,7 @@ if(this.getListExpense.length>5)
 {
   for(var i=0;i<5;i++)
 {
- this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId})
+ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId,tooltext: this.getListExpense[i].designationName+": "+ this.decimalFormat(this.getListExpense[i].amount)})
 
 }
 for(var j=0;j<this.getListExpense.length;j++)
@@ -5452,7 +5405,7 @@ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value
           "defaultCenterLabel": "",
         "centerLabel": " $label: $value",
           "centerLabelBold": "1",
-          "showTooltip": "0",
+          "showTooltip": "1",
           "decimals": "0",
           'paletteColors' :getColor.toString(),
           "theme": "fusion"
@@ -5620,7 +5573,10 @@ this.dataspenderwise = {
     yaxisname: "",
     showvalues: "1",
     valuefontcolor: "#ffffff",
-    plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>"
+    algorithm:"sliceanddice",
+    slicingMode:"vertical",
+    plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>",
+
   }
 };
 
@@ -6468,34 +6424,31 @@ this.dataexpenseproject = {
   ]
 
   };
-  resourceList:any=[]
-  resouceBillableList:any=[]
-  resouceNonBillableList:any=[]
+  resourceList
+  resouceBillableList
+  resouceNonBillableList
   popup:boolean=false
-  getResouceList(projectid)
-  {
-    this.resouceNonBillableList=[]
-    this.resourceList=[]
-  this.resouceBillableList=[]
-  this.popup=true
-this.Loader=true
+  getResouceList(projectid){
+    let NonBilleble = []
+    let bllable=[]
+    this.popup=true
+    // this.Loader=true
     this.HTTP.getpbiResourceList(this.setDate,this.CmpCode,projectid,this.departmentId).subscribe(arg => {
-      this.resourceList=  arg.data.table
-  console.log('resourceList',arg.data.table)
-
-      this.Loader=false
-      for(var i=0;i<this.resourceList.length;i++)
-      {
-        if(this.resourceList[i].contribution==1)
-        {
-this.resouceBillableList.push({'billid':this.resourceList[i].resourceName, active:this.resourceList[i].inActive
-})
-        }
-        if(this.resourceList[i].contribution==0)
-        {
-this.resouceNonBillableList.push({'billid':this.resourceList[i].resourceName,active:this.resourceList[i].inActive})
-        }
+    this.resourceList = arg.data.table;
+    // console.log('resourceList',arg.data.table)
+    this.Loader=false
+    for(var i=0;i<this.resourceList.length;i++){
+      if(this.resourceList[i].contribution==1){
+        bllable.push({'billid':this.resourceList[i].resourceName, active:this.resourceList[i].inActive})
       }
+      if(this.resourceList[i].contribution==0){
+        NonBilleble.push({'billid':this.resourceList[i].resourceName,active:this.resourceList[i].inActive})
+      }
+    }
+    this.resouceBillableList=bllable
+    this.resouceNonBillableList=NonBilleble
+    this.change.detectChanges();
+
     })
   }
 
@@ -7763,8 +7716,7 @@ tooltipfor(args: any){
  content: args.data[args.column.field].toString()
  }, args.cell);
 }
-  getPerformance()
-  {
+  getPerformance(){
 
     this.getListEmployeePerformance=[]
     this.Loader=true
@@ -7787,13 +7739,12 @@ tooltipfor(args: any){
       this.grids.refreshColumns()
       this.grids.dataSource=this.getListEmployeePerformance
     }
-
+    this.change.detectChanges();
     })
   }
   getListProjectPortfoliyo:any=[]
   projectStatus:any
-  getProjectPortFoliyo()
-  {
+  getProjectPortFoliyo(){
     this.getListProjectPortfoliyo=[]
     this.Loader=true
     if(this.projectStatus==undefined || this.projectStatus==null ||this.projectStatus=="")
@@ -7813,21 +7764,21 @@ else{
     this.Loader=false
     for(var i=0;i<this.getListProjectPortfoliyo.length;i++)
     {
-      if(this.getListProjectPortfoliyo[i].V_Billable==null || this.getListProjectPortfoliyo[i].V_Billable=='')
+      if(this.getListProjectPortfoliyo[i].v_Billable==null || this.getListProjectPortfoliyo[i].v_Billable=='')
       {
-        this.getListProjectPortfoliyo[i].V_Billable=0
+        this.getListProjectPortfoliyo[i].v_Billable=0
       }
       if(this.getListProjectPortfoliyo[i].billablePer==null || this.getListProjectPortfoliyo[i].billablePer=='')
       {
         this.getListProjectPortfoliyo[i].billablePer=0
       }
-      var tooltipBillableCount='E-Billable:'+Number(this.getListProjectPortfoliyo[i].billablePer)+'</br> V-Billable:'+Number(this.getListProjectPortfoliyo[i].V_Billable)
+      var tooltipBillableCount='E-Billable:'+Number(this.getListProjectPortfoliyo[i].billablePer)+'</br> V-Billable:'+Number(this.getListProjectPortfoliyo[i].v_Billable)
   this.getListProjectPortfoliyo[i].tooltipBillableCount=tooltipBillableCount
 
-    var total=Number(this.getListProjectPortfoliyo[i].V_Billable)+Number(this.getListProjectPortfoliyo[i].billablePer)
+    var total=Number(this.getListProjectPortfoliyo[i].v_Billable)+Number(this.getListProjectPortfoliyo[i].billablePer)
   let billablePercent= Number(this.getListProjectPortfoliyo[i].billablePer)*100/total
   this.getListProjectPortfoliyo[i].billablePercent=billablePercent
-  let vbillablePercent= Number(this.getListProjectPortfoliyo[i].V_Billable)*100/total
+  let vbillablePercent= Number(this.getListProjectPortfoliyo[i].v_Billable)*100/total
   this.getListProjectPortfoliyo[i].vbillablePercent=vbillablePercent
 if(total==0)
 {
@@ -7863,16 +7814,16 @@ if(totalbill==0)
   {
     this.getListProjectPortfoliyo[i].billable=0
   }
-  if(this.getListProjectPortfoliyo[i].V_BillableAmount==null || this.getListProjectPortfoliyo[i].V_BillableAmount=='')
+  if(this.getListProjectPortfoliyo[i].v_BillableAmount==null || this.getListProjectPortfoliyo[i].v_BillableAmount=='')
   {
-    this.getListProjectPortfoliyo[i].V_BillableAmount=0
+    this.getListProjectPortfoliyo[i].v_BillableAmount=0
   }
-  var tooltipBillableAmount='E-Billable Amount:'+Number(this.getListProjectPortfoliyo[i].billable)+'<br/> V-BillableAmount:'+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
+  var tooltipBillableAmount='E-Billable Amount:'+Number(this.getListProjectPortfoliyo[i].billable)+'<br/> V-BillableAmount:'+Number(this.getListProjectPortfoliyo[i].v_BillableAmount)
   this.getListProjectPortfoliyo[i].tooltipBillableAmount=tooltipBillableAmount
-  var totalbillAmount=Number(this.getListProjectPortfoliyo[i].billable)+Number(this.getListProjectPortfoliyo[i].V_BillableAmount)
+  var totalbillAmount=Number(this.getListProjectPortfoliyo[i].billable)+Number(this.getListProjectPortfoliyo[i].v_BillableAmount)
 let billablePercentAmount= Number(this.getListProjectPortfoliyo[i].billable)*100/totalbillAmount
 this.getListProjectPortfoliyo[i].billablePercentAmount=billablePercentAmount
-let vbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].V_BillableAmount)*100/totalbillAmount
+let vbillablePercentAmount= Number(this.getListProjectPortfoliyo[i].v_BillableAmount)*100/totalbillAmount
 this.getListProjectPortfoliyo[i].vbillablePercentAmount=vbillablePercentAmount
 if(totalbillAmount==0)
 {
@@ -7911,7 +7862,7 @@ if(this.getListProjectPortfoliyo[i].momopen==null || this.getListProjectPortfoli
 {
   this.getListProjectPortfoliyo[i].momopen=0
 }
-var tooltipmom='Open Mom:'+Number(this.getListProjectPortfoliyo[i].momopen)+'<br/>Close Mom:'+Number(this.getListProjectPortfoliyo[i].momclose)
+var tooltipmom='Pending MOM:'+Number(this.getListProjectPortfoliyo[i].mompending)+'<br/>Open MOM:'+Number(this.getListProjectPortfoliyo[i].momopen)+'<br/>Close MOM:'+Number(this.getListProjectPortfoliyo[i].momclose)
 
 
 this.getListProjectPortfoliyo[i].tooltipmom=tooltipmom
@@ -7920,6 +7871,7 @@ let momopenpercent= Number(this.getListProjectPortfoliyo[i].momopen)*100/totalmo
 this.getListProjectPortfoliyo[i].momopenpercent=momopenpercent
 let momclosepercent= Number(this.getListProjectPortfoliyo[i].momclose)*100/totalmom
 this.getListProjectPortfoliyo[i].momclosepercent=momclosepercent
+this.getListProjectPortfoliyo[i].momPendingpercent=Number(this.getListProjectPortfoliyo[i].mompending)*100/totalmom
 if(totalmom==0)
 {
 this.getListProjectPortfoliyo[i].momclosepercent=0
@@ -7990,7 +7942,9 @@ if(this.getListProjectPortfoliyo[i].progress==null)
 
 }
     }
+    this.change.detectChanges()
     })
+   
   }
   getListProjectDetailRevnureAndCost:any=[]
   costFirst:any
@@ -8322,59 +8276,59 @@ if(this.checkOverDue==true)
   this.getProjectProjectDetailPAndLGridList()
  }
   getListProjectDetailPAndLGridList:any=[]
-  getListProjectDetailPAndLGridListAfter:any=[]
-  getProjectProjectDetailPAndLGridList()
+   getListProjectDetailPAndLGridListAfter:any=[]
+
+getProjectProjectDetailPAndLGridList(){
+  this.Loader=true
+  this.getListProjectDetailPAndLGridList=[]
+  // this.getListProjectDetailPAndLGridListAfter=[]
+
+  if(this.pAndLType==undefined ||this.pAndLType=="" || this.pAndLType==null)
   {
-    this.getListProjectDetailPAndLGridList=[]
-    this.getListProjectDetailPAndLGridListAfter=[]
-    this.Loader=true
-    if(this.pAndLType==undefined ||this.pAndLType=="" || this.pAndLType==null)
-    {
-      var type="All"
+  var type="All"
 
-    }
-    else{
-      type=this.pAndLType
-    }
+  }
+  else{
+  type=this.pAndLType
+  }
 
-    this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
-    this.getListProjectDetailPAndLGridList=  arg.data.table
-    console.log('getListProjectDetailPAndLGridList',arg.data.table)
+  this.HTTP.getPbiProjectDetailPAndLGridList(this.setDate,this.CmpCode,this.departmentId,type).subscribe(arg => {
+  this.Loader=false
+  this.getListProjectDetailPAndLGridList=  arg.data.table
 
-    this.Loader=false
-var sum=0
+  var sum=0
 
-    for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++)
-    {
-      if(this.getListProjectDetailPAndLGridList[i].margin==null)
-      {
-this.getListProjectDetailPAndLGridList[i].margin=0
-      }
-      var margintwo=100-Number(this.getListProjectDetailPAndLGridList[i].margin)
-      var marginpercent=Number(this.getListProjectDetailPAndLGridList[i].margin)
-      sum+=this.getListProjectDetailPAndLGridList[i].margin
-    }
-  
-    var avgSum=sum/this.getListProjectDetailPAndLGridList.length
-    for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++)
-    {
-      if(this.getListProjectDetailPAndLGridList[i].margin==null)
-      {
-        this.getListProjectDetailPAndLGridList[i].margin=0
-      }
-      if(this.getListProjectDetailPAndLGridList[i].margin>avgSum)
-      {
-        var isActive=0
+  for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++){
+  if(this.getListProjectDetailPAndLGridList[i].margin==null)
+  {
+  this.getListProjectDetailPAndLGridList[i].margin=0
+  }
+  var margintwo=100-Number(this.getListProjectDetailPAndLGridList[i].margin)
+  var marginpercent=Number(this.getListProjectDetailPAndLGridList[i].margin)
+  sum+=this.getListProjectDetailPAndLGridList[i].margin
+  }
 
-      }
-      else
-      {
-        isActive=1
-      }
-      this.getListProjectDetailPAndLGridList[i].isActive=isActive
-    }
+  var avgSum=sum/this.getListProjectDetailPAndLGridList.length
+  for(var i=0;i<this.getListProjectDetailPAndLGridList.length;i++){
+  if(this.getListProjectDetailPAndLGridList[i].margin==null)
+  {
+  this.getListProjectDetailPAndLGridList[i].margin=0
+  }
+  if(this.getListProjectDetailPAndLGridList[i].margin>avgSum)
+  {
+  var isActive=0
+
+  }
+  else
+  {
+  isActive=1
+  }
+  this.getListProjectDetailPAndLGridList[i].isActive=isActive
+  }
   this.getListProjectDetailPAndLGridListAfter=this.getListProjectDetailPAndLGridList
-    })
+  this.change.detectChanges();
+  })
+
   }
   customerExpenseCurrentYearGrowth:any
 customerExpenseCurrentYearGrowthYoy:any
@@ -9994,6 +9948,7 @@ imgnonBillableYoyYearPercentGrowth:any
     this.getProjectListData=[]
     this.Loader=true
     this.HTTP.getPbiProjectDetail(this.setDate,this.CmpCode,this.departmentId).subscribe(arg => {
+      debugger
 this.Loader=false
   this.getProjectListData=  arg.data.table
   console.log('getProjectListData',arg.data.table)
@@ -10397,8 +10352,7 @@ else if(this.billableResourceTotalPercentGrowth<0){
   setDate:any
   monthName:any
   fullYear:any
-  changeDate(e)
-  {
+  changeDate(e){
 var date=e.target.value
 let latest_date =this. datepipe. transform(new Date(date), 'yyyy-MM-dd');
 this.setDate=latest_date
