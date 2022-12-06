@@ -27,7 +27,7 @@ p.context {
     animation: spin 2s linear infinite; */
     background-image: url(/assets/img/Logo/Load.gif); background-size: 100%;
   }
-  
+
   .loader-position h2{ color: #fff;
     font-size: 24px;
     text-align: center;}
@@ -755,7 +755,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
   .boxExpensePL{ min-height: 200px;}
   .boxExpense h4{margin: 0 0 10px; font-size: 15px;color: #000;}
   .expenseValue p {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     margin: 0;
     line-height: 30px;
@@ -949,15 +949,15 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
       min-height: 35px;
   }
 
-  .boxExpense.boxExpenseSpace .expenseValue div{ width: 100%;}
+  .boxExpense.boxExpenseSpace .expenseValue div{ flex-grow: 1;}
   .boxExpense.boxExpenseSpace .expenseValue div p{  border-bottom: 1px solid #e5e5e5;}
   .boxExpense.expenseValue1 .expenseValue div{ width: 100%;}
   .boxExpense.expenseValue1 .expenseValue div p{  border-bottom: 1px solid #e5e5e5;}
 
-  .expenseValue21 div{ width: 100%;}
+  .expenseValue21 div{ flex-grow: 1;}
   .expenseValue21 div p{border-bottom: 1px solid #e5e5e5;}
 
-  .expenseValue22 div{ width: 100%;}
+  .expenseValue22 div{ flex-grow: 1;}
   .expenseValue22 div p{border-bottom: 1px solid #e5e5e5;}
 
     p.yearSon {
@@ -966,7 +966,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
 
   .expenseValue.expenseValue1 div {
-    width: 100%;
+    flex-grow: 1;
 }
 .expenseValue21 .YearValue, .expenseValue22 .YearValue{ padding-top: 30px;}
   .project .boxExpense{
@@ -1000,6 +1000,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
     }
 
     @media screen and (max-width:1370px) {
+      .expenseValue p { font-size: 12px;}
       .bottomcard .col-md-3{font-size: 10px; padding: 6px;}
       .pbicantain{ padding: 15px 0;}
       .nav-tabs > li > a{ }
@@ -1010,7 +1011,7 @@ ul.subtabs li.nav-item.active { background: transparent !important;}
 
     @media screen and (max-width:1280px) {
       .setni h5 {font-size: 12px;}
-      .expenseValue p{font-size: 12px;}
+      .expenseValue p{font-size: 10px;}
     }
 
     @media screen and (max-width:1279px) {
@@ -1353,7 +1354,7 @@ span.delayStatus {
   color: #fff;}
   .resourceTable{ max-height: 400px !important; overflow-y: scroll !important;}
 @media screen and (max-width:1280px) {
-  .fontSmall p{ font-size: 11px; min-height: 37px !important;}
+  .fontSmall p{ font-size: 10px; min-height: 37px !important;}
   .fontSmall2 p{ font-size: 11px; }
   .fontSmall .YearValue.YearValuePL{  padding-top: 37px;}
   .fontSmall2 .YearValue{ padding-top: 31px;}
