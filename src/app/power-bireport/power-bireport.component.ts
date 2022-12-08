@@ -2374,12 +2374,15 @@ timeSheetChangeValue(e)
    this.pbiActionableInsightList()
   }
   dateFormat
-  currencyName:any="₹"
+  currencyName 
+  currencySymbols(datas: string) {
+    return this.authServiceService.CurrencySymbols(datas);
+  }
   ngOnInit(): void {
     debugger
     this.departmentId=0
     this.setDepartment=0
-    this.currencyName="₹"
+    this.currencyName = this.authServiceService.getCurrency()
     this.checkMom=true
     let latest_date =this. datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.setDate=latest_date
@@ -2538,6 +2541,7 @@ timeSheetChangeValue(e)
       this.authServiceService.setUserId(this.userId);
       this.authServiceService.setUsername(res.data.table[0].name)
       this.authServiceService.setUserImage(res.data.table[0].userImage)
+      this.authServiceService.setCurrency(res.data.table[0].currency)
       this.authServiceService.setComponyImage(res.data.table[0].logo)
       this.authServiceService.setUserEmail(res.data.table[0].email)
       this.authServiceService.setdateFormat(res.data.table[0].dateFormat)
@@ -5369,7 +5373,7 @@ if(this.getListExpense.length>5)
 {
   for(var i=0;i<5;i++)
 {
- this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId,tooltext: this.getListExpense[i].designationName+": "+ this.decimalFormat(this.getListExpense[i].amount)})
+ this.dataExpenselist.push({"label":this.getListExpense[i].designationName,"value":this.getListExpense[i].designationId,tooltext: this.getListExpense[i].designationName+": "+this.currencyName+" "+ this.decimalFormat(this.getListExpense[i].amount)})
 
 }
 for(var j=0;j<this.getListExpense.length;j++)
@@ -5574,7 +5578,7 @@ this.dataspenderwise = {
     showvalues: "1",
     valuefontcolor: "#ffffff",
     algorithm:"sliceanddice",
-    slicingMode:"vertical",
+    slicingmode: "horizontal",
     plottooltext: "$rowlabel's $columnlabel grading score: <b>$value</b>",
 
   }
@@ -5760,6 +5764,9 @@ this.dataExact = {
 
 
 })
+}
+expenseClick(){
+  let eleList = document.getElementsByTagName("rect")
 }
 
 getListComerWise:any=[]
@@ -8433,7 +8440,7 @@ else if(this.customerExpenseCurrentYearGrowthYoyPercent<0){
 this.customerExpensePreviousYearGrowthYoy=this.getListExpenseDetailList[0].customerExpensePreviousYearGrowthYoy
 
     this.customerExpensePreviousYearYoy=this.getListExpenseDetailList[0].customerExpensePreviousYearYoy
-    this.customerExpensePreviousYearGrowthYoyPercent=(this.customerExpensePreviousYearYoy-this.customerExpensePreviousYearGrowthYoy)*100/this.customerExpensePreviousYearGrowthYoy
+    this.customerExpensePreviousYearGrowthYoyPercent=(this.customerExpensePreviousYearYoy-this.customerExpensePreviousYearGrowthYoy)*100/this.customerExpensePreviousYearGrowthYoy==0?1:this.customerExpensePreviousYearGrowthYoy
     if(this.customerExpenseCurrentYearGrowthYoy==0)
     {
       this.customerExpensePreviousYearGrowthYoyPercent=0

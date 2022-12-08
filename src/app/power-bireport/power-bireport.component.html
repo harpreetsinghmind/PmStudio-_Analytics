@@ -1366,7 +1366,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#tab2" role="tab">Expense</a>
+          <a class="nav-link" data-toggle="tab" href="#tab2" (click)="expenseClick()" role="tab">Expense</a>
         </li>
 
         <li class="nav-item">
@@ -1424,56 +1424,56 @@
                     <div class="expenseValue expenseValue1">
                       <div class="YearValue YearValuePL"><p># Project</p><p>Project Reveue</p><p>Avg Revenue Project</p><p>Purposed Revenue</p><p>Revenue to be billed</p></div>
                       <div>
-                        <p class="yearSon">{{buisnesscurrentYear }}</p>
+                        <p class="yearSon">{{buisnesscurrentYear== null? 'YYYY':buisnesscurrentYear }}</p>
                         <p><span>{{currentYearProjectCount }}
                           |</span><span>{{decimalFormat(currentYearProjectCountPercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectCountPercentGrowthimg}}">
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(currentYearProjectMoney)}} |
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(currentYearProjectMoney)}} |
 
                         </span><span>{{decimalFormat(currentYearProjectMoneyPercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearProjectMoneyPercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(currentYearResource)}} |</span><span>{{decimalFormat(currentYearResourcePercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(currentYearResource)}} |</span><span>{{decimalFormat(currentYearResourcePercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearResourcePercentGrowthimg}}">
 
                         </p>
 
-                        <p><span>{{currencyName}}{{decimalFormat(currentYearpropose)}} |
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(currentYearpropose)}} |
 
                         </span><span>{{decimalFormat(currentYearproposePercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearproposePercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(currentYearRevnue)  }} |</span><span>{{decimalFormat(currentYearRevnuePercentGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(currentYearRevnue)  }} |</span><span>{{decimalFormat(currentYearRevnuePercentGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{currentYearRevnuePercentGrowthimg}}">
 
                         </p>
                       </div>
                       <div>
-                        <p class="yearSon">{{buisnesspreviousYear }}</p>
+                        <p class="yearSon">{{buisnesspreviousYear== null? 'YYYY':buisnesspreviousYear }}</p>
                         <p><span>{{previousYearProjectCount }} |</span><span>{{decimalFormat(previousYearProjectCountPercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{currentYearRevnuePercentGrowthimg}}">
 
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(previousYearProjectMoney) }}|</span><span>{{decimalFormat(previousYearProjectMoneyPercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearProjectMoney) }}|</span><span>{{decimalFormat(previousYearProjectMoneyPercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearProjectMoneyPercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(previousYearResource)}} |</span><span>{{decimalFormat(previousYearResourcePercentGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearResource)}} |</span><span>{{decimalFormat(previousYearResourcePercentGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearResourcePercentGrowthimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(previousYearpropose)
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearpropose)
                           }} |</span><span>
                             {{decimalFormat(previousYearproposePercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearproposePercentGrowthimg}}">
 
                         </p>
 
-                        <p><span>{{currencyName}}{{decimalFormat(previousYearRevnue )}} |</span><span>{{decimalFormat(previousYearRevnuePercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearRevnue )}} |</span><span>{{decimalFormat(previousYearRevnuePercentGrowth)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{previousYearRevnuePercentGrowthimg}}">
 
                         </p>
@@ -1489,28 +1489,28 @@
                       <div class="YearValue" style="padding-top: 30px;"><p># Head Count</p><p> Total Cost</p><p>Billable Resource</p><p>Non Billable Resource</p><p>Avg. Cost  /Resource</p>
                       <p>Avg Revenue/Resource</p><p>Attrition</p></div>
                       <div>
-                        <p class="yearSon">{{peopleCurrentYear}}</p>
-                        <p><span>{{currentYearTotalNumber}}</span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(currentYearTotalMoney)}}</span></p>
-                        <p><span>{{currentYearBillable}}</span></p>
-                        <p><span>{{currentYearNonBillable}}</span></p>
-                        <!-- <p><span>{{currencyName}}{{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p> -->
-                        <!-- <p><span>{{currencyName}}{{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
-                        <p><span>{{currencyName}}{{ decimalFormat(currentYearTotalMoney  /  currentYearTotalNumber )}}</span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(currentYearProjectMoney / currentYearTotalNumber)}}</span></p>
-                        <p><span>{{currentYearAttrition}}%</span></p>
+                        <p class="yearSon">{{peopleCurrentYear== null? 'YYYY':peopleCurrentYear}}</p>
+                        <p><span>{{currentYearTotalNumber== null? '0':currentYearTotalNumber}}</span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(currentYearTotalMoney)== null? '0':decimalFormat(currentYearTotalMoney)}}</span></p>
+                        <p><span>{{currentYearBillable== null? '0':currentYearBillable}}</span></p>
+                        <p><span>{{currentYearNonBillable== null? '0':currentYearNonBillable}}</span></p>
+                        <!-- <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{ currentYearTotalMoney  /  currentYearTotalNumber | number :'1.2-2'}}</span></p> -->
+                        <!-- <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{currentYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{ decimalFormat(currentYearTotalMoney  /  currentYearTotalNumber )== null? '0': decimalFormat(currentYearTotalMoney  /  currentYearTotalNumber )}}</span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(currentYearProjectMoney / currentYearTotalNumber)== null? '0':decimalFormat(currentYearProjectMoney / currentYearTotalNumber)}}</span></p>
+                        <p><span>{{currentYearAttrition== null? '0':currentYearAttrition}}%</span></p>
                       </div>
                       <div>
-                        <p class="yearSon">{{peoplePreviousYear}}</p>
-                        <p><span>{{previousYearTotalNumber}}</span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(previousYearTotalMoney)}}</span></p>
-                        <p><span>{{previousYearBillable}}</span></p>
-                        <p><span>{{previousYearNonBillable}}</span></p>
-                        <!-- <p><span>{{currencyName}}{{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
-                        <!-- <p><span>{{currencyName}}{{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
-                        <p><span>{{currencyName}}{{decimalFormat(previousYearTotalMoney / previousYearTotalNumber) }}</span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(previousYearProjectMoney / previousYearTotalNumber )}}</span></p>
-                        <p><span>{{previousYearAttrition}}%</span></p>
+                        <p class="yearSon">{{peoplePreviousYear== null? 'YYYY':peoplePreviousYear}}</p>
+                        <p><span>{{previousYearTotalNumber== null? '0':previousYearTotalNumber}}</span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearTotalMoney)== null? '0':decimalFormat(previousYearTotalMoney)}}</span></p>
+                        <p><span>{{previousYearBillable== null? '0':previousYearBillable}}</span></p>
+                        <p><span>{{previousYearNonBillable== null? '0':previousYearNonBillable}}</span></p>
+                        <!-- <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{previousYearTotalMoney / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
+                        <!-- <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{previousYearRevenueR / previousYearTotalNumber | number :'1.2-2'}}</span></p> -->
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearTotalMoney / previousYearTotalNumber)== null? '0':decimalFormat(previousYearTotalMoney / previousYearTotalNumber) }}</span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearProjectMoney / previousYearTotalNumber )== null? '0':decimalFormat(previousYearProjectMoney / previousYearTotalNumber )}}</span></p>
+                        <p><span>{{previousYearAttrition== null? '0':previousYearAttrition}}%</span></p>
                       </div>
                     </div>
                   </div>
@@ -1520,27 +1520,27 @@
                     <div class="expenseValue">
                       <div class="YearValue"><p>Total Expense</p><p>Billable</p><p>Non Billable </p><p>Avg. Expense/Resouce</p></div>
                       <div>
-                        <p class="yearSon">{{expenseCurrentYear}}</p>
+                        <p class="yearSon">{{expenseCurrentYear== null? 'YYYY':expenseCurrentYear}}</p>
                         <p><span>
                           <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> {{currencyName}} {{expensecurrentYearTotalNumber}} </div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> <img src="{{currencySymbols(currencyName)}}" style="width: 15px;" />  {{expensecurrentYearTotalNumber== null? '0':expensecurrentYearTotalNumber}} </div>
                           </div></span>
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(expensecurrentYearBillable)}}</span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(expensecurrentYearNonBillable)}} </span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(expensecurrentYearExpense)}} </span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(expensecurrentYearBillable)== null? '0':decimalFormat(expensecurrentYearBillable)}}</span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(expensecurrentYearNonBillable)== null? '0':decimalFormat(expensecurrentYearNonBillable)}} </span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(expensecurrentYearExpense)== null? '0':decimalFormat(expensecurrentYearExpense)}} </span></p>
                       </div>
                       <div>
 
-                        <p class="yearSon">{{expensepeoplePreviousYear}}</p>
+                        <p class="yearSon">{{expensepeoplePreviousYear== null? 'YYYY':expensepeoplePreviousYear}}</p>
                         <p><span>
                           <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{currencyName}} {{expensepreviousYearTotalNumber}}</div>
+                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" />  {{expensepreviousYearTotalNumber== null? '0':expensepreviousYearTotalNumber}}</div>
                           </div></span>
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(expensepreviousYearBillable)}} </span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(expensepreviousYearNonBillable)}} </span></p>
-                        <p><span>{{currencyName}}{{decimalFormat(expensepreviousYearExpense)}}</span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(expensepreviousYearBillable)== null? '0':decimalFormat(expensepreviousYearBillable)}} </span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(expensepreviousYearNonBillable)== null? '0':decimalFormat(expensepreviousYearNonBillable)}} </span></p>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(expensepreviousYearExpense)== null? '0':decimalFormat(expensepreviousYearExpense)}}</span></p>
                       </div>
                     </div>
                   </div>
@@ -2337,17 +2337,17 @@
 
                     <div class="col-md-12 no-padding">
                       <div class="boxExpense expenseValue21">
-                        <h4>{{currencyName}} Projects</h4>
+                        <h4><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" />  Projects</h4>
                         <div class="expenseValue">
                           <div class="YearValue"><p>Revenue</p><p>Cost</p></div>
                           <div>
                             <p class="yearSon">Month ({{monthName}})</p>
-                            <p><span>{{currencyName}}{{revenue}} |</span><span>{{decimalFormat(revenuePercentageGrowthPercent)  }}%</span>
+                            <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{revenue}} |</span><span>{{decimalFormat(revenuePercentageGrowthPercent)  }}%</span>
                               <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgrevenuePercentageGrowthPercent}}">
 
                             </p>
-                            <p><span>{{currencyName}}{{cost}} |</span><span>{{+ decimalFormat(costPercentageGrowthValue) }}%</span>
+                            <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{cost}} |</span><span>{{+ decimalFormat(costPercentageGrowthValue) }}%</span>
                               <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                         <img src="{{imgcostPercentageGrowthValue}}">
 
@@ -2355,13 +2355,13 @@
                           </div>
                           <div>
                             <p class="yearSon">YOY</p>
-                            <p><span>{{currencyName}}{{decimalFormat(revenueCostTotalYoy) }} |</span><span>{{decimalFormat(revenueCostTotalYoyPercentGrowth)  }}%</span>
+                            <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(revenueCostTotalYoy) }} |</span><span>{{decimalFormat(revenueCostTotalYoyPercentGrowth)  }}%</span>
                               <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgrevenueCostTotalYoyPercentGrowth}}">
 
                             </p>
 
-                            <p><span>{{currencyName}}{{decimalFormat(costYoyYear) }} |</span><span>{{decimalFormat(costYoyYearPercentGrowth) }}%</span>
+                            <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(costYoyYear) }} |</span><span>{{decimalFormat(costYoyYearPercentGrowth) }}%</span>
                               <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                         <img src="{{imgcostYoyYearPercentGrowth}}">
 
@@ -2976,14 +2976,14 @@
 
                           </div>
                           <div class="col-md-6 halfdiv1">
-                            <h5>{{currencyName}}{{purposedRevenue}}</h5>
+                            <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{purposedRevenue== null? 'N/A':purposedRevenue}}</h5>
 
 
-                            <h5>{{currencyName}}{{revnueFirst}}</h5>
-                            <h5> {{currencyName}}{{costFirst}}</h5>
-                            <h5>{{decimalFormat(marginFirst)}}%</h5>
-                            <h5>{{resourceFirst}}</h5>
-                            <h5>{{marginSecond}}</h5>
+                            <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{revnueFirst== null? 'N/A':revnueFirst}}</h5>
+                            <h5> <img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{costFirst== null? 'N/A':costFirst}}</h5>
+                            <h5>{{decimalFormat(marginFirst)== null? 'N/A':decimalFormat(marginFirst)}}%</h5>
+                            <h5>{{resourceFirst== null? 'N/A':resourceFirst}}</h5>
+                            <h5>{{marginSecond== null? 'N/A':marginSecond}}</h5>
 
                           </div>
 
@@ -3005,11 +3005,11 @@
                           </div>
                           <div class="col-md-6 halfdiv1">
 
-                            <h5>{{projectNameSecond}}</h5>
-                            <h5>{{revnueSecond}}</h5>
-                            <h5>{{costSecond}}</h5>
-                            <h5>{{startDate}}</h5>
-                            <h5>{{endDate}}</h5>
+                            <h5>{{projectNameSecond == null?'N/A':projectNameSecond}}</h5>
+                            <h5>{{revnueSecond== null? 'N/A':revnueSecond}}</h5>
+                            <h5>{{costSecond== null? 'N/A':costSecond}}</h5>
+                            <h5>{{startDate== null? 'dd-mm-yyyy':startDate}}</h5>
+                            <h5>{{endDate== null? 'dd-mm-yyyy':endDate}}</h5>
 
                           </div>
                         </div>
@@ -3242,7 +3242,7 @@
 
                       <div class="col-md-12 no-padding rateRow fontSmall">
                         <div class="boxExpense boxExpensePL">
-
+                 
                           <div class="expenseValue expenseValue1">
                             <div class="YearValue YearValuePL"><p># Project</p><p>Project Revenue</p><p>Avg. Revenue Project</p><p>Avg. Tenure</p></div>
                             <div>
@@ -3253,25 +3253,25 @@
                           <img src="{{projectCostCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{currencyName}}{{decimalFormat(projectCostInDollarCurrentYear)}}|
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(projectCostInDollarCurrentYear)}}|
 
                               </span><span>{{decimalFormat(projectCostInDollarCurrentYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               <!-- </p>
-                              <p><span>{{currencyName}}{{decimalFormat(newavgRevenueCurrentYear)}}
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(newavgRevenueCurrentYear)}}
                                  |</span><span>{{decimalFormat(avgRevenueCurrentYearGrowthPercent)}}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenueCurrentYearGrowthPercentimg}}">
 
                               </p> -->
-                              <p><span>{{currencyName}}{{decimalFormat(currentYearResource)}} |</span><span>{{decimalFormat(currentYearResourcePercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(currentYearResource)}} |</span><span>{{decimalFormat(currentYearResourcePercentGrowth)  }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                                 <img src="{{currentYearResourcePercentGrowthimg}}">
       
                               </p>
                             
                               <p><span>{{getprojectDetailPAndLList[0]?.avgTenureCurrentYear}}
                                 </span> | 
-                                <span>{{getprojectDetailPAndLList[0]?.avgTenureCurrentYearGrowth }}</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                                <span>{{decimalFormat(getprojectDetailPAndLList[0]?.avgTenureCurrentYearGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                        
 
                               </p>
@@ -3283,26 +3283,26 @@
                           <img src="{{projectCostPreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{currencyName}}{{decimalFormat(projectCostInDollarPerviousYear)  }} |</span><span>
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(projectCostInDollarPerviousYear)  }} |</span><span>
                                 {{decimalFormat(projectCostInDollarPreviousYearGrowthPercent) }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{projectCostInDollarCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <!-- <p><span>{{currencyName}}{{decimalFormat(newavgRevenuePreviousYear)  }} |</span><span>
+                              <!-- <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(newavgRevenuePreviousYear)  }} |</span><span>
                                 {{decimalFormat(avgRevenuePreviousYearGrowthPercent) }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgRevenuePreviousYearGrowthPercentimg}}">
 
 
                               </p> -->
-                              <p><span>{{currencyName}}{{decimalFormat(previousYearResource)}} |</span><span>{{decimalFormat(previousYearResourcePercentGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(previousYearResource)}} |</span><span>{{decimalFormat(previousYearResourcePercentGrowth) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                                 <img src="{{previousYearResourcePercentGrowthimg}}">
 
                               </p>
                               <p><span>{{getprojectDetailPAndLList[0]?.avgTenurePreviousYear}} |</span>
                                 <span>
-                                {{getprojectDetailPAndLList[0]?.avgTenurePreviousYearGrowth}}</span>
+                                {{decimalFormat(getprojectDetailPAndLList[0]?.avgTenurePreviousYearGrowth== null?0:getprojectDetailPAndLList[0]?.avgTenurePreviousYearGrowth) }}%</span>
 
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3323,7 +3323,7 @@
                             <div class="YearValue YearValuePL"><p>Total Cost</p><p>Net Revenue</p><p>Avg. Margin</p><p># Project < Avg Margin</p></div>
                             <div>
                               <p class="yearSon">{{plcurrentYear}}</p>
-                              <p><span>{{currencyName}}{{decimalFormat(totalCostCurrentYear)  }} |</span>
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(totalCostCurrentYear)  }} |</span>
                                 <span>{{decimalFormat(totalCostCurrentYearGrowthPercent) }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3333,7 +3333,7 @@
 
 
                               </p>
-                              <p><span>{{currencyName}}{{decimalFormat(newnetRevenueCurrentYear) }} |</span>
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(newnetRevenueCurrentYear) }} |</span>
                                 <span>{{decimalFormat(netRevenueCurrentYearGrowthPercent) }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth">
 
@@ -3341,7 +3341,7 @@
                           <img src="{{netRevenueCurrentYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{currencyName}}{{decimalFormat(avgMarginCurrentYear) }} |</span>
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(avgMarginCurrentYear) }} |</span>
                                 <span>{{decimalFormat(avgMarginCurrentYearGrowthPercent) }}%</span>
                                 <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginCurrentYearGrowthPercentimg}}">
@@ -3356,18 +3356,18 @@
                             </div>
                             <div>
                               <p class="yearSon">{{plpreviousYear}}</p>
-                              <p><span>{{currencyName}}{{decimalFormat(totalCostPreviouYear) }} |</span>
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(totalCostPreviouYear) }} |</span>
                                 <span>{{decimalFormat(totalCostPreviouYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalCostPreviouYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{currencyName}}{{decimalFormat(newnetRevenuePreviousYear)}} |
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(newnetRevenuePreviousYear)}} |
 
                               </span><span>{{decimalFormat(netRevenuePreviousYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{netRevenuePreviousYearGrowthPercentimg}}">
 
                               </p>
-                              <p><span>{{currencyName}}{{decimalFormat(avgMarginPreviousYear)  }}
+                              <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(avgMarginPreviousYear)  }}
                                 |</span><span>{{decimalFormat(avgMarginPreviousYearGrowthPercent) }}%</span><span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{avgMarginPreviousYearGrowthPercentimg}}">
 
@@ -3483,12 +3483,12 @@
                       <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p class="yearSon">Month ({{monthName}})</p>
-                        <p><span>{{currencyName}}{{decimalFormat(totalExpenseCurrentYear) }} |</span><span>{{decimalFormat(totalExpenseCurrentYearGrowthPercent) }}%</span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(totalExpenseCurrentYear) }} |</span><span> {{decimalFormat(totalExpenseCurrentYearGrowthPercent) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{totalExpenseCurrentYearGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(totalExpensePreviousYear) }}|</span><span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(totalExpensePreviousYear) }} |</span><span>
                           {{decimalFormat(totalExpensePreviousYearGrowthPercent) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{totalExpensePreviousYearGrowthPercentimg}}">
@@ -3497,14 +3497,14 @@
                       </div>
                       <div>
                         <p class="yearSon">YOY</p>
-                        <p><span>{{currencyName}}{{decimalFormat(totalExpenseCurrentYearYoy) }} |</span>
-                          <span>{{decimalFormat(totalExpenseCurrentYearYoyGrowthPercent) }}%</span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(totalExpenseCurrentYearYoy) }} |</span>
+                          <span> {{decimalFormat(totalExpenseCurrentYearYoyGrowthPercent) }}%</span>
                           <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalExpenseCurrentYearYoyGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(totalExpensePreviousYearYoy) }} |</span>
-                          <span>{{decimalFormat(totalExpensePreviousYearYoyGrowthPercent) }}%</span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(totalExpensePreviousYearYoy) }} |</span>
+                          <span> {{decimalFormat(totalExpensePreviousYearYoyGrowthPercent) }}%</span>
                           <span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{totalExpensePreviousYearYoyGrowthPercentimg}}">
 
@@ -3521,14 +3521,14 @@
                         <p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p class="yearSon">Month ({{monthName}})</p>
-                        <p><span>{{currencyName}}{{decimalFormat(serviceProviderCurrentYear) }} |</span>
-                          <span>{{decimalFormat(serviceProviderCurrentYearGrowthPercent) }}%</span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(serviceProviderCurrentYear) }} |</span>
+                          <span> {{decimalFormat(serviceProviderCurrentYearGrowthPercent) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{serviceProviderCurrentYearGrowthPercentimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(serviceProviderPreviousYear) }} |</span>
-                          <span>{{decimalFormat(serviceProviderPreviousYearGrowthPercent) }}%</span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(serviceProviderPreviousYear) }} |</span>
+                          <span> {{decimalFormat(serviceProviderPreviousYearGrowthPercent) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
 
@@ -3537,7 +3537,7 @@
                       </div>
                       <div>
                         <p class="yearSon">YOY</p>
-                        <p><span>{{currencyName}}{{decimalFormat(serviceProviderCurrentYearYoy) }} |
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(serviceProviderCurrentYearYoy) }} |
 
                         </span><span>{{decimalFormat(serviceProviderCurrentYearGrowthYoyPercent) }}%
 
@@ -3548,8 +3548,8 @@
                         <img src="{{serviceProviderCurrentYearGrowthYoyPercentimg}}">
 
                       </p>
-                      <p><span>{{currencyName}}{{decimalFormat(serviceProviderPreviousYearYoy) }}
-                      </span><span>{{decimalFormat(serviceProviderPreviousYearGrowthYoyPercent) }}%
+                      <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(serviceProviderPreviousYearYoy) }} |
+                      </span><span> {{decimalFormat(serviceProviderPreviousYearGrowthYoyPercent) }}%
 
                       </span><span class="glyphicon glyphicon-arrow-down downgrowth">
 
@@ -3569,7 +3569,7 @@
                       <div class="YearValue"><p>{{expenseCurrentYear}}</p><p>{{expensePreviousYear}}</p></div>
                       <div>
                         <p class="yearSon">Month ({{monthName}})</p>
-                        <p><span>{{currencyName}}{{decimalFormat(customerExpenseCurrentYear) }} |
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(customerExpenseCurrentYear) }} |
 
                         </span><span>{{decimalFormat(customerExpenseCurrentYearGrowth) }}%
 
@@ -3579,8 +3579,8 @@
                         <img src="{{serviceProviderPreviousYearGrowthPercentimg}}">
 
                       </p>
-                        <p><span>{{currencyName}}{{decimalFormat(customerExpensePreviousYear) }} |</span>
-                          <span>{{decimalFormat(customerExpensePreviousYearGrowthPercent) }}%</span>
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(customerExpensePreviousYear) }} |</span>
+                          <span> {{decimalFormat(customerExpensePreviousYearGrowthPercent) }}%</span>
                           <span class="glyphicon glyphicon-arrow-up upgrowth"></span>
                           <img src="{{customerExpensePreviousYearGrowthPercentimg}}">
 
@@ -3588,15 +3588,15 @@
                       </div>
                       <div>
                         <p class="yearSon">YOY</p>
-                        <p><span>{{currencyName}}{{decimalFormat(customerExpenseCurrentYearYoy) }} |</span>
-                          <span>{{decimalFormat(customerExpenseCurrentYearGrowthYoyPercent) }}%
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(customerExpenseCurrentYearYoy) }} |</span>
+                          <span> {{decimalFormat(customerExpenseCurrentYearGrowthYoyPercent) }}%
 
                           </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{customerExpenseCurrentYearGrowthYoyPercentimg}}">
 
                         </p>
-                        <p><span>{{currencyName}}{{decimalFormat(customerExpensePreviousYearYoy) }} |</span>
-                          <span>{{decimalFormat(customerExpensePreviousYearGrowthYoyPercent) }}%
+                        <p><span><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(customerExpensePreviousYearYoy) }} |</span>
+                          <span> {{decimalFormat(customerExpensePreviousYearGrowthYoyPercent) }}%
 
                           </span><span class="glyphicon glyphicon-arrow-down downgrowth"></span>
                           <img src="{{customerExpensePreviousYearGrowthYoyPercentimg}}">
@@ -3615,32 +3615,32 @@
                 <div class="CurrentYearBox">
                   <div>
                     <h5>Total Reports</h5>
-                    <h5>{{currencyName}}​ {{decimalFormat(totalReports) }} <span>({{totalReportsLeft}})</span></h5>
+                    <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> ​ {{decimalFormat(totalReports) }} <span>({{totalReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Unsubmitted Report</h5>
-                    <h5>{{currencyName}} {{decimalFormat(unsubmittedReports) }} <span>({{unsubmittedReportsLeft}})</span></h5>
+                    <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" />  {{decimalFormat(unsubmittedReports) }} <span>({{unsubmittedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Pending Report</h5>
-                    <h5>{{currencyName}}{{decimalFormat(pendingReports) }}<span>({{pendingReportsLeft}})</span></h5>
+                    <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> {{decimalFormat(pendingReports) }}<span>({{pendingReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Approved Report</h5>
-                    <h5>{{currencyName}}​ {{decimalFormat(approvedReports) }} <span>({{approvedReportsLeft}})</span></h5>
+                    <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> ​ {{decimalFormat(approvedReports) }} <span>({{approvedReportsLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Reimbursed</h5>
-                    <h5>{{currencyName}}​ {{decimalFormat(reimbursed) }} <span>({{reimbursedLeft}})</span></h5>
+                    <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> ​ {{decimalFormat(reimbursed) }} <span>({{reimbursedLeft}})</span></h5>
                   </div>
 
                   <div>
                     <h5>Inprocess</h5>
-                    <h5>{{currencyName}}​ {{decimalFormat(inprocess) }} <span>({{inprocessLeft}})</span></h5>
+                    <h5><img src="{{currencySymbols(currencyName)}}" style="width: 15px;" /> ​ {{decimalFormat(inprocess) }} <span>({{inprocessLeft}})</span></h5>
                   </div>
 
                 </div>

@@ -76,6 +76,16 @@ export class AuthServiceService {
     return this.httpClient.post(`https://demo.pm-studio.com/LGAPI/api/accounts/ForgotPassword`, userData, { headers: reqHeader });
   }
 
+  getCurrency() {
+    let un = localStorage.getItem(btoa("currency"));
+    un = un === null ? un : atob(un);
+    return un;
+  }
+  
+  setCurrency(currency: any){
+    localStorage.setItem(btoa("currency"), btoa(currency));
+  }
+
   requestchangepassword(email: string,token): Observable<any> {
     debugger;
     var userData = "password=" + email +"&token="+token;
