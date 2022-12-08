@@ -10,6 +10,8 @@ export const environment = {
   AnalyticKey: '9877769078@kunalMalhotra',
 };
 
+// siteUrl: 'http://localhost:4300/api/',
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
