@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {  ChangeDetectorRef, Component, OnInit } from '@angular/core';
 declare var $: any;
 declare var jQuery: any;
 import { Router } from '@angular/router';
@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   AppUrl
   constructor(private Http: GlobalServiceService,
     private router: Router,
+    private change: ChangeDetectorRef,
      private toaster: ToasterService,
      private comon: CommomServiceService,
      private datePipe: DatePipe,
@@ -37,7 +38,7 @@ usertype:any;
     this.userName = this.auth.getUsername()
     this.usertype   =   this.auth.getRoleId()
     this.userEmail  =   this.auth.getUserEmail()
-    // this.timeformat= this.auth.gettimeformat();
+ 
 
     setInterval(() => {
           // if(this.timeformat==1)

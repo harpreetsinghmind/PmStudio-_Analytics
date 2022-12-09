@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import {  ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExcelExportProperties,SaveEventArgs, GridComponent } from '@syncfusion/ej2-angular-grids';
 import { AnimationModel, FontModel } from '@syncfusion/ej2-angular-progressbar';
@@ -66,140 +66,64 @@ export class PowerBIReportComponent implements OnInit {
     { text: 'Root', id: 6, groupId: 3, color: '#00bdae' }
   ];
 
-  public TenureWiseEmployeeData = {
-    "chart": {
-        "theme": "fusion",
-        "caption": "Avg. Tenure Wise Employee Details",
-        "subcaption": "By Employees",
-        "xAxisName": "Months",
-        "YAxisName": "Employees years of experience",
-        "numberPrefix": " ",
-        "showmean": "1",
-        "showValue":1,
-        "legendBorderAlpha": "0",
-        "drawmeanconnector": "1",
-        "legendShadow": "0",
-        "legendPosition": "right",
-        "outlierIconColor": "#fff00f",
-        "showalloutliers": "1",
-        "showToolTip": "1",
-        "outliericonsides": "20",
-        "outliericonalpha": "40",
-        "outliericonshape": "triangle",
-        "outliericonradius": "4",
-        "showValues": "1",
-     
-    },
-  
-    "categories": [
-        {
-            "category": [
-                {
-                    "label": "Jan",
-                },
-                {
-                    "label": "Feb"
-                },
-                {
-                    "label": "Mar"
-                },
-                {
-                  "label": "Aprl"
-                },
-                {
-                    "label": "May"
-                },
-                {
-                    "label": "Jun"
-                },
-                {
-                    "label": "Jul"
-                },
-                {
-                    "label": "Aug"
-                },
-                {
-                    "label": "Sep"
-                },
-                {
-                    "label": "Oct"
-                },
-                {
-                    "label": "Nov"
-                },
-                {
-                    "label": "Dec"
-                }
-            ]
-        }
-    ],
-    "dataset": [
-        {
-            "seriesname": "Employees",
-            "lowerBoxColor": "#0075c2",
-            "upperBoxColor": "#1aaf5d",
-            "data": [
-                {
-                    min:"5",
-                    max:"15",
-                    q1:"5",
-                    q3:"15",
-                    median:"9",
-                    mean:"9",
-                    tooltext: "Above Average: 15 {Br} Average: 9 {Br} Below Average: 5"
-                },
-                {
-                  min:"3",
-                  max:"12",
-                  q1:"3",
-                  q3:"12",
-                  median:"8",
-                  mean:"8",
-                  tooltext: "Above Average: 12 {Br} Average: 8 {Br} Below Average: 3"
-              },
-                {
-                    "value": "1,1.5,0.2,4,3,0.5,6,0.8,0.5,2,0.6,1,3"
-                },
-                {
-                    "value": "1,1.5,0.2,2,3,1,6,3,0.5,2,0.6,1,3"
-                },
-                {
-                    "value": "1,0.1.5,0.2,4,3,1,6,5,0.5,2,0.6,0.1,3",
-                    "outliers": "9"
-                },
-                {
-                    "value": "1,1.5,2,4,3,1,6,10,0.5,2,0.6,1,3"
-                },
-                {
-                  outliers: "15,15,16,17,21",
-                  min:"0.2",
-                  max:"8",
-                  q1:"0.8",
-                  q3:"4",
-                  median:"2",
-                  mean:"2.68"
-              },
-              {
-                  "value": "1,1.5,0.2,4,3,1,6,8,0.5,2,0.6,1,3",
-                  "outliers": "10,12,13,11"
-              },
-              {
-                  "value": "1,1.5,0.2,4,3,0.5,6,0.8,0.5,2,0.6,1,3"
-              },
-              {
-                  "value": "1,1.5,0.2,2,3,1,6,3,0.5,2,0.6,1,3"
-              },
-              {
-                  "value": "1,0.1,5,0.2,4,3,1,5,5,0.5,2,0.4,0.1,3",
-                  "outliers": "10,12,13,11"
-              }
-              
-               
-            ]
-        }
-        
-    ]
-}
+  public TenureWiseEmployeeData 
+  categories
+  dataVales
+  onPeopleClick(){
+    this.categories = []
+    this.dataVales = []
+    this.tentureDetails.categories[0].category.forEach((element,index) => {
+      this.categories.push({"label": this.tentureDetails.categories[0].category[index].Label})
+      this.dataVales.push(
+      {min:this.tentureDetails.dataset[1].data[index].value,max:this.tentureDetails.dataset[2].data[index].value,
+      q1:this.tentureDetails.dataset[1].data[index].value,q3:this.tentureDetails.dataset[2].data[index].value,
+      median:this.tentureDetails.dataset[0].data[index].value,mean:this.tentureDetails.dataset[0].data[index].value,
+      tooltext: "Above Average: "+this.tentureDetails.dataset[2].data[index].value+" {Br} Average: "+this.tentureDetails.dataset[0].data[index].value+" {Br} Below Average: "+this.tentureDetails.dataset[1].data[index].value
+                            })
+    });
+   this.TenureWiseEmployeeData =  {
+      "chart": {
+          "theme": "fusion",
+          "caption": "Avg. Tenure Wise Employee Details",
+          "subcaption": "By Employees",
+          "xAxisName": "Months",
+          "captionAlignment":"left",
+          "YAxisName": "Employees &nbsp; Count",
+          "numberPrefix": " ",
+          "showmean": "1",
+          "showValue":1,
+          "legendBorderAlpha": "0",
+          "drawmeanconnector": "1",
+          "legendShadow": "0",
+          "legendPosition": "right",
+          "outlierIconColor": "#fff00f",
+          "showalloutliers": "1",
+          "showToolTip": "1",
+          "outliericonsides": "20",
+          "outliericonalpha": "40",
+          "outliericonshape": "triangle",
+          "outliericonradius": "4",
+          "showValues": "1",
+       
+      },
+    
+      "categories": [
+          {
+              "category":  this.categories
+          }
+      ],
+      "dataset": [
+          {
+              "seriesname": "Employees",
+              "lowerBoxColor": "#0075c2",
+              "upperBoxColor": "#1aaf5d",
+              "data": this.dataVales
+          }
+          
+      ]
+  }
+
+  }
   public allowMultiple = true;
   display = "none";
   openModal() {
@@ -209,6 +133,7 @@ export class PowerBIReportComponent implements OnInit {
   openModalFilter() {
     this.displayFilter = "block";
   }
+
 
   timeSheetValue:any
   checkInValue:any
@@ -2547,9 +2472,15 @@ timeSheetChangeValue(e)
       this.authServiceService.setdateFormat(res.data.table[0].dateFormat)
       this.authServiceService.setdecimalFormat(res.data.table[0].decimalFormat);
     })
-
-
+ 
+   
+    this.refreshEle = document.getElementsByClassName("myRefrehClass");
+    setTimeout(() => {
+      this.refreshEle[0].click()
+      this.onPeopleClick();
+    }, 2000);
   }
+  refreshEle
   actionComplete(args: any) {
     if(this.actionGridRefresh==true)
     {
@@ -3437,6 +3368,7 @@ this.checkDate=0
 this.gridset.dataSource=this.setActionableTimeSheetList
 this.gridset.refresh()
 this.gridset.refreshColumns()
+this.change.detectChanges();
   })
 }
 changeStatus(e)
@@ -3511,8 +3443,10 @@ pbiActionableCheckInCheckOutList(){
     this.gridcheck.refresh()
     this.gridcheck.dataSource=this.actionableCheckInCheckOutList
   }
+  this.change.detectChanges();
   })
   this.Loader=false
+ 
 }
 changeProjectStatus(e)
 {
@@ -4148,9 +4082,10 @@ if(this.actionableInsightList.length>0)
   this.gridsInsight.dataSource=this.actionableInsightList;
 
 }
-
+this.change.detectChanges();
 })
 this.Loader=false
+
 }
 
   getDepartmentListDropdown(){
@@ -6025,7 +5960,7 @@ for(var i=0;i<this.getListCategory.length;i++)
     };
 
 
-
+    this.change.detectChanges();
     })
 }
 dataDeployee:any=[]
@@ -6078,7 +6013,7 @@ this.dataDeployee.push(
     "data": this.dataDeployee
   };
 
-
+  this.change.detectChanges();
 
   })
 }
