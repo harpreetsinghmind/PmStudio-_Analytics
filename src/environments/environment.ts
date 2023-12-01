@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  siteUrl: 'https://demo.pm-studio.com/api/',
+  siteUrl: 'https://app.pm-studio.com/api/',
   domainUrl: 'https://demo.pm-studio.com/',
-  apiUrl: 'https://demo.pm-studio.com/api/api/',
+  apiUrl: 'https://app.pm-studio.com/api/api/',
   AnalyticKey: '9877769078@kunalMalhotra',
 };
 

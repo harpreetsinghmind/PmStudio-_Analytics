@@ -1960,13 +1960,13 @@
                   [dataSource]="tentureDetails">
               </fusioncharts> -->
           
-                <fusioncharts
+                <!-- <fusioncharts
                     width="100%"
                     height="600"
                     type="boxandwhisker2d"
                     dataFormat="json"
                     [dataSource]="TenureWiseEmployeeData">
-                </fusioncharts>
+                </fusioncharts> -->
                 </div>
               </div>
             </div>
@@ -3927,6 +3927,7 @@
                   <ul class="mandateItem">
                     <li><span class="nonsubmission"></span>Non Submission</li>
                     <li><span class="latesubmission"></span>Late Submission</li>
+                    <li><img src="../../assets/img/logo/green-signalNew.png" style="width: 30px;"> On Time</li>
                   </ul>
                 </div>
               </div>
@@ -3971,6 +3972,11 @@
                       <ng-template #template let-data>
                         <img *ngIf="data.one===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.one === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.one === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.one === 4">W</span>
+                        <span *ngIf="data.one === 5">L</span>
+                        <span *ngIf="data.one === 6">H</span>
+                        <span *ngIf="data.one === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='two' headerText='2' [filter]='filter'  width='50'>
@@ -3978,6 +3984,11 @@
                       <ng-template #template let-data>
                         <img *ngIf="data.two===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.two === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.two === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.two === 4">W</span>
+                        <span *ngIf="data.two === 5">L</span>
+                        <span *ngIf="data.two === 6">H</span>
+                        <span *ngIf="data.two === 7">CH</span>
                       </ng-template>
                     </e-column>
 
@@ -3985,174 +3996,319 @@
                       <ng-template #template let-data>
                         <img *ngIf="data.three===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.three === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.three === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.three === 4">W</span>
+                        <span *ngIf="data.three === 5">L</span>
+                        <span *ngIf="data.three === 6">H</span>
+                        <span *ngIf="data.three === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='four' headerText='4' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.four===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.four === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.four === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.four === 4">W</span>
+                        <span *ngIf="data.four === 5">L</span>
+                        <span *ngIf="data.four === 6">H</span>
+                        <span *ngIf="data.four === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='five' headerText='5' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.five===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.five === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.five === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.five === 4">W</span>
+                        <span *ngIf="data.five === 5">L</span>
+                        <span *ngIf="data.five === 6">H</span>
+                        <span *ngIf="data.five === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='six' headerText='6' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.six===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.six === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.six === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.six === 4">W</span>
+                        <span *ngIf="data.six === 5">L</span>
+                        <span *ngIf="data.six === 6">H</span>
+                        <span *ngIf="data.six === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='seven' headerText='7' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.seven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.seven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.seven === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.seven === 4">W</span>
+                        <span *ngIf="data.seven === 5">L</span>
+                        <span *ngIf="data.seven === 6">H</span>
+                        <span *ngIf="data.seven === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='eight' headerText='8' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.eight===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.eight === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.eight === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.eight === 4">W</span>
+                        <span *ngIf="data.eight === 5">L</span>
+                        <span *ngIf="data.eight === 6">H</span>
+                        <span *ngIf="data.eight === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='nine' headerText='9' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.nine===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.nine === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.nine === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.nine === 4">W</span>
+                        <span *ngIf="data.nine === 5">L</span>
+                        <span *ngIf="data.nine === 6">H</span>
+                        <span *ngIf="data.nine === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='ten' headerText='10' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.ten===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.ten === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.ten === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.ten === 4">W</span>
+                        <span *ngIf="data.ten === 5">L</span>
+                        <span *ngIf="data.ten === 6">H</span>
+                        <span *ngIf="data.ten === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='eleven' headerText='11' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.eleven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.eleven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.eleven === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.eleven === 4">W</span>
+                        <span *ngIf="data.eleven === 5">L</span>
+                        <span *ngIf="data.eleven === 6">H</span>
+                        <span *ngIf="data.eleven === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twelve' headerText='12' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twelve===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twelve === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twelve === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twelve === 4">W</span>
+                        <span *ngIf="data.twelve === 5">L</span>
+                        <span *ngIf="data.twelve === 6">H</span>
+                        <span *ngIf="data.twelve === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='threeten' headerText='13' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.threeten===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.threeten === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.threeten === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.threeten === 4">W</span>
+                        <span *ngIf="data.threeten === 5">L</span>
+                        <span *ngIf="data.threeten === 6">H</span>
+                        <span *ngIf="data.threeten === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='fourteen' headerText='14' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.fourteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.fourteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.fourteen === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.fourteen === 4">W</span>
+                        <span *ngIf="data.fourteen === 5">L</span>
+                        <span *ngIf="data.fourteen === 6">H</span>
+                        <span *ngIf="data.fourteen === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='fifteen' headerText='15' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.fifteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.fifteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.fifteen === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.fifteen === 4">W</span>
+                        <span *ngIf="data.fifteen === 5">L</span>
+                        <span *ngIf="data.fifteen === 6">H</span>
+                        <span *ngIf="data.fifteen === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='sixteen' headerText='16' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.sixteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.sixteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.sixteen === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.sixteen === 4">W</span>
+                        <span *ngIf="data.sixteen === 5">L</span>
+                        <span *ngIf="data.sixteen === 6">H</span>
+                        <span *ngIf="data.sixteen === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='seventeen' headerText='17' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.seventeen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.seventeen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.seventeen === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.seventeen === 4">W</span>
+                        <span *ngIf="data.seventeen === 5">L</span>
+                        <span *ngIf="data.seventeen === 6">H</span>
+                        <span *ngIf="data.seventeen === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='eighteen' headerText='18' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.eighteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.eighteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.eighteen === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.eighteen === 4">W</span>
+                        <span *ngIf="data.eighteen === 5">L</span>
+                        <span *ngIf="data.eighteen === 6">H</span>
+                        <span *ngIf="data.eighteen === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='nineteen' headerText='19' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.nineteen===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.nineteen === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.nineteen === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.nineteen === 4">W</span>
+                        <span *ngIf="data.nineteen === 5">L</span>
+                        <span *ngIf="data.nineteen === 6">H</span>
+                        <span *ngIf="data.nineteen === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twenty' headerText='20' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twenty===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twenty === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twenty === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twenty === 4">W</span>
+                        <span *ngIf="data.twenty === 5">L</span>
+                        <span *ngIf="data.twenty === 6">H</span>
+                        <span *ngIf="data.twenty === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentyone' headerText='21' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyone===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyone === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentyone === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentyone === 4">W</span>
+                        <span *ngIf="data.twentyone === 5">L</span>
+                        <span *ngIf="data.twentyone === 6">H</span>
+                        <span *ngIf="data.twentyone === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentytwo' headerText='22' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentytwo===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                        <img *ngIf="data.twenttwo === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentytwo === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentytwo === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentytwo === 4">W</span>
+                        <span *ngIf="data.twentytwo === 5">L</span>
+                        <span *ngIf="data.twentytwo === 6">H</span>
+                        <span *ngIf="data.twentytwo === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentythree' headerText='23' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentythree===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentythree === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentythree === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentythree === 4">W</span>
+                        <span *ngIf="data.twentythree === 5">L</span>
+                        <span *ngIf="data.twentythree === 6">H</span>
+                        <span *ngIf="data.twentythree === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentyfour' headerText='24' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyfour===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyfour === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentyfour === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentyfour === 4">W</span>
+                        <span *ngIf="data.twentyfour === 5">L</span>
+                        <span *ngIf="data.twentyfour === 6">H</span>
+                        <span *ngIf="data.twentyfour === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentyfive' headerText='25' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyfive===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyfive === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentyfive === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentyfive === 4">W</span>
+                        <span *ngIf="data.twentyfive === 5">L</span>
+                        <span *ngIf="data.twentyfive === 6">H</span>
+                        <span *ngIf="data.twentyfive === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentysix' headerText='26' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentysix===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentysix === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentysix === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentysix === 4">W</span>
+                        <span *ngIf="data.twentysix === 5">L</span>
+                        <span *ngIf="data.twentysix === 6">H</span>
+                        <span *ngIf="data.twentysix === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentyseven' headerText='27' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyseven===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
-                        <img *ngIf="data.twentseven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentyseven === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentyseven === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentyseven === 4">W</span>
+                        <span *ngIf="data.twentyseven === 5">L</span>
+                        <span *ngIf="data.twentyseven === 6">H</span>
+                        <span *ngIf="data.twentyseven === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentyeight' headerText='28' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentyeight===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentyeight === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentyeight === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentyeight === 4">W</span>
+                        <span *ngIf="data.twentyeight === 5">L</span>
+                        <span *ngIf="data.twentyeight === 6">H</span>
+                        <span *ngIf="data.twentyeight === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='twentynine' headerText='29' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.twentynine===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.twentynine === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.twentynine === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.twentynine === 4">W</span>
+                        <span *ngIf="data.twentynine === 5">L</span>
+                        <span *ngIf="data.twentynine === 6">H</span>
+                        <span *ngIf="data.twentynine === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='thirty' headerText='30' [filter]='filter' width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.thirty===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.thirty === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.thirty === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.thirty === 4">W</span>
+                        <span *ngIf="data.thirty === 5">L</span>
+                        <span *ngIf="data.thirty === 6">H</span>
+                        <span *ngIf="data.thirty === 7">CH</span>
                       </ng-template>
                     </e-column>
                     <e-column field='thirtyone' headerText='31' [filter]='filter'  width='50'>
                       <ng-template #template let-data>
                         <img *ngIf="data.thirtyone===2" src="../../assets/img/logo/non-signal.png" style="width: 22px;">
                         <img *ngIf="data.thirtyone === 1" src="../../assets/img/logo/late-signal.png" style="width: 22px;">
+                        <img *ngIf="data.thirtyone === null" src="../../assets/img/logo/green-signalNew.png" style="width: 22px;">
+                        <span *ngIf="data.thirtyone === 4">W</span>
+                        <span *ngIf="data.thirtyone === 5">L</span>
+                        <span *ngIf="data.thirtyone === 6">H</span>
+                        <span *ngIf="data.thirtyone === 7">CH</span>
                       </ng-template>
                     </e-column>
                 </e-columns>
